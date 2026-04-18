@@ -408,116 +408,114 @@
     /* ---- TARIFS ---- */
     #tarifs { background: var(--bg2); }
 
-    .packs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-      align-items: start;
-    }
-
-    .pack {
+    /* Bloc principal site */
+    .tarifs-main-card {
       background: #fff;
-      border-radius: var(--rayon);
-      padding: 2rem;
-      position: relative;
-      transition: transform .25s, box-shadow .25s;
-      border: 1.5px solid transparent;
-      display: flex;
-      flex-direction: column;
-    }
-    .pack:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
-
-    .pack.featured {
-      background: var(--noir);
-      border-color: var(--coral);
-      color: #fff;
+      border-radius: 24px;
+      padding: 3rem;
+      margin-top: 3.5rem;
+      box-shadow: 0 8px 40px rgba(0,0,0,.06);
+      border: 1.5px solid rgba(226,133,136,.2);
     }
 
-    .pack-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: var(--coral);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .3rem 1.1rem;
-      border-radius: 50px;
-      white-space: nowrap;
+    .tarifs-main-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(0,0,0,.07);
     }
 
-    .pack-label {
-      display: inline-block;
+    .tarifs-main-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
       background: var(--blush);
       color: var(--coral);
-      font-size: .7rem;
+      font-size: .72rem;
       font-weight: 600;
-      letter-spacing: .1em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      padding: .3rem .9rem;
+      padding: .35rem 1rem;
       border-radius: 50px;
       margin-bottom: 1rem;
     }
-    .pack.featured .pack-label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
 
-    .pack-name {
+    .tarifs-main-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.9rem;
       font-weight: 800;
       letter-spacing: -.03em;
+      color: var(--noir);
       margin-bottom: .3rem;
     }
 
-    .pack-desc {
-      font-size: .85rem;
+    .tarifs-main-sub {
+      font-size: .9rem;
       color: var(--muted);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-    }
-    .pack.featured .pack-desc { color: rgba(255,255,255,.5); }
-
-    .pack-price {
-      padding: 1.2rem 0;
-      border-top: 1px solid rgba(0,0,0,.07);
-      border-bottom: 1px solid rgba(0,0,0,.07);
-      margin-bottom: 1.5rem;
-    }
-    .pack.featured .pack-price {
-      border-color: rgba(255,255,255,.1);
+      font-weight: 400;
     }
 
-    .pack-from { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-    .pack.featured .pack-from { color: rgba(255,255,255,.4); }
+    .tarifs-price-block { text-align: right; }
 
-    .pack-amount {
+    .tarifs-from {
+      font-size: .72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .tarifs-amount {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.8rem;
       font-weight: 800;
       letter-spacing: -.04em;
-      color: var(--coral);
-      line-height: 1.1;
+      color: var(--coral-vif);
+      line-height: 1;
     }
-    .pack.featured .pack-amount { color: #fff; }
 
-    .pack-monthly { font-size: .82rem; color: var(--muted); margin-top: .3rem; }
-    .pack.featured .pack-monthly { color: rgba(255,255,255,.45); }
-    .pack-monthly strong { color: var(--noir); }
-    .pack.featured .pack-monthly strong { color: #fff; }
+    .tarifs-note {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-top: .3rem;
+      max-width: 200px;
+      margin-left: auto;
+      line-height: 1.4;
+    }
 
-    .pack-features {
+    .tarifs-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tarifs-features-title, .tarifs-options-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .tarifs-features {
       list-style: none;
-      display: flex; flex-direction: column; gap: .8rem;
-      margin-bottom: 1.8rem;
-      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
     }
 
-    .pack-features li {
-      display: flex; align-items: flex-start; gap: .6rem;
+    .tarifs-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
       font-size: .87rem;
       color: var(--noir);
     }
-    .pack.featured .pack-features li { color: rgba(255,255,255,.8); }
 
     .check {
       flex-shrink: 0;
@@ -530,28 +528,259 @@
       font-weight: 700;
       margin-top: 1px;
     }
-    .pack.featured .check { background: rgba(232,99,90,.25); color: var(--coral); }
 
-    .pack-cta {
-      display: block;
-      text-align: center;
-      padding: .85rem;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: .9rem;
-      text-decoration: none;
-      transition: .2s;
+    .tarifs-options-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 0;
     }
-    .pack:not(.featured) .pack-cta {
+
+    .tarifs-option-badge {
+      background: var(--bg2);
+      color: var(--noir);
+      font-size: .8rem;
+      font-weight: 500;
+      padding: .4rem .9rem;
+      border-radius: 50px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .tarifs-option-badge::before { content: '+ '; color: var(--coral); font-weight: 700; }
+
+    .tarifs-cta-wrap { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,.07); }
+
+    .tarifs-cta {
+      display: inline-block;
       background: var(--noir);
       color: #fff;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .2s;
     }
-    .pack:not(.featured) .pack-cta:hover { background: var(--coral); }
-    .pack.featured .pack-cta {
-      background: var(--coral);
+    .tarifs-cta:hover { background: var(--coral-vif); }
+    .tarifs-cta.coral { background: var(--coral); }
+    .tarifs-cta.coral:hover { background: var(--coral-vif); }
+
+    /* Séparateur */
+    .tarifs-sep {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 3rem 0;
+      color: var(--muted);
+      font-size: .8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+    .tarifs-sep::before, .tarifs-sep::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,.1);
+    }
+
+    /* Bloc restaurant */
+    .tarifs-resto-card {
+      background: var(--noir);
+      border-radius: 24px;
+      padding: 2.5rem 3rem;
       color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
     }
-    .pack.featured .pack-cta:hover { background: var(--peach); }
+
+    .tarifs-resto-left {}
+
+    .tarifs-resto-badge {
+      display: inline-block;
+      background: rgba(226,133,136,.2);
+      color: var(--coral);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .tarifs-resto-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: .3rem;
+    }
+
+    .tarifs-resto-sub {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 1.5rem;
+    }
+
+    .tarifs-resto-price {
+      margin-bottom: 1.5rem;
+    }
+
+    .tarifs-resto-price .tarifs-from { color: rgba(255,255,255,.4); }
+    .tarifs-resto-price .tarifs-amount { font-size: 2rem; color: #fff; }
+
+    .tarifs-resto-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+    }
+
+    .tarifs-resto-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .86rem;
+      color: rgba(255,255,255,.8);
+    }
+
+    .check-dark {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(226,133,136,.25);
+      color: var(--coral);
+      font-size: .6rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .tarifs-resto-right {}
+
+    .tarifs-resto-options-title {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-bottom: .8rem;
+      margin-top: 1.5rem;
+    }
+
+    .tarifs-resto-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tarifs-resto-option {
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.7);
+      font-size: .8rem;
+      padding: .4rem .9rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+    .tarifs-resto-option::before { content: '+ '; color: var(--coral); font-weight: 700; }
+
+    /* Bloc vidéo */
+    .tarifs-video-section { margin-top: 3rem; }
+
+    .tarifs-video-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .tarifs-video-header h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--noir);
+      margin-bottom: .4rem;
+    }
+
+    .tarifs-video-header p {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .tarifs-video-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      border: 1.5px solid rgba(0,0,0,.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tarifs-video-label {
+      display: inline-block;
+      background: var(--peach);
+      color: #b85e00;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .tarifs-video-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: .3rem;
+    }
+
+    .tarifs-video-price {
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(0,0,0,.07);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+    }
+
+    .tarifs-video-amount {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: var(--coral-vif);
+    }
+
+    .tarifs-video-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      flex: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .tarifs-video-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .86rem;
+      color: var(--noir);
+    }
+
+    @media (max-width: 1024px) {
+      .tarifs-main-top { grid-template-columns: 1fr; }
+      .tarifs-price-block { text-align: left; }
+      .tarifs-note { margin-left: 0; }
+      .tarifs-body { grid-template-columns: 1fr; gap: 1.5rem; }
+      .tarifs-resto-card { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
 
     /* ---- APROPOS ---- */
     #apropos { background: var(--bg); }
@@ -1007,74 +1236,128 @@
 <!-- TARIFS -->
 <section id="tarifs">
   <div class="s-tag fade-up">Nos tarifs</div>
-  <h2 class="fade-up">Choisissez<br>votre pack</h2>
-  <p class="s-sub fade-up">Tous les packs incluent la création de votre site internet.</p>
+  <h2 class="fade-up">Des offres claires,<br>sur mesure</h2>
+  <p class="s-sub fade-up">Un accompagnement digital pensé pour les professionnels de bouche.</p>
 
-  <div class="packs-grid">
-
-    <div class="pack fade-up">
-      <div class="pack-label">Pack Essentiel</div>
-      <div class="pack-name">Présence en ligne</div>
-      <div class="pack-desc">Votre vitrine sur internet, clé en main</div>
-      <div class="pack-price">
-        <div class="pack-from">À partir de</div>
-        <div class="pack-amount">1 500 €</div>
-        <div class="pack-monthly">+ option <strong>30 €/mois</strong></div>
+  <!-- PARTIE 1 : Site internet -->
+  <div class="tarifs-main-card fade-up">
+    <div class="tarifs-main-top">
+      <div>
+        <div class="tarifs-main-badge">Simple &bull; Rapide &bull; Efficace</div>
+        <div class="tarifs-main-title">Votre site internet professionnel</div>
+        <div class="tarifs-main-sub">Clé en main, de A à Z</div>
       </div>
-      <ul class="pack-features">
-        <li><span class="check">✓</span> Création site internet moderne</li>
-        <li><span class="check">✓</span> Menu en ligne</li>
-        <li><span class="check">✓</span> Site optimisé mobile</li>
-        <li><span class="check">✓</span> Mise en ligne rapide</li>
-        <li><span class="check">✓</span> Hébergement et nom de domaine</li>
-        <li><span class="check">✓</span> Maintenance et mises à jour</li>
-        <li><span class="check">✓</span> Modifications légères</li>
-        <li><span class="check">✓</span> Référencement Google (SEO)</li>
-      </ul>
-      <a class="pack-cta" href="#contact">Démarrer</a>
+      <div class="tarifs-price-block">
+        <div class="tarifs-from">À partir de</div>
+        <div class="tarifs-amount">1 500 €</div>
+        <div class="tarifs-note">Tarif ajusté sur devis selon vos besoins</div>
+      </div>
     </div>
 
-    <div class="pack featured fade-up">
-      <div class="pack-badge">Le plus populaire</div>
-      <div class="pack-label">Pack Visibilité</div>
-      <div class="pack-name">Attirer des clients tous les mois</div>
-      <div class="pack-desc">Site + vidéos professionnelles chaque mois</div>
-      <div class="pack-price">
-        <div class="pack-from">À partir de</div>
-        <div class="pack-amount">1 500 €</div>
-        <div class="pack-monthly">+ option <strong>620 €/mois</strong></div>
+    <div class="tarifs-body">
+      <div>
+        <div class="tarifs-features-title">Ce qui est inclus</div>
+        <ul class="tarifs-features">
+          <li><span class="check">✓</span> Création site moderne jusqu'à 5 pages</li>
+          <li><span class="check">✓</span> Site optimisé mobile</li>
+          <li><span class="check">✓</span> Référencement Google (SEO)</li>
+          <li><span class="check">✓</span> Hébergement + nom de domaine</li>
+          <li><span class="check">✓</span> Mise en ligne rapide</li>
+          <li><span class="check">✓</span> Maintenance et mises à jour</li>
+          <li><span class="check">✓</span> Modifications légères</li>
+          <li><span class="check">✓</span> Formulaire de contact</li>
+          <li><span class="check">✓</span> Widget Avis Google intégré</li>
+          <li><span class="check">✓</span> Bouton WhatsApp cliquable</li>
+          <li><span class="check">✓</span> Liens réseaux sociaux</li>
+          <li><span class="check">✓</span> Google Analytics</li>
+          <li><span class="check">✓</span> Mentions légales + RGPD</li>
+          <li><span class="check">✓</span> Bandeau cookies</li>
+          <li><span class="check">✓</span> Favicon personnalisé</li>
+        </ul>
       </div>
-      <ul class="pack-features">
-        <li><span class="check">✓</span> Tout le Pack Essentiel</li>
+      <div>
+        <div class="tarifs-options-title">Options disponibles sur devis</div>
+        <div class="tarifs-options-wrap">
+          <span class="tarifs-option-badge">Pages supplémentaires</span>
+          <span class="tarifs-option-badge">Boutique e-commerce</span>
+          <span class="tarifs-option-badge">Paiement Stripe / PayPal</span>
+          <span class="tarifs-option-badge">Connexion système de caisse</span>
+          <span class="tarifs-option-badge">Intégration Google Maps</span>
+          <span class="tarifs-option-badge">Google My Business</span>
+          <span class="tarifs-option-badge">Réservation en ligne</span>
+          <span class="tarifs-option-badge">Shooting photo professionnel</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tarifs-cta-wrap">
+      <a class="tarifs-cta" href="#contact">Obtenir mon devis gratuit</a>
+    </div>
+  </div>
+
+  <!-- Séparateur -->
+  <div class="tarifs-sep fade-up">Vous êtes restaurateur ?</div>
+
+  <!-- PARTIE 2 : Pack Restaurant -->
+  <div class="tarifs-resto-card fade-up">
+    <div class="tarifs-resto-left">
+      <div class="tarifs-resto-badge">Pack Restaurant</div>
+      <div class="tarifs-resto-title">Pack Restaurant Essentiel</div>
+      <div class="tarifs-resto-sub">Un pack spécialement conçu pour les restaurants</div>
+      <div class="tarifs-resto-price">
+        <div class="tarifs-from">À partir de</div>
+        <div class="tarifs-amount">1 930 €</div>
+      </div>
+      <ul class="tarifs-resto-features">
+        <li><span class="check-dark">✓</span> Tout le site internet professionnel</li>
+        <li><span class="check-dark">✓</span> Menu en ligne</li>
+        <li><span class="check-dark">✓</span> Intégration Google Maps</li>
+        <li><span class="check-dark">✓</span> Configuration Google My Business</li>
+      </ul>
+    </div>
+    <div class="tarifs-resto-right">
+      <div class="tarifs-resto-options-title">Options restaurant sur devis</div>
+      <div class="tarifs-resto-options">
+        <span class="tarifs-resto-option">Réservation de table en ligne</span>
+        <span class="tarifs-resto-option">Commandes à emporter &amp; paiement en ligne</span>
+        <span class="tarifs-resto-option">Connexion caisse</span>
+      </div>
+      <a class="tarifs-cta coral" href="#contact">Obtenir mon devis restaurant</a>
+    </div>
+  </div>
+
+  <!-- Séparateur -->
+  <div class="tarifs-sep fade-up">Boostez votre visibilité</div>
+
+  <!-- PARTIE 3 : Pack Vidéo -->
+  <div class="tarifs-video-section">
+    <div class="tarifs-video-header fade-up">
+      <h3>Boostez votre visibilité sur les réseaux sociaux</h3>
+      <p>Des options à ajouter à votre site, selon vos ambitions</p>
+    </div>
+
+    <div class="tarifs-video-card fade-up">
+      <div class="tarifs-video-label">Pack Visibilité</div>
+      <div class="tarifs-video-name">Vidéos réseaux sociaux — Instagram &amp; TikTok</div>
+      <div class="tarifs-video-price">
+        <div class="tarifs-from">À partir de</div>
+        <div class="tarifs-video-amount">790 €<span style="font-size:1rem;font-weight:500;color:var(--muted)">/mois</span></div>
+      </div>
+      <ul class="tarifs-video-features">
         <li><span class="check">✓</span> 4 vidéos créées par mois</li>
-        <li><span class="check">✓</span> 1 tournage mensuel (1h à 3h)</li>
+        <li><span class="check">✓</span> 1 tournage mensuel (2h à 3h)</li>
         <li><span class="check">✓</span> Format optimisé réseaux sociaux</li>
         <li><span class="check">✓</span> Montage professionnel</li>
         <li><span class="check">✓</span> Conseils de publication</li>
-      </ul>
-      <a class="pack-cta" href="#contact">Démarrer</a>
-    </div>
-
-    <div class="pack fade-up">
-      <div class="pack-label">Pack Premium</div>
-      <div class="pack-name">Présence digitale complète</div>
-      <div class="pack-desc">Clé en main, sans rien à gérer</div>
-      <div class="pack-price">
-        <div class="pack-from">À partir de</div>
-        <div class="pack-amount">1 500 €</div>
-        <div class="pack-monthly">+ option <strong>770 €/mois</strong></div>
-      </div>
-      <ul class="pack-features">
-        <li><span class="check">✓</span> Tout le Pack Visibilité</li>
         <li><span class="check">✓</span> Publication des vidéos</li>
         <li><span class="check">✓</span> Rédaction des légendes</li>
         <li><span class="check">✓</span> Hashtags et mots clés optimisés</li>
         <li><span class="check">✓</span> Conseils réguliers personnalisés</li>
       </ul>
-      <a class="pack-cta" href="#contact">Démarrer</a>
+      <a class="tarifs-cta" href="#contact">En savoir plus</a>
     </div>
-
   </div>
+
 </section>
 
 <!-- A PROPOS -->
