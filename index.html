@@ -362,48 +362,66 @@
 
     .presta-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
       margin-top: 3.5rem;
     }
 
     .presta-card {
       border-radius: var(--rayon);
-      padding: 2rem 1.6rem;
+      padding: 3rem 2.5rem;
       transition: transform .25s;
+      display: flex;
+      flex-direction: column;
     }
     .presta-card:hover { transform: translateY(-5px); }
 
-    .presta-card.c-coral  { background: var(--coral); color: var(--noir); }
-    .presta-card.c-peach  { background: var(--peach); color: var(--noir); }
-    .presta-card.c-gris   { background: var(--gris-card); color: var(--noir); }
-    .presta-card.c-blush  { background: var(--blush); color: var(--noir); }
+    .presta-card.c-coral { background: var(--coral); color: var(--noir); }
+    .presta-card.c-peach { background: var(--peach); color: var(--noir); }
 
     .presta-ico {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.6rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px; height: 48px;
-      background: rgba(255,255,255,.25);
-      border-radius: 12px;
+      width: 60px; height: 60px;
+      background: rgba(0,0,0,.08);
+      border-radius: 16px;
     }
-    .presta-ico svg { width: 24px; height: 24px; }
-    .c-coral .presta-ico,
-    .c-peach .presta-ico,
-    .c-gris .presta-ico,
-    .c-blush .presta-ico { background: rgba(0,0,0,.07); }
+    .presta-ico svg { width: 30px; height: 30px; }
 
     .presta-card h3 {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.6rem;
       font-weight: 800;
-      letter-spacing: -.02em;
-      margin-bottom: 1rem;
+      letter-spacing: -.03em;
+      margin-bottom: .5rem;
     }
 
-    .presta-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-    .presta-list li { font-size: .85rem; opacity: .82; line-height: 1.4; font-weight: 300; }
+    .presta-accroche {
+      font-size: .95rem;
+      font-style: italic;
+      opacity: .75;
+      margin-bottom: 1.8rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .presta-list { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+    .presta-list li {
+      font-size: .9rem;
+      line-height: 1.5;
+      font-weight: 400;
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+    }
+    .presta-list li::before {
+      content: '→';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: .05em;
+    }
 
     /* ---- TARIFS ---- */
     #tarifs { background: var(--bg2); }
@@ -997,7 +1015,7 @@
 
     /* ---- RESPONSIVE ---- */
     @media (max-width: 1024px) {
-      .presta-grid { grid-template-columns: repeat(2, 1fr); }
+      .presta-grid { grid-template-columns: 1fr; }
       .packs-grid { grid-template-columns: 1fr; max-width: 400px; }
       #accueil { grid-template-columns: 1fr; }
       .hero-img { display: none; }
@@ -1198,52 +1216,33 @@
   <h2 class="fade-up">Nos<br>prestations</h2>
 
   <div class="presta-grid">
+
     <div class="presta-card c-coral fade-up">
       <div class="presta-ico">
         <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
-      <h3>Site internet</h3>
+      <h3>Votre site internet</h3>
+      <p class="presta-accroche">Soyez trouvé par vos futurs clients</p>
       <ul class="presta-list">
-        <li>Création site moderne</li>
-        <li>Menu, photos, contact, Google Maps</li>
-        <li>Adapté mobile</li>
-        <li>Mise en ligne rapide</li>
+        <li>Un site pro qui reflète votre image</li>
+        <li>Visible sur Google dès le premier jour</li>
+        <li>Réservation, menu, avis clients... tout est là</li>
       </ul>
     </div>
+
     <div class="presta-card c-peach fade-up">
-      <div class="presta-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2M11 8h6M7 11h4M15 11h2"/></svg>
-      </div>
-      <h3>Hébergement</h3>
-      <ul class="presta-list">
-        <li>Hébergement du site et nom de domaine</li>
-        <li>Mises à jour techniques et référencement</li>
-        <li>Modifications (menu, infos)</li>
-      </ul>
-    </div>
-    <div class="presta-card c-gris fade-up">
       <div class="presta-ico">
         <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="M17 10l5-3v10l-5-3V10z"/></svg>
       </div>
-      <h3>Pack vidéos</h3>
+      <h3>Vos Réseaux Sociaux</h3>
+      <p class="presta-accroche">Restez visible chaque mois, sans y passer du temps</p>
       <ul class="presta-list">
-        <li>4 vidéos par mois</li>
-        <li>Optimisés pour Instagram et TikTok</li>
+        <li>Du contenu vidéo pro créé pour vous</li>
+        <li>Publié sur Instagram et TikTok</li>
         <li>1 tournage = 1 mois de contenu</li>
       </ul>
     </div>
-    <div class="presta-card c-blush fade-up">
-      <div class="presta-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#181818" stroke="none"/></svg>
-      </div>
-      <h3>Gestion réseaux</h3>
-      <ul class="presta-list">
-        <li>Publication des vidéos</li>
-        <li>Captions et légendes</li>
-        <li>Hashtags optimisés</li>
-        <li>Conseils stratégiques</li>
-      </ul>
-    </div>
+
   </div>
 </section>
 
