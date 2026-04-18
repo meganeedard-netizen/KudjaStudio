@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO primaire -->
+  <title>Kudja Studio | Création de site internet et vidéos pour restaurants, boulangers et épiceries</title>
+  <meta name="description" content="Kudja Studio crée des sites internet professionnels et des packs vidéos réseaux sociaux pour restaurants, boulangers pâtissiers et épiceries fines. Attirez plus de clients grâce au digital." />
+  <meta name="keywords" content="création site internet restaurant, site web boulangerie, vidéos réseaux sociaux restaurant, marketing digital restaurant, pack vidéo instagram tiktok, référencement restaurant, présence en ligne restaurant" />
+  <meta name="author" content="Mégane, Kudja Studio" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://kudjastudio.fr/" />
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kudjastudio.fr/" />
+  <meta property="og:title" content="Kudja Studio | Site internet et vidéos pour restaurants et boulangers" />
+  <meta property="og:description" content="Attirez plus de clients grâce à un site internet professionnel et des vidéos réseaux sociaux sur-mesure pour votre restaurant ou boulangerie." />
+  <meta property="og:site_name" content="Kudja Studio" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kudja Studio | Site internet et vidéos pour restaurants" />
+  <meta name="twitter:description" content="Attirez plus de clients grâce à un site internet professionnel et des vidéos réseaux sociaux sur-mesure." />
+
+  <!-- JSON-LD : Données structurées -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://kudjastudio.fr/#business",
+        "name": "Kudja Studio",
+        "description": "Agence digitale spécialisée dans la création de sites internet et de packs vidéos pour restaurants, boulangers pâtissiers et épiceries fines.",
+        "url": "https://kudjastudio.fr",
+        "email": "megane@kudjastudio.fr",
+        "telephone": "+590690301962",
+        "founder": {
+          "@type": "Person",
+          "name": "Mégane",
+          "jobTitle": "Experte digitale"
+        },
+        "areaServed": "FR",
+        "serviceType": [
+          "Création de site internet",
+          "Pack vidéos réseaux sociaux",
+          "Hébergement web",
+          "Gestion réseaux sociaux"
+        ],
+        "priceRange": "€€"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://kudjastudio.fr/#website",
+        "url": "https://kudjastudio.fr",
+        "name": "Kudja Studio",
+        "description": "Création de site internet et vidéos réseaux sociaux pour restaurants et commerces de bouche",
+        "inLanguage": "fr-FR"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #F4F4F4;
+      --bg2:      #EBEBEB;
+      --noir:     #181818;
+      --coral:    #E28588;
+      --coral-vif:#E45339;
+      --peach:    #FACEA5;
+      --blush:    #E7C3D2;
+      --gris-card:#E4E4E4;
+      --muted:    #7A7A7A;
+      --rayon:    20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--noir);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ---- HERO IMAGE ---- */
+    .hero-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+    .hero-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+    }
+
+    /* ---- BLOBS ---- */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 6%;
+      background: rgba(247,245,242,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+    .nav-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--noir);
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+
+    .nav-logo span { color: var(--coral); }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--noir); }
+
+    .nav-cta {
+      background: var(--noir) !important;
+      color: #fff !important;
+      padding: .55rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 500 !important;
+      font-size: .88rem !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--coral) !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--noir); border-radius: 2px; }
+
+    /* ---- HERO ---- */
+    #accueil {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      align-items: stretch;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #accueil .blob-1 {
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, #FACEA5 0%, #E45339 60%, transparent 100%);
+      opacity: .3;
+      top: -60px; left: 30%;
+    }
+
+    #accueil .blob-2 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, #E7C3D2 0%, #E28588 70%, transparent 100%);
+      opacity: .28;
+      bottom: 0; left: 5%;
+    }
+
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 9rem 6% 5rem 6%;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--blush);
+      color: var(--coral);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.8rem;
+    }
+
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      color: var(--noir);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 span {
+      color: var(--coral);
+      display: inline-block;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 2.8rem;
+      font-weight: 300;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-noir {
+      background: var(--noir);
+      color: #fff;
+      padding: .9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-noir:hover { background: var(--coral); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(0,0,0,.18);
+      color: var(--noir);
+      padding: .9rem 2.2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: border-color .2s, transform .15s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--coral); color: var(--coral); transform: translateY(-2px); }
+
+    /* ---- SECTION COMMUNE ---- */
+    section { padding: 6rem 6%; position: relative; overflow: hidden; }
+
+    .s-tag {
+      display: inline-block;
+      font-size: .73rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: .7rem;
+    }
+
+    h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--noir);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .s-sub {
+      font-size: .98rem;
+      color: var(--muted);
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    /* ---- OBJECTIF ---- */
+    #objectif { background: var(--noir); }
+
+    #objectif h2 { color: #fff; }
+    #objectif .s-tag { color: var(--peach); }
+
+    .obj-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .obj-para {
+      font-size: 1rem;
+      color: rgba(255,255,255,.6);
+      font-weight: 300;
+      line-height: 1.9;
+      margin-top: 1.8rem;
+    }
+    .obj-para strong { color: #fff; font-weight: 500; }
+
+    /* Photo avec pills superposées */
+    .obj-img-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      height: 480px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.55);
+    }
+
+    .obj-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    .obj-img-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.65) 0%, transparent 55%);
+    }
+
+    .obj-pills-overlay {
+      position: absolute;
+      bottom: 1.8rem; left: 1.8rem;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+    }
+
+    .obj-pill {
+      display: inline-block;
+      padding: .65rem 1.4rem;
+      border-radius: 50px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -.01em;
+      width: fit-content;
+    }
+
+    .obj-pill.p1 { background: var(--coral); color: #fff; }
+    .obj-pill.p2 { background: var(--peach); color: var(--noir); }
+    .obj-pill.p3 { background: var(--blush); color: var(--coral); }
+
+    /* ---- PRESTATIONS ---- */
+    #prestations { background: var(--bg); }
+
+    .presta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 3.5rem;
+    }
+
+    .presta-card {
+      border-radius: var(--rayon);
+      padding: 2rem 1.6rem;
+      transition: transform .25s;
+    }
+    .presta-card:hover { transform: translateY(-5px); }
+
+    .presta-card.c-coral  { background: var(--coral); color: var(--noir); }
+    .presta-card.c-peach  { background: var(--peach); color: var(--noir); }
+    .presta-card.c-gris   { background: var(--gris-card); color: var(--noir); }
+    .presta-card.c-blush  { background: var(--blush); color: var(--noir); }
+
+    .presta-ico {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,.25);
+      border-radius: 12px;
+    }
+    .presta-ico svg { width: 24px; height: 24px; }
+    .c-coral .presta-ico,
+    .c-peach .presta-ico,
+    .c-gris .presta-ico,
+    .c-blush .presta-ico { background: rgba(0,0,0,.07); }
+
+    .presta-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: 1rem;
+    }
+
+    .presta-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .presta-list li { font-size: .85rem; opacity: .82; line-height: 1.4; font-weight: 300; }
+
+    /* ---- TARIFS ---- */
+    #tarifs { background: var(--bg2); }
+
+    .packs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .pack {
+      background: #fff;
+      border-radius: var(--rayon);
+      padding: 2rem;
+      position: relative;
+      transition: transform .25s, box-shadow .25s;
+      border: 1.5px solid transparent;
+      display: flex;
+      flex-direction: column;
+    }
+    .pack:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+
+    .pack.featured {
+      background: var(--noir);
+      border-color: var(--coral);
+      color: #fff;
+    }
+
+    .pack-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--coral);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem 1.1rem;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .pack-label {
+      display: inline-block;
+      background: var(--blush);
+      color: var(--coral);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .pack.featured .pack-label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.8); }
+
+    .pack-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: .3rem;
+    }
+
+    .pack-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+    .pack.featured .pack-desc { color: rgba(255,255,255,.5); }
+
+    .pack-price {
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(0,0,0,.07);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      margin-bottom: 1.5rem;
+    }
+    .pack.featured .pack-price {
+      border-color: rgba(255,255,255,.1);
+    }
+
+    .pack-from { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .pack.featured .pack-from { color: rgba(255,255,255,.4); }
+
+    .pack-amount {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      color: var(--coral);
+      line-height: 1.1;
+    }
+    .pack.featured .pack-amount { color: #fff; }
+
+    .pack-monthly { font-size: .82rem; color: var(--muted); margin-top: .3rem; }
+    .pack.featured .pack-monthly { color: rgba(255,255,255,.45); }
+    .pack-monthly strong { color: var(--noir); }
+    .pack.featured .pack-monthly strong { color: #fff; }
+
+    .pack-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: .8rem;
+      margin-bottom: 1.8rem;
+      flex: 1;
+    }
+
+    .pack-features li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      font-size: .87rem;
+      color: var(--noir);
+    }
+    .pack.featured .pack-features li { color: rgba(255,255,255,.8); }
+
+    .check {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--blush);
+      color: var(--coral);
+      font-size: .6rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .pack.featured .check { background: rgba(232,99,90,.25); color: var(--coral); }
+
+    .pack-cta {
+      display: block;
+      text-align: center;
+      padding: .85rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: .9rem;
+      text-decoration: none;
+      transition: .2s;
+    }
+    .pack:not(.featured) .pack-cta {
+      background: var(--noir);
+      color: #fff;
+    }
+    .pack:not(.featured) .pack-cta:hover { background: var(--coral); }
+    .pack.featured .pack-cta {
+      background: var(--coral);
+      color: #fff;
+    }
+    .pack.featured .pack-cta:hover { background: var(--peach); }
+
+    /* ---- APROPOS ---- */
+    #apropos { background: var(--bg); }
+
+    .apropos-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+
+    .apropos-card {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      height: 380px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.15);
+    }
+
+    .apropos-card img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    .apropos-card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(24,24,24,.85));
+      padding: 2rem 1.5rem 1.4rem;
+    }
+
+    .apropos-name-card {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -.02em;
+    }
+
+    .apropos-role-card {
+      font-size: .82rem;
+      color: var(--peach);
+      font-weight: 500;
+      margin-top: .2rem;
+      letter-spacing: .04em;
+    }
+
+    .apropos-quote {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 800;
+      color: var(--noir);
+      letter-spacing: -.03em;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+    .apropos-quote span { color: var(--coral); }
+
+    .apropos-txt {
+      font-size: .97rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    /* ---- CONTACT ---- */
+    #contact { background: var(--noir); overflow: hidden; }
+
+    #contact .blob-c1 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, var(--coral-vif), transparent 70%);
+      opacity: .2;
+      top: -80px; right: 10%;
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    #contact .blob-c2 {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, var(--coral), transparent 70%);
+      opacity: .14;
+      bottom: -60px; left: 5%;
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+
+    #contact h2 { color: #fff; }
+    #contact .s-tag { color: var(--peach); }
+    #contact .s-sub { color: rgba(255,255,255,.45); }
+
+    .contact-wrap { max-width: 680px; margin: 3.5rem auto 0; }
+
+    .contact-infos {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      justify-content: center;
+    }
+
+    .contact-item {
+      display: flex; align-items: center; gap: .7rem;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: .75rem 1.4rem;
+      font-size: .88rem;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .contact-item:hover { background: rgba(255,255,255,.12); border-color: var(--coral); }
+
+    .contact-form {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 2.5rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: .4rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: .75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.4);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: .8rem 1rem;
+      font-size: .92rem;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,.25); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--coral); }
+    .form-group select option { background: #1a1a1a; }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--coral);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      transition: background .2s, transform .15s;
+      margin-top: .5rem;
+    }
+    .form-submit:hover { background: var(--peach); transform: translateY(-2px); }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #0E0E0E;
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2rem 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+    .footer-logo span { color: var(--coral); }
+
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: .8rem; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--coral); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 1024px) {
+      .presta-grid { grid-template-columns: repeat(2, 1fr); }
+      .packs-grid { grid-template-columns: 1fr; max-width: 400px; }
+      #accueil { grid-template-columns: 1fr; }
+      .hero-img { display: none; }
+      .hero-content { padding: 8rem 5% 4rem; }
+    }
+
+    @media (max-width: 860px) {
+      .obj-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .obj-img-wrap { height: 340px; }
+      .apropos-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: .9rem 5%; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); padding: 1.5rem 6%; border-bottom: 1px solid rgba(0,0,0,.08); gap: 1.2rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 5%; }
+      .presta-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-wrap { max-width: 100%; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    /* ---- BLOG ---- */
+    #blog { background: var(--bg2); }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-top: 3.5rem;
+    }
+
+    .blog-card {
+      background: #fff;
+      border-radius: var(--rayon);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+
+    .blog-card-img {
+      height: 180px;
+      overflow: hidden;
+    }
+    .blog-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .4s ease;
+    }
+    .blog-card:hover .blog-card-img img { transform: scale(1.04); }
+
+    .blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+    .blog-cat {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--coral);
+      background: #FFF0EF;
+      padding: .25rem .7rem;
+      border-radius: 50px;
+      margin-bottom: .9rem;
+    }
+
+    .blog-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--noir);
+      line-height: 1.35;
+      margin-bottom: .6rem;
+    }
+
+    .blog-card p {
+      font-size: .83rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .blog-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #F0EEEB;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .blog-card-footer .lire {
+      color: var(--coral);
+      font-weight: 600;
+      font-size: .8rem;
+    }
+
+    @media (max-width: 860px) {
+      .blog-grid { grid-template-columns: 1fr; max-width: 420px; }
+    }
+
+    /* ---- ANIMATIONS ---- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#accueil">Kudja<span>.</span>Studio</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#objectif">Notre approche</a></li>
+    <li><a href="#prestations">Prestations</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a class="nav-cta" href="#contact">Nous contacter</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section id="accueil">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="hero-img">
+    <img src="images/creation-site-internet-restaurant.webp"
+         alt="Création de site internet pour restaurant par Kudja Studio"
+         width="560" height="315" loading="eager" />
+  </div>
+  <div class="hero-content fade-up">
+    <div class="hero-pill">Restaurants &middot; Boulangers &middot; Épiceries</div>
+    <h1>Comment attirer<br><span>plus de clients&nbsp;?</span></h1>
+    <p class="hero-sub">
+      Nous créons votre présence digitale complète : site internet professionnel et vidéos réseaux sociaux, pour que vos clients vous choisissent avant même de franchir votre porte.
+    </p>
+    <div class="hero-btns">
+      <a class="btn-noir" href="#tarifs">Découvrir nos packs</a>
+      <a class="btn-outline" href="#contact">Prendre contact</a>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIF -->
+<section id="objectif">
+  <div class="blob" style="width:300px;height:300px;background:radial-gradient(circle,#E45339,transparent 70%);opacity:.15;top:-60px;left:5%;position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;"></div>
+
+  <div class="obj-grid">
+
+    <!-- Colonne gauche : texte -->
+    <div class="fade-up">
+      <div class="s-tag">Notre approche</div>
+      <h2>Notre<br>Objectif</h2>
+      <p class="obj-para">
+        Aujourd'hui, vos clients vous cherchent en ligne avant de venir.<br>
+        En quelques secondes, ils décident de vous choisir… ou de passer à un concurrent.
+        <br><br>
+        <strong>Mon rôle : faire en sorte qu'ils vous choisissent.</strong>
+      </p>
+    </div>
+
+    <!-- Colonne droite : photo + pills superposées -->
+    <div class="obj-img-wrap fade-up">
+      <img src="images/clients-restaurant-repas-entre-amis.webp"
+           alt="Clients qui partagent un repas dans un restaurant"
+           width="600" height="480" loading="lazy" />
+      <div class="obj-pills-overlay">
+        <div class="obj-pill p1">Comprendre.</div>
+        <div class="obj-pill p2">Créer.</div>
+        <div class="obj-pill p3">Convertir.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRESTATIONS -->
+<section id="prestations">
+  <div class="s-tag fade-up">Ce que nous faisons</div>
+  <h2 class="fade-up">Nos<br>prestations</h2>
+
+  <div class="presta-grid">
+    <div class="presta-card c-coral fade-up">
+      <div class="presta-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>Site internet</h3>
+      <ul class="presta-list">
+        <li>Création site moderne</li>
+        <li>Menu, photos, contact, Google Maps</li>
+        <li>Adapté mobile</li>
+        <li>Mise en ligne rapide</li>
+      </ul>
+    </div>
+    <div class="presta-card c-peach fade-up">
+      <div class="presta-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h2M11 8h6M7 11h4M15 11h2"/></svg>
+      </div>
+      <h3>Hébergement</h3>
+      <ul class="presta-list">
+        <li>Hébergement du site et nom de domaine</li>
+        <li>Mises à jour techniques et référencement</li>
+        <li>Modifications (menu, infos)</li>
+      </ul>
+    </div>
+    <div class="presta-card c-gris fade-up">
+      <div class="presta-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="15" height="12" rx="2"/><path d="M17 10l5-3v10l-5-3V10z"/></svg>
+      </div>
+      <h3>Pack vidéos</h3>
+      <ul class="presta-list">
+        <li>4 vidéos par mois</li>
+        <li>Optimisés pour Instagram et TikTok</li>
+        <li>1 tournage = 1 mois de contenu</li>
+      </ul>
+    </div>
+    <div class="presta-card c-blush fade-up">
+      <div class="presta-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#181818" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#181818" stroke="none"/></svg>
+      </div>
+      <h3>Gestion réseaux</h3>
+      <ul class="presta-list">
+        <li>Publication des vidéos</li>
+        <li>Captions et légendes</li>
+        <li>Hashtags optimisés</li>
+        <li>Conseils stratégiques</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs">
+  <div class="s-tag fade-up">Nos tarifs</div>
+  <h2 class="fade-up">Choisissez<br>votre pack</h2>
+  <p class="s-sub fade-up">Tous les packs incluent la création de votre site internet.</p>
+
+  <div class="packs-grid">
+
+    <div class="pack fade-up">
+      <div class="pack-label">Pack Essentiel</div>
+      <div class="pack-name">Présence en ligne</div>
+      <div class="pack-desc">Votre vitrine sur internet, clé en main</div>
+      <div class="pack-price">
+        <div class="pack-from">À partir de</div>
+        <div class="pack-amount">1 500 €</div>
+        <div class="pack-monthly">+ option <strong>30 €/mois</strong></div>
+      </div>
+      <ul class="pack-features">
+        <li><span class="check">✓</span> Création site internet moderne</li>
+        <li><span class="check">✓</span> Menu en ligne</li>
+        <li><span class="check">✓</span> Site optimisé mobile</li>
+        <li><span class="check">✓</span> Mise en ligne rapide</li>
+        <li><span class="check">✓</span> Hébergement et nom de domaine</li>
+        <li><span class="check">✓</span> Maintenance et mises à jour</li>
+        <li><span class="check">✓</span> Modifications légères</li>
+        <li><span class="check">✓</span> Référencement Google (SEO)</li>
+      </ul>
+      <a class="pack-cta" href="#contact">Démarrer</a>
+    </div>
+
+    <div class="pack featured fade-up">
+      <div class="pack-badge">Le plus populaire</div>
+      <div class="pack-label">Pack Visibilité</div>
+      <div class="pack-name">Attirer des clients tous les mois</div>
+      <div class="pack-desc">Site + vidéos professionnelles chaque mois</div>
+      <div class="pack-price">
+        <div class="pack-from">À partir de</div>
+        <div class="pack-amount">1 500 €</div>
+        <div class="pack-monthly">+ option <strong>620 €/mois</strong></div>
+      </div>
+      <ul class="pack-features">
+        <li><span class="check">✓</span> Tout le Pack Essentiel</li>
+        <li><span class="check">✓</span> 4 vidéos créées par mois</li>
+        <li><span class="check">✓</span> 1 tournage mensuel (1h à 3h)</li>
+        <li><span class="check">✓</span> Format optimisé réseaux sociaux</li>
+        <li><span class="check">✓</span> Montage professionnel</li>
+        <li><span class="check">✓</span> Conseils de publication</li>
+      </ul>
+      <a class="pack-cta" href="#contact">Démarrer</a>
+    </div>
+
+    <div class="pack fade-up">
+      <div class="pack-label">Pack Premium</div>
+      <div class="pack-name">Présence digitale complète</div>
+      <div class="pack-desc">Clé en main, sans rien à gérer</div>
+      <div class="pack-price">
+        <div class="pack-from">À partir de</div>
+        <div class="pack-amount">1 500 €</div>
+        <div class="pack-monthly">+ option <strong>770 €/mois</strong></div>
+      </div>
+      <ul class="pack-features">
+        <li><span class="check">✓</span> Tout le Pack Visibilité</li>
+        <li><span class="check">✓</span> Publication des vidéos</li>
+        <li><span class="check">✓</span> Rédaction des légendes</li>
+        <li><span class="check">✓</span> Hashtags et mots clés optimisés</li>
+        <li><span class="check">✓</span> Conseils réguliers personnalisés</li>
+      </ul>
+      <a class="pack-cta" href="#contact">Démarrer</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- A PROPOS -->
+<section id="apropos">
+  <div class="s-tag fade-up">Qui suis-je ?</div>
+  <h2 class="fade-up">Derrière<br>Kudja Studio</h2>
+
+  <div class="apropos-grid">
+    <div class="apropos-card fade-up">
+      <img src="images/megane-experte-digitale-kudjastudio.webp"
+           alt="Mégane, experte digitale et fondatrice de Kudja Studio"
+           width="340" height="380" loading="lazy" />
+      <div class="apropos-card-overlay">
+        <div class="apropos-name-card">Mégane</div>
+        <div class="apropos-role-card">Experte digitale · Kudja Studio</div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <p class="apropos-quote">
+        "Prêt(e) à attirer plus de clients&nbsp;? <span>Le digital, c'est le premier contact.</span>"
+      </p>
+      <p class="apropos-txt">
+        Aujourd'hui, un client ne choisit pas un restaurant au hasard. Il regarde, il ressent, il se projette. Le digital, c'est ce premier contact : celui qui donne envie de venir goûter, découvrir et revenir.
+        <br><br>
+        Je suis Mégane, experte digitale spécialisée dans l'accompagnement des professionnels de la restauration et des commerces de bouche en Guadeloupe et aux Antilles. Mon objectif : vous donner les outils qui attirent de nouveaux clients chaque mois.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a class="btn-noir" href="#contact">Me contacter</a>
+        <a class="btn-outline" href="#tarifs">Voir les tarifs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="s-tag fade-up">Conseils &amp; Ressources</div>
+  <h2 class="fade-up">Le blog<br>Kudja Studio</h2>
+  <p class="s-sub fade-up">Nos conseils pour attirer plus de clients grâce au digital.</p>
+
+  <div class="blog-grid">
+
+    <a class="blog-card fade-up" href="blog/site-internet-restaurant.html">
+      <div class="blog-card-img">
+        <img src="images/blog-site-internet-restaurant.webp" alt="Chef cuisinier dressant un plat dans un restaurant" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Site internet</span>
+        <h3>Pourquoi votre restaurant a besoin d'un site internet en 2025</h3>
+        <p>91% des clients cherchent un restaurant en ligne avant de s'y rendre. Voici pourquoi un site professionnel est devenu indispensable.</p>
+        <div class="blog-card-footer">
+          <span>5 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="blog-card fade-up" href="blog/videos-reels-restaurant-instagram-tiktok.html">
+      <div class="blog-card-img">
+        <img src="images/blog-reseaux-sociaux-restaurant.webp" alt="Smartphone filmant un burger pour les réseaux sociaux" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Réseaux sociaux</span>
+        <h3>Comment les Reels Instagram et TikTok font venir des clients dans votre restaurant</h3>
+        <p>Une vidéo de 30 secondes peut générer des dizaines de nouveaux clients. Découvrez comment exploiter ce levier puissant.</p>
+        <div class="blog-card-footer">
+          <span>6 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="blog-card fade-up" href="blog/visibilite-en-ligne-boulangerie-epicerie.html">
+      <div class="blog-card-img">
+        <img src="images/blog-marketing-digital-boulangerie.webp" alt="Boulanger artisan travaillant la pâte dans sa boulangerie" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Marketing digital</span>
+        <h3>5 conseils pour améliorer la visibilité en ligne de votre boulangerie ou épicerie fine</h3>
+        <p>Référencement local, Google Maps, réseaux sociaux : les 5 actions concrètes pour être trouvé par vos futurs clients.</p>
+        <div class="blog-card-footer">
+          <span>7 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="blob-c1"></div>
+  <div class="blob-c2"></div>
+
+  <div style="text-align:center; position:relative; z-index:1;">
+    <div class="s-tag fade-up" style="display:block;">Contact</div>
+    <h2 class="fade-up">Prêt(e) à attirer<br>plus de clients ?</h2>
+    <p class="s-sub fade-up" style="margin: .8rem auto 0; text-align:center;">Discutons de votre projet. Je vous réponds rapidement.</p>
+  </div>
+
+  <div class="contact-wrap" style="position:relative;z-index:1;">
+    <div class="contact-infos fade-up" style="margin-top:2rem;">
+      <a class="contact-item" href="mailto:megane@kudjastudio.fr">
+        ✉️ megane@kudjastudio.fr
+      </a>
+      <a class="contact-item" href="tel:+590690301962">
+        📞 +590 690 30 19 62
+      </a>
+    </div>
+
+    <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" name="prenom" placeholder="Votre prénom" required />
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" name="nom" placeholder="Votre nom" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="votre@email.fr" required />
+      </div>
+      <div class="form-group">
+        <label>Votre activité</label>
+        <select name="activite">
+          <option value="">Sélectionnez votre activité</option>
+          <option>Restaurant</option>
+          <option>Boulangerie / Pâtisserie</option>
+          <option>Épicerie fine</option>
+          <option>Autre commerce</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Pack souhaité</label>
+        <select name="pack">
+          <option value="">Je ne sais pas encore</option>
+          <option>Pack Essentiel</option>
+          <option>Pack Visibilité</option>
+          <option>Pack Premium</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea name="message" placeholder="Parlez-moi de votre établissement..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="#accueil">Kudja<span>.</span>Studio</a>
+  <p class="footer-copy">© 2025 Kudja Studio &middot; kudjastudio.fr</p>
+  <div class="footer-links">
+    <a href="#prestations">Prestations</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(l => l.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  }));
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message envoyé !';
+    btn.style.background = '#5A9E6A';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Envoyer ma demande';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+
+</body>
+</html>
