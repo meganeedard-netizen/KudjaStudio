@@ -189,19 +189,7 @@
 
         <div class="horaires-grid">
           <div class="horaire-card">
-            <div class="horaire-day">Lundi</div>
-            <div class="horaire-time">10h00 - 21h00</div>
-          </div>
-          <div class="horaire-card">
-            <div class="horaire-day">Mardi</div>
-            <div class="horaire-time">10h00 - 21h00</div>
-          </div>
-          <div class="horaire-card">
-            <div class="horaire-day">Mercredi</div>
-            <div class="horaire-time">10h00 - 21h00</div>
-          </div>
-          <div class="horaire-card">
-            <div class="horaire-day">Jeudi</div>
+            <div class="horaire-day">Lundi - Jeudi</div>
             <div class="horaire-time">10h00 - 21h00</div>
           </div>
           <div class="horaire-card">
@@ -211,7 +199,6 @@
           <div class="horaire-card">
             <div class="horaire-day">Samedi</div>
             <div class="horaire-time">10h00 - 19h00</div>
-            <span class="horaire-badge">Populaire</span>
           </div>
         </div>
       </div>
@@ -231,85 +218,43 @@
           </div>
         </div>
 
-        <!-- Carrousel -->
-        <div class="reviews-carousel-wrapper">
-          <button class="carousel-arrow carousel-prev" onclick="moveCarousel(-1)" aria-label="Précédent">&#8592;</button>
+        <!-- 3 avis statiques -->
+        <div class="reviews-grid">
 
-          <div class="reviews-carousel-track" id="reviewsTrack">
-
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">M</div>
-                <div>
-                  <div class="review-name">Marie C.</div>
-                  <div class="review-stars">★★★★★</div>
-                </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">M</div>
+              <div>
+                <div class="review-name">Marie C.</div>
+                <div class="review-stars">★★★★★</div>
               </div>
-              <p class="review-text">Très bon restaurant, une excellente adresse pour découvrir la cuisine réunionnaise. Les plats sont savoureux et on sent que tout est fait maison. Le service est au top : rapide, attentionné et professionnel. Le personnel est vraiment très gentil et accueillant. Je recommande vivement !</p>
             </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">Y</div>
-                <div>
-                  <div class="review-name">Yohan A.</div>
-                  <div class="review-stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="review-text">Très belle découverte ! Les plats sont savoureux, bien présentés et préparés avec des produits frais et principalement fait maison. La cuisine réunionnaise m'était inconnue et je suis très heureux de l'avoir découverte ici. Le service est chaleureux, l'ambiance conviviale. Je reviendrai avec plaisir ! 🌴✨</p>
-            </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">E</div>
-                <div>
-                  <div class="review-name">Elisa N.</div>
-                  <div class="review-stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="review-text">Une superbe découverte ! Des plats typiques réunionnais, frais et faits maison. Un régal du cocktail au dessert 😍 Des saveurs parfumées, une cuisine succulente et un personnel chaleureux et à l'écoute. Je recommande les yeux fermés à 100 % !</p>
-            </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">S</div>
-                <div>
-                  <div class="review-name">Sabrina B.</div>
-                  <div class="review-stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="review-text">Une très très belle découverte aujourd'hui ! Tout est excellent, des entrées aux desserts en passant évidemment par les plats. Du fait maison à tomber ! L'ambiance est chaleureuse et l'équipe très accueillante.</p>
-            </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">J</div>
-                <div>
-                  <div class="review-name">Jean-Philippe F.</div>
-                  <div class="review-stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="review-text">Très bon restaurant, sur place ou à emporter, avec une belle carte qui sent bon la Réunion ! De très bonnes spécialités et même la Dodo lé la 😀. À deux pas de la plage, c'est top de prendre à emporter et manger les pieds dans le sable. Très sympa d'avoir un restaurant original comme ça en Guadeloupe !</p>
-            </div>
-
-            <div class="review-card">
-              <div class="review-header">
-                <div class="review-avatar">M</div>
-                <div>
-                  <div class="review-name">Melody F.</div>
-                  <div class="review-stars">★★★★★</div>
-                </div>
-              </div>
-              <p class="review-text">Merci d'avoir créé cet endroit ! J'ai retrouvé les saveurs de la Réunion, ça me manquait ! Mention spéciale pour les bouchons et bonbons piment ! La prochaine fois je goûterai les plats ! Je recommande !</p>
-            </div>
-
+            <p class="review-text">Très bon restaurant, une excellente adresse pour découvrir la cuisine réunionnaise. Les plats sont savoureux et on sent que tout est fait maison. Le service est au top : rapide, attentionné et professionnel. Je recommande vivement !</p>
           </div>
 
-          <button class="carousel-arrow carousel-next" onclick="moveCarousel(1)" aria-label="Suivant">&#8594;</button>
-        </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">Y</div>
+              <div>
+                <div class="review-name">Yohan A.</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Très belle découverte ! Les plats sont savoureux, bien présentés et préparés avec des produits frais et principalement fait maison. Le service est chaleureux, l'ambiance conviviale. Je reviendrai avec plaisir ! 🌴✨</p>
+          </div>
 
-        <!-- Points de navigation -->
-        <div class="carousel-dots" id="carouselDots"></div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">E</div>
+              <div>
+                <div class="review-name">Elisa N.</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Une superbe découverte ! Des plats typiques réunionnais, frais et faits maison. Un régal du cocktail au dessert 😍 Des saveurs parfumées, une cuisine succulente et un personnel chaleureux et à l'écoute. Je recommande !</p>
+          </div>
+
+        </div>
 
       </div>
     </section>
@@ -972,66 +917,8 @@
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
 
-    // ── Carrousel avis
-    let carouselIndex = 0;
-
-    function getVisible() {
-      return window.innerWidth <= 580 ? 1 : window.innerWidth <= 900 ? 2 : 3;
-    }
-
-    function moveCarousel(dir) {
-      const cards = document.querySelectorAll('.review-card');
-      const visible = getVisible();
-      const max = cards.length - visible;
-      carouselIndex = Math.max(0, Math.min(carouselIndex + dir, max));
-      const track = document.getElementById('reviewsTrack');
-      const wrapper = track.parentElement;
-      const wrapperWidth = wrapper.clientWidth - 88; // retirer les 2 boutons (44px * 2)
-      const cardWidth = (wrapperWidth - (visible - 1) * 20) / visible + 20;
-      track.style.transform = 'translateX(-' + (carouselIndex * cardWidth) + 'px)';
-      track.style.transition = 'transform 0.4s ease';
-      updateDots(cards.length, visible);
-      updateArrows(max);
-    }
-
-    function updateDots(total, visible) {
-      const dots = document.getElementById('carouselDots');
-      const pages = total - visible + 1;
-      dots.innerHTML = '';
-      for (let i = 0; i < pages; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (i === carouselIndex ? ' active' : '');
-        dot.setAttribute('aria-label', 'Page ' + (i + 1));
-        const idx = i;
-        dot.onclick = () => { carouselIndex = idx - 1; moveCarousel(1); };
-        dots.appendChild(dot);
-      }
-    }
-
-    function updateArrows(max) {
-      const prev = document.querySelector('.carousel-prev');
-      const next = document.querySelector('.carousel-next');
-      if (prev) prev.disabled = carouselIndex === 0;
-      if (next) next.disabled = carouselIndex >= max;
-    }
-
-    function initCarousel() {
-      const cards = document.querySelectorAll('.review-card');
-      if (!cards.length) return;
-      carouselIndex = 0;
-      const track = document.getElementById('reviewsTrack');
-      if (track) track.style.transform = 'translateX(0)';
-      const visible = getVisible();
-      updateDots(cards.length, visible);
-      updateArrows(cards.length - visible);
-    }
-
-    window.addEventListener('resize', initCarousel);
-
     // ── Date minimum = aujourd'hui
     document.addEventListener('DOMContentLoaded', () => {
-      initCarousel();
-
       const today = new Date().toISOString().split('T')[0];
       document.getElementById('date').min = today;
 
