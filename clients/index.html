@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace client — Kudja Studio</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F4F4F4;
+      --noir: #181818;
+      --coral: #E28588;
+      --coral-vif: #E45339;
+      --peach: #FACEA5;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--noir);
+      letter-spacing: -.02em;
+      text-decoration: none;
+      margin-bottom: 3rem;
+    }
+    .logo span { color: var(--coral); }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.07);
+      text-align: center;
+    }
+
+    .card h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--noir);
+      margin-bottom: .6rem;
+    }
+
+    .card p {
+      color: #666;
+      font-size: .95rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .input-wrap {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--noir);
+      background: var(--bg);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    input[type="text"]:focus { border-color: var(--coral); }
+
+    button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--coral-vif);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+
+    button:hover { background: #c9462d; }
+    button:active { transform: scale(.98); }
+
+    .error {
+      display: none;
+      color: var(--coral-vif);
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: .8rem;
+    }
+
+    .footer {
+      margin-top: 2.5rem;
+      font-size: .8rem;
+      color: #aaa;
+    }
+    .footer a { color: var(--coral); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <a class="logo" href="https://kudjastudio.fr">Kudja<span>.</span>Studio</a>
+
+  <div class="card">
+    <h1>Espace client</h1>
+    <p>Entrez le code qui vous a été communiqué<br>pour accéder à votre aperçu.</p>
+
+    <div class="input-wrap">
+      <input type="text" id="code" placeholder="Votre code" autocomplete="off" autofocus>
+    </div>
+
+    <button onclick="acceder()">Accéder à mon site</button>
+
+    <div class="error" id="erreur">Code incorrect. Vérifiez votre code.</div>
+  </div>
+
+  <p class="footer">Un projet avec <a href="https://kudjastudio.fr">Kudja Studio</a></p>
+
+  <script>
+    const clients = {
+      "NSK": "/previews/nsk/index.html"
+    };
+
+    function acceder() {
+      const code = document.getElementById('code').value.trim().toUpperCase();
+      if (clients[code]) {
+        window.location.href = clients[code];
+      } else {
+        const err = document.getElementById('erreur');
+        err.style.display = 'block';
+        document.getElementById('code').style.borderColor = '#E45339';
+      }
+    }
+
+    document.getElementById('code').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') acceder();
+    });
+  </script>
+
+</body>
+</html>
