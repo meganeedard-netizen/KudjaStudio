@@ -689,6 +689,20 @@
     .tarifs-resto-option::before { content: '+ '; color: var(--coral); font-weight: 700; }
 
     /* Bloc vidéo */
+    .tarifs-deux-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+    .tarifs-deux-cols .tarifs-main-card { margin-top: 0; display: flex; flex-direction: column; }
+    .tarifs-deux-cols .tarifs-video-card { display: flex; flex-direction: column; }
+
+    @media (max-width: 860px) {
+      .tarifs-deux-cols { grid-template-columns: 1fr; }
+    }
+
     .tarifs-video-section { margin-top: 3rem; }
 
     .tarifs-video-header {
@@ -1239,71 +1253,61 @@
   <h2 class="fade-up">Des offres claires,<br>sur mesure</h2>
   <p class="s-sub fade-up">Un accompagnement digital pensé pour les professionnels de bouche.</p>
 
-  <!-- PARTIE 1 : Site internet -->
-  <div class="tarifs-main-card fade-up">
-    <div class="tarifs-main-top">
-      <div>
-        <div class="tarifs-main-badge">Simple &bull; Rapide &bull; Efficace</div>
-        <div class="tarifs-main-title">Votre site internet professionnel</div>
-        <div class="tarifs-main-sub">Clé en main, de A à Z</div>
-      </div>
-      <div class="tarifs-price-block">
-        <div class="tarifs-from">À partir de</div>
-        <div class="tarifs-amount">1 500 €</div>
-        <div class="tarifs-note">Tarif ajusté sur devis selon vos besoins</div>
-      </div>
-    </div>
+  <!-- GRILLE 2 COLONNES -->
+  <div class="tarifs-deux-cols fade-up">
 
-    <div class="tarifs-body">
-      <div>
-        <div class="tarifs-features-title">Ce qui est inclus</div>
-        <ul class="tarifs-features">
-          <li><span class="check">✓</span> Création site moderne jusqu'à 5 pages</li>
-          <li><span class="check">✓</span> Site optimisé mobile</li>
-          <li><span class="check">✓</span> Référencement Google (SEO)</li>
-          <li><span class="check">✓</span> Mise en ligne rapide</li>
-          <li><span class="check">✓</span> Modifications légères</li>
-          <li><span class="check">✓</span> Formulaire de contact</li>
-          <li><span class="check">✓</span> Widget Avis Google intégré</li>
-          <li><span class="check">✓</span> Bouton WhatsApp cliquable</li>
-          <li><span class="check">✓</span> Liens réseaux sociaux</li>
-          <li><span class="check">✓</span> Google Analytics</li>
-          <li><span class="check">✓</span> Mentions légales + RGPD</li>
-          <li><span class="check">✓</span> Bandeau cookies</li>
-          <li><span class="check">✓</span> Favicon personnalisé</li>
-          <li><span class="check">✓</span> Configuration Google My Business</li>
-          <li><span class="check">✓</span> Intégration Google Maps</li>
-          <li><span class="check">✓</span> Réservation en ligne</li>
-        </ul>
-      </div>
-      <div>
-        <div class="tarifs-options-title">Options disponibles sur devis</div>
-        <div class="tarifs-options-wrap">
-          <span class="tarifs-option-badge">Hébergement + Nom de domaine + maintenance</span>
-          <span class="tarifs-option-badge">Paiement en ligne</span>
-          <span class="tarifs-option-badge">Connexion système de caisse</span>
+    <!-- COLONNE 1 : Site internet -->
+    <div class="tarifs-main-card">
+      <div class="tarifs-main-top">
+        <div>
+          <div class="tarifs-main-badge">Simple &bull; Rapide &bull; Efficace</div>
+          <div class="tarifs-main-title">Votre site internet professionnel</div>
+          <div class="tarifs-main-sub">Clé en main, de A à Z</div>
+        </div>
+        <div class="tarifs-price-block">
+          <div class="tarifs-from">À partir de</div>
+          <div class="tarifs-amount">1 500 €</div>
+          <div class="tarifs-note">Tarif ajusté sur devis selon vos besoins</div>
         </div>
       </div>
+
+      <div class="tarifs-options-title">Options disponibles sur devis</div>
+      <div class="tarifs-options-wrap" style="margin-bottom:1.5rem;">
+        <span class="tarifs-option-badge">Hébergement + Nom de domaine + maintenance</span>
+        <span class="tarifs-option-badge">Paiement en ligne</span>
+        <span class="tarifs-option-badge">Connexion système de caisse</span>
+      </div>
+
+      <div class="tarifs-features-title">Ce qui est inclus</div>
+      <ul class="tarifs-features" style="margin-bottom:2rem;">
+        <li><span class="check">✓</span> Création site moderne jusqu'à 5 pages</li>
+        <li><span class="check">✓</span> Site optimisé mobile</li>
+        <li><span class="check">✓</span> Référencement Google (SEO)</li>
+        <li><span class="check">✓</span> Mise en ligne rapide</li>
+        <li><span class="check">✓</span> Modifications légères</li>
+        <li><span class="check">✓</span> Formulaire de contact</li>
+        <li><span class="check">✓</span> Widget Avis Google intégré</li>
+        <li><span class="check">✓</span> Bouton WhatsApp cliquable</li>
+        <li><span class="check">✓</span> Liens réseaux sociaux</li>
+        <li><span class="check">✓</span> Google Analytics</li>
+        <li><span class="check">✓</span> Mentions légales + RGPD</li>
+        <li><span class="check">✓</span> Bandeau cookies</li>
+        <li><span class="check">✓</span> Favicon personnalisé</li>
+        <li><span class="check">✓</span> Configuration Google My Business</li>
+        <li><span class="check">✓</span> Intégration Google Maps</li>
+        <li><span class="check">✓</span> Réservation en ligne</li>
+      </ul>
+
+      <div class="tarifs-cta-wrap" style="border-top:1px solid rgba(0,0,0,.07);padding-top:1.5rem;margin-top:auto;">
+        <a class="tarifs-cta" href="#contact">Obtenir mon devis gratuit</a>
+      </div>
     </div>
 
-    <div class="tarifs-cta-wrap">
-      <a class="tarifs-cta" href="#contact">Obtenir mon devis gratuit</a>
-    </div>
-  </div>
-
-  <!-- Séparateur -->
-  <div class="tarifs-sep fade-up">Boostez votre visibilité</div>
-
-  <!-- PARTIE 2 : Pack Vidéo -->
-  <div class="tarifs-video-section">
-    <div class="tarifs-video-header fade-up">
-      <h3>🎬 Boostez votre visibilité sur les réseaux sociaux</h3>
-      <p>Un complément idéal à votre site internet</p>
-    </div>
-
-    <div class="tarifs-video-card fade-up">
+    <!-- COLONNE 2 : Pack Vidéo -->
+    <div class="tarifs-video-card">
       <div class="tarifs-video-label">Pack Vidéo</div>
-      <div class="tarifs-video-name">Vidéos réseaux sociaux — Instagram &amp; TikTok</div>
+      <div class="tarifs-video-name">🎬 Boostez votre visibilité sur les réseaux sociaux</div>
+      <div class="tarifs-main-sub" style="margin-bottom:1rem;">Un complément idéal à votre site internet</div>
       <div class="tarifs-video-price">
         <div class="tarifs-from">À partir de</div>
         <div class="tarifs-video-amount">790 €<span style="font-size:1rem;font-weight:500;color:var(--muted)">/mois</span></div>
@@ -1318,8 +1322,9 @@
         <li><span class="check">✓</span> Hashtags et mots clés optimisés</li>
         <li><span class="check">✓</span> Conseils personnalisés</li>
       </ul>
-      <a class="tarifs-cta" href="#contact">En savoir plus</a>
+      <a class="tarifs-cta coral" href="#contact">En savoir plus</a>
     </div>
+
   </div>
 
 </section>
@@ -1341,12 +1346,12 @@
     </div>
     <div class="fade-up">
       <p class="apropos-quote">
-        "Prêt(e) à attirer plus de clients&nbsp;? <span>Le digital, c'est le premier contact.</span>"
+        "Vous voulez plus de clients&nbsp;? <span>Développons ensemble votre visibilité digitale&nbsp;!</span>"
       </p>
       <p class="apropos-txt">
-        Aujourd'hui, un client ne choisit pas un restaurant au hasard. Il regarde, il ressent, il se projette. Le digital, c'est ce premier contact : celui qui donne envie de venir goûter, découvrir et revenir.
+        Je suis Mégane, experte digitale et co-fondatrice de Gaspiz, l'application anti-gaspi des Antilles-Guyane. En moins d'un an : 20 000 utilisateurs et 20 000 abonnés sur TikTok et Instagram. La preuve que ça marche, je l'ai construite ici, aux Antilles.
         <br><br>
-        Je suis Mégane, experte digitale spécialisée dans l'accompagnement des professionnels de la restauration et des commerces de bouche en Guadeloupe et aux Antilles. Mon objectif : vous donner les outils qui attirent de nouveaux clients chaque mois.
+        Avec Kudja Studio, j'accompagne les restaurateurs, commerçants et entrepreneurs de Guadeloupe. Mon objectif : vous donner les outils digitaux qui attirent de nouveaux clients chaque mois.
       </p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a class="btn-noir" href="#contact">Me contacter</a>
