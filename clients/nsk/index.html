@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSK – Nèf Sèt Kat | Restaurant Réunionnais à Sainte-Anne</title>
+  <meta name="description" content="Restaurant Nèf Sèt Kat à Sainte-Anne, spécialités réunionnaises authentiques. Carries, rougails, bouchons. Commander à emporter ou réserver votre table.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       HEADER
+  ══════════════════════════════════ -->
+  <header>
+    <div class="header-inner">
+      <a class="logo" onclick="showSection('accueil')">
+        <img src="images/Design sans titre (15).webp" alt="Logo NSK Nèf Sèt Kat">
+        <div class="logo-text">
+          <span class="logo-title">NSK</span>
+          <span class="logo-sub">Nèf Sèt Kat · Sainte-Anne</span>
+        </div>
+      </a>
+
+      <nav>
+        <button class="nav-btn active" id="nav-accueil" onclick="showSection('accueil')">Accueil</button>
+        <button class="nav-btn" id="nav-menu" onclick="showSection('menu')">Menu &amp; Commander</button>
+        <button class="nav-btn nav-cta" onclick="showSection('reservation')">Réserver une table</button>
+      </nav>
+
+      <button class="burger" id="burger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <button class="nav-btn" onclick="showSection('accueil'); toggleMobileNav()">Accueil</button>
+      <button class="nav-btn" onclick="showSection('menu'); toggleMobileNav()">Menu &amp; Commander</button>
+      <button class="nav-btn" onclick="showSection('reservation'); toggleMobileNav()">Réserver une table</button>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════
+       PAGE ACCUEIL
+  ══════════════════════════════════ -->
+  <div id="section-accueil" class="page-section active">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-flag"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="hero-badge">Restaurant Réunionnais · Sainte-Anne</div>
+        <h1 class="hero-title">NSK</h1>
+        <p class="hero-subtitle">Nèf Sèt Kat</p>
+        <p class="hero-tagline">
+          Les saveurs authentiques de <span>La Réunion</span><br>
+          au coeur de Sainte-Anne
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="showSection('menu')">
+            🍽 Voir le menu
+          </button>
+          <button class="btn btn-secondary" onclick="showSection('reservation')">
+            📅 Réserver une table
+          </button>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Découvrir</span>
+        <div class="scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-img">
+            <img src="images/16.webp" alt="Salle du restaurant NSK">
+            <div class="about-img-badge">Restaurant à Sainte-Anne</div>
+          </div>
+          <div class="about-text">
+            <div>
+              <div class="section-label">Notre histoire</div>
+              <h2 class="section-title">La cuisine créole<br>dans toute son âme</h2>
+            </div>
+            <p>
+              Chez <strong>Nèf Sèt Kat</strong>, on cuisine comme à la maison, avec générosité, authenticité et passion. Nèf Sèt Kat, c'est le 9-7-4, c'est La Réunion, c'est notre identité.
+            </p>
+            <p>
+              Du rougail saucisses mijoté tout doucement au carry cabri parfumé au curcuma frais, chaque plat vous raconte une histoire : celle d'une île unique, mélange de cultures et de saveurs venues des quatre coins du monde.
+            </p>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <strong>Produits locaux</strong>
+                <span>Épices et légumes du pays</span>
+              </div>
+              <div class="highlight-item">
+                <strong>Cuisine maison</strong>
+                <span>Recettes créoles traditionnelles</span>
+              </div>
+              <div class="highlight-item">
+                <strong>À emporter</strong>
+                <span>Commande rapide &amp; pratique</span>
+              </div>
+              <div class="highlight-item">
+                <strong>Ambiance chaleureuse</strong>
+                <span>Salle conviviale &amp; colorée</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plats vedettes -->
+    <section class="section section-light">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:0.5rem">
+          <div class="section-label">Nos spécialités</div>
+          <h2 class="section-title centered">Les incontournables<br>de la carte</h2>
+          <p class="section-desc centered" style="margin-top:0.75rem">
+            Des plats réunionnais authentiques, cuisinés avec amour et les meilleures épices de l'île.
+          </p>
+        </div>
+
+        <div class="dishes-grid">
+          <!-- Plat 1 -->
+          <div class="dish-card">
+            <img src="images/15.webp" alt="Rougail Saucisses">
+            <div class="dish-card-body">
+              <div class="dish-tag">Plat signature</div>
+              <h3>Rougail Saucisses</h3>
+              <p>Saucisses fumées mijotées dans un rougail tomates aux épices créoles. Servi avec riz blanc, lentilles et rougail mangue.</p>
+              <span class="dish-price">19 €</span>
+            </div>
+          </div>
+
+          <!-- Plat 2 -->
+          <div class="dish-card">
+            <img src="images/cari_poisson.webp" alt="Cari Poisson">
+            <div class="dish-card-body">
+              <div class="dish-tag">Coup de coeur</div>
+              <h3>Cari Poisson</h3>
+              <p>Poisson frais cuisiné au curcuma, tomates et épices créoles. Un incontournable de la table réunionnaise.</p>
+              <span class="dish-price">21 €</span>
+            </div>
+          </div>
+
+          <!-- Plat 3 -->
+          <div class="dish-card">
+            <img src="images/samoussa.webp" alt="Samoussas">
+            <div class="dish-card-body">
+              <div class="dish-tag">Entrée Tapas</div>
+              <h3>Bouchons &amp; Samoussas</h3>
+              <p>Bouchons vapeur au porc et samoussas croustillants, accompagnés de sauce citron et piment oiseau.</p>
+              <span class="dish-price">À partir de 6 €</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center; margin-top:3rem;">
+          <button class="btn btn-blue" onclick="showSection('menu')">
+            Voir toute la carte →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Horaires -->
+    <section class="section section-dark">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:0.5rem">
+          <div class="section-label">Horaires</div>
+          <h2 class="section-title centered">Nos heures d'ouverture</h2>
+          <p class="section-desc centered light" style="margin-top:0.75rem">
+            Nous vous accueillons du lundi au samedi, midi et soir.
+          </p>
+        </div>
+
+        <div class="horaires-grid">
+          <div class="horaire-card">
+            <div class="horaire-day">Lundi - Jeudi</div>
+            <div class="horaire-time">10h00 - 21h00</div>
+          </div>
+          <div class="horaire-card">
+            <div class="horaire-day">Vendredi</div>
+            <div class="horaire-time">10h00 - 21h30</div>
+          </div>
+          <div class="horaire-card">
+            <div class="horaire-day">Samedi</div>
+            <div class="horaire-time">10h00 - 19h00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avis Google -->
+    <section class="section section-light">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:2.5rem;">
+          <div class="section-label">Ce que disent nos clients</div>
+          <h2 class="section-title centered">Avis Google</h2>
+          <div style="display:flex; align-items:center; justify-content:center; gap:0.75rem; margin-top:1rem; flex-wrap:wrap;">
+            <span style="color:#f5a623; font-size:1.4rem; letter-spacing:2px;">★★★★★</span>
+            <span style="font-size:1.15rem; font-weight:700; color:var(--blue-dark);">4,9</span>
+            <span style="color:var(--text-light); font-size:0.9rem;">· 56 avis Google</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" style="height:18px; opacity:0.75;">
+          </div>
+        </div>
+
+        <!-- 3 avis statiques -->
+        <div class="reviews-grid">
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">M</div>
+              <div>
+                <div class="review-name">Marie C.</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Très bon restaurant, une excellente adresse pour découvrir la cuisine réunionnaise. Les plats sont savoureux et on sent que tout est fait maison. Le service est au top : rapide, attentionné et professionnel. Je recommande vivement !</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">Y</div>
+              <div>
+                <div class="review-name">Yohan A.</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Très belle découverte ! Les plats sont savoureux, bien présentés et préparés avec des produits frais et principalement fait maison. Le service est chaleureux, l'ambiance conviviale. Je reviendrai avec plaisir ! 🌴✨</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">E</div>
+              <div>
+                <div class="review-name">Elisa N.</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Une superbe découverte ! Des plats typiques réunionnais, frais et faits maison. Un régal du cocktail au dessert 😍 Des saveurs parfumées, une cuisine succulente et un personnel chaleureux et à l'écoute. Je recommande !</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA banner -->
+    <div class="cta-banner">
+      <div class="container">
+        <h2>Envie de saveurs créoles ?</h2>
+        <p>Réservez votre table ou commandez à emporter, c'est simple et rapide.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-white" onclick="showSection('reservation')">
+            📅 Réserver maintenant
+          </button>
+          <button class="btn btn-dark" onclick="showSection('menu')">
+            🍽 Commander à emporter
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /section-accueil -->
+
+
+  <!-- ══════════════════════════════════
+       PAGE MENU
+  ══════════════════════════════════ -->
+  <div id="section-menu" class="page-section">
+
+    <div class="menu-hero">
+      <div class="section-label">NSK · Nèf Sèt Kat</div>
+      <h1>Notre Carte</h1>
+      <p>Cuisine créole réunionnaise, généreuse et authentique</p>
+    </div>
+
+    <!-- Filtres -->
+    <div class="menu-filters">
+      <button class="filter-btn active" onclick="filterMenu('all', this)">Tout voir</button>
+      <button class="filter-btn" onclick="filterMenu('entrees', this)">Entrées</button>
+      <button class="filter-btn" onclick="filterMenu('plats', this)">Plats</button>
+      <button class="filter-btn" onclick="filterMenu('desserts', this)">Desserts</button>
+      <button class="filter-btn" onclick="filterMenu('boissons', this)">Boissons</button>
+    </div>
+
+    <div class="menu-content">
+
+      <!-- Entrées -->
+      <div class="menu-category" data-category="entrees">
+        <div class="menu-category-title">
+          <span class="menu-icon">🥟</span>
+          <h2>Entrée Tapas</h2>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Achards de légumes</h4>
+              <p>Légumes marinés aux épices créoles</p>
+            </div>
+            <span class="menu-item-price">7 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Beignets songe (10 pièces)</h4>
+              <p>Beignets de taro croustillants, spécialité réunionnaise</p>
+            </div>
+            <span class="menu-item-price">8 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Bouchons de porc (4 pièces)</h4>
+              <p>Bouchons vapeur au porc, sauce citron piment</p>
+            </div>
+            <span class="menu-item-price">6 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Nems de crevettes (4 pièces)</h4>
+              <p>Rouleaux croustillants aux crevettes</p>
+            </div>
+            <span class="menu-item-price">9 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Nems de poulet (4 pièces)</h4>
+              <p>Rouleaux croustillants au poulet épicé</p>
+            </div>
+            <span class="menu-item-price">8 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Samoussas saumon (8 pièces)</h4>
+              <p>Feuilletés croustillants au saumon</p>
+            </div>
+            <span class="menu-item-price">10 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Samoussas poisson (8 pièces)</h4>
+              <p>Feuilletés croustillants au poisson</p>
+            </div>
+            <span class="menu-item-price">8 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Sarcives</h4>
+              <p>Porc ou poulet grillé, marinade créole</p>
+            </div>
+            <span class="menu-item-price">Porc 8 € / Poulet 9 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Bonbons piment (6 pièces)</h4>
+              <p>Croquettes de lentilles épicées, incontournables créoles</p>
+            </div>
+            <span class="menu-item-price">7 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plats -->
+      <div class="menu-category" data-category="plats">
+        <div class="menu-category-title">
+          <span class="menu-icon">🍛</span>
+          <h2>Plats</h2>
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:1.5rem; font-style:italic;">
+          Tous les plats sont servis avec riz blanc, grains et rougail du jour.
+        </p>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Sauté mine</h4>
+              <p>Nouilles sautées aux légumes, végétarien ou aux crevettes</p>
+            </div>
+            <span class="menu-item-price">Végé 16 € / Crevettes 21 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Civet de lapin</h4>
+              <p>Lapin mijoté au vin, épices créoles et aromates</p>
+            </div>
+            <span class="menu-item-price">23 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Cari de crabe</h4>
+              <p>Crabe en cari, curcuma et épices de l'île</p>
+            </div>
+            <span class="menu-item-price">22 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Poisson tahitienne</h4>
+              <p>Poisson frais mariné au citron et lait de coco</p>
+            </div>
+            <span class="menu-item-price">21 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Rougail morue</h4>
+              <p>Morue dessalée en rougail tomates, piment et oignons</p>
+            </div>
+            <span class="menu-item-price">17 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Rougail saucisses</h4>
+              <p>Saucisses fumées mijotées au rougail tomates créole</p>
+            </div>
+            <span class="menu-item-price">19 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Boeuf aux oignons</h4>
+              <p>Bœuf fondant sauté aux oignons et épices</p>
+            </div>
+            <span class="menu-item-price">18 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Cabri massalé</h4>
+              <p>Cabri mijoté aux épices massalé, cuit à l'étouffée</p>
+            </div>
+            <span class="menu-item-price">21 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Assiette mixte</h4>
+              <p>Assortiment généreux de nos tapas maison</p>
+            </div>
+            <span class="menu-item-price">31 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desserts -->
+      <div class="menu-category" data-category="desserts">
+        <div class="menu-category-title">
+          <span class="menu-icon">🍮</span>
+          <h2>Desserts</h2>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Gâteau Patate Douce</h4>
+              <p>Moelleux à la patate douce, vanille de La Réunion</p>
+            </div>
+            <span class="menu-item-price">5 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Bonbons la Cannelle</h4>
+              <p>Douceurs créoles à la cannelle et coco râpée</p>
+            </div>
+            <span class="menu-item-price">4 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Crème Caramel Coco</h4>
+              <p>Flan maison au lait de coco, caramel doré</p>
+            </div>
+            <span class="menu-item-price">6 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Fruits de Saison</h4>
+              <p>Sélection de fruits frais locaux du marché</p>
+            </div>
+            <span class="menu-item-price">5 €</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Boissons -->
+      <div class="menu-category" data-category="boissons">
+        <div class="menu-category-title">
+          <span class="menu-icon">🥤</span>
+          <h2>Boissons</h2>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Jus Corossol</h4>
+              <p>Jus de corossol frais, fruité et exotique</p>
+            </div>
+            <span class="menu-item-price">4 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Jus Letchi</h4>
+              <p>Jus de letchi frais de La Réunion</p>
+            </div>
+            <span class="menu-item-price">4 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Jus Goyave</h4>
+              <p>Jus de goyave, doux et parfumé</p>
+            </div>
+            <span class="menu-item-price">4 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Rhum Arrangé Maison</h4>
+              <p>Rhum arrangé artisanal, recette secrète NSK</p>
+            </div>
+            <span class="menu-item-price">5 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Bière locale</h4>
+              <p>Bière Dodo ou Bourbon, fraîche et désaltérante</p>
+            </div>
+            <span class="menu-item-price">3 €</span>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Eau minérale</h4>
+              <p>Plate ou gazeuse (50cl)</p>
+            </div>
+            <span class="menu-item-price">2 €</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /menu-content -->
+
+    <!-- Commander à emporter -->
+    <div class="commander-section">
+      <div class="container">
+        <div class="section-label">Rapide &amp; pratique</div>
+        <h2>Commander à emporter</h2>
+        <p>Votre commande prête en 20 à 30 minutes. Appelez-nous ou contactez-nous par WhatsApp !</p>
+
+        <div class="commander-options">
+          <div class="commander-card">
+            <div class="commander-icon">📞</div>
+            <h3>Par téléphone</h3>
+            <p>Appelez-nous directement pour passer votre commande.</p>
+            <a href="tel:+590691251262" class="btn btn-primary">
+              Appeler maintenant
+            </a>
+          </div>
+          <div class="commander-card">
+            <div class="commander-icon">💬</div>
+            <h3>Via WhatsApp</h3>
+            <p>Envoyez votre commande par message, c'est simple.</p>
+            <a href="https://wa.me/590691251262?text=Bonjour%2C%20je%20souhaite%20commander%20%C3%A0%20emporter%20chez%20NSK%20!"
+               target="_blank" class="btn btn-primary">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.45); margin-top:2rem;">
+          Commandes à emporter disponibles aux heures d'ouverture du restaurant.
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <!-- /section-menu -->
+
+
+  <!-- ══════════════════════════════════
+       PAGE RÉSERVATION
+  ══════════════════════════════════ -->
+  <div id="section-reservation" class="page-section">
+
+    <div class="resa-hero">
+      <div class="section-label">NSK · Nèf Sèt Kat</div>
+      <h1>Réserver votre table</h1>
+      <p>Garantissez votre place pour un moment inoubliable autour des saveurs créoles</p>
+    </div>
+
+    <div class="resa-content">
+
+      <!-- Formulaire -->
+      <div class="resa-form-wrapper">
+        <h2>Votre réservation</h2>
+        <p>Remplissez le formulaire ci-dessous et nous vous confirmons votre table par téléphone ou SMS.</p>
+
+        <form id="resa-form" onsubmit="submitReservation(event)">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telephone">Téléphone *</label>
+              <input type="tel" id="telephone" name="telephone" placeholder="+590 691 25 12 62" required>
+            </div>
+            <div class="form-group">
+              <label for="personnes">Nombre de personnes *</label>
+              <select id="personnes" name="personnes" required>
+                <option value="" disabled selected>Choisir</option>
+                <option value="1">1 personne</option>
+                <option value="2">2 personnes</option>
+                <option value="3">3 personnes</option>
+                <option value="4">4 personnes</option>
+                <option value="5">5 personnes</option>
+                <option value="6">6 personnes</option>
+                <option value="7">7 personnes</option>
+                <option value="8+">8 personnes ou plus</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date souhaitée *</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service *</label>
+            <select id="service" name="service" required onchange="updateTimeSlots()">
+              <option value="" disabled selected>Choisir un service</option>
+              <option value="midi">Déjeuner (midi)</option>
+              <option value="soir">Dîner (soir)</option>
+            </select>
+          </div>
+
+          <!-- Créneaux horaires midi -->
+          <div id="slots-midi" style="display:none;">
+            <span class="time-slots-label">Choisir votre créneau *</span>
+            <div class="time-slots-grid">
+              <div class="time-slot-header">Déjeuner</div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t1130" value="11h30">
+                <label for="t1130">11h30</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t1200" value="12h00">
+                <label for="t1200">12h00</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t1230" value="12h30">
+                <label for="t1230">12h30</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t1300" value="13h00">
+                <label for="t1300">13h00</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Créneaux horaires soir -->
+          <div id="slots-soir" style="display:none;">
+            <span class="time-slots-label">Choisir votre créneau *</span>
+            <div class="time-slots-grid">
+              <div class="time-slot-header">Dîner</div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t1900" value="19h00">
+                <label for="t1900">19h00</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t1930" value="19h30">
+                <label for="t1930">19h30</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t2000" value="20h00">
+                <label for="t2000">20h00</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t2030" value="20h30">
+                <label for="t2030">20h30</label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="creneau" id="t2100" value="21h00">
+                <label for="t2100">21h00</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" placeholder="Allergies, occasion spéciale, demandes particulières..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-blue form-submit">
+            Confirmer la réservation
+          </button>
+        </form>
+
+        <div class="success-message" id="success-msg">
+          <h3>Réservation reçue !</h3>
+          <p>Merci pour votre réservation. Nous vous confirmerons votre table par SMS dans les plus brefs délais.</p>
+        </div>
+      </div>
+
+      <!-- Infos pratiques -->
+      <div class="resa-info">
+
+        <div class="info-card">
+          <h3>🕐 Horaires d'ouverture</h3>
+          <ul>
+            <li><strong>Lundi</strong><span>Fermé</span></li>
+            <li><strong>Mar – Jeu</strong><span>11h30–14h / 19h–21h30</span></li>
+            <li><strong>Ven – Sam</strong><span>11h30–14h / 19h–22h</span></li>
+            <li><strong>Dimanche</strong><span>11h30–14h30</span></li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>📍 Nous trouver</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <span>Route de la plage, Sainte-Anne 97180, Guadeloupe</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <span>+590 691 25 12 62</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <span>nsk.gwad@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>ℹ️ Infos utiles</h3>
+          <ul>
+            <li><strong>Capacité</strong><span>Jusqu'à 40 couverts</span></li>
+            <li><strong>Groupes</strong><span>Nous contacter</span></li>
+            <li><strong>Parking</strong><span>Disponible</span></li>
+            <li><strong>Paiement</strong><span>CB &amp; espèces</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <!-- /section-reservation -->
+
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/Design sans titre (15).webp" alt="Logo NSK">
+        <p>
+          Restaurant Nèf Sèt Kat, le goût authentique de La Réunion à Sainte-Anne. Cuisinés avec passion, nos plats créoles vous transportent au coeur de l'île intense.
+        </p>
+        <div class="social-links" style="margin-top:1.25rem;">
+          <a class="social-link" href="#" target="_blank" aria-label="Facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a class="social-link" href="#" target="_blank" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li onclick="showSection('accueil')">Accueil</li>
+          <li onclick="showSection('menu')">Notre carte</li>
+          <li onclick="showSection('menu')">Commander à emporter</li>
+          <li onclick="showSection('reservation')">Réserver une table</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+590691251262">+590 691 25 12 62</a></li>
+          <li>Route de la plage</li>
+          <li>Sainte-Anne 97180, Guadeloupe</li>
+          <li><a href="mailto:nsk.gwad@gmail.com">nsk.gwad@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 NSK – Nèf Sèt Kat · Restaurant Réunionnais à Sainte-Anne · Tous droits réservés</p>
+      <p>Fait par <a href="https://kudjastudio.fr" target="_blank" style="color:inherit;text-decoration:underline;">Kudja Studio</a> · Guadeloupe</p>
+    </div>
+  </footer>
+
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <strong id="toast-title">Notification</strong>
+    <span id="toast-msg"></span>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════ -->
+  <script>
+    // ── Navigation entre sections
+    function showSection(name) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn:not(.nav-cta)').forEach(b => b.classList.remove('active'));
+
+      const section = document.getElementById('section-' + name);
+      if (section) section.classList.add('active');
+
+      const navBtn = document.getElementById('nav-' + name);
+      if (navBtn) navBtn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── Menu burger mobile
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('open');
+    }
+
+    // ── Filtres du menu
+    function filterMenu(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.menu-category').forEach(cat => {
+        if (category === 'all' || cat.dataset.category === category) {
+          cat.style.display = 'block';
+          cat.style.animation = 'fadeIn 0.3s ease';
+        } else {
+          cat.style.display = 'none';
+        }
+      });
+    }
+
+    // ── Créneaux horaires selon le service
+    function updateTimeSlots() {
+      const service = document.getElementById('service').value;
+      document.getElementById('slots-midi').style.display = (service === 'midi') ? 'block' : 'none';
+      document.getElementById('slots-soir').style.display = (service === 'soir') ? 'block' : 'none';
+
+      // reset les radios
+      document.querySelectorAll('input[name="creneau"]').forEach(r => r.checked = false);
+    }
+
+    // ── Soumission du formulaire
+    function submitReservation(e) {
+      e.preventDefault();
+
+      const creneau = document.querySelector('input[name="creneau"]:checked');
+      if (!creneau) {
+        showToast('Créneau manquant', 'Veuillez sélectionner un horaire.');
+        return;
+      }
+
+      const prenom = document.getElementById('prenom').value;
+      const nom = document.getElementById('nom').value;
+      const personnes = document.getElementById('personnes').value;
+      const date = document.getElementById('date').value;
+      const dateFormatted = new Date(date).toLocaleDateString('fr-FR', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+      });
+
+      document.getElementById('resa-form').style.display = 'none';
+
+      const msg = document.getElementById('success-msg');
+      msg.style.display = 'block';
+      msg.innerHTML = `
+        <h3>🎉 Réservation envoyée !</h3>
+        <p>Merci <strong>${prenom} ${nom}</strong> ! Votre demande pour <strong>${personnes} personne(s)</strong>
+        le <strong>${dateFormatted}</strong> à <strong>${creneau.value}</strong> a bien été reçue.</p>
+        <p style="margin-top:0.5rem;">Nous vous confirmons votre table par SMS dans les plus brefs délais.</p>
+        <button class="btn btn-blue" style="margin-top:1.25rem;" onclick="resetForm()">Faire une nouvelle réservation</button>
+      `;
+    }
+
+    function resetForm() {
+      document.getElementById('resa-form').reset();
+      document.getElementById('resa-form').style.display = 'block';
+      document.getElementById('success-msg').style.display = 'none';
+      document.getElementById('slots-midi').style.display = 'none';
+      document.getElementById('slots-soir').style.display = 'none';
+    }
+
+    // ── Toast notification
+    function showToast(title, msg) {
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-msg').textContent = msg;
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ── Date minimum = aujourd'hui
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('date').min = today;
+
+      // Animation du hero bg
+      setTimeout(() => {
+        const bg = document.getElementById('heroBg');
+        if (bg) bg.classList.add('loaded');
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>
