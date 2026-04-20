@@ -248,19 +248,19 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('images/vitrine.webp'); background-size: cover; background-position: center 40%;
+      background-image: url('images/accueil.webp'); background-size: cover; background-position: center;
       transition: transform 8s ease; transform: scale(1.04);
     }
     .hero-bg.loaded { transform: scale(1); }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(28,15,0,0.4) 0%, rgba(200,108,10,0.3) 60%, rgba(28,15,0,0.6) 100%);
+      background: linear-gradient(180deg, rgba(28,15,0,0.35) 0%, rgba(28,15,0,0.3) 50%, rgba(28,15,0,0.65) 100%);
     }
     .hero-content { position: relative; z-index: 2; padding: 2rem; max-width: 720px; }
-    .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange-light); margin-bottom: 1.2rem; }
-    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6rem); font-weight: 400; color: var(--white); line-height: 1.05; letter-spacing: 0.04em; margin-bottom: 0.8rem; text-shadow: 0 2px 20px rgba(0,0,0,0.25); }
-    .hero-title em { font-style: italic; color: var(--orange-light); }
-    .hero-tagline { font-size: 0.85rem; font-weight: 300; letter-spacing: 0.1em; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
+    .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5); margin-bottom: 1.2rem; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 8vw, 6rem); font-weight: 400; color: #fff; line-height: 1.05; letter-spacing: 0.04em; margin-bottom: 0.8rem; text-shadow: 0 2px 24px rgba(0,0,0,0.6), 0 4px 40px rgba(0,0,0,0.4); }
+    .hero-title em { font-style: italic; color: #fff; }
+    .hero-tagline { font-size: 0.85rem; font-weight: 300; letter-spacing: 0.1em; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,0.5); margin-bottom: 2.5rem; }
     .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
     .btn { padding: 0.85rem 2rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; border-radius: 3px; transition: all 0.25s; }
@@ -319,7 +319,7 @@
     .vienn-band-overlay small { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--orange-light); }
 
     /* ── LA CARTE ── */
-    .carte-hero { background: var(--brown); text-align: center; padding: 4rem 2rem; }
+    .carte-hero { background: linear-gradient(135deg, var(--brown) 0%, var(--orange-deep) 100%); text-align: center; padding: 4rem 2rem; }
     .carte-hero .section-eyebrow { color: var(--orange-light); }
     .carte-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--white); margin-bottom: 0.5rem; }
     .carte-hero p { font-size: 0.82rem; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
@@ -402,12 +402,19 @@
 
     .carte-cta { text-align: center; margin-top: 1rem; padding-top: 2rem; border-top: 1px solid var(--border-light); }
 
+    /* ── NOTRE HISTOIRE ── */
+    .histoire-body { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 5rem; }
+    .histoire-card { background: var(--white); border-radius: 8px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(74,40,0,0.07); }
+    .histoire-card p { color: var(--text); line-height: 1.85; margin-bottom: 1.2rem; }
+    .histoire-card p:last-child { margin-bottom: 0; }
+    .histoire-signature { font-weight: 600; color: var(--orange-deep) !important; }
+    .histoire-cta { text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
     /* ── TROMPE L'OEIL ── */
-    .creations-hero { position: relative; height: 300px; overflow: hidden; }
-    .creations-hero-bg { position: absolute; inset: 0; background-image: url('images/patisseries.webp'); background-size: cover; background-position: center; }
-    .creations-hero-overlay { position: absolute; inset: 0; background: rgba(28,15,0,0.55); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.6rem; }
-    .creations-hero-overlay h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--white); }
-    .creations-hero-overlay p { font-size: 0.8rem; color: rgba(255,255,255,0.7); letter-spacing: 0.08em; }
+    .creations-hero { background: linear-gradient(135deg, var(--brown) 0%, var(--orange-deep) 100%); text-align: center; padding: 4rem 2rem; }
+    .creations-hero .section-eyebrow { color: var(--orange-light); }
+    .creations-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--white); margin-bottom: 0.5rem; }
+    .creations-hero p { font-size: 0.82rem; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
     .creations-section { padding: 4rem 2rem 7rem; max-width: 1200px; margin: 0 auto; }
     .creations-intro { max-width: 640px; margin: 0 auto 4rem; text-align: center; font-size: 0.88rem; color: var(--muted); line-height: 1.9; padding: 2rem 2.5rem; border: 1.5px solid var(--border); border-radius: 4px; background: var(--white); }
     .creations-intro strong { color: var(--orange-deep); font-weight: 600; }
@@ -691,24 +698,7 @@
       <p>Collection trompe l'oeil &nbsp;|&nbsp; À partir de <strong>5,80 €</strong> la pièce</p>
     </div>
 
-    <div class="intro-split">
-      <div class="intro-photo"></div>
-      <div class="intro-text">
-        <p class="section-eyebrow">L'art du trompe l'oeil</p>
-        <div class="divider-orange"></div>
-        <h2>Des gâteaux qui <em>racontent une histoire</em></h2>
-        <p>« Ce que vous voyez n'est pas toujours ce que vous pensez. C'est souvent bien meilleur. »</p>
-        <p>Fruits exotiques, classiques revisités, créations insulaires : notre collection trompe l'oeil mêle technique pâtissière et saveurs tropicales.</p>
-        <button class="btn btn-primary" onclick="showSection('creations')" style="align-self:flex-start; margin-top:0.5rem">Voir la collection</button>
-      </div>
-    </div>
-
     <section class="vedettes">
-      <div class="vedettes-header">
-        <p class="section-eyebrow">Nos intemporels</p>
-        <h2>Les créations à ne pas manquer</h2>
-        <p>Saveurs exotiques, textures surprenantes, chaque bouchée est une découverte.</p>
-      </div>
       <div class="vedettes-grid">
 
         <div class="cake-card">
@@ -837,25 +827,20 @@
 
   <!-- ══ PAGE NOTRE HISTOIRE ══ -->
   <div id="section-histoire" class="page-section">
-    <div style="max-width:760px; margin:0 auto; padding:4rem 2rem 5rem;">
-      <p class="section-eyebrow" style="text-align:center">Depuis 2024</p>
-      <h1 style="text-align:center; color:var(--orange-deep); margin-bottom:2.5rem">Notre Histoire</h1>
-
-      <div style="background:#fff; border-radius:16px; padding:2.5rem 2.5rem; box-shadow:0 4px 24px rgba(74,40,0,0.07); line-height:1.85; color:var(--brown); font-size:1.05rem;">
-        <p style="margin-bottom:1.5rem">
-          Passion du Fournil a été créée par Jonathan Laprime, artisan boulanger-pâtissier passionné par son métier depuis plus de 20 ans. La boutique a ouvert ses portes en août 2024, face à la marina de Rivière-Sens, à Gourbeyre, en Guadeloupe.
-        </p>
-        <p style="margin-bottom:1.5rem">
-          Depuis, chaque jour, lui et son équipe ont à cœur de proposer des produits et un service de qualité. Vous pouvez y retrouver : un accueil chaleureux, des pâtisseries originales comme le trompe-l'œil Piña Colada, des pains variés fabriqués sur place à partir de levain, des snacks salés et variés pour toutes les heures de la journée, ainsi que des viennoiseries classiques et des créations anti-gaspi recherchées, comme le croissant bicolore fourré à l'amande et à la framboise...
-        </p>
-        <p style="font-weight:600; color:var(--orange-deep)">
-          Tout est fait maison avec passion !
-        </p>
+    <div style="background:linear-gradient(135deg, var(--brown) 0%, var(--orange-deep) 100%); text-align:center; padding:4rem 2rem;">
+      <p class="section-eyebrow" style="color:rgba(255,255,255,0.6)">Depuis 2024</p>
+      <h1 style="font-size:clamp(2.5rem,6vw,4rem); color:var(--white); margin-bottom:0.5rem">Notre Histoire</h1>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.6); letter-spacing:0.06em">L'histoire d'une passion transmise chaque jour</p>
+    </div>
+    <div class="histoire-body">
+      <div class="histoire-card">
+        <p>Passion du Fournil a été créée par Jonathan Laprime, artisan boulanger-pâtissier passionné par son métier depuis plus de 20 ans. La boutique a ouvert ses portes en août 2024, face à la marina de Rivière-Sens, à Gourbeyre, en Guadeloupe.</p>
+        <p>Depuis, chaque jour, lui et son équipe ont à cœur de proposer des produits et un service de qualité. Vous pouvez y retrouver : un accueil chaleureux, des pâtisseries originales comme le trompe-l'œil Piña Colada, des pains variés fabriqués sur place à partir de levain, des snacks salés et variés pour toutes les heures de la journée, ainsi que des viennoiseries classiques et des créations anti-gaspi recherchées, comme le croissant bicolore fourré à l'amande et à la framboise...</p>
+        <p class="histoire-signature">Tout est fait maison avec passion !</p>
       </div>
-
-      <div style="text-align:center; margin-top:3rem">
+      <div class="histoire-cta">
         <button class="btn btn-primary" onclick="showSection('carte')">Découvrir la carte</button>
-        <button class="btn btn-secondary" onclick="showSection('creations')" style="margin-left:1rem">Voir les créations</button>
+        <button class="btn btn-brown" onclick="showSection('creations')">Voir les créations</button>
       </div>
     </div>
   </div>
@@ -863,9 +848,9 @@
   <!-- ══ PAGE LA CARTE ══ -->
   <div id="section-carte" class="page-section">
     <div class="carte-hero">
-      <p class="section-eyebrow">Fait maison chaque jour</p>
+      <p class="section-eyebrow" style="color:rgba(255,255,255,0.6)">Fait maison chaque jour</p>
       <h1>La Carte</h1>
-      <p>Boulangerie, pâtisserie, snacking &amp; glaces artisanales</p>
+      <p>Pains, viennoiseries, pâtisseries, snacks et glaces artisanales</p>
     </div>
     <section class="carte-section">
 
@@ -1340,18 +1325,11 @@
   <!-- ══ PAGE TROMPE L'OEIL ══ -->
   <div id="section-creations" class="page-section">
     <div class="creations-hero">
-      <div class="creations-hero-bg"></div>
-      <div class="creations-hero-overlay">
-        <p class="section-eyebrow" style="color:var(--orange-light)">Collection complète</p>
-        <h1 style="color:var(--white)">Trompe l'oeil</h1>
-        <p>Des pâtisseries signature, alliant précision technique et finitions raffinées.</p>
-      </div>
+      <p class="section-eyebrow" style="color:rgba(255,255,255,0.6)">Collection complète</p>
+      <h1>Trompe l'oeil</h1>
+      <p>Des pâtisseries signature, alliant précision technique et finitions raffinées.</p>
     </div>
     <section class="creations-section">
-      <div class="creations-intro">
-        <strong>Qu'est-ce qu'un gâteau trompe l'oeil ?</strong><br>
-        Un gâteau qui imite à la perfection un objet, un fruit ou une texture. La surprise au moment de la découpe fait partie de l'expérience.
-      </div>
       <div class="creations-grid">
 
         <div class="creation-card">
@@ -1489,8 +1467,7 @@
     </div>
     <section class="events-section">
       <div class="events-intro">
-        <h2>Chaque événement mérite une création unique</h2>
-        <p>Passion du Fournil accompagne vos célébrations avec des pièces pâtissières entièrement personnalisées. Gâteaux trompe l'oeil, pièces montées, plateaux de petits fours... chaque commande est pensée pour vous.</p>
+        <p>Passion du Fournil accompagne vos célébrations avec pâtisseries pouvant être entièrement personnalisées. Gâteaux trompe l'oeil, pièces montées, plateaux de petits fours... chaque commande est pensée pour vous.</p>
       </div>
       <div class="events-grid">
 
