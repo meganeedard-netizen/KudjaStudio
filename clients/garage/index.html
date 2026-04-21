@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G.F.P Garage Fleurival Penchard — Les Abymes, Guadeloupe</title>
+  <meta name="description" content="Garage G.F.P Fleurival Penchard aux Abymes en Guadeloupe. Révision, mécanique, carrosserie, pneus, diagnostic. Rapide, fiable et professionnel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       HEADER
+  ══════════════════════════════════ -->
+  <header>
+    <a class="logo" onclick="showSection('accueil')">
+      <div class="logo-icon">GFP</div>
+      <div class="logo-text">
+        <span class="logo-title">G.F.P Garage</span>
+        <span class="logo-sub">Fleurival Penchard · Les Abymes</span>
+      </div>
+    </a>
+
+    <nav id="main-nav">
+      <button class="nav-btn active" id="nav-accueil" onclick="showSection('accueil')">Accueil</button>
+      <button class="nav-btn" id="nav-services" onclick="showSection('services')">Services</button>
+      <button class="nav-btn" id="nav-contact" onclick="showSection('contact')">Contact</button>
+      <button class="nav-btn nav-cta" onclick="showSection('contact')">Prendre RDV</button>
+    </nav>
+
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- ══════════════════════════════════
+       PAGE ACCUEIL
+  ══════════════════════════════════ -->
+  <div id="accueil" class="section active">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">Garage certifié · Les Abymes, Guadeloupe</div>
+        <h1>Votre garage de<br><span>confiance</span> en Guadeloupe</h1>
+        <p>Professionnel, rapide et fiable. Nous prenons soin de votre véhicule avec expertise depuis plus de 10 ans aux Abymes.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showSection('contact')">
+            <i class="fa-regular fa-calendar-check"></i> Prendre rendez-vous
+          </button>
+          <button class="btn-secondary" onclick="showSection('services')">
+            <i class="fa-solid fa-screwdriver-wrench"></i> Voir nos services
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Ans d'expérience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">2 000+</span>
+            <span class="stat-label">Véhicules réparés</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">Clients satisfaits</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">48h</span>
+            <span class="stat-label">Délai moyen</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services aperçu -->
+    <section class="bg-clair">
+      <div class="container">
+        <span class="section-tag">Ce que nous faisons</span>
+        <h2 class="section-title">Nos <span>prestations</span></h2>
+        <p class="section-desc">De la révision complète à la réparation d'urgence, nous intervenons sur tous types de véhicules.</p>
+        <div class="services-grid" style="margin-top: 3rem;">
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>Mécanique générale</h3>
+            <p>Révision, vidange, distribution, freinage, embrayage. Tout ce dont votre véhicule a besoin pour rouler en toute sécurité.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h3>Diagnostic électronique</h3>
+            <p>Valise de diagnostic dernière génération pour identifier rapidement les pannes et voyants allumés sur tableau de bord.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-car-burst"></i></div>
+            <h3>Carrosserie & Peinture</h3>
+            <p>Réparation de chocs, débosselage, retouches peinture. Votre véhicule retrouve son éclat d'origine.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-circle-dot"></i></div>
+            <h3>Pneumatiques</h3>
+            <p>Montage, équilibrage et remplacement de pneus toutes marques. Parallélisme et géométrie inclus.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-wind"></i></div>
+            <h3>Climatisation</h3>
+            <p>Recharge, diagnostic et entretien de votre système de climatisation pour rouler confortablement sous le soleil antillais.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Batterie & Électricité</h3>
+            <p>Diagnostic électrique, remplacement de batterie, alternateur, démarreur. Intervention rapide et garantie.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top: 2.5rem;">
+          <button class="btn-primary" onclick="showSection('services')">Voir tous nos services</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bandeau moteur -->
+    <div class="photo-banner" style="background-image: url('images/moteur.webp');">
+      <div class="photo-banner-content">
+        <h2>Expertise & Précision</h2>
+        <p>Des mécaniciens qualifiés qui prennent soin de votre véhicule comme du leur.</p>
+        <button class="btn-primary" onclick="showSection('contact')">Prendre rendez-vous</button>
+      </div>
+    </div>
+
+    <!-- Pourquoi nous -->
+    <section class="bg-clair">
+      <div class="container" style="text-align: center;">
+        <span class="section-tag">Pourquoi nous choisir</span>
+        <h2 class="section-title">La différence <span>G.F.P</span></h2>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem;">
+          <div class="avantage-card">
+            <div class="avantage-num">01</div>
+            <h4>Rapidité</h4>
+            <p>Devis en 30 min, intervention le jour même pour les urgences.</p>
+          </div>
+          <div class="avantage-card">
+            <div class="avantage-num">02</div>
+            <h4>Transparence</h4>
+            <p>Devis gratuit et détaillé. Aucune mauvaise surprise sur la facture.</p>
+          </div>
+          <div class="avantage-card">
+            <div class="avantage-num">03</div>
+            <h4>Expertise</h4>
+            <p>Mécaniciens qualifiés formés sur les dernières technologies.</p>
+          </div>
+          <div class="avantage-card">
+            <div class="avantage-num">04</div>
+            <h4>Garantie</h4>
+            <p>Toutes nos réparations sont garanties pièces et main-d'œuvre.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bandeau pneu -->
+    <div class="photo-banner" style="background-image: url('images/pneu.webp');">
+      <div class="photo-banner-content">
+        <h2>Pneumatiques & Parallélisme</h2>
+        <p>Toutes marques, montage, équilibrage et géométrie<br>sur rendez-vous.</p>
+      </div>
+    </div>
+
+    <!-- Témoignages -->
+    <section class="bg-clair">
+      <div class="container">
+        <span class="section-tag">Ils nous font confiance</span>
+        <h2 class="section-title">Avis de nos <span>clients</span></h2>
+        <div class="temoignages-grid">
+          <div class="temoignage-card">
+            <div class="stars">★★★★★</div>
+            <p>"Service impeccable ! Ma voiture est tombée en panne un lundi matin, ils ont tout réparé dans la journée. Prix honnête et équipe très professionnelle."</p>
+            <div class="temoignage-auteur">
+              <div class="auteur-avatar">JM</div>
+              <div class="auteur-info">
+                <strong>Jean-Marc L.</strong>
+                <span>Les Abymes</span>
+              </div>
+            </div>
+          </div>
+          <div class="temoignage-card">
+            <div class="stars">★★★★★</div>
+            <p>"Je confie toutes mes voitures au G.F.P Garage depuis 5 ans. Toujours à l'écoute, honnêtes sur les prix et le travail est toujours bien fait."</p>
+            <div class="temoignage-auteur">
+              <div class="auteur-avatar">SC</div>
+              <div class="auteur-info">
+                <strong>Sandra C.</strong>
+                <span>Pointe-à-Pitre</span>
+              </div>
+            </div>
+          </div>
+          <div class="temoignage-card">
+            <div class="stars">★★★★★</div>
+            <p>"Devis clair, délai respecté, voiture rendue propre. C'est rare de trouver un garage aussi sérieux en Guadeloupe. Je recommande à 100%."</p>
+            <div class="temoignage-auteur">
+              <div class="auteur-avatar">RB</div>
+              <div class="auteur-info">
+                <strong>Rémy B.</strong>
+                <span>Baie-Mahault</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="bg-sombre" style="padding: 60px 2rem; text-align: center;">
+      <div class="container">
+        <h2 style="font-family: var(--font-titre); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; color: #fff;">
+          Besoin d'une réparation ? On s'occupe de tout.
+        </h2>
+        <p style="font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+          Appelez-nous ou remplissez le formulaire,<br>nous vous recontactons sous 24h.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="tel:+590590000000" class="btn-primary">
+            <i class="fa-solid fa-phone"></i> 0590 00 00 00
+          </a>
+          <button class="btn-secondary" onclick="showSection('contact')">
+            Formulaire en ligne
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="logo-icon">GFP</div>
+              <div class="logo-text">
+                <span class="logo-title">G.F.P Garage</span>
+                <span class="logo-sub">Fleurival Penchard · Les Abymes</span>
+              </div>
+            </div>
+            <p>Votre garage de confiance aux Abymes depuis plus de 10 ans. Réparation, entretien et expertise automobile en Guadeloupe.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a onclick="showSection('accueil')">Accueil</a></li>
+              <li><a onclick="showSection('services')">Nos services</a></li>
+              <li><a onclick="showSection('contact')">Nous trouver</a></li>
+              <li><a onclick="showSection('contact')">Prendre RDV</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <p><i class="fa-solid fa-location-dot"></i> Rue de la Marne<br>97139 Les Abymes<br>Guadeloupe<br><br>
+            <i class="fa-solid fa-phone"></i> 0590 00 00 00<br>
+            <i class="fa-solid fa-envelope"></i> contact@gfp-garage.fr</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2025 G.F.P Garage Fleurival Penchard — Tous droits réservés</span>
+          <span>Fleurival Penchard · Les Abymes 971</span>
+        </div>
+        <p class="footer-note">Espace client privé &middot; Site réalisé par Kudja Studio</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PAGE SERVICES
+  ══════════════════════════════════ -->
+  <div id="services" class="section">
+    <div id="services-page">
+      <div class="services-hero">
+        <div class="container" style="text-align: center;">
+          <span class="section-tag">Ce que nous proposons</span>
+          <h1 class="section-title" style="color: #ffffff;">Nos <span>Services</span></h1>
+          <p class="section-desc" style="margin: 0 auto; color: rgba(255,255,255,0.6);">Toutes les prestations pour l'entretien et la réparation de votre véhicule. Nous travaillons sur toutes marques et tous modèles.</p>
+        </div>
+      </div>
+
+      <section class="bg-clair">
+        <div class="container">
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-oil-can"></i></div>
+              <h3>Révision & Entretien</h3>
+              <p>Vidange huile moteur, filtres air/huile/carburant, bougies, courroie accessoires. Entretien complet selon préconisations constructeur.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
+              <h3>Système de freinage</h3>
+              <p>Remplacement plaquettes, disques, tambours, liquide de frein. Contrôle et réglage du système de freinage pour votre sécurité.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-gear"></i></div>
+              <h3>Distribution & Moteur</h3>
+              <p>Remplacement courroie de distribution, pompe à eau, joint de culasse. Interventions moteur complexes avec garantie.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3>Diagnostic électronique</h3>
+              <p>Lecture et effacement des codes défaut, test des capteurs et actuateurs. Diagnostic complet sur toutes marques.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+              <h3>Embrayage & Boîte</h3>
+              <p>Remplacement kit embrayage, volant moteur. Diagnostic et réparation boîte de vitesses manuelle et automatique.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-circle-dot"></i></div>
+              <h3>Pneumatiques</h3>
+              <p>Montage-démontage, équilibrage, permutation. Vente de pneus toutes marques au meilleur prix. Parallélisme inclus.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-wind"></i></div>
+              <h3>Climatisation</h3>
+              <p>Recharge gaz R134a et R1234yf, remplacement compresseur, condenseur, filtre habitacle. Entretien complet clim.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+              <h3>Batterie & Électricité</h3>
+              <p>Test batterie, alternateur, démarreur. Diagnostic panne électrique, réparation faisceau. Remplacement toutes références.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+              <h3>Carrosserie & Peinture</h3>
+              <p>Débosselage, remplacement pièces endommagées, retouche peinture, polissage. Votre véhicule comme neuf.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+              <h3>Refroidissement</h3>
+              <p>Remplacement radiateur, thermostat, vase d'expansion, durites. Diagnostic surchauffe moteur et fuite de liquide.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-car-on"></i></div>
+              <h3>Direction & Suspension</h3>
+              <p>Remplacement amortisseurs, rotules, silentblocs, roulements. Contrôle géométrie et réglage train avant/arrière.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+              <h3>Contrôle technique</h3>
+              <p>Préparation au contrôle technique, vérification des points de contrôle, remise en conformité avant passage.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bandeau carrosserie -->
+      <div class="photo-banner" style="background-image: url('images/carrosserie.webp');">
+        <div class="photo-banner-content">
+          <h2>Carrosserie & Finitions</h2>
+          <p>Débosselage, retouche peinture, polissage. Votre véhicule comme neuf.</p>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <section class="bg-sombre" style="padding: 60px 2rem; text-align: center;">
+        <div class="container">
+          <h2 style="font-family: var(--font-titre); font-size: 2.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; color: #fff;">
+            Devis gratuit en moins de 24h
+          </h2>
+          <p style="color: rgba(255,255,255,0.55); margin-bottom: 2rem;">Décrivez-nous votre problème, nous vous rappelons rapidement.</p>
+          <button class="btn-primary" onclick="showSection('contact')">
+            Demander un devis
+          </button>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="footer-logo">
+                <div class="logo-icon">GFP</div>
+                <div class="logo-text">
+                  <span class="logo-title">G.F.P Garage</span>
+                  <span class="logo-sub">Fleurival Penchard · Les Abymes</span>
+                </div>
+              </div>
+              <p>Votre garage de confiance aux Abymes depuis plus de 10 ans.</p>
+            </div>
+            <div class="footer-col">
+              <h4>Navigation</h4>
+              <ul>
+                <li><a onclick="showSection('accueil')">Accueil</a></li>
+                <li><a onclick="showSection('services')">Nos services</a></li>
+                <li><a onclick="showSection('contact')">Contact & RDV</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Rue de la Marne, 97139 Les Abymes<br><br><i class="fa-solid fa-phone"></i> 0590 00 00 00</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2025 G.F.P Garage Fleurival Penchard — Tous droits réservés</span>
+            <span>Fleurival Penchard · Les Abymes 971</span>
+          </div>
+          <p class="footer-note">Espace client privé &middot; Site réalisé par Kudja Studio</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PAGE CONTACT
+  ══════════════════════════════════ -->
+  <div id="contact" class="section">
+    <div id="contact-page">
+      <div class="contact-hero">
+        <div class="container" style="text-align: center;">
+          <span class="section-tag">On est là pour vous</span>
+          <h1 class="section-title" style="color: #ffffff;">Contactez-<span>nous</span></h1>
+          <p class="section-desc" style="margin: 0 auto; color: rgba(255,255,255,0.6);">Prenez rendez-vous, demandez un devis ou venez directement nous voir. Nous sommes à votre disposition.</p>
+        </div>
+      </div>
+
+      <section>
+        <div class="container">
+          <div class="contact-grid">
+
+            <!-- Infos -->
+            <div class="contact-info">
+              <h3>Nous trouver</h3>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-text">
+                  <strong>Adresse</strong>
+                  <span>Rue de la Marne<br>97139 Les Abymes, Guadeloupe</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="info-text">
+                  <strong>Téléphone</strong>
+                  <span><a href="tel:+590590000000" style="color: var(--blanc); text-decoration: none;">0590 00 00 00</a></span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="info-text">
+                  <strong>Email</strong>
+                  <span>contact@gfp-garage.fr</span>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="info-text">
+                  <strong>Réponse rapide</strong>
+                  <span>Nous vous recontactons sous 2h</span>
+                </div>
+              </div>
+
+              <!-- Horaires -->
+              <div class="horaires-table" style="margin-top: 2rem;">
+                <div class="horaire-row" style="background: rgba(96,165,250,0.08); padding: 12px 16px;">
+                  <span style="font-family: var(--font-titre); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--orange);">Horaires d'ouverture</span>
+                </div>
+                <div class="horaire-row">
+                  <span class="jour">Lundi — Vendredi</span>
+                  <span class="heure">7h30 — 17h30</span>
+                </div>
+                <div class="horaire-row">
+                  <span class="jour">Samedi</span>
+                  <span class="heure">8h00 — 13h00</span>
+                </div>
+                <div class="horaire-row">
+                  <span class="jour">Dimanche</span>
+                  <span class="heure ferme">Fermé</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulaire -->
+            <div class="contact-form">
+              <h3>Prendre rendez-vous</h3>
+              <form id="rdv-form" onsubmit="handleForm(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" placeholder="Jean" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" placeholder="Dupont" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Téléphone</label>
+                  <input type="tel" placeholder="0690 00 00 00" required>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" placeholder="votre@email.fr">
+                </div>
+                <div class="form-group">
+                  <label>Type d'intervention</label>
+                  <select required>
+                    <option value="" disabled selected>Sélectionnez...</option>
+                    <option>Révision / Entretien</option>
+                    <option>Panne / Diagnostic</option>
+                    <option>Freinage</option>
+                    <option>Pneumatiques</option>
+                    <option>Climatisation</option>
+                    <option>Carrosserie / Peinture</option>
+                    <option>Distribution / Moteur</option>
+                    <option>Autre</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Marque & modèle du véhicule</label>
+                  <input type="text" placeholder="Ex: Peugeot 308, 2018">
+                </div>
+                <div class="form-group">
+                  <label>Message (optionnel)</label>
+                  <textarea placeholder="Décrivez votre problème ou votre demande..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Envoyer ma demande</button>
+                <div class="form-success" id="form-success">
+                  ✅ Votre demande a bien été envoyée ! Nous vous recontactons dans les 2h.
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+          <!-- Carte -->
+          <div class="map-container">
+            <iframe
+              src="https://maps.google.com/maps?q=Les+Abymes,+97139+Guadeloupe&output=embed&z=15"
+              title="G.F.P Garage Fleurival Penchard — Les Abymes, Guadeloupe"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <div class="footer-logo">
+                <div class="logo-icon">GFP</div>
+                <div class="logo-text">
+                  <span class="logo-title">G.F.P Garage</span>
+                  <span class="logo-sub">Fleurival Penchard · Les Abymes</span>
+                </div>
+              </div>
+              <p>Votre garage de confiance aux Abymes depuis plus de 10 ans.</p>
+            </div>
+            <div class="footer-col">
+              <h4>Navigation</h4>
+              <ul>
+                <li><a onclick="showSection('accueil')">Accueil</a></li>
+                <li><a onclick="showSection('services')">Nos services</a></li>
+                <li><a onclick="showSection('contact')">Contact & RDV</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <p><i class="fa-solid fa-location-dot"></i> Rue de la Marne, 97139 Les Abymes<br><br><i class="fa-solid fa-phone"></i> 0590 00 00 00</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2025 G.F.P Garage Fleurival Penchard — Tous droits réservés</span>
+            <span>Fleurival Penchard · Les Abymes 971</span>
+          </div>
+          <p class="footer-note">Espace client privé &middot; Site réalisé par Kudja Studio</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('nav-' + id);
+      if (btn) btn.classList.add('active');
+
+      const nav = document.getElementById('main-nav');
+      nav.classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      document.getElementById('main-nav').classList.toggle('open');
+    }
+
+    function handleForm(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+      setTimeout(() => {
+        document.getElementById('form-success').style.display = 'none';
+      }, 5000);
+    }
+
+    // Fermer menu si clic à l'extérieur
+    document.addEventListener('click', function(e) {
+      const nav = document.getElementById('main-nav');
+      const hamburger = document.getElementById('hamburger');
+      if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+        nav.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
