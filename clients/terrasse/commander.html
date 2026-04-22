@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commander à emporter — La Terrasse des Arches</title>
+  <meta name="description" content="Commandez vos plats créoles à emporter en click & collect. La Terrasse des Arches, Le Moule, Guadeloupe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A455;
+      --gold-light: #E2C47A;
+      --dark: #15100A;
+      --dark-mid: #1E1710;
+      --dark-warm: #261C12;
+      --cream: #F4EDD8;
+      --cream-light: #FBF7EE;
+      --terracotta: #B86B4A;
+      --text-light: #CEC5A8;
+      --text-mid: #7A7060;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: #F9F5EE;
+      color: #1E160A;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0.85rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(21,16,10,0.97);
+      border-bottom: 1px solid rgba(201,164,85,0.2);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 52px; filter: invert(1) brightness(0.9); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 0.5rem 1.25rem;
+      opacity: 1 !important;
+      font-weight: 600 !important;
+      transition: background 0.25s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-active { color: var(--gold) !important; opacity: 1 !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); }
+
+    /* ── PAGE HEADER ─────────────────────────────── */
+    .page-header {
+      padding: 7rem 3rem 3rem;
+      background: var(--dark-warm);
+      text-align: center;
+    }
+    .page-header-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .page-header-label::before, .page-header-label::after { content: '✦'; font-size: 0.5rem; color: var(--terracotta); opacity: 0.7; }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+    }
+    .page-header h1 em { font-style: italic; color: var(--gold-light); }
+    .page-header p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      font-weight: 300;
+    }
+
+    /* ── LAYOUT PRINCIPAL ────────────────────────── */
+    .commander-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 3rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ── CATÉGORIES MENU ─────────────────────────── */
+    .menu-categories { display: flex; flex-direction: column; gap: 2.5rem; }
+
+    .menu-category-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #1E160A;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .menu-category-title span { font-size: 0.85rem; color: var(--text-mid); font-family: 'Raleway', sans-serif; font-weight: 300; font-style: italic; }
+
+    .menu-items-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .menu-item {
+      background: #FFFFFF;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 2px;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .menu-item:hover { border-color: rgba(201,164,85,0.4); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+    .menu-item-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #1E160A;
+    }
+    .menu-item-desc {
+      font-size: 0.77rem;
+      color: #7A6E5A;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .menu-item-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+    }
+    .menu-item-price {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .btn-add {
+      background: var(--gold);
+      border: none;
+      color: var(--dark);
+      width: 30px; height: 30px;
+      cursor: pointer;
+      font-size: 1.3rem;
+      line-height: 1;
+      border-radius: 2px;
+      transition: background 0.2s;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 300;
+    }
+    .btn-add:hover { background: var(--gold-light); }
+
+    /* ── PANIER ──────────────────────────────────── */
+    .panier {
+      position: sticky;
+      top: 90px;
+      background: #FFFFFF;
+      border: 1px solid rgba(201,164,85,0.25);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .panier-header {
+      background: var(--dark-warm);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panier-header-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+    .panier-badge {
+      background: var(--gold);
+      color: var(--dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      min-width: 26px;
+      text-align: center;
+    }
+
+    .panier-body { padding: 1.25rem 1.5rem; }
+
+    .panier-empty {
+      text-align: center;
+      padding: 2rem 0;
+      color: #A89880;
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+
+    .panier-lines { display: flex; flex-direction: column; gap: 0.6rem; }
+    .panier-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.83rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .panier-line-name { flex: 1; color: #1E160A; font-weight: 500; }
+    .panier-line-qty {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .panier-line-qty button {
+      background: #F0EBE0;
+      border: none;
+      color: #1E160A;
+      width: 22px; height: 22px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+    }
+    .panier-line-qty button:hover { background: #E5DDD0; }
+    .panier-line-qty span { width: 18px; text-align: center; color: #1E160A; font-weight: 600; font-size: 0.85rem; }
+    .panier-line-price { color: var(--gold); font-weight: 600; min-width: 48px; text-align: right; font-size: 0.85rem; }
+
+    .panier-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 2px solid #F0EBE0;
+    }
+    .panier-total-label { color: #1E160A; font-weight: 600; font-size: 0.9rem; }
+    .panier-total-price { color: var(--gold); font-size: 1.2rem; font-weight: 700; }
+
+    .panier-note {
+      font-size: 0.72rem;
+      color: #A89880;
+      margin-top: 1rem;
+      font-style: italic;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .btn-commander {
+      display: block;
+      width: 100%;
+      margin-top: 1.25rem;
+      padding: 1rem;
+      background: var(--gold);
+      border: none;
+      color: var(--dark);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .btn-commander:hover { background: var(--gold-light); }
+    .btn-commander:disabled { opacity: 0.3; cursor: default; }
+
+    .btn-vider {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.6rem;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.1);
+      color: #A89880;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-vider:hover { border-color: var(--terracotta); color: var(--terracotta); }
+    .btn-vider:disabled { opacity: 0.2; cursor: default; }
+
+    /* ── PICKUP TIME ─────────────────────────────── */
+    .pickup-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #1E160A;
+      margin-bottom: 0.6rem;
+    }
+    .pickup-slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pickup-slot {
+      background: #F0EBE0;
+      border: 1px solid transparent;
+      color: #5A4E3A;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.3rem 0.55rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      border-radius: 1px;
+    }
+    .pickup-slot:hover { background: #E5DDD0; border-color: var(--gold); }
+    .pickup-slot.selected {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    /* ── MOBILE ──────────────────────────────────── */
+    .panier-float {
+      display: none;
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      z-index: 150;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      padding: 0.9rem 1.5rem;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(17,16,16,0.98);
+      z-index: 200;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 300;
+      color: var(--cream); text-decoration: none; letter-spacing: 0.05em; transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      background: none; border: none; color: var(--cream); font-size: 2rem; cursor: pointer; opacity: 0.7;
+    }
+
+    @media (max-width: 1024px) {
+      .commander-page { grid-template-columns: 1fr; padding: 2rem 1.5rem 5rem; }
+      .panier { position: static; }
+      .panier-float { display: block; }
+    }
+    @media (max-width: 700px) {
+      nav { padding: 0.75rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-header { padding: 6rem 1.5rem 2rem; }
+      .menu-items-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo-terrasse-des-arches.jpg" alt="La Terrasse des Arches" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#restaurant">Le Restaurant</a></li>
+    <li><a href="index.html#carte">La Carte</a></li>
+    <li><a href="index.html#galerie">Galerie</a></li>
+    <li><a href="commander.html" class="nav-active">Commander</a></li>
+    <li><a href="reserver.html" class="nav-cta">Réserver une table</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="index.html#restaurant" onclick="closeMobile()">Le Restaurant</a>
+  <a href="index.html#carte" onclick="closeMobile()">La Carte</a>
+  <a href="index.html#galerie" onclick="closeMobile()">Galerie</a>
+  <a href="commander.html" onclick="closeMobile()">Commander</a>
+  <a href="reserver.html" onclick="closeMobile()">Réserver une table</a>
+</div>
+
+<!-- EN-TÊTE -->
+<div class="page-header">
+  <div class="page-header-label">Vente à emporter</div>
+  <h1>Commander <em>à emporter</em></h1>
+  <p>Composez votre commande · Récupérez-la sur place · Payez à l'arrivée</p>
+</div>
+
+<!-- PAGE COMMANDER -->
+<div class="commander-page">
+
+  <!-- MENU -->
+  <div class="menu-categories">
+
+    <div class="menu-category">
+      <div class="menu-category-title">Plats</div>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Fricassée de lambis</div>
+          <div class="menu-item-desc">Spécialité antillaise, sauce créole</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">28 €</span>
+            <button class="btn-add" onclick="addToCart(1,'Fricassée de lambis',28)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Brochette de poulet sauce chien</div>
+          <div class="menu-item-desc">Sauce chien maison, herbes fraîches</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14 €</span>
+            <button class="btn-add" onclick="addToCart(2,'Brochette de poulet sauce chien',14)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Côte de porc</div>
+          <div class="menu-item-desc">Marinée aux épices créoles</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14 €</span>
+            <button class="btn-add" onclick="addToCart(3,'Côte de porc',14)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Poulet fermier</div>
+          <div class="menu-item-desc">Élevé en plein air, aromates du jardin</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">18 €</span>
+            <button class="btn-add" onclick="addToCart(4,'Poulet fermier',18)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Gigot d'agneau</div>
+          <div class="menu-item-desc">Mijoté aux épices douces</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">18 €</span>
+            <button class="btn-add" onclick="addToCart(5,'Gigot d\'agneau',18)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Boeuf mafé</div>
+          <div class="menu-item-desc">Sauce arachide, épices créoles</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">20 €</span>
+            <button class="btn-add" onclick="addToCart(6,'Boeuf mafé',20)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Fricassée de chatrou</div>
+          <div class="menu-item-desc">Poulpe mijoté, sauce créole parfumée</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">22 €</span>
+            <button class="btn-add" onclick="addToCart(7,'Fricassée de chatrou',22)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="menu-category">
+      <div class="menu-category-title">Accompagnements</div>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Riz blanc</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4 €</span>
+            <button class="btn-add" onclick="addToCart(8,'Riz blanc',4)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Riz au légumes</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4,50 €</span>
+            <button class="btn-add" onclick="addToCart(9,'Riz au légumes',4.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Légumes vapeur</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4 €</span>
+            <button class="btn-add" onclick="addToCart(10,'Légumes vapeur',4)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Gratin de légumes</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(11,'Gratin de légumes',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Pommes de terre sautées</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4,50 €</span>
+            <button class="btn-add" onclick="addToCart(12,'Pommes de terre sautées',4.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Mousseline de patate douce</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(13,'Mousseline de patate douce',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Spaghettis à la tomate</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4 €</span>
+            <button class="btn-add" onclick="addToCart(14,'Spaghettis à la tomate',4)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="menu-category">
+      <div class="menu-category-title">Desserts</div>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Flan coco</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(15,'Flan coco',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Moelleux au chocolat</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(16,'Moelleux au chocolat',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Sorbet au choix</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">3 €</span>
+            <button class="btn-add" onclick="addToCart(17,'Sorbet au choix',3)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">2 Mini beignets au choix</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(18,'2 Mini beignets au choix',5)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PANIER -->
+  <div class="panier" id="panier">
+    <div class="panier-header">
+      <span class="panier-header-title">Mon panier</span>
+      <span class="panier-badge" id="panierCount">0</span>
+    </div>
+    <div class="panier-body">
+      <div id="panierContent">
+        <p class="panier-empty">Ajoutez des plats pour commencer</p>
+      </div>
+      <div id="panierPickup" style="display:none; margin-top:1rem;">
+        <div class="pickup-label">Heure de récupération</div>
+        <div class="pickup-slots" id="pickupSlots"></div>
+      </div>
+      <p class="panier-note">Commande à récupérer sur place · Nous vous confirmons par téléphone</p>
+      <button class="btn-commander" id="btnCommander" disabled onclick="passerCommande()">
+        Valider la commande
+      </button>
+      <button class="btn-vider" id="btnVider" disabled onclick="viderPanier()">
+        Vider le panier
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bouton panier mobile -->
+<button class="panier-float" id="panierFloat" onclick="scrollToPanier()">
+  Panier · <span id="panierFloatCount">0</span> article(s)
+</button>
+
+<script>
+  // Mobile menu
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // ── PICKUP SLOTS ──────────────────────────────────
+  let selectedSlot = null;
+
+  function buildPickupSlots() {
+    const container = document.getElementById('pickupSlots');
+    container.innerHTML = '';
+    for (let h = 10; h < 22; h++) {
+      ['00', '30'].forEach(m => {
+        const label = `${String(h).padStart(2,'0')}h${m}`;
+        const btn = document.createElement('button');
+        btn.className = 'pickup-slot';
+        btn.textContent = label;
+        btn.addEventListener('click', () => {
+          selectedSlot = label;
+          container.querySelectorAll('.pickup-slot').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+        container.appendChild(btn);
+      });
+    }
+    // 22h00 last slot
+    const btn22 = document.createElement('button');
+    btn22.className = 'pickup-slot';
+    btn22.textContent = '22h00';
+    btn22.addEventListener('click', () => {
+      selectedSlot = '22h00';
+      container.querySelectorAll('.pickup-slot').forEach(b => b.classList.remove('selected'));
+      btn22.classList.add('selected');
+    });
+    container.appendChild(btn22);
+  }
+  buildPickupSlots();
+
+  // ── PANIER ────────────────────────────────────────
+  let cart = {};
+
+  function addToCart(id, name, price) {
+    if (cart[id]) { cart[id].qty++; }
+    else { cart[id] = { name, price, qty: 1 }; }
+    renderCart();
+  }
+
+  function changeQty(id, delta) {
+    if (!cart[id]) return;
+    cart[id].qty += delta;
+    if (cart[id].qty <= 0) delete cart[id];
+    renderCart();
+  }
+
+  function viderPanier() {
+    cart = {};
+    renderCart();
+  }
+
+  function renderCart() {
+    const keys = Object.keys(cart);
+    const totalQty = keys.reduce((s, k) => s + cart[k].qty, 0);
+    const totalPrice = keys.reduce((s, k) => s + cart[k].qty * cart[k].price, 0);
+
+    document.getElementById('panierCount').textContent = totalQty;
+    document.getElementById('panierFloatCount').textContent = totalQty;
+    document.getElementById('btnCommander').disabled = totalQty === 0;
+    document.getElementById('btnVider').disabled = totalQty === 0;
+
+    const content = document.getElementById('panierContent');
+
+    const pickupEl = document.getElementById('panierPickup');
+    if (totalQty === 0) {
+      content.innerHTML = '<p class="panier-empty">Ajoutez des plats pour commencer</p>';
+      pickupEl.style.display = 'none';
+      selectedSlot = null;
+      document.querySelectorAll('.pickup-slot').forEach(b => b.classList.remove('selected'));
+      return;
+    }
+    pickupEl.style.display = 'block';
+
+    let html = '<div class="panier-lines">';
+    keys.forEach(k => {
+      const item = cart[k];
+      const sub = (item.qty * item.price).toFixed(2).replace('.', ',');
+      html += `
+        <div class="panier-line">
+          <span class="panier-line-name">${item.name}</span>
+          <div class="panier-line-qty">
+            <button onclick="changeQty(${k},-1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${k},1)">+</button>
+          </div>
+          <span class="panier-line-price">${sub} €</span>
+        </div>`;
+    });
+    html += '</div>';
+    html += `<div class="panier-total">
+      <span class="panier-total-label">Total</span>
+      <span class="panier-total-price">${totalPrice.toFixed(2).replace('.', ',')} €</span>
+    </div>`;
+    content.innerHTML = html;
+  }
+
+  function passerCommande() {
+    const keys = Object.keys(cart);
+    if (!keys.length) return;
+    if (!selectedSlot) {
+      alert('Veuillez sélectionner une heure de récupération avant de valider.');
+      return;
+    }
+    const lines = keys.map(k => `${cart[k].name} x${cart[k].qty}`).join('\n');
+    const total = keys.reduce((s, k) => s + cart[k].qty * cart[k].price, 0);
+    alert(`Récapitulatif de votre commande :\n\n${lines}\n\nHeure de récupération : ${selectedSlot}\nTotal estimé : ${total.toFixed(2).replace('.', ',')} €\n\nVeuillez appeler le restaurant au +590 590 00 00 00 pour confirmer votre commande.`);
+  }
+
+  function scrollToPanier() {
+    document.getElementById('panier').scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+<div style="background:#15100A;text-align:center;padding:0.75rem 1rem;border-top:1px solid rgba(255,255,255,0.04);">
+  <span style="font-size:0.65rem;color:#7A7060;letter-spacing:0.08em;">
+    <a href="#" style="color:#7A7060;text-decoration:none;">Espace client privé</a>
+    &nbsp;·&nbsp;
+    Site réalisé par <a href="https://kudjastudio.fr" target="_blank" rel="noopener" style="color:#7A7060;text-decoration:none;">Kudja Studio</a>
+  </span>
+</div>
+</body>
+</html>
