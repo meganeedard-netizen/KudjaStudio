@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fine & Feuilletée | Salon de Gourmandises · Le Moule, Guadeloupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:        #E8919E;
+      --rose-light:  #F2B4BC;
+      --rose-pale:   #FDF0F2;
+      --rose-deep:   #C4596A;
+      --vert:        #7BA07B;
+      --vert-light:  #9BBE9B;
+      --vert-pale:   #EDF3ED;
+      --vert-deep:   #4E7A4E;
+      --blanc:       #FAF9F7;
+      --off-white:   #F3F1ED;
+      --noir:        #1C1C1C;
+      --gris:        #5C5C5C;
+      --gris-light:  #9A9A9A;
+      --border:      rgba(232,145,158,0.25);
+      --border-light:rgba(232,145,158,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--noir); font-size: 15px; line-height: 1.7; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,249,247,0.96); backdrop-filter: blur(8px);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; height: 70px;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .logo { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; flex-shrink: 0; }
+    .logo-text { display: flex; flex-direction: column; gap: 1px; }
+    .logo-img-round {
+      width: 46px; height: 46px; object-fit: cover;
+      border-radius: 50%; border: 2px solid var(--rose);
+      flex-shrink: 0;
+    }
+    .logo-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; letter-spacing: 0.06em; color: var(--noir); line-height: 1; }
+    .logo-sub { font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris-light); }
+    nav { display: flex; align-items: center; gap: 0.15rem; }
+    .nav-btn { padding: 0.45rem 0.8rem; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); border-radius: 3px; transition: color 0.2s; }
+    .nav-btn:hover, .nav-btn.active { color: var(--rose-deep); }
+    #nav-commander { background: var(--rose); color: #fff; border-radius: 20px; padding: 0.45rem 1.1rem; font-weight: 700; margin-left: 0.4rem; transition: background 0.2s, transform 0.15s; }
+    #nav-commander:hover, #nav-commander.active { background: var(--rose-deep); color: #fff; transform: scale(1.04); }
+    .header-right { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+
+    .cart-btn {
+      position: relative; width: 42px; height: 42px; display: flex; align-items: center;
+      justify-content: center; border-radius: 50%; transition: background 0.2s;
+    }
+    .cart-btn:hover { background: var(--rose-pale); }
+    .cart-btn svg { width: 22px; height: 22px; stroke: var(--noir); fill: none; stroke-width: 1.8; }
+    .cart-badge {
+      position: absolute; top: 2px; right: 2px;
+      background: var(--rose); color: #fff;
+      font-size: 0.6rem; font-weight: 700; line-height: 1;
+      min-width: 16px; height: 16px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; padding: 0 3px;
+      opacity: 0; transform: scale(0.7); transition: opacity 0.2s, transform 0.2s;
+    }
+    .cart-badge.visible { opacity: 1; transform: scale(1); }
+
+    .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+    .burger span { display: block; width: 22px; height: 1.5px; background: var(--noir); transition: 0.3s; }
+    .mobile-nav {
+      display: none; flex-direction: column; padding: 0.5rem 1.5rem 1rem;
+      border-top: 1px solid var(--border-light); background: #fff;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-btn { padding: 0.75rem 0; border-bottom: 1px solid var(--border-light); text-align: left; color: var(--noir); font-size: 0.7rem; }
+    .mobile-nav .nav-btn:last-child { border-bottom: none; }
+
+    /* ── PANIER PANEL ── */
+    .cart-overlay {
+      position: fixed; inset: 0; background: rgba(28,28,28,0.4);
+      z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel {
+      position: fixed; top: 0; right: 0; bottom: 0; width: 400px; max-width: 95vw;
+      background: #fff; z-index: 201; display: flex; flex-direction: column;
+      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: -4px 0 30px rgba(28,28,28,0.12);
+    }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 1.5rem; border-bottom: 1.5px solid var(--border-light); flex-shrink: 0;
+    }
+    .cart-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--rose-deep); }
+    .cart-close {
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background 0.2s; font-size: 1.2rem; color: var(--gris-light);
+    }
+    .cart-close:hover { background: var(--rose-pale); color: var(--rose); }
+    .cart-items-list { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+    .cart-empty {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100%; gap: 0.75rem; color: var(--gris-light); text-align: center;
+    }
+    .cart-empty span { font-size: 2.5rem; opacity: 0.3; }
+    .cart-empty p { font-size: 0.8rem; }
+    .cart-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.85rem 0; border-bottom: 1px solid var(--border-light);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 0.82rem; font-weight: 500; color: var(--noir); margin-bottom: 2px; }
+    .cart-item-cat { font-size: 0.62rem; color: var(--gris-light); letter-spacing: 0.1em; text-transform: uppercase; }
+    .cart-item-price { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--rose); white-space: nowrap; }
+    .cart-item-price.variable { font-size: 0.68rem; font-family: 'Inter', sans-serif; color: var(--gris-light); }
+    .cart-qty { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+    .cart-qty-btn {
+      width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: var(--noir); transition: all 0.2s;
+    }
+    .cart-qty-btn:hover { border-color: var(--rose); color: var(--rose); background: var(--rose-pale); }
+    .cart-qty-num { font-size: 0.82rem; font-weight: 600; min-width: 18px; text-align: center; }
+    .cart-item-remove { font-size: 0.7rem; color: var(--gris-light); cursor: pointer; padding: 0 0.2rem; transition: color 0.2s; }
+    .cart-item-remove:hover { color: #cc4444; }
+    .cart-panel-footer {
+      border-top: 1.5px solid var(--border-light); padding: 1.2rem 1.5rem 1.5rem; flex-shrink: 0;
+    }
+    .cart-total-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+    .cart-total-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris-light); }
+    .cart-total-amount { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--noir); font-weight: 500; }
+    .cart-total-note { font-size: 0.62rem; color: var(--gris-light); margin-top: -0.5rem; margin-bottom: 1rem; }
+    .cart-checkout-btn {
+      width: 100%; padding: 0.9rem; background: var(--rose); color: #fff;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s; margin-bottom: 0.6rem;
+    }
+    .cart-checkout-btn:hover { background: var(--rose-deep); }
+    .cart-checkout-btn:disabled { background: var(--gris-light); cursor: not-allowed; }
+    .cart-clear { font-size: 0.62rem; color: var(--gris-light); text-decoration: underline; display: block; text-align: center; cursor: pointer; }
+    .cart-clear:hover { color: #cc4444; }
+
+    .cart-checkout-form { display: none; padding-top: 1rem; border-top: 1px solid var(--border-light); margin-top: 0.5rem; }
+    .cart-checkout-form.open { display: block; }
+    .cart-checkout-form h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--noir); margin-bottom: 0.75rem; }
+    .cart-form-group { margin-bottom: 0.65rem; }
+    .cart-form-group label { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris-light); display: block; margin-bottom: 0.3rem; }
+    .cart-form-group input, .cart-form-group textarea {
+      width: 100%; padding: 0.6rem 0.85rem; border: 1.5px solid var(--border-light); border-radius: 3px;
+      background: var(--blanc); font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--noir); transition: border-color 0.2s;
+    }
+    .cart-form-group input:focus, .cart-form-group textarea:focus { outline: none; border-color: var(--rose); }
+    .cart-form-group textarea { resize: vertical; min-height: 60px; }
+    .cart-send-btn {
+      width: 100%; padding: 0.8rem; background: var(--vert-deep); color: #fff;
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s; margin-top: 0.5rem;
+    }
+    .cart-send-btn:hover { background: var(--rose-deep); }
+
+    .add-to-cart {
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #fff; background: var(--rose); padding: 0.4rem 0.9rem;
+      border-radius: 2px; transition: background 0.2s; white-space: nowrap;
+    }
+    .add-to-cart:hover { background: var(--rose-light); }
+    .add-to-cart.added { background: var(--rose-deep); }
+
+    /* ── PAGES ── */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 90vh; min-height: 560px;
+      display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/image-accueil.webp'); background-size: cover; background-position: center center;
+      transition: transform 8s ease; transform: scale(1.04);
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(28,28,28,0.3) 0%, rgba(28,28,28,0.4) 50%, rgba(28,28,28,0.75) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 2rem; max-width: 720px; }
+    .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 1.2rem; }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 300; color: #fff; line-height: 1.0; letter-spacing: 0.02em; margin-bottom: 0.8rem;
+      text-shadow: 0 2px 32px rgba(0,0,0,0.5), 0 4px 48px rgba(0,0,0,0.3);
+    }
+    .hero-title em { font-style: italic; color: #cfe0aa; }
+    .hero-logo { width: 260px; max-width: 70vw; filter: brightness(0) invert(1); margin-bottom: 0.5rem; }
+    .hero-tagline { font-size: 0.88rem; font-weight: 300; letter-spacing: 0.12em; color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn { padding: 0.85rem 2rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; border-radius: 3px; transition: all 0.25s; display: inline-block; }
+    .btn-primary { background: var(--rose); color: #fff; }
+    .btn-primary:hover { background: var(--rose-deep); }
+    .btn-secondary { background: transparent; border: 1.5px solid rgba(255,255,255,0.5); color: #fff; }
+    .btn-secondary:hover { border-color: var(--rose-light); color: var(--rose-light); }
+    .btn-dark { background: var(--noir); color: #fff; }
+    .btn-dark:hover { background: var(--gris); }
+    .btn-vert { background: var(--vert); color: #fff; }
+    .btn-vert:hover { background: var(--vert-deep); }
+
+    /* ── BANDEAU ── */
+    .bandeau { background: #cfe0aa; text-align: center; padding: 1.1rem 2rem; }
+    .bandeau p { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--vert-deep); }
+    .bandeau strong { font-weight: 700; font-size: 0.9rem; }
+
+    /* ── INTRO SPLIT ── */
+    .intro-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .intro-photo { background-image: url('images/vitrine.webp'); background-size: cover; background-position: center; min-height: 420px; }
+    .intro-text { background: #fff; display: flex; flex-direction: column; justify-content: center; padding: 4rem 3.5rem; }
+    .section-eyebrow { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose); margin-bottom: 1rem; }
+    .intro-text h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--noir); line-height: 1.15; margin-bottom: 1.2rem; }
+    .intro-text h2 em { font-style: italic; color: var(--rose); }
+    .intro-text p { font-size: 0.88rem; color: var(--gris); line-height: 1.9; margin-bottom: 1.4rem; }
+    .divider-rose { width: 40px; height: 2px; background: var(--rose); margin-bottom: 1.5rem; border-radius: 2px; }
+
+    .info-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .info-tag {
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.3rem 0.75rem; border-radius: 20px; border: 1px solid;
+    }
+    .tag-rose { color: var(--rose-deep); background: var(--rose-pale); border-color: var(--rose); }
+    .tag-vert { color: var(--vert-deep); background: var(--vert-pale); border-color: var(--vert); }
+    .tag-noir { color: var(--gris); background: var(--off-white); border-color: rgba(28,28,28,0.15); }
+
+    /* ── VEDETTES ── */
+    .vedettes { padding: 5rem 2rem 3rem; max-width: 1200px; margin: 0 auto; }
+    .vedettes-header { text-align: center; margin-bottom: 3rem; }
+    .vedettes-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--noir); margin-bottom: 0.4rem; }
+    .vedettes-header h2 em { font-style: italic; color: var(--rose); }
+    .vedettes-header p { font-size: 0.78rem; color: var(--gris-light); }
+    .vedettes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+    .cake-card {
+      background: #fff; border: 1.5px solid var(--border-light); border-radius: 4px;
+      overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .cake-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(232,145,158,0.15); border-color: var(--border); }
+    .cake-img {
+      width: 100%; aspect-ratio: 1/1; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--rose-pale);
+    }
+    .cake-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.5s; }
+    .cake-card:hover .cake-img img { transform: scale(1.06); }
+    .cake-info { padding: 1.2rem 1.3rem 1.4rem; }
+    .cake-badge { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.35rem; }
+    .cake-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--noir); line-height: 1.25; margin-bottom: 0.45rem; }
+    .cake-desc { font-size: 0.72rem; color: var(--gris); line-height: 1.7; margin-bottom: 1rem; }
+    .cake-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 0.8rem; border-top: 1px solid var(--border-light); }
+    .cake-price-from { font-size: 0.55rem; color: var(--gris-light); display: block; letter-spacing: 0.08em; margin-bottom: 1px; }
+    .cake-price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--rose); }
+
+    .vedettes-cta { text-align: center; margin-top: 3rem; padding-bottom: 5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── BANDE GLACES ── */
+    .glaces-band { position: relative; height: 380px; overflow: hidden; }
+    .glaces-band-bg { position: absolute; inset: 0; background-image: url('images/evenements.webp'); background-size: cover; background-position: center center; }
+    .glaces-band-overlay {
+      position: absolute; inset: 0; background: rgba(28,28,28,0.52);
+      display: flex; align-items: center; justify-content: flex-start; padding: 0 5rem;
+    }
+    .glaces-band-text {}
+    .glaces-band-text small { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose-light); display: block; margin-bottom: 0.75rem; }
+    .glaces-band-text p { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4.5vw, 3.2rem); font-style: italic; font-weight: 300; color: #fff; max-width: 500px; line-height: 1.2; margin-bottom: 1.5rem; }
+    .glaces-band-text .btn { display: inline-block; }
+
+    /* ── REVIEWS ── */
+    .reviews-section { padding: 5rem 2rem; background: #fff; }
+    .reviews-header { text-align: center; margin-bottom: 3rem; }
+    .reviews-score {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--rose-pale); border: 1.5px solid var(--border);
+      border-radius: 40px; padding: 0.5rem 1.2rem; margin-bottom: 1rem;
+    }
+    .reviews-score-num { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 500; color: var(--noir); }
+    .reviews-stars { color: #F4B400; font-size: 0.9rem; letter-spacing: 0.1em; }
+    .reviews-google-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris-light); }
+    .reviews-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: var(--noir); margin-bottom: 0.4rem; }
+    .reviews-header h2 em { font-style: italic; color: var(--rose); }
+    .reviews-header p { font-size: 0.8rem; color: var(--gris-light); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .review-card {
+      background: var(--blanc); border: 1.5px solid var(--border-light); border-radius: 4px;
+      padding: 1.8rem 1.6rem; display: flex; flex-direction: column; gap: 1rem;
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .review-card:hover { box-shadow: 0 8px 24px rgba(232,145,158,0.1); border-color: var(--border); }
+    .review-top { display: flex; align-items: center; justify-content: space-between; }
+    .review-author { font-size: 0.82rem; font-weight: 600; color: var(--noir); }
+    .review-stars { color: #F4B400; font-size: 0.8rem; letter-spacing: 0.08em; }
+    .review-text { font-size: 0.8rem; color: var(--gris); line-height: 1.8; font-style: italic; flex: 1; }
+    .review-text::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--rose); line-height: 0; vertical-align: -0.5rem; margin-right: 0.2rem; }
+
+    /* ── SECTION HERO (pages internes) ── */
+    .section-hero {
+      text-align: center; padding: 5rem 2rem;
+    }
+    .section-hero-rose { background: linear-gradient(135deg, var(--rose-deep) 0%, var(--rose) 100%); }
+    .section-hero-vert { background: linear-gradient(135deg, var(--vert-deep) 0%, var(--vert) 100%); }
+    .section-hero-noir { background: linear-gradient(135deg, #1C1C1C 0%, #3A3A3A 100%); }
+    .section-hero .section-eyebrow { color: rgba(255,255,255,0.65); }
+    .section-hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: #fff; margin-bottom: 0.5rem; font-weight: 300; }
+    .section-hero h1 em { font-style: italic; }
+    .section-hero p { font-size: 0.85rem; color: rgba(255,255,255,0.65); letter-spacing: 0.06em; max-width: 480px; margin: 0 auto; }
+
+    /* ── LA CARTE (Découvrir) ── */
+    .carte-section { padding: 3rem 2rem 6rem; max-width: 1200px; margin: 0 auto; }
+
+    .shop-category { margin-bottom: 4rem; }
+    .shop-category-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2rem; }
+    .shop-category-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .shop-cat-label { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+    .shop-cat-icon { font-size: 1.1rem; }
+    .shop-cat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--noir); letter-spacing: 0.04em; }
+
+    .shop-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .shop-card {
+      background: #fff; border: 1px solid var(--border-light); border-radius: 3px;
+      overflow: hidden; display: flex; flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .shop-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(232,145,158,0.13); border-color: var(--border); }
+    .shop-card-img {
+      width: 100%; aspect-ratio: 1/1; overflow: hidden;
+      background: var(--rose-pale);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .shop-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .shop-card:hover .shop-card-img img { transform: scale(1.07); }
+    .shop-card-img-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; width: 100%; height: 100%; }
+    .shop-card-img-placeholder span { font-size: 2.8rem; opacity: 0.4; }
+    .shop-card-img-placeholder small { font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rose); opacity: 0.7; }
+    .shop-card-body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; flex: 1; }
+    .shop-card-cat { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.3rem; }
+    .shop-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 500; color: var(--noir); line-height: 1.25; margin-bottom: 0.6rem; flex: 1; }
+    .shop-card-desc { font-size: 0.7rem; color: var(--gris); line-height: 1.6; margin-bottom: 0.8rem; }
+    .shop-card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 500; color: var(--rose); margin-bottom: 0.9rem; }
+    .shop-card-price.variable { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--gris-light); font-weight: 400; }
+    .shop-card-btn {
+      width: 100%; padding: 0.65rem; background: var(--noir); color: #fff;
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+      border-radius: 2px; transition: background 0.2s;
+    }
+    .shop-card-btn:hover { background: var(--rose); }
+    .shop-card-btn.added { background: var(--rose-deep); }
+
+    /* ── COMMANDER ── */
+    .commander-section { padding: 4rem 2rem 6rem; max-width: 860px; margin: 0 auto; }
+
+    .infos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .info-block { background: #fff; border: 1.5px solid var(--border-light); border-radius: 4px; padding: 1.8rem 1.5rem; text-align: center; transition: box-shadow 0.25s; }
+    .info-block:hover { box-shadow: 0 6px 20px rgba(232,145,158,0.1); }
+    .info-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .info-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--noir); margin-bottom: 0.5rem; }
+    .info-block p { font-size: 0.72rem; color: var(--gris); line-height: 1.7; }
+
+    .order-form { background: #fff; border: 1.5px solid var(--border); border-radius: 4px; padding: 2.5rem; }
+    .order-form h2 { font-size: 1.8rem; color: var(--noir); margin-bottom: 0.3rem; }
+    .order-form h2 em { font-style: italic; color: var(--rose); }
+    .form-subtitle { font-size: 0.75rem; color: var(--gris-light); margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris-light); }
+    .form-group input, .form-group select, .form-group textarea {
+      padding: 0.75rem 1rem; border: 1.5px solid var(--border-light); border-radius: 3px;
+      background: var(--blanc); font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--noir); transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--rose); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; padding: 1rem; background: var(--rose); color: #fff;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.2s; margin-top: 1.5rem;
+    }
+    .form-submit:hover { background: var(--rose-deep); }
+    .form-note { font-size: 0.67rem; color: var(--gris-light); text-align: center; margin-top: 1rem; }
+    .form-success { display: none; text-align: center; padding: 3rem 2rem; }
+    .form-success.visible { display: block; }
+    .form-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .form-success h3 { font-size: 1.7rem; color: var(--noir); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.82rem; color: var(--gris); }
+
+    /* ── NOTRE HISTOIRE ── */
+    .histoire-body { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 5rem; }
+    .histoire-card { background: #fff; border-radius: 8px; padding: 2.5rem; box-shadow: 0 4px 24px rgba(232,145,158,0.08); border: 1px solid var(--border-light); }
+    .histoire-card p { color: var(--gris); line-height: 1.9; margin-bottom: 1.2rem; font-size: 0.92rem; }
+    .histoire-card p:last-child { margin-bottom: 0; }
+    .histoire-signature { font-weight: 600; color: var(--rose-deep) !important; font-style: italic; }
+    .histoire-cta { text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--noir); padding: 3rem 2rem; display: flex; align-items: center;
+      justify-content: center; flex-direction: column; gap: 0.5rem; text-align: center;
+    }
+    .footer-logo-img { width: 70px; height: 70px; object-fit: cover; margin-bottom: 0.5rem; border-radius: 50%; border: 2px solid var(--rose); }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: rgba(255,255,255,0.85); letter-spacing: 0.08em; }
+    .footer-sub { font-size: 0.56rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose-light); }
+    .footer-contact { margin: 0.8rem 0 0; display: flex; flex-direction: column; gap: 0.3rem; }
+    .footer-contact a, .footer-contact span { font-size: 0.75rem; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--rose-light); }
+    .footer-sep-line { width: 30px; height: 1px; background: var(--rose); opacity: 0.4; margin: 0.8rem auto; }
+    .footer-social { display: flex; gap: 1.2rem; margin-top: 0.5rem; }
+    .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-social a:hover { color: var(--rose-light); }
+    .footer-map { width: 100%; max-width: 520px; height: 240px; border-radius: 4px; overflow: hidden; margin: 1rem auto 0; border: 2px solid rgba(232,145,158,0.25); }
+    .footer-map iframe { width: 100%; height: 100%; border: none; display: block; }
+    .footer-note { font-size: 0.58rem; color: rgba(255,255,255,0.18); letter-spacing: 0.05em; margin-top: 0.5rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .vedettes-grid { grid-template-columns: repeat(2, 1fr); }
+      .shop-grid { grid-template-columns: repeat(2, 1fr); }
+      .intro-split { grid-template-columns: 1fr; }
+      .intro-photo { min-height: 300px; }
+      .infos-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .burger { display: flex; }
+      .logo-text { display: none; }
+      .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+      .vedettes-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .shop-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .order-form { padding: 1.5rem; }
+      .glaces-band-overlay { padding: 0 2rem; }
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .vedettes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PANIER OVERLAY -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-panel-header">
+      <span class="cart-panel-title">Ma sélection</span>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list">
+      <div class="cart-empty"><span>🧺</span><p>Votre sélection est vide</p></div>
+    </div>
+    <div class="cart-panel-footer" id="cart-footer" style="display:none">
+      <div class="cart-total-line">
+        <span class="cart-total-label">Total estimé</span>
+        <span class="cart-total-amount" id="cart-total">0,00 €</span>
+      </div>
+      <p class="cart-total-note" id="cart-total-note">Hors articles au prix en boutique</p>
+      <button class="cart-checkout-btn" id="cart-checkout-btn" onclick="openCheckoutForm()">Envoyer la commande</button>
+      <span class="cart-clear" onclick="clearCart()">Vider la sélection</span>
+      <div class="cart-checkout-form" id="cart-checkout-form">
+        <h4>Vos coordonnées</h4>
+        <div class="cart-form-group">
+          <label>Prénom &amp; Nom</label>
+          <input type="text" id="cf-name" placeholder="Marie Dupont">
+        </div>
+        <div class="cart-form-group">
+          <label>Téléphone</label>
+          <input type="tel" id="cf-tel" placeholder="06 xx xx xx xx">
+        </div>
+        <div class="cart-form-group">
+          <label>Date de retrait souhaitée</label>
+          <input type="date" id="cf-date">
+        </div>
+        <div class="cart-form-group">
+          <label>Message (optionnel)</label>
+          <textarea id="cf-msg" placeholder="Occasion, personnalisation, allergies..."></textarea>
+        </div>
+        <button class="cart-send-btn" onclick="sendOrder()">Envoyer par WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="main-header">
+    <div class="header-inner">
+      <a class="logo" onclick="showSection('accueil')">
+        <img class="logo-img-round" src="images/logo-fine-feuilletee.webp" alt="Fine & Feuilletée">
+        <div class="logo-text">
+          <span class="logo-title">Fine & Feuilletée</span>
+          <span class="logo-sub">Salon de Gourmandises · Le Moule</span>
+        </div>
+      </a>
+      <nav>
+        <button class="nav-btn active" id="nav-accueil" onclick="showSection('accueil')">Accueil</button>
+        <button class="nav-btn" id="nav-histoire" onclick="showSection('histoire')">Notre histoire</button>
+        <button class="nav-btn" id="nav-decouvrir" onclick="showSection('decouvrir')" style="background:#cfe0aa; color:var(--vert-deep); border-radius:20px; padding:0.45rem 1.1rem; font-weight:700;">Commander</button>
+        <button class="nav-btn" id="nav-commander" onclick="showSection('commander')">Événements</button>
+      </nav>
+      <div class="header-right">
+        <button class="cart-btn" onclick="toggleCart()" title="Ma sélection">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+        <button class="burger" id="burger" onclick="toggleMobileNav()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <button class="nav-btn" onclick="showSection('accueil'); toggleMobileNav()">Accueil</button>
+      <button class="nav-btn" onclick="showSection('histoire'); toggleMobileNav()">Notre histoire</button>
+      <button class="nav-btn" onclick="showSection('decouvrir'); toggleMobileNav()">Commander</button>
+      <button class="nav-btn" onclick="showSection('commander'); toggleMobileNav()">Événements</button>
+    </div>
+  </header>
+
+
+  <!-- ══ PAGE ACCUEIL ══ -->
+  <div id="section-accueil" class="page-section active">
+
+    <section class="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Salon de Gourmandises &middot; Le Moule &middot; Guadeloupe</p>
+        <h1 class="hero-title">Fine & <em>Feuilletée</em></h1>
+        <p class="hero-tagline">Pâtisseries, snacks raffinés et glaces artisanales</p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="showSection('commander')">Commander</button>
+          <button class="btn btn-secondary" onclick="showSection('decouvrir')">La carte</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="bandeau">
+      <p>Commande en ligne disponible &nbsp;|&nbsp; Retrait sur place</p>
+    </div>
+
+    <section class="vedettes">
+      <div class="vedettes-header">
+        <p class="section-eyebrow">Nos créations du moment</p>
+      </div>
+      <div class="vedettes-grid">
+
+        <div class="cake-card">
+          <div class="cake-img">
+            <img src="images/tarte-framboise-poire.webp" alt="Tarte Framboise Poire" loading="lazy">
+          </div>
+          <div class="cake-info">
+            <p class="cake-badge">Pâtisserie</p>
+            <h3 class="cake-name">Tarte Framboise & Poire</h3>
+            <p class="cake-desc">Crème d'amande, framboises fraîches, poire pochée à la vanille.</p>
+            <div class="cake-footer">
+              <div><span class="cake-price-from">à partir de</span><span class="cake-price">5,50 €</span></div>
+              <button class="add-to-cart" onclick="addToCart('tarte-framboise','Tarte Framboise & Poire',5.50,'Pâtisserie',this)">+ Sélection</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cake-card">
+          <div class="cake-img">
+            <img src="images/tarte-fruits-rouges.webp" alt="Tarte Fruits Rouges" loading="lazy">
+          </div>
+          <div class="cake-info">
+            <p class="cake-badge">Pâtisserie</p>
+            <h3 class="cake-name">Tarte Fruits Rouges</h3>
+            <p class="cake-desc">Crème pâtissière légère, myrtilles, framboises, mûres de saison.</p>
+            <div class="cake-footer">
+              <div><span class="cake-price-from">à partir de</span><span class="cake-price">5,50 €</span></div>
+              <button class="add-to-cart" onclick="addToCart('tarte-fruitsrouges','Tarte Fruits Rouges',5.50,'Pâtisserie',this)">+ Sélection</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cake-card">
+          <div class="cake-img">
+            <img src="images/tarte-coco.webp" alt="Tarte Coco" loading="lazy">
+          </div>
+          <div class="cake-info">
+            <p class="cake-badge">Pâtisserie</p>
+            <h3 class="cake-name">Tarte Coco</h3>
+            <p class="cake-desc">Ganache coco, biscuit sablé, meringue italienne dorée au chalumeau.</p>
+            <div class="cake-footer">
+              <div><span class="cake-price-from">à partir de</span><span class="cake-price">5,00 €</span></div>
+              <button class="add-to-cart" onclick="addToCart('tarte-coco','Tarte Coco',5.00,'Pâtisserie',this)">+ Sélection</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cake-card">
+          <div class="cake-img">
+            <img src="images/tarte-citron.webp" alt="Tarte Citron" loading="lazy">
+          </div>
+          <div class="cake-info">
+            <p class="cake-badge">Pâtisserie</p>
+            <h3 class="cake-name">Tarte Citron</h3>
+            <p class="cake-desc">Lemon curd maison à la fleur de sel, pâte sucrée pur beurre.</p>
+            <div class="cake-footer">
+              <div><span class="cake-price-from">à partir de</span><span class="cake-price">5,00 €</span></div>
+              <button class="add-to-cart" onclick="addToCart('tarte-citron','Tarte Citron',5.00,'Pâtisserie',this)">+ Sélection</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="vedettes-cta">
+        <button class="btn btn-primary" onclick="showSection('decouvrir')">Toute la carte</button>
+        <button class="btn btn-vert" onclick="showSection('commander')" style="background:#cfe0aa; color:var(--vert-deep);">Commander en ligne</button>
+      </div>
+    </section>
+
+    <div class="glaces-band">
+      <div class="glaces-band-bg"></div>
+      <div class="glaces-band-overlay">
+        <div class="glaces-band-text">
+          <small>Evenements particuliers ou professionnels</small>
+          <p>Anniversaires, Mariages, Entreprises, Baptême…</p>
+          <p style="font-size:1rem; font-style:normal; margin-bottom:1.5rem; color:rgba(255,255,255,0.85);">Chaque événement mérite son lot de gourmandises</p>
+          <button class="btn btn-primary" onclick="showSection('commander')">Événements</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="reviews-section">
+      <div class="reviews-header">
+        <div class="reviews-score">
+          <span class="reviews-stars">★★★★☆</span>
+          <span class="reviews-score-num">4,2</span>
+          <span class="reviews-google-label">Avis Google</span>
+        </div>
+        <h2>Les avis de <em>nos clients</em></h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-top"><span class="review-author">Laetitia M.</span><span class="review-stars">★★★★★</span></div>
+          <p class="review-text">Un salon absolument charmant au coeur du Moule. Les pâtisseries sont à la hauteur du décor : raffinées, belles et délicieuses. La tarte coco est un vrai coup de coeur !</p>
+        </div>
+        <div class="review-card">
+          <div class="review-top"><span class="review-author">Stéphane B.</span><span class="review-stars">★★★★★</span></div>
+          <p class="review-text">Les glaces artisanales sont extraordinaires. La goyave et le maracuja ont des saveurs intenses et naturelles qu'on ne trouve nulle part ailleurs. On revient chaque semaine !</p>
+        </div>
+        <div class="review-card">
+          <div class="review-top"><span class="review-author">Christelle P.</span><span class="review-stars">★★★★★</span></div>
+          <p class="review-text">Le croissant à la farine de manioc est une révélation. Fine & Feuilletée a su créer quelque chose d'unique : la technique française avec l'âme antillaise. Bravo !</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <img class="footer-logo-img" src="images/logo-fine-feuilletee.webp" alt="Fine & Feuilletée">
+      <div class="footer-name">Fine & Feuilletée</div>
+      <div class="footer-sub">Salon de Gourmandises · Le Moule, Guadeloupe</div>
+      <div class="footer-contact">
+        <span>📍 Damencourt, 97160 Le Moule, Guadeloupe</span>
+        <a href="tel:+590590000000">📞 +590 (0)590 00 00 00</a>
+        <a href="mailto:contact@fineetfeuilletee.fr">✉ contact@fineetfeuilletee.fr</a>
+      </div>
+      <div class="footer-sep-line"></div>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
+      </div>
+      <div class="footer-map">
+        <iframe src="https://maps.google.com/maps?q=Fine+et+Feuilletee+Damencourt+Le+Moule+97160+Guadeloupe&hl=fr&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="footer-note">Site réalisé par Kudja Studio</p>
+    </footer>
+  </div>
+
+
+  <!-- ══ PAGE NOTRE HISTOIRE ══ -->
+  <div id="section-histoire" class="page-section">
+    <div class="section-hero" style="background:#cfe0aa;">
+      <p class="section-eyebrow" style="color:var(--vert-deep);">Damencourt, Le Moule</p>
+      <h1 style="color:var(--noir);">Notre <em style="color:var(--vert-deep);">Histoire</em></h1>
+    </div>
+    <section class="intro-split">
+      <div class="intro-photo"></div>
+      <div class="intro-text">
+        <p class="section-eyebrow">Salon de Gourmandises</p>
+        <h2>L'art de la douceur<br><em>antillaise</em></h2>
+        <div class="divider-rose"></div>
+        <p>Fine & Feuilletée est né d'une passion pour la pâtisserie française mêlée aux <strong>saveurs authentiques de la Guadeloupe</strong>. Nichés au coeur de Damencourt, au Moule, nous créons chaque jour des douceurs qui racontent notre île.</p>
+        <p>Nos recettes revisitent les classiques avec des produits locaux : farine de manioc, goyave, maracuja, coco, vanille... Un dialogue entre tradition française et créativité créole.</p>
+        <p>Un endroit où l'on prend le temps, où l'on déguste, où l'on échange. Un salon de gourmandises dans tous les sens du terme.</p>
+        <p class="histoire-signature">Fait maison, fait avec amour &mdash; Fine & Feuilletée</p>
+      </div>
+    </section>
+
+    <div class="histoire-body">
+      <div class="histoire-cta">
+        <button class="btn" onclick="showSection('decouvrir')" style="background:#cfe0aa; color:var(--vert-deep);">La carte</button>
+        <button class="btn btn-primary" onclick="showSection('commander')">Commander en ligne</button>
+      </div>
+    </div>
+
+    <footer>
+      <img class="footer-logo-img" src="images/logo-fine-feuilletee.webp" alt="Fine & Feuilletée">
+      <div class="footer-name">Fine & Feuilletée</div>
+      <div class="footer-sub">Salon de Gourmandises · Le Moule, Guadeloupe</div>
+      <div class="footer-contact">
+        <span>📍 Damencourt, 97160 Le Moule, Guadeloupe</span>
+        <a href="tel:+590590000000">📞 +590 (0)590 00 00 00</a>
+      </div>
+      <div class="footer-sep-line"></div>
+      <p class="footer-note">Site réalisé par Kudja Studio</p>
+    </footer>
+  </div>
+
+
+  <!-- ══ PAGE DÉCOUVRIR ══ -->
+  <div id="section-decouvrir" class="page-section">
+    <div class="section-hero" style="background:#cfe0aa;">
+      <p class="section-eyebrow" style="color:var(--vert-deep);">Retrait en boutique sous 2h</p>
+      <h1 style="color:var(--noir);">Commander <em style="color:var(--vert-deep);">en ligne</em></h1>
+      <p style="color:var(--vert-deep); opacity:0.8;">Pâtisseries, viennoiseries, pains, snacks salés, boissons chaudes, boissons fraîches et glaces artisanales</p>
+    </div>
+
+    <section class="carte-section">
+
+      <!-- PÂTISSERIES -->
+      <div class="shop-category">
+        <div class="shop-category-header">
+          <div class="shop-cat-label"><span class="shop-cat-title">Pâtisseries</span></div>
+        </div>
+        <div class="shop-grid">
+
+          <div class="shop-card">
+            <div class="shop-card-img">
+              <img src="images/tarte-framboise-poire.webp" alt="Tarte Framboise" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Tarte Framboise & Poire</h3>
+              <p class="shop-card-desc">Crème d'amande, framboises fraîches, poire pochée.</p>
+              <p class="shop-card-price">5,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('tarte-framboise','Tarte Framboise & Poire',5.50,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img">
+              <img src="images/tarte-fruits-rouges.webp" alt="Tarte Fruits Rouges" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Tarte Fruits Rouges</h3>
+              <p class="shop-card-desc">Crème pâtissière, myrtilles, framboises, mûres.</p>
+              <p class="shop-card-price">5,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('tarte-fruitsrouges','Tarte Fruits Rouges',5.50,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img">
+              <img src="images/tarte-coco.webp" alt="Tarte Coco" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Tarte Coco</h3>
+              <p class="shop-card-desc">Ganache coco, meringue italienne, sablé beurre.</p>
+              <p class="shop-card-price">5,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('tarte-coco','Tarte Coco',5.00,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img">
+              <img src="images/tarte-citron.webp" alt="Tarte Citron" loading="lazy">
+            </div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Tarte Citron</h3>
+              <p class="shop-card-desc">Lemon curd maison, fleur de sel, pâte sucrée.</p>
+              <p class="shop-card-price">5,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('tarte-citron','Tarte Citron',5.00,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍫</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Éclair Chocolat</h3>
+              <p class="shop-card-desc">Ganache noir 70%, pâte à choux maison, glaçage.</p>
+              <p class="shop-card-price">4,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('eclair-choco','Éclair Chocolat',4.00,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>☕</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Éclair Café</h3>
+              <p class="shop-card-desc">Crème mousseline café, glaçage brillant moka.</p>
+              <p class="shop-card-price">4,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('eclair-cafe','Éclair Café',4.00,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🌸</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Macaron (la pièce)</h3>
+              <p class="shop-card-desc">Parfums du moment, ganache maison, coque amande.</p>
+              <p class="shop-card-price">2,20 €</p>
+              <button class="shop-card-btn" onclick="addToCart('macaron','Macaron',2.20,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🎂</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pâtisserie</p>
+              <h3 class="shop-card-name">Entremet du moment</h3>
+              <p class="shop-card-desc">Création saisonnière aux fruits locaux de Guadeloupe.</p>
+              <p class="shop-card-price variable">Prix en boutique</p>
+              <button class="shop-card-btn" onclick="addToCart('entremet','Entremet du moment',null,'Pâtisserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- VIENNOISERIES & PAINS -->
+      <div class="shop-category">
+        <div class="shop-category-header">
+          <div class="shop-cat-label"><span class="shop-cat-title">Viennoiseries & Pains</span></div>
+        </div>
+        <div class="shop-grid">
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🥐</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Viennoiserie</p>
+              <h3 class="shop-card-name">Croissant manioc</h3>
+              <p class="shop-card-desc">Farine de manioc locale, feuilletage beurre pur.</p>
+              <p class="shop-card-price">2,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('croissant-manioc','Croissant manioc',2.50,'Viennoiserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍫</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Viennoiserie</p>
+              <h3 class="shop-card-name">Chocolatine</h3>
+              <p class="shop-card-desc">Pâte feuilletée, chocolat noir, beurre de qualité.</p>
+              <p class="shop-card-price">2,20 €</p>
+              <button class="shop-card-btn" onclick="addToCart('chocolatine','Chocolatine',2.20,'Viennoiserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍞</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pain</p>
+              <h3 class="shop-card-name">Pain au curcuma</h3>
+              <p class="shop-card-desc">Mie moelleuse, légèrement épicée, dorure naturelle.</p>
+              <p class="shop-card-price">3,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('pain-curcuma','Pain au curcuma',3.50,'Pain',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🖤</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pain</p>
+              <h3 class="shop-card-name">Pain au charbon</h3>
+              <p class="shop-card-desc">Charbon végétal, croûte fine, mie alvéolée.</p>
+              <p class="shop-card-price">3,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('pain-charbon','Pain au charbon',3.50,'Pain',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🌾</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Pain</p>
+              <h3 class="shop-card-name">Pain aux céréales</h3>
+              <p class="shop-card-desc">Graines de lin, sésame, tournesol, avoine.</p>
+              <p class="shop-card-price">3,80 €</p>
+              <button class="shop-card-btn" onclick="addToCart('pain-cereales','Pain aux céréales',3.80,'Pain',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍎</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Viennoiserie</p>
+              <h3 class="shop-card-name">Chausson aux fruits</h3>
+              <p class="shop-card-desc">Compotée de fruits locaux, pâte feuilletée dorée.</p>
+              <p class="shop-card-price">2,80 €</p>
+              <button class="shop-card-btn" onclick="addToCart('chausson','Chausson aux fruits',2.80,'Viennoiserie',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GLACES -->
+      <div class="shop-category">
+        <div class="shop-category-header">
+          <div class="shop-cat-label"><span class="shop-cat-title">Glaces artisanales</span></div>
+        </div>
+        <div class="shop-grid">
+
+          <div class="shop-card">
+            <div class="shop-card-img">
+              <img src="images/glaces.webp" alt="Glaces artisanales" loading="lazy" style="object-position: center 20%">
+            </div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Glace</p>
+              <h3 class="shop-card-name">1 boule au choix</h3>
+              <p class="shop-card-desc">Goyave · Maracuja · Banane · Vanille · Chocolat · Pistache · Coco</p>
+              <p class="shop-card-price">3,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('glace-1','Glace 1 boule',3.00,'Glace',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍦</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Glace</p>
+              <h3 class="shop-card-name">2 boules au choix</h3>
+              <p class="shop-card-desc">Parmi nos parfums du moment, servi en coupe ou cornet.</p>
+              <p class="shop-card-price">5,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('glace-2','Glace 2 boules',5.50,'Glace',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍨</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Glace</p>
+              <h3 class="shop-card-name">Coupe spéciale</h3>
+              <p class="shop-card-desc">3 boules, chantilly maison, coulis de fruits frais.</p>
+              <p class="shop-card-price">7,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('coupe-speciale','Coupe spéciale',7.50,'Glace',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🍧</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Glace</p>
+              <h3 class="shop-card-name">Sundae maison</h3>
+              <p class="shop-card-desc">Glace, caramel ou coulis, éclats de sablé, chantilly.</p>
+              <p class="shop-card-price">8,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('sundae','Sundae maison',8.00,'Glace',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SNACKS SALÉS -->
+      <div class="shop-category">
+        <div class="shop-category-header">
+          <div class="shop-cat-label"><span class="shop-cat-title">Snacks salés</span></div>
+        </div>
+        <div class="shop-grid">
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🥧</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Snacking</p>
+              <h3 class="shop-card-name">Quiche du jour</h3>
+              <p class="shop-card-desc">Part généreuse, garniture selon arrivage du matin.</p>
+              <p class="shop-card-price">4,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('quiche','Quiche du jour',4.50,'Snacking',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🥐</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Snacking</p>
+              <h3 class="shop-card-name">Feuilleté garni</h3>
+              <p class="shop-card-desc">Chèvre-épinards ou poulet-champignons, doré au four.</p>
+              <p class="shop-card-price">4,00 €</p>
+              <button class="shop-card-btn" onclick="addToCart('feuillette','Feuilleté garni',4.00,'Snacking',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🥖</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Snacking</p>
+              <h3 class="shop-card-name">Sandwich maison</h3>
+              <p class="shop-card-desc">Garnitures fraîches sur pain maison du jour.</p>
+              <p class="shop-card-price">6,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('sandwich','Sandwich maison',6.50,'Snacking',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-card-img"><div class="shop-card-img-placeholder"><span>🫓</span><small>Bientôt</small></div></div>
+            <div class="shop-card-body">
+              <p class="shop-card-cat">Snacking</p>
+              <h3 class="shop-card-name">Accras & bouchées</h3>
+              <p class="shop-card-desc">Morue ou légumes, sauce chien maison, 4 pièces.</p>
+              <p class="shop-card-price">3,50 €</p>
+              <button class="shop-card-btn" onclick="addToCart('accras','Accras & bouchées',3.50,'Snacking',this)">Ajouter à la sélection</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      <img class="footer-logo-img" src="images/logo-fine-feuilletee.webp" alt="Fine & Feuilletée">
+      <div class="footer-name">Fine & Feuilletée</div>
+      <div class="footer-sub">Salon de Gourmandises · Le Moule, Guadeloupe</div>
+      <div class="footer-contact">
+        <span>📍 Damencourt, 97160 Le Moule, Guadeloupe</span>
+        <a href="tel:+590590000000">📞 +590 (0)590 00 00 00</a>
+      </div>
+      <div class="footer-sep-line"></div>
+      <p class="footer-note">Site réalisé par Kudja Studio</p>
+    </footer>
+  </div>
+
+
+  <!-- ══ PAGE COMMANDER ══ -->
+  <div id="section-commander" class="page-section">
+    <div class="section-hero section-hero-rose">
+      <p class="section-eyebrow">Créations sur mesure</p>
+      <h1><em>Événements</em></h1>
+      <p>Des pièces uniques pour vos moments les plus précieux.</p>
+    </div>
+
+    <section class="commander-section">
+
+      <div class="infos-grid">
+        <div class="info-block">
+          <div class="info-icon">📍</div>
+          <h3>Retrait sur place</h3>
+          <p>Damencourt, Le Moule<br>Guadeloupe, 97160<br>Mardi–Samedi 7h–19h<br>Dimanche 7h–13h</p>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">⏱️</div>
+          <h3>Délai minimum</h3>
+          <p>Commandes standards : 2h minimum.<br>Commandes spéciales (gâteaux, événements) : 48h à 72h à l'avance.</p>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">📲</div>
+          <h3>Contact rapide</h3>
+          <p>WhatsApp ou téléphone pour toute question. Nous confirmons la disponibilité sous 1h en horaires d'ouverture.</p>
+        </div>
+      </div>
+
+      <div class="order-form" id="order-form-wrap">
+        <h2>Votre <em>commande</em></h2>
+        <p class="form-subtitle">Remplissez ce formulaire, nous vous recontactons pour confirmer votre commande.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Prénom</label>
+            <input type="text" id="f-prenom" placeholder="Marie" required>
+          </div>
+          <div class="form-group">
+            <label>Nom</label>
+            <input type="text" id="f-nom" placeholder="Dupont" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" id="f-tel" placeholder="06 xx xx xx xx" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="f-email" placeholder="marie@email.com">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date de retrait souhaitée</label>
+            <input type="date" id="f-date" required>
+          </div>
+          <div class="form-group">
+            <label>Heure préférentielle</label>
+            <select id="f-heure">
+              <option value="">-- Choisir --</option>
+              <option>07h00 – 09h00</option>
+              <option>09h00 – 11h00</option>
+              <option>11h00 – 13h00</option>
+              <option>13h00 – 15h00</option>
+              <option>15h00 – 17h00</option>
+              <option>17h00 – 19h00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Occasion (optionnel)</label>
+          <select id="f-occasion">
+            <option value="">-- Sélectionner --</option>
+            <option>Anniversaire</option>
+            <option>Mariage</option>
+            <option>Événement professionnel</option>
+            <option>Commande personnelle</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Détail de la commande</label>
+          <textarea id="f-commande" placeholder="Ex : 2 tartes citron, 1 tarte fruits rouges, 4 croissants manioc, parfum glace goyave..." rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Informations complémentaires (allergies, personnalisation…)</label>
+          <textarea id="f-notes" placeholder="Allergies, message sur le gâteau, demandes spéciales..." rows="3"></textarea>
+        </div>
+
+        <button class="form-submit" onclick="submitOrder()">Envoyer ma commande</button>
+        <p class="form-note">Votre commande sera confirmée par téléphone ou WhatsApp dans les meilleurs délais.</p>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <div class="success-icon">🌸</div>
+        <h3>Commande reçue !</h3>
+        <p>Merci pour votre commande. Nous vous recontactons très bientôt pour confirmer la disponibilité et les détails.</p>
+        <br>
+        <button class="btn btn-primary" onclick="showSection('accueil')">Retour à l'accueil</button>
+      </div>
+
+    </section>
+
+    <footer>
+      <img class="footer-logo-img" src="images/logo-fine-feuilletee.webp" alt="Fine & Feuilletée">
+      <div class="footer-name">Fine & Feuilletée</div>
+      <div class="footer-sub">Salon de Gourmandises · Le Moule, Guadeloupe</div>
+      <div class="footer-contact">
+        <span>📍 Damencourt, 97160 Le Moule, Guadeloupe</span>
+        <a href="tel:+590590000000">📞 +590 (0)590 00 00 00</a>
+      </div>
+      <div class="footer-sep-line"></div>
+      <p class="footer-note">Site réalisé par Kudja Studio</p>
+    </footer>
+  </div>
+
+
+  <script>
+    /* ── NAVIGATION ── */
+    let currentSection = 'accueil';
+
+    function showSection(id) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('section-' + id).classList.add('active');
+      const btn = document.getElementById('nav-' + id);
+      if (btn) btn.classList.add('active');
+      currentSection = id;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* ── MOBILE NAV ── */
+    function toggleMobileNav() {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    /* ── HERO ANIMATION ── */
+    window.addEventListener('load', () => {
+      const bg = document.getElementById('heroBg');
+      if (bg) bg.classList.add('loaded');
+    });
+
+    /* ── PANIER ── */
+    let cart = [];
+
+    function addToCart(id, name, price, cat, btn) {
+      const existing = cart.find(i => i.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ id, name, price, cat, qty: 1 });
+      }
+      renderCart();
+      btn.textContent = '✓ Ajouté';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.textContent = btn.classList.contains('add-to-cart') ? '+ Sélection' : 'Ajouter à la sélection';
+        btn.classList.remove('added');
+      }, 1800);
+      const badge = document.getElementById('cart-badge');
+      badge.classList.add('visible');
+      updateBadge();
+    }
+
+    function updateBadge() {
+      const total = cart.reduce((s, i) => s + i.qty, 0);
+      const badge = document.getElementById('cart-badge');
+      badge.textContent = total;
+      badge.classList.toggle('visible', total > 0);
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cart-items-list');
+      const footer = document.getElementById('cart-footer');
+      if (cart.length === 0) {
+        list.innerHTML = '<div class="cart-empty"><span>🧺</span><p>Votre sélection est vide</p></div>';
+        footer.style.display = 'none';
+        return;
+      }
+      footer.style.display = 'block';
+      let html = '';
+      cart.forEach(item => {
+        const priceStr = item.price ? (item.price.toFixed(2).replace('.', ',') + ' €') : 'Prix en boutique';
+        const priceClass = item.price ? '' : 'variable';
+        html += `<div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-cat">${item.cat}</div>
+          </div>
+          <div class="cart-qty">
+            <button class="cart-qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+            <span class="cart-qty-num">${item.qty}</span>
+            <button class="cart-qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+          </div>
+          <div class="cart-item-price ${priceClass}">${priceStr}</div>
+          <span class="cart-item-remove" onclick="removeItem('${item.id}')">✕</span>
+        </div>`;
+      });
+      list.innerHTML = html;
+      const total = cart.reduce((s, i) => s + (i.price ? i.price * i.qty : 0), 0);
+      document.getElementById('cart-total').textContent = total.toFixed(2).replace('.', ',') + ' €';
+      const hasVariable = cart.some(i => !i.price);
+      document.getElementById('cart-total-note').textContent = hasVariable ? 'Hors articles au prix en boutique' : '';
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+      renderCart();
+      updateBadge();
+    }
+
+    function removeItem(id) {
+      cart = cart.filter(i => i.id !== id);
+      renderCart();
+      updateBadge();
+    }
+
+    function clearCart() {
+      cart = [];
+      renderCart();
+      updateBadge();
+      document.getElementById('cart-checkout-form').classList.remove('open');
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('open');
+      document.getElementById('cart-overlay').classList.toggle('open');
+    }
+
+    function closeCart() {
+      document.getElementById('cart-panel').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+    }
+
+    function openCheckoutForm() {
+      document.getElementById('cart-checkout-form').classList.toggle('open');
+    }
+
+    function sendOrder() {
+      const name = document.getElementById('cf-name').value.trim();
+      const tel = document.getElementById('cf-tel').value.trim();
+      const date = document.getElementById('cf-date').value;
+      const msg = document.getElementById('cf-msg').value.trim();
+      if (!name || !tel) { alert('Merci de renseigner votre nom et téléphone.'); return; }
+      let text = `Bonjour Fine & Feuilletée !\n\nNom : ${name}\nTél : ${tel}\nRetrait souhaité : ${date || 'à définir'}\n\nCommande :\n`;
+      cart.forEach(i => { text += `- ${i.qty}x ${i.name}${i.price ? ' (' + (i.price * i.qty).toFixed(2).replace('.', ',') + ' €)' : ' (prix en boutique)'}\n`; });
+      if (msg) text += `\nMessage : ${msg}`;
+      const url = 'https://wa.me/590690000000?text=' + encodeURIComponent(text);
+      window.open(url, '_blank');
+    }
+
+    /* ── FORMULAIRE COMMANDER ── */
+    function submitOrder() {
+      const prenom = document.getElementById('f-prenom').value.trim();
+      const tel = document.getElementById('f-tel').value.trim();
+      const commande = document.getElementById('f-commande').value.trim();
+      if (!prenom || !tel || !commande) {
+        alert('Merci de renseigner votre prénom, téléphone et le détail de votre commande.');
+        return;
+      }
+      document.getElementById('order-form-wrap').style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+    }
+  </script>
+
+</body>
+</html>
