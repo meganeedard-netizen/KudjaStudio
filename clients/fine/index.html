@@ -427,8 +427,23 @@
     .footer-social { display: flex; gap: 1.2rem; margin-top: 0.5rem; }
     .footer-social a { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); transition: color 0.2s; }
     .footer-social a:hover { color: var(--rose-light); }
-    .footer-map { width: 100%; max-width: 520px; height: 240px; border-radius: 4px; overflow: hidden; margin: 1rem auto 0; border: 2px solid rgba(232,145,158,0.25); }
-    .footer-map iframe { width: 100%; height: 100%; border: none; display: block; }
+    .footer-map {
+      width: 100%; max-width: 420px; margin: 1.2rem auto 0;
+      background: rgba(255,255,255,0.05); border-radius: 12px;
+      border: 1.5px solid rgba(232,145,158,0.2);
+      padding: 1.4rem 1.8rem; display: flex; flex-direction: column;
+      align-items: center; gap: 0.75rem;
+    }
+    .footer-map-pin { font-size: 1.5rem; }
+    .footer-map-addr { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.6; text-align: center; }
+    .footer-map-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.4rem; background: var(--rose); color: #fff;
+      border-radius: 30px; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .footer-map-btn:hover { background: var(--rose-deep); transform: scale(1.03); }
     .footer-note { font-size: 0.58rem; color: rgba(255,255,255,0.18); letter-spacing: 0.05em; margin-top: 0.5rem; }
 
     /* ── RESPONSIVE ── */
@@ -712,7 +727,11 @@
         <a href="#">WhatsApp</a>
       </div>
       <div class="footer-map">
-        <iframe src="https://maps.google.com/maps?q=Fine+et+Feuilletee+Damencourt+Le+Moule+97160+Guadeloupe&hl=fr&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <span class="footer-map-pin">📍</span>
+        <p class="footer-map-addr">Damencourt · Le Moule<br>97160 Guadeloupe</p>
+        <a class="footer-map-btn" href="https://maps.google.com/maps?q=Fine+et+Feuilletee+Damencourt+Le+Moule+97160+Guadeloupe" target="_blank" rel="noopener">
+          Voir sur Google Maps &rarr;
+        </a>
       </div>
       <p class="footer-note">Site réalisé par Kudja Studio</p>
     </footer>
