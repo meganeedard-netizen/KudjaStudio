@@ -444,16 +444,46 @@
       nav { display: none; }
       .burger { display: flex; }
       .logo-text { display: none; }
-      .hero-title { font-size: clamp(3rem, 14vw, 5rem); }
+
+      /* Hero mobile : plein écran, image décalée pour voir la viennoiserie et les fleurs */
+      .hero { height: 100dvh; min-height: 600px; }
+      .hero-bg { background-position: 68% center; }
+      .hero-overlay {
+        background: linear-gradient(180deg,
+          rgba(28,28,28,0.15) 0%,
+          rgba(28,28,28,0.25) 40%,
+          rgba(28,28,28,0.80) 100%);
+      }
+      .hero-content {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        padding: 2rem 1.8rem 3rem;
+        text-align: left; max-width: 100%;
+      }
+      .hero-eyebrow { margin-bottom: 0.6rem; }
+      .hero-title { font-size: clamp(3rem, 14vw, 5rem); margin-bottom: 0.5rem; }
+      .hero-tagline { font-size: 0.8rem; margin-bottom: 1.8rem; }
+      .hero-buttons { justify-content: flex-start; gap: 0.75rem; }
+      .btn { padding: 0.75rem 1.6rem; font-size: 0.6rem; }
+
+      /* Vedettes */
       .vedettes-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .shop-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .form-row { grid-template-columns: 1fr; }
       .order-form { padding: 1.5rem; }
       .glaces-band-overlay { padding: 0 2rem; }
       .reviews-grid { grid-template-columns: 1fr; }
+
+      /* Intro split : image plus haute */
+      .intro-photo { min-height: 380px; }
+      .intro-text { padding: 2.5rem 1.8rem; }
+
+      /* Histoire */
+      .histoire-body { padding: 2.5rem 1.2rem 4rem; }
+      .histoire-card { padding: 1.8rem 1.5rem; }
     }
     @media (max-width: 480px) {
       .vedettes-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 3rem; }
     }
   </style>
 </head>
