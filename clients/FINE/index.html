@@ -10,6 +10,39 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── MOT DE PASSE ── */
+    #password-screen {
+      position: fixed; inset: 0; background: var(--off-white);
+      display: flex; align-items: center; justify-content: center; z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+    #password-screen.hidden { opacity: 0; pointer-events: none; }
+    .pw-box {
+      text-align: center; padding: 3rem 2.5rem; max-width: 400px; width: 90%;
+      background: #fff; border-radius: 4px;
+      box-shadow: 0 8px 40px rgba(232,145,158,0.15);
+    }
+    .pw-logo-img { width: 130px; height: 130px; object-fit: contain; margin: 0 auto 1.5rem; border-radius: 50%; }
+    .pw-sep { width: 40px; height: 2px; background: var(--rose); margin: 0 auto 1.5rem; border-radius: 2px; }
+    .pw-tagline { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gris-light); margin-bottom: 2rem; }
+    .pw-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris-light); margin-bottom: 0.75rem; }
+    #pw-input {
+      width: 100%; padding: 0.85rem 1.2rem; border: 1.5px solid var(--border-light); border-radius: 3px;
+      background: var(--blanc); font-family: 'Inter', sans-serif; font-size: 1rem;
+      letter-spacing: 0.15em; text-align: center; text-transform: uppercase; color: var(--noir);
+      transition: border-color 0.25s; margin-bottom: 1rem;
+    }
+    #pw-input:focus { outline: none; border-color: var(--rose); }
+    #pw-input::placeholder { color: var(--gris-light); opacity: 0.5; text-transform: none; letter-spacing: 0.05em; }
+    .pw-error { font-size: 0.7rem; color: #cc4444; margin-bottom: 0.75rem; min-height: 1em; opacity: 0; transition: opacity 0.3s; }
+    .pw-error.visible { opacity: 1; }
+    .pw-submit {
+      width: 100%; padding: 0.9rem; background: var(--rose); color: #fff;
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+      border-radius: 3px; transition: background 0.25s; cursor: pointer; border: none; font-family: inherit;
+    }
+    .pw-submit:hover { background: var(--rose-deep); }
+
     :root {
       --rose:        #E8919E;
       --rose-light:  #F2B4BC;
@@ -457,6 +490,19 @@
   </style>
 </head>
 <body>
+
+  <!-- MOT DE PASSE -->
+  <div id="password-screen">
+    <div class="pw-box">
+      <img class="pw-logo-img" src="images/logo-fine-feuilletee.webp" alt="Fine & Feuilletée">
+      <div class="pw-sep"></div>
+      <p class="pw-tagline">Salon de Gourmandises · Le Moule, Guadeloupe</p>
+      <p class="pw-label">Code d'accès</p>
+      <input type="password" id="pw-input" placeholder="Entrez votre code" autocomplete="off">
+      <p class="pw-error" id="pw-error">Code incorrect, veuillez réessayer.</p>
+      <button class="pw-submit" onclick="checkPassword()">Accéder au site</button>
+    </div>
+  </div>
 
   <!-- PANIER OVERLAY -->
   <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
@@ -1170,6 +1216,22 @@
 
 
   <script>
+    /* ── MOT DE PASSE ── */
+    function checkPassword() {
+      const val = document.getElementById('pw-input').value.trim().toUpperCase();
+      if (val === 'FINE') {
+        document.getElementById('password-screen').classList.add('hidden');
+        setTimeout(() => document.getElementById('password-screen').style.display = 'none', 650);
+      } else {
+        document.getElementById('pw-error').classList.add('visible');
+        document.getElementById('pw-input').value = '';
+        setTimeout(() => document.getElementById('pw-error').classList.remove('visible'), 2500);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
+    });
+
     /* ── NAVIGATION ── */
     let currentSection = 'accueil';
 
