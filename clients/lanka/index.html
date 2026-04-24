@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Anka | Cevichería & Bistronomie Terre-Mer · Saint-François, Guadeloupe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #1A8C9A;
+      --teal-light:  #4AABB7;
+      --teal-pale:   #EAF5F7;
+      --teal-deep:   #0F6876;
+      --gold:        #C4A96A;
+      --gold-light:  #D4BF8C;
+      --gold-pale:   #F9F2E4;
+      --noir:        #1A2B35;
+      --gris:        #4A5E68;
+      --gris-mid:    #7A9099;
+      --gris-light:  #AABEC5;
+      --blanc:       #FAF8F4;
+      --off-white:   #F3EDE2;
+      --border:      rgba(26,140,154,0.18);
+      --border-gold: rgba(196,169,106,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--noir); font-size: 15px; line-height: 1.7; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,248,244,0.97); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-gold);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .logo { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; flex-shrink: 0; }
+    .logo-vertical { height: 66px; width: auto; object-fit: contain; display: block; }
+    .logo-location {
+      font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; font-weight: 400;
+      font-style: italic; color: var(--gris); line-height: 1.4; letter-spacing: 0.02em;
+    }
+
+    nav { display: flex; align-items: center; gap: 0.1rem; }
+    .nav-btn { padding: 0.45rem 0.85rem; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gris); border-radius: 3px; transition: color 0.2s; }
+    .nav-btn:hover, .nav-btn.active { color: var(--teal); }
+
+    .btn-reserver {
+      padding: 0.55rem 1.4rem; background: var(--teal); color: #fff;
+      font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      border-radius: 30px; transition: background 0.2s, transform 0.15s; white-space: nowrap; margin-left: 0.4rem;
+    }
+    .btn-reserver:hover { background: var(--teal-deep); transform: scale(1.04); }
+
+    .burger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+    .burger span { display: block; width: 22px; height: 1.5px; background: var(--noir); transition: 0.3s; }
+    .mobile-nav {
+      display: none; flex-direction: column; padding: 0.6rem 2rem 1.2rem;
+      border-top: 1px solid var(--border-gold); background: var(--blanc);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav .nav-btn { padding: 0.85rem 0; border-bottom: 1px solid var(--border-gold); text-align: left; color: var(--noir); font-size: 0.7rem; }
+    .mobile-nav .nav-btn:last-child { border-bottom: none; }
+
+    /* ── PAGES ── */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/image-accueil-site.webp'); background-size: cover; background-position: center center;
+      transform: scale(1.04); transition: transform 9s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { display: none; }
+    .hero-content { position: relative; z-index: 2; padding: 0 5rem 5rem; max-width: 700px; }
+    .hero-eyebrow { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal-deep); margin-bottom: 1.2rem; }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(5rem, 10vw, 9rem); font-weight: 300;
+      color: var(--noir); line-height: 0.9; letter-spacing: 0.03em; margin-bottom: 1.4rem;
+      text-shadow: 0 2px 30px rgba(250,248,244,0.6);
+    }
+    .hero-title em { font-style: italic; color: var(--teal); }
+    .hero-tagline {
+      font-size: 0.8rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gris); margin-bottom: 2.8rem;
+    }
+    .hero-tagline span { color: var(--teal); margin: 0 0.6rem; }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      padding: 0.9rem 2.2rem; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em;
+      text-transform: uppercase; border-radius: 2px; transition: all 0.25s;
+      display: inline-block; cursor: pointer; font-family: 'Inter', sans-serif; border: none;
+    }
+    .btn-teal { background: var(--teal); color: #fff; }
+    .btn-teal:hover { background: var(--teal-deep); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+    .btn-outline:hover { background: var(--teal); color: #fff; }
+    .btn-teal-outline { background: transparent; border: 1.5px solid var(--teal); color: var(--teal); }
+    .btn-teal-outline:hover { background: var(--teal); color: #fff; }
+    .btn-gold { background: var(--gold); color: #fff; }
+    .btn-gold:hover { background: #a88e50; }
+
+    /* ── BANDEAU ── */
+    .bandeau {
+      background: var(--noir);
+      display: flex; align-items: center; justify-content: center; gap: 3rem;
+      padding: 1.1rem 2rem; flex-wrap: wrap;
+    }
+    .bandeau-item { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .bandeau-item strong { color: var(--gold-light); font-weight: 500; }
+    .bandeau-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); opacity: 0.5; }
+
+    /* ── CONCEPT ── */
+    .concept-split { background: #fff; }
+    .concept-photo { display: none; }
+    .concept-text {
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center;
+      padding: 5rem 2rem; max-width: 720px; margin: 0 auto;
+    }
+    .section-eyebrow { font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.2rem; }
+    .concept-text h2 { font-size: clamp(2.2rem, 3.8vw, 3.5rem); color: var(--noir); line-height: 1.1; margin-bottom: 1.5rem; }
+    .concept-text h2 em { font-style: italic; color: var(--teal); }
+    .concept-text p { font-size: 0.87rem; color: var(--gris); line-height: 2; margin-bottom: 1.3rem; max-width: 580px; }
+    .divider-teal { width: 44px; height: 2px; background: var(--teal); margin-bottom: 2rem; border-radius: 2px; }
+    .divider-gold { width: 44px; height: 1.5px; background: var(--gold); border-radius: 2px; }
+
+    /* ── GALLERY ── */
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .gallery-item { overflow: hidden; aspect-ratio: 1 / 1; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    /* ── SECTION HERO (inner pages) ── */
+    .section-hero {
+      position: relative; background: var(--off-white);
+      padding: 5.5rem 2rem 4rem; text-align: center; overflow: hidden;
+    }
+    .section-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/image-fond.webp');
+      background-size: cover; background-position: center top;
+      opacity: 0.55; pointer-events: none;
+    }
+    .section-hero .section-eyebrow { position: relative; z-index: 1; }
+    .section-hero h1 {
+      position: relative; z-index: 1;
+      font-size: clamp(2.8rem, 6vw, 5rem); color: var(--noir); line-height: 1.05; margin-top: 0.4rem;
+    }
+    .section-hero h1 em { font-style: italic; color: var(--teal); }
+    .section-hero .section-sub {
+      position: relative; z-index: 1;
+      font-size: 0.8rem; color: var(--gris-mid); letter-spacing: 0.14em; margin-top: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    /* ── CARTE TABS ── */
+    .carte-tabs {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      background: #fff; border-bottom: 1.5px solid var(--teal-pale);
+      position: sticky; top: 72px; z-index: 50;
+    }
+    .carte-tab {
+      padding: 1.15rem 2rem; font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gris-mid);
+      border-bottom: 2.5px solid transparent; margin-bottom: -1.5px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .carte-tab:hover { color: var(--teal); }
+    .carte-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+    /* ── MENU ── */
+    .menu-section {
+      display: none; padding: 4rem 2rem 6rem; max-width: 840px; margin: 0 auto;
+    }
+    .menu-section.active { display: block; }
+
+
+    .menu-header { text-align: center; margin-bottom: 3.5rem; }
+    .menu-header h2 { font-size: clamp(2.2rem, 4.5vw, 3.5rem); color: var(--noir); }
+    .menu-header h2 em { font-style: italic; color: var(--teal); }
+    .menu-header p { font-size: 0.8rem; color: var(--gris-mid); margin-top: 0.6rem; font-style: italic; letter-spacing: 0.05em; }
+    .menu-header-divider { width: 40px; height: 1.5px; background: var(--gold); margin: 1.2rem auto 0; border-radius: 2px; }
+
+    .menu-group { margin-bottom: 3.5rem; }
+    .menu-group-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-style: italic;
+      color: var(--teal); margin-bottom: 1.5rem;
+      padding-bottom: 0.7rem; border-bottom: 1px solid var(--border);
+    }
+
+    .menu-item {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 2rem; padding: 1.15rem 0;
+      border-bottom: 1px solid rgba(196,169,106,0.12);
+    }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-left { flex: 1; }
+    .menu-item-name { font-size: 0.9rem; font-weight: 600; color: var(--noir); margin-bottom: 0.3rem; letter-spacing: 0.01em; }
+    .menu-item-desc { font-size: 0.78rem; color: var(--gris-mid); font-style: italic; line-height: 1.65; }
+    .menu-item-note { font-size: 0.68rem; color: var(--teal); margin-top: 0.25rem; font-style: italic; }
+    .menu-item-price {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--teal-deep);
+      font-weight: 500; flex-shrink: 0; white-space: nowrap; padding-top: 1px;
+    }
+    .menu-item-price.variable {
+      font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--gris-mid);
+      font-weight: 500; font-style: italic;
+    }
+
+    /* accompagnement note */
+    .menu-accompagnement {
+      text-align: center; padding: 1.8rem 1rem;
+      border-top: 1px solid var(--border-gold); border-bottom: 1px solid var(--border-gold);
+      margin: 0.5rem 0 2.8rem;
+    }
+    .menu-acc-label {
+      font-size: 0.54rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); display: block; margin-bottom: 0.7rem;
+    }
+    .menu-accompagnement p {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.15rem; color: var(--gris); line-height: 1.7; max-width: 520px; margin: 0 auto;
+    }
+
+    /* définitions ceviche / tiradito */
+    .menu-defs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+      margin-top: 3rem; padding-top: 2.5rem;
+      border-top: 1px solid var(--border-gold);
+    }
+    .menu-def-item { text-align: center; }
+    .menu-def-word {
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 1.6rem; color: var(--teal); display: block; margin-bottom: 0.8rem;
+    }
+    .menu-def-sep { width: 28px; height: 1px; background: var(--gold); margin: 0 auto 0.9rem; border-radius: 2px; }
+    .menu-def-item p { font-size: 0.78rem; color: var(--gris-mid); line-height: 1.85; }
+    .menu-divider { height: 1px; background: var(--border-gold); margin: 2.5rem 0; }
+
+    /* ── RESTAURANT ── */
+    .resto-hero { height: 58vh; min-height: 380px; overflow: hidden; position: relative; }
+    .resto-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+
+    .resto-content { max-width: 800px; margin: 0 auto; padding: 5rem 2rem 5rem; text-align: center; }
+    .resto-content h2 { font-size: clamp(2.2rem, 4vw, 3.8rem); color: var(--noir); line-height: 1.05; margin-bottom: 1.5rem; }
+    .resto-content h2 em { font-style: italic; color: var(--teal); }
+    .resto-content p { font-size: 0.88rem; color: var(--gris); line-height: 2; margin-bottom: 1.2rem; max-width: 580px; margin-left: auto; margin-right: auto; }
+    .resto-divider { width: 44px; height: 2px; background: var(--teal); margin: 0 auto 2rem; border-radius: 2px; }
+
+    /* photo stack */
+    .resto-photo-stack {
+      position: relative; height: 500px;
+      max-width: 580px; margin: 4rem auto 0;
+    }
+    .resto-photo-stack::before {
+      content: '';
+      position: absolute;
+      width: 56%; height: 58%;
+      border: 2px solid var(--teal);
+      border-radius: 3px;
+      bottom: 18px; right: 18px;
+      z-index: 0; opacity: 0.55;
+    }
+    .resto-stack-1 {
+      position: absolute; top: 0; left: 0;
+      width: 68%; height: 74%;
+      object-fit: cover; border-radius: 4px; z-index: 2;
+      box-shadow: 0 16px 50px rgba(26,43,53,0.18);
+    }
+    .resto-stack-2 {
+      position: absolute; bottom: 0; right: 0;
+      width: 54%; height: 52%;
+      object-fit: cover; border-radius: 4px; z-index: 3;
+      box-shadow: 0 16px 50px rgba(26,43,53,0.18);
+    }
+
+    /* ── INFOS ── */
+    .infos-wrap { max-width: 1060px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+    .infos-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem; align-items: start; }
+
+    .infos-block h3 { font-size: 2.2rem; color: var(--noir); margin-bottom: 1.8rem; line-height: 1.1; }
+    .infos-block h3 em { font-style: italic; color: var(--teal); }
+
+    /* ── FORMULAIRE RÉSERVATION ── */
+    .resa-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: var(--noir); margin-bottom: 0.4rem; }
+    .resa-title em { font-style: italic; color: var(--teal); }
+    .resa-intro { font-size: 0.82rem; color: var(--gris-mid); line-height: 1.7; margin-bottom: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.6rem; font-weight: 600; color: var(--noir);
+      margin-bottom: 0.4rem; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.85rem 1rem;
+      border: 1.5px solid var(--border-gold); border-radius: 2px;
+      font-size: 0.88rem; font-family: 'Inter', sans-serif;
+      color: var(--noir); background: #fff;
+      outline: none; appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(26,140,154,0.1);
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231A8C9A' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.9rem center;
+      background-color: #fff; padding-right: 2.5rem; cursor: pointer;
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .btn-resa {
+      width: 100%; padding: 1rem; background: var(--teal); border: none; color: #fff;
+      font-family: 'Inter', sans-serif; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
+      border-radius: 2px; transition: background 0.2s; margin-top: 0.4rem;
+    }
+    .btn-resa:hover { background: var(--teal-deep); }
+    .resa-success {
+      display: none; background: var(--teal-pale); border: 1.5px solid var(--teal);
+      border-radius: 4px; padding: 2rem; text-align: center; margin-top: 1rem;
+    }
+    .resa-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--teal-deep); margin-bottom: 0.6rem; }
+    .resa-success p { color: var(--gris); font-size: 0.85rem; line-height: 1.7; }
+    .btn-reset {
+      margin-top: 1rem; background: transparent; border: 1.5px solid var(--teal);
+      color: var(--teal); font-family: 'Inter', sans-serif; font-size: 0.6rem;
+      font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.6rem 1.4rem; cursor: pointer; border-radius: 2px; transition: 0.2s;
+    }
+    .btn-reset:hover { background: var(--teal); color: #fff; }
+
+    .horaires-table { width: 100%; border-collapse: collapse; }
+    .horaires-table tr { border-bottom: 1px solid var(--border-gold); }
+    .horaires-table tr:last-child { border-bottom: none; }
+    .horaires-table td { padding: 0.75rem 0; font-size: 0.82rem; color: var(--gris); vertical-align: top; }
+    .horaires-table td:first-child {
+      font-weight: 600; color: var(--noir); text-transform: uppercase;
+      letter-spacing: 0.08em; font-size: 0.7rem; width: 38%; padding-top: 0.85rem;
+    }
+    .ferme { color: var(--gris-light) !important; font-style: italic; }
+    .horaires-table .weekend td { color: var(--teal); }
+    .horaires-table .weekend td:first-child { color: var(--teal-deep); }
+
+    .contact-block { display: flex; flex-direction: column; gap: 1.4rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--teal-pale);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+    .contact-icon svg { width: 16px; height: 16px; stroke: var(--teal); fill: none; stroke-width: 1.8; }
+    .contact-label { font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris-light); display: block; margin-bottom: 3px; }
+    .contact-val { font-size: 0.88rem; color: var(--noir); }
+    .contact-val a { transition: color 0.2s; }
+    .contact-val a:hover { color: var(--teal); }
+
+    .social-row { display: flex; gap: 0.8rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.2rem; border: 1.5px solid var(--border);
+      border-radius: 30px; font-size: 0.58rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--gris-mid);
+      transition: all 0.2s;
+    }
+    .social-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+    .map-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.6rem; background: var(--teal); color: #fff;
+      border-radius: 30px; font-size: 0.6rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; margin-top: 2rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .map-btn:hover { background: var(--teal-deep); transform: scale(1.03); }
+
+    /* ── FOOTER ── */
+
+    /* ── MODAL RÉSERVATION ── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26,43,53,0.55); z-index: 200; backdrop-filter: blur(3px);
+    }
+    .modal-overlay.open { display: block; }
+    .modal-panel {
+      position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 520px;
+      background: var(--blanc); z-index: 201; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      display: flex; flex-direction: column;
+    }
+    .modal-panel.open { transform: translateX(0); }
+    .modal-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 2.5rem 2.5rem 1.5rem; border-bottom: 1px solid var(--border-gold);
+      flex-shrink: 0;
+    }
+    .modal-close {
+      font-size: 1rem; color: var(--gris-mid); padding: 0.3rem 0.5rem;
+      transition: color 0.2s; cursor: pointer; flex-shrink: 0; margin-top: 0.4rem;
+    }
+    .modal-close:hover { color: var(--teal); }
+    .modal-body { padding: 2rem 2.5rem 3rem; flex: 1; }
+
+    /* ── FOOTER (rich layout) ── */
+    footer {
+      background: var(--noir); padding: 0; text-align: left;
+      display: block; /* override previous flex */
+    }
+    .footer-top {
+      max-width: 1060px; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr; gap: 4rem; padding: 4rem 2rem 3rem;
+      align-items: start;
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+    .footer-sub { font-size: 0.5rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .footer-infos { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .footer-block-label {
+      font-size: 0.52rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem; display: block;
+    }
+    .footer-horaires p, .footer-contact a, .footer-contact p {
+      font-size: 0.78rem; color: rgba(255,255,255,0.42); line-height: 2.1; display: block;
+    }
+    .footer-contact a:hover { color: var(--teal-light); }
+    .footer-social-row { display: flex; gap: 0.6rem; align-items: center; margin-top: 0.4rem; }
+    .footer-social-row a { font-size: 0.72rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .footer-social-row a:hover { color: var(--teal-light); }
+    .footer-social-row span { color: rgba(255,255,255,0.2); font-size: 0.6rem; }
+    .footer-logo-written { height: 90px; width: auto; object-fit: contain; }
+    .footer-map-row {
+      max-width: 1060px; margin: 0 auto;
+      padding: 0 2rem 3rem;
+    }
+    .footer-map { width: 100%; height: 220px; border-radius: 6px; overflow: hidden; border: 2px solid rgba(26,140,154,0.3); }
+    .footer-map iframe { width: 100%; height: 100%; border: none; display: block; }
+    .footer-sep { height: 1px; background: rgba(255,255,255,0.07); margin: 0 2rem; }
+    .footer-note {
+      font-size: 0.54rem; color: rgba(255,255,255,0.14); letter-spacing: 0.05em;
+      text-align: center; padding: 1.5rem 2rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .concept-split { grid-template-columns: 1fr; }
+      .concept-photo { min-height: 380px; }
+      .concept-text { padding: 3.5rem 3rem; }
+      .infos-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+      .resto-intro { grid-template-columns: 1fr; }
+      .resto-intro-img img { height: 320px; }
+    }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .btn-reserver { display: none; }
+      .burger { display: flex; }
+      .logo-text { display: none; }
+      .logo-location { display: none; }
+
+      .hero { height: 100dvh; }
+      .hero-bg { background-position: center center; }
+      .hero-content { padding: 0 1.8rem 3rem; max-width: 100%; }
+      .hero-title { font-size: clamp(4rem, 16vw, 6rem); }
+      .hero-tagline { font-size: 0.7rem; letter-spacing: 0.16em; }
+      .hero-buttons { gap: 0.75rem; }
+      .btn { padding: 0.8rem 1.6rem; font-size: 0.58rem; }
+
+      .bandeau { gap: 1.2rem; flex-direction: column; text-align: center; padding: 1.5rem 2rem; }
+      .bandeau-sep { display: none; }
+
+      .concept-text { padding: 3rem 1.8rem; }
+
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .gallery-item:last-child { display: none; }
+
+      .section-hero { padding: 4rem 1.5rem 3rem; }
+
+      .carte-tabs { top: 68px; }
+      .carte-tab { padding: 0.9rem 1rem; font-size: 0.55rem; letter-spacing: 0.12em; }
+
+      .menu-section { padding: 3rem 1.4rem 5rem; }
+      .menu-item { gap: 1rem; }
+      .menu-defs { grid-template-columns: 1fr; gap: 2rem; }
+
+      .resto-hero { height: 45vh; }
+      .resto-content { padding: 3.5rem 1.5rem 4rem; }
+      .resto-photo-stack { height: 360px; max-width: 100%; }
+      .resto-stack-1 { width: 72%; height: 70%; }
+      .resto-stack-2 { width: 58%; height: 50%; }
+
+      .infos-wrap { padding: 3.5rem 1.5rem 5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem 2rem; }
+      .footer-infos { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-map-row { padding: 0 1.5rem 2.5rem; }
+      .modal-panel { max-width: 100%; }
+      .modal-header { padding: 2rem 1.5rem 1.2rem; }
+      .modal-body { padding: 1.5rem 1.5rem 3rem; }
+    }
+    @media (max-width: 480px) {
+      .gallery { grid-template-columns: 1fr; }
+      .gallery-item:last-child { display: block; }
+      .hero-title { font-size: 4rem; }
+      .carte-tab { padding: 0.8rem 0.65rem; font-size: 0.5rem; letter-spacing: 0.08em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="main-header">
+    <div class="header-inner">
+      <a class="logo" onclick="showSection('accueil')">
+        <img class="logo-vertical" src="images/logo-vertical.webp" alt="L'Anka">
+        <span class="logo-location">Restaurant à Saint-François</span>
+      </a>
+      <nav>
+        <button class="nav-btn active" id="nav-accueil" onclick="showSection('accueil')">Accueil</button>
+        <button class="nav-btn" id="nav-carte" onclick="showSection('carte')">La Carte</button>
+        <button class="nav-btn" id="nav-restaurant" onclick="showSection('restaurant')">Le Restaurant</button>
+      </nav>
+      <div style="display:flex;align-items:center;gap:0.4rem;flex-shrink:0;">
+        <button class="btn-reserver" onclick="openReservation()">Réserver</button>
+        <button class="burger" id="burger" onclick="toggleMobileNav()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <button class="nav-btn" onclick="showSection('accueil'); toggleMobileNav()">Accueil</button>
+      <button class="nav-btn" onclick="showSection('carte'); toggleMobileNav()">La Carte</button>
+      <button class="nav-btn" onclick="showSection('restaurant'); toggleMobileNav()">Le Restaurant</button>
+      <button class="nav-btn" onclick="openReservation(); toggleMobileNav()">Réserver une table</button>
+    </div>
+  </header>
+
+
+  <!-- ══ ACCUEIL ══ -->
+  <div id="section-accueil" class="page-section active">
+
+    <section class="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+    </section>
+
+    <div class="bandeau">
+      <span class="bandeau-item">Déjeuner &nbsp;<strong>12H – 14H30</strong></span>
+      <span class="bandeau-sep"></span>
+      <span class="bandeau-item">Dîner &nbsp;<strong>19H – 21H30</strong></span>
+      <span class="bandeau-sep"></span>
+      <span class="bandeau-item">Fermé le &nbsp;<strong>Jeudi</strong></span>
+      <span class="bandeau-sep"></span>
+      <span class="bandeau-item"><strong>+590 6 90 99 66 43</strong></span>
+    </div>
+
+    <div class="concept-split">
+      <div class="concept-photo"></div>
+      <div class="concept-text">
+        <p class="section-eyebrow">Notre concept</p>
+        <h2>Là où la mer<br>rencontre la <em>terre</em></h2>
+        <div class="divider-teal"></div>
+        <p>L'Anka est né d'une passion pour les saveurs du monde et les produits d'exception de Guadeloupe. Notre cuisine voyage entre les ceviches d'inspiration péruvienne et les créations bistronomiques qui subliment la richesse de notre île.</p>
+        <p>Poissons pêchés localement, viandes travaillées avec soin, légumes du pays revisités — chaque assiette raconte une rencontre entre deux mondes, entre la mer et la terre, entre tradition et créativité.</p>
+        <button class="btn btn-teal" onclick="showSection('carte')" style="margin-top:0.5rem;">Découvrir la carte</button>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="images/photo-palt.webp" alt="Ceviche L'Anka" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tapas.webp" alt="Tapas L'Anka" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="images/plat.webp" alt="Plats L'Anka" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ══ LA CARTE ══ -->
+  <div id="section-carte" class="page-section">
+
+    <div class="section-hero">
+      <div class="section-hero-bg"></div>
+      <p class="section-eyebrow">L'Anka · Saint-François</p>
+      <h1>Notre <em>Carte</em></h1>
+      <p class="section-sub">Ceviches &middot; Tapas &middot; Bistronomie</p>
+    </div>
+
+    <div class="carte-tabs" id="carte-tabs">
+      <button class="carte-tab active" data-tab="tapas" onclick="showTab('tapas')">Tapas</button>
+      <button class="carte-tab" data-tab="ceviches" onclick="showTab('ceviches')">Ceviches &amp; Tiraditos</button>
+      <button class="carte-tab" data-tab="plats" onclick="showTab('plats')">Plats</button>
+      <button class="carte-tab" data-tab="gourmandises" onclick="showTab('gourmandises')">Gourmandises</button>
+    </div>
+
+    <!-- TAPAS -->
+    <div class="menu-section active" id="tab-tapas">
+      <div class="menu-header">
+        <h2>Nos <em>Tapas</em></h2>
+        <p>À partager ou à savourer en entrée</p>
+        <div class="menu-header-divider"></div>
+      </div>
+      <div class="menu-group">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Houmous de giraumon rôti, éclats de noix de cajou</p>
+          </div>
+          <span class="menu-item-price">7,50€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Cromesquis dorés de patates douces</p>
+            <p class="menu-item-desc">Cœur fondant de fromage</p>
+          </div>
+          <span class="menu-item-price">9€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Rillettes onctueuses de poissons</p>
+          </div>
+          <span class="menu-item-price">10€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Fish and chips mayonnaise au wasabi</p>
+          </div>
+          <span class="menu-item-price">15€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Patatas bravas</p>
+            <p class="menu-item-desc">Accompagnées de leurs sauces maison</p>
+          </div>
+          <span class="menu-item-price">7€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Arancini croustillants aux champignons et parmesan</p>
+          </div>
+          <span class="menu-item-price">12€</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CEVICHES & TIRADITOS -->
+    <div class="menu-section" id="tab-ceviches">
+      <div class="menu-header">
+        <h2>Ceviches &amp; <em>Tiraditos</em></h2>
+        <p>Nos plats signature — poissons marinés aux inspirations péruviennes</p>
+        <div class="menu-header-divider"></div>
+      </div>
+      <div class="menu-accompagnement">
+        <span class="menu-acc-label">Accompagnement</span>
+        <p>Une composition de savoureux légumes rôtis servis avec une sauce aux fines herbes fraîches et sésame.</p>
+      </div>
+      <div class="menu-group">
+        <p class="menu-group-title">Ceviches</p>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Le Ceviche Péruvien</p>
+            <p class="menu-item-desc">Lait de coco, citron vert, cubes de patate douce, légumes craquants</p>
+          </div>
+          <span class="menu-item-price">23€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Le Ceviche Gwada</p>
+            <p class="menu-item-desc">Sauce passion mangue, piment végétarien, ananas frais, gingembre</p>
+          </div>
+          <span class="menu-item-price">23€</span>
+        </div>
+      </div>
+      <div class="menu-group">
+        <p class="menu-group-title">Tiraditos</p>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Le Tiradito Combawa</p>
+            <p class="menu-item-desc">Lait de coco infusé au combawa, légumes craquants, plantain doré</p>
+          </div>
+          <span class="menu-item-price">24€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Le Tiradito de Thon</p>
+            <p class="menu-item-desc">Leche de tigre, légumes craquants, crumble à la truffe</p>
+          </div>
+          <span class="menu-item-price">25€</span>
+        </div>
+      </div>
+      <div class="menu-defs">
+        <div class="menu-def-item">
+          <span class="menu-def-word">Le Ceviche</span>
+          <div class="menu-def-sep"></div>
+          <p>Plat d'origine sud-américaine, à base de poisson cru mariné dans du citron et servi avec des légumes craquants.</p>
+        </div>
+        <div class="menu-def-item">
+          <span class="menu-def-word">Le Tiradito</span>
+          <div class="menu-def-sep"></div>
+          <p>Plat péruvien de fines tranches de poisson cru recouvertes d'une sauce acidulée, servi dès sa préparation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLATS -->
+    <div class="menu-section" id="tab-plats">
+      <div class="menu-header">
+        <h2>Nos <em>Plats</em></h2>
+        <p>Bistronomie terre-mer — produits locaux travaillés avec passion</p>
+        <div class="menu-header-divider"></div>
+      </div>
+      <div class="menu-group">
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Poisson du jour</p>
+          </div>
+          <span class="menu-item-price">24€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">La pièce du boucher</p>
+            <p class="menu-item-desc">Voir sur l'ardoise</p>
+          </div>
+          <span class="menu-item-price variable">Prix selon arrivage</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">La Veggie Crémeuse</p>
+            <p class="menu-item-desc">Burattina crémeuse, antipasti de légumes pays, sauce tomate basilic, crackers maison parmesan et noisettes torréfiées</p>
+          </div>
+          <span class="menu-item-price">21€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">La Tentacule</p>
+            <p class="menu-item-desc">Chatrou grillé au chorizo et beurre persillé, écrasé de pomme de terre citronné</p>
+          </div>
+          <span class="menu-item-price">26€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">La Pièce Confite</p>
+            <p class="menu-item-desc">Souris d'agneau confite à l'ananas et aux épices douces, mousseline de patate douce vanillée et légumes rôtis</p>
+          </div>
+          <span class="menu-item-price">28€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Burger L'Anka</p>
+            <p class="menu-item-desc">Steak ou poisson croustillant, cheddar et pickles maison</p>
+          </div>
+          <span class="menu-item-price">22€</span>
+        </div>
+      </div>
+      <div class="menu-divider"></div>
+      <div class="menu-group">
+        <p class="menu-group-title">Menu Ti-moun</p>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Sirop à l'eau, burger ou fish &amp; chips, boule de glace</p>
+          </div>
+          <span class="menu-item-price">12€</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOURMANDISES -->
+    <div class="menu-section" id="tab-gourmandises">
+      <div class="menu-header">
+        <h2>Nos <em>Gourmandises</em></h2>
+        <p>Desserts maison &amp; cafés créatifs</p>
+        <div class="menu-header-divider"></div>
+      </div>
+      <div class="menu-group">
+        <p class="menu-group-title">Desserts</p>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Tiramisu façon Banofee</p>
+            <p class="menu-item-desc">Crème mascarpone onctueuse vanillée, banane caramélisée et biscuits craquants</p>
+          </div>
+          <span class="menu-item-price">10€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Crumble de fruits frais du jour et sa boule de glace</p>
+          </div>
+          <span class="menu-item-price">8€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Choco-pistache</p>
+            <p class="menu-item-desc">Brownie fondant, craquant pistache, ganache montée légère à la pistache</p>
+          </div>
+          <span class="menu-item-price">12€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Cookie Lovers</p>
+            <p class="menu-item-desc">Grand cookie moelleux aux noix de pécan et pépites de chocolat, glace vanille et crémeux de chocolat</p>
+          </div>
+          <span class="menu-item-price">10€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Café Gourmand</p>
+            <p class="menu-item-desc">Assortiment de nos gourmandises maison</p>
+          </div>
+          <span class="menu-item-price">14€</span>
+        </div>
+      </div>
+      <div class="menu-divider"></div>
+      <div class="menu-group">
+        <p class="menu-group-title">Cafés Créatifs</p>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Pistachissimo</p>
+            <p class="menu-item-desc">Affogato à la pistache, expresso chaud versé sur glace pistache et chantilly</p>
+          </div>
+          <span class="menu-item-price">8€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Purple Dream</p>
+            <p class="menu-item-desc">Ube Latte (sans caféine), lait mousseux infusé à l'Ube, légèrement sucré à la vanille</p>
+            <p class="menu-item-note">Avec du lait végétal +1,50€</p>
+          </div>
+          <span class="menu-item-price">8€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">L'Écume Vanille</p>
+            <p class="menu-item-desc">Affogato vanille, expresso versé sur glace vanille, coulis caramel et chantilly</p>
+          </div>
+          <span class="menu-item-price">6€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Matcha L'Anka</p>
+            <p class="menu-item-desc">Thé matcha onctueux, purée de mangue et sirop maracudja — chaud ou froid</p>
+          </div>
+          <span class="menu-item-price">8€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Coco Chill</p>
+            <p class="menu-item-desc">Affogato coco, expresso versé sur glace coco, miel doux, coco râpée torréfiée et chantilly</p>
+          </div>
+          <span class="menu-item-price">6€</span>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-left">
+            <p class="menu-item-name">Moka Sésame</p>
+            <p class="menu-item-desc">Moka chocolat noir et sésame, expresso, chocolat noir fondu, crème de sésame, lait mousseux et chantilly</p>
+            <p class="menu-item-note">Avec du lait végétal +1,50€</p>
+          </div>
+          <span class="menu-item-price">7€</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ══ LE RESTAURANT ══ -->
+  <div id="section-restaurant" class="page-section">
+
+    <div class="resto-hero">
+      <img src="images/restaurent-lanka.webp" alt="L'Anka — Salle du restaurant" loading="lazy">
+    </div>
+
+    <div class="resto-content">
+      <p class="section-eyebrow">Notre univers</p>
+      <h2>Un lieu où l'on<br>prend le <em>temps</em></h2>
+      <div class="resto-divider"></div>
+      <p>Niché à Saint-François, L'Anka vous accueille dans un cadre chaleureux mêlant bois naturel, végétation luxuriante et lumières douces. La salle intérieure et la terrasse sous pergola créent deux ambiances distinctes, toutes deux baignées de l'atmosphère qui nous est chère.</p>
+      <p>Notre équipe est passionnée, attentionnée, pour que chaque repas devienne un souvenir. De l'accueil à la dernière gourmandise, chaque détail compte.</p>
+      <p>L'Anka c'est aussi une adresse de vie, où les habitants de Saint-François se retrouvent et que les visiteurs de passage n'oublient pas.</p>
+      <button class="btn btn-teal-outline" onclick="openReservation()" style="margin-top:1rem;">Réserver une table</button>
+
+      <div class="resto-photo-stack">
+        <img class="resto-stack-1" src="images/restaurant-lanka-2.webp" alt="Intérieur L'Anka" loading="lazy">
+        <img class="resto-stack-2" src="images/restaurant.webp" alt="Terrasse L'Anka" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- MODALE RÉSERVATION -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeReservation()"></div>
+  <div class="modal-panel" id="modal-panel">
+    <div class="modal-header">
+      <div>
+        <h2 class="resa-title">Réserver <em>une table</em></h2>
+        <p class="resa-intro">Nous vous confirmons votre table par téléphone ou SMS dans les plus brefs délais.</p>
+      </div>
+      <button class="modal-close" onclick="closeReservation()">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="resa-form" onsubmit="submitReservation(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telephone">Téléphone *</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="+590 6XX XX XX XX" required>
+          </div>
+          <div class="form-group">
+            <label for="personnes">Nombre de personnes *</label>
+            <select id="personnes" name="personnes" required>
+              <option value="" disabled selected>Choisir</option>
+              <option>1 personne</option><option>2 personnes</option><option>3 personnes</option>
+              <option>4 personnes</option><option>5 personnes</option><option>6 personnes</option>
+              <option>7 personnes</option><option>8 personnes ou plus</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date">Date souhaitée *</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="form-group">
+            <label for="service">Créneau *</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Choisir un créneau</option>
+              <option>Déjeuner — 12H00</option>
+              <option>Déjeuner — 13H30</option>
+              <option>Dîner — 19H00</option>
+              <option>Dîner — 20H30</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message (optionnel)</label>
+          <textarea id="message" name="message" placeholder="Occasion spéciale, allergies, demandes particulières..."></textarea>
+        </div>
+        <button type="submit" class="btn-resa">Confirmer la réservation</button>
+      </form>
+      <div class="resa-success" id="resa-success">
+        <h3>Réservation reçue !</h3>
+        <p id="resa-success-text"></p>
+        <button class="btn-reset" onclick="resetForm()">Faire une nouvelle réservation</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img class="footer-logo-written" src="images/logo-vertical.webp" alt="L'Anka">
+      </div>
+      <div class="footer-infos">
+        <div class="footer-horaires">
+          <p class="footer-block-label">Horaires</p>
+          <p>Lun – Mer &nbsp; 12H–14H30 · 19H–21H30</p>
+          <p>Jeudi &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fermé</p>
+          <p>Ven – Sam &nbsp;12H–14H30 · 19H–22H00</p>
+          <p>Dimanche &nbsp; 12H–15H</p>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-block-label">Contact</p>
+          <a href="tel:+590690996643">+590 6 90 99 66 43</a>
+          <a href="mailto:restaurantlanka971@gmail.com">restaurantlanka971@gmail.com</a>
+          <div class="footer-social-row">
+            <a href="https://www.instagram.com/lanka.guadeloupe" target="_blank" rel="noopener">Instagram</a>
+            <span>·</span>
+            <a href="https://www.facebook.com/lankarestaurant" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-map-row">
+      <div class="footer-map">
+        <iframe src="https://maps.google.com/maps?q=L%27Anka+Saint-Fran%C3%A7ois+Guadeloupe+97118&hl=fr&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-sep"></div>
+    <p class="footer-note">Site réalisé par <a href="https://kudjastudio.fr" target="_blank" rel="noopener" style="color:inherit;">Kudja Studio</a></p>
+  </footer>
+
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('section-' + id).classList.add('active');
+      document.querySelectorAll('.nav-btn[id^="nav-"]').forEach(b => b.classList.remove('active'));
+      const nb = document.getElementById('nav-' + id);
+      if (nb) nb.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showTab(tabId) {
+      document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.add('active');
+      document.querySelectorAll('.carte-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-tab="' + tabId + '"]').classList.add('active');
+    }
+
+    function toggleMobileNav() {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    function openReservation() {
+      document.getElementById('modal-overlay').classList.add('open');
+      document.getElementById('modal-panel').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReservation() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.getElementById('modal-panel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    const heroBg = document.getElementById('heroBg');
+    const img = new Image();
+    img.onload = () => heroBg.classList.add('loaded');
+    img.src = 'images/image-accueil-site.webp';
+
+    // Date minimum = aujourd'hui
+    const dateInput = document.getElementById('date');
+    if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+
+    function submitReservation(e) {
+      e.preventDefault();
+      const prenom  = document.getElementById('prenom').value;
+      const nom     = document.getElementById('nom').value;
+      const tel     = document.getElementById('telephone').value;
+      const pers    = document.getElementById('personnes').value;
+      const date    = document.getElementById('date').value;
+      const service = document.getElementById('service').value;
+      const dateFormatted = new Date(date + 'T12:00:00').toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+      document.getElementById('resa-form').style.display = 'none';
+      document.getElementById('resa-success-text').innerHTML =
+        `Merci <strong>${prenom} ${nom}</strong> ! Votre demande pour <strong>${pers}</strong> le <strong>${dateFormatted}</strong> — <strong>${service}</strong> a bien été reçue.<br>Nous vous confirmons votre table par téléphone ou SMS très prochainement.`;
+      document.getElementById('resa-success').style.display = 'block';
+    }
+
+    function resetForm() {
+      document.getElementById('resa-form').reset();
+      document.getElementById('resa-form').style.display = 'block';
+      document.getElementById('resa-success').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
