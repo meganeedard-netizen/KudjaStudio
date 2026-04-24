@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O'yame – La Crêpe Moderne · Sainte-Anne Guadeloupe</title>
+  <meta name="description" content="O'yame, la crêperie moderne de Sainte-Anne en Guadeloupe. Yames roulées garnies, cocktails signatures, houmous maison.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <!-- ══════════════════════════════════
+       HEADER
+  ══════════════════════════════════ -->
+  <header id="site-header">
+    <div class="header-inner">
+
+      <a class="logo" onclick="showSection('accueil')" style="cursor:pointer;">
+        <img src="logo-oyame.png" alt="O'yame – La Crêpe Moderne">
+      </a>
+
+      <nav>
+        <button class="nav-btn active" id="nav-accueil" onclick="showSection('accueil')">Accueil</button>
+        <button class="nav-btn" id="nav-contact" onclick="showSection('contact')">Réserver une table</button>
+        <a href="commander.html" class="nav-btn" style="background:var(--jaune); color:var(--vert-fonce) !important; font-weight:700; border-radius:20px; padding:0.5rem 1.3rem;">🥞 Menu &amp; Commander</a>
+      </nav>
+
+      <button class="burger" id="burger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav">
+      <button class="nav-btn" onclick="showSection('accueil'); toggleMobileNav()">Accueil</button>
+      <button class="nav-btn" onclick="showSection('contact'); toggleMobileNav()">Réserver une table</button>
+      <a href="commander.html" class="nav-btn" style="text-align:left; color:var(--jaune); font-weight:700;">🥞 Commander</a>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════
+       PAGE ACCUEIL
+  ══════════════════════════════════ -->
+  <div id="section-accueil" class="page-section active">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" id="heroBg" style="background-image:url('photo-accueil.webp')"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <img class="hero-logo" src="logo-oyame.png" alt="O'yame">
+        <h1 class="hero-title">
+          La crêpe<br>
+          <span>comme tu l'aimes</span>
+        </h1>
+        <p class="hero-sub">Crêperie Moderne · Sainte-Anne · Guadeloupe</p>
+        <div class="hero-btns">
+          <a href="commander.html" class="btn btn-jaune">🥞 Commander</a>
+          <button class="btn btn-outline" onclick="showSection('contact')">📅 Réserver une table</button>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>Découvrir</span>
+      </div>
+    </section>
+
+    <!-- À propos -->
+    <section class="section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo">
+            <img src="oyame-devanture-creperie.webp" alt="Devanture O'yame Sainte-Anne">
+            <div class="about-badge">Sainte-Anne · Guadeloupe</div>
+          </div>
+          <div class="about-text">
+            <div class="label">Notre histoire</div>
+            <h2>Une crêperie qui<br>casse les codes</h2>
+            <p>
+              Chez <strong>O'yame</strong>, on revisite la crêpe avec générosité, créativité et une bonne dose d'identité caribéenne. Nos <strong>Yames</strong> sont roulées avec amour, garnies de produits frais, et inspirées des quatre coins du monde.
+            </p>
+            <p>
+              Du <em>Caraïbéen</em> au <em>Samourai Nordique</em>, en passant par le local <em>Fish au Pikliz</em>, chaque bouchée est une aventure. Bienvenue sous le soleil de la Guadeloupe.
+            </p>
+            <div class="about-tags">
+              <div class="tag">🌿 Produits frais</div>
+              <div class="tag">🤙 Ambiance décontractée</div>
+              <div class="tag">🌍 Saveurs du monde</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nos Yames vedettes -->
+    <section class="section section-creme">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">Nos signatures</div>
+          <h2>Les Yames<br>incontournables</h2>
+          <p class="section-desc">Nos crêpes roulées garnies de produits frais, servies avec crudités maison.</p>
+        </div>
+
+        <div class="yames-grid">
+
+          <div class="yame-card">
+            <div class="yame-img">
+              <img src="photo-accueil.webp" alt="Le Caraïbéen">
+            </div>
+            <div class="yame-body">
+              <div class="yame-sticker">Coup de coeur</div>
+              <h3>Le Caraïbéen</h3>
+              <p>Tartare Marlin, féroce d'avocat, banane plantain, coleslaw maison. Servi froid.</p>
+              <span class="yame-price">16 €</span>
+            </div>
+          </div>
+
+          <div class="yame-card">
+            <div class="yame-img">
+              <img src="oyame-plat.webp" alt="Le Lao">
+            </div>
+            <div class="yame-body">
+              <div class="yame-sticker">Plat signature</div>
+              <h3>Le Lao</h3>
+              <p>Boeuf haché, carottes, vermicelle de riz, champignons noirs, menthe fraîche.</p>
+              <span class="yame-price">15,5 €</span>
+            </div>
+          </div>
+
+          <div class="yame-card">
+            <div class="yame-img">
+              <img src="oyame-dessert.webp" alt="Le Samourai Nordique">
+            </div>
+            <div class="yame-body">
+              <div class="yame-sticker">Saveur du moment</div>
+              <h3>Le Samourai Nordique</h3>
+              <p>Saumon fumé, cream cheese wasabi, roquette, pois wasabi, cranberries. Servi froid.</p>
+              <span class="yame-price">16 €</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section-cta">
+          <a href="commander.html" class="btn btn-vert">🥞 Commander →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Horaires -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="section-header">
+          <div class="label light">Quand nous trouver</div>
+          <h2 class="light">On vous attend !</h2>
+        </div>
+        <div class="horaires-grid">
+          <div class="horaire-card closed">
+            <span class="horaire-day">Lundi</span>
+            <span class="horaire-time">Fermé</span>
+          </div>
+          <div class="horaire-card">
+            <span class="horaire-day">Mar – Ven</span>
+            <span class="horaire-time">11h30 – 14h30<br>18h30 – 21h30</span>
+          </div>
+          <div class="horaire-card">
+            <span class="horaire-day">Samedi</span>
+            <span class="horaire-time">11h30 – 15h00<br>18h30 – 22h00</span>
+          </div>
+          <div class="horaire-card">
+            <span class="horaire-day">Dimanche</span>
+            <span class="horaire-time">11h30 – 15h00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avis Google -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="label">Ce que disent nos clients</div>
+          <h2>Avis Google</h2>
+          <div class="reviews-score">
+            <span class="stars">★★★★★</span>
+            <span class="note">5,0</span>
+            <span class="count">· 159 avis Google</span>
+            <img class="google-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">F</div>
+              <div>
+                <div class="review-name">Fabrice</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Restaurant inhabituel dans lequel vous pourrez manger des crêpes comme jamais vous ne les aviez manger auparavant.. le gérant vous expliquera tout très clairement. Ambiance très sympa, papilles satisfaites, que demander de plus... Ah si le cocktail de fruit du jour est un délice. Allez y..</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">A</div>
+              <div>
+                <div class="review-name">Abbas Soumaya</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">De passage à Saint-Anne, découverte par hasard de ce concept unique en Guadeloupe : des crêpes roulées excellentes mais pas que.. de la vraie cuisine, tout est frais, assaisonné et goûteux. Un dressage soigné et un service rapide, convivial et personnalisé. Portion copieuse, citronnades et cocktails maison et rapport qualité prix imbattable ! Merci pour votre accueil et vos sourires, il faut y aller vite et sans hésiter !</p>
+          </div>
+
+          <div class="review-card">
+            <div class="review-header">
+              <div class="review-avatar">S</div>
+              <div>
+                <div class="review-name">Sylvie Serrano</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+            </div>
+            <p class="review-text">Tout était parfait. Découvert par hasard, ce concept de crêpes a tout de délicieux. Un vrai plaisir pour les papilles, tellement savoureux. Explosion de saveurs. Allez y vous ne serez pas déçu. Cette pépite tenue par 2 jeunes qui se sont donnés la peine de nous surprendre par leur ingéniosité. BRAVO</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /accueil -->
+
+
+
+
+  <!-- ══════════════════════════════════
+       PAGE CONTACT
+  ══════════════════════════════════ -->
+  <div id="section-contact" class="page-section">
+
+    <div class="page-hero">
+      <div class="label light">O'yame · Sainte-Anne</div>
+      <h1>Réserver votre table</h1>
+      <p>Réservez votre table, appelez-nous ou envoyez-nous un message</p>
+    </div>
+
+
+<div class="contact-content">
+      <div class="contact-grid">
+
+        <!-- Infos pratiques -->
+        <div class="contact-info">
+
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <h3>Adresse</h3>
+            <p>Sainte-Anne<br>97180 Guadeloupe</p>
+            <div style="width:100%; height:200px; border-radius:10px; overflow:hidden; margin-top:1rem; border:1.5px solid var(--border);">
+              <iframe src="https://maps.google.com/maps?q=O%27yame+Sainte-Anne+97180+Guadeloupe&hl=fr&output=embed" width="100%" height="200" style="border:0; display:block;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <a href="https://share.google/f0gbdeJfXxLrwkYrk" target="_blank" class="btn btn-vert" style="margin-top:0.85rem; border-radius:10px; justify-content:center; font-size:0.9rem;">
+              📍 Voir sur Google Maps
+            </a>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">📞</div>
+            <h3>Téléphone</h3>
+            <p><a href="tel:+590000000000">+590 _ _ _ _ _ _ _ _</a></p>
+            <p class="info-sub">Commandes &amp; réservations</p>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">💬</div>
+            <h3>WhatsApp</h3>
+            <p>Envoyez-nous votre commande ou votre demande de résa directement.</p>
+            <a href="https://wa.me/590000000000?text=Bonjour%20O'yame%20!" target="_blank" class="btn btn-vert" style="margin-top:0.9rem; border-radius:12px;">
+              Envoyer un message
+            </a>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">🕐</div>
+            <h3>Horaires d'ouverture</h3>
+            <ul class="hours-list">
+              <li><strong>Lundi</strong><span>Fermé</span></li>
+              <li><strong>Mar – Ven</strong><span>11h30–14h30 · 18h30–21h30</span></li>
+              <li><strong>Samedi</strong><span>11h30–15h · 18h30–22h</span></li>
+              <li><strong>Dimanche</strong><span>11h30–15h</span></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Formulaire réservation -->
+        <div class="contact-form-wrapper">
+          <h2>Réserver une table</h2>
+          <p>Remplissez le formulaire et nous vous confirmons votre table par SMS.</p>
+
+          <form id="resa-form" onsubmit="submitReservation(event)">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom *</label>
+                <input type="text" id="prenom" placeholder="Votre prénom" required>
+              </div>
+              <div class="form-group">
+                <label for="tel">Téléphone *</label>
+                <input type="tel" id="tel" placeholder="+590 ..." required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Date souhaitée *</label>
+                <input type="date" id="date" required>
+              </div>
+              <div class="form-group">
+                <label for="couverts">Personnes *</label>
+                <select id="couverts" required>
+                  <option value="" disabled selected>Choisir</option>
+                  <option value="1">1 personne</option>
+                  <option value="2">2 personnes</option>
+                  <option value="3">3 personnes</option>
+                  <option value="4">4 personnes</option>
+                  <option value="5">5 personnes</option>
+                  <option value="6">6 personnes</option>
+                  <option value="7+">7 personnes ou plus</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service *</label>
+              <select id="service" required onchange="updateTimeSlots()">
+                <option value="" disabled selected>Choisir un service</option>
+                <option value="midi">Déjeuner (midi)</option>
+                <option value="soir">Dîner (soir)</option>
+              </select>
+            </div>
+
+            <!-- Créneaux Déjeuner -->
+            <div id="slots-midi" style="display:none;" class="form-group">
+              <label>Créneau horaire *</label>
+              <div class="time-slots-grid">
+                <div class="time-slot"><input type="radio" name="creneau" id="t1130" value="11h30"><label for="t1130">11h30</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1200" value="12h00"><label for="t1200">12h00</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1230" value="12h30"><label for="t1230">12h30</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1300" value="13h00"><label for="t1300">13h00</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1330" value="13h30"><label for="t1330">13h30</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1400" value="14h00"><label for="t1400">14h00</label></div>
+              </div>
+            </div>
+
+            <!-- Créneaux Dîner -->
+            <div id="slots-soir" style="display:none;" class="form-group">
+              <label>Créneau horaire *</label>
+              <div class="time-slots-grid">
+                <div class="time-slot"><input type="radio" name="creneau" id="t1830" value="18h30"><label for="t1830">18h30</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1900" value="19h00"><label for="t1900">19h00</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t1930" value="19h30"><label for="t1930">19h30</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t2000" value="20h00"><label for="t2000">20h00</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t2030" value="20h30"><label for="t2030">20h30</label></div>
+                <div class="time-slot"><input type="radio" name="creneau" id="t2100" value="21h00"><label for="t2100">21h00</label></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message (optionnel)</label>
+              <textarea id="message" placeholder="Occasion spéciale, allergies, demandes particulières..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-vert form-submit">Envoyer la demande</button>
+
+          </form>
+
+          <div class="success-msg" id="success-msg">
+            <div class="success-icon">🎉</div>
+            <h3>Demande envoyée !</h3>
+            <p>Merci ! Nous vous confirmons votre table par SMS dans les plus brefs délais.</p>
+            <button class="btn btn-vert" style="margin-top:1.25rem;" onclick="resetForm()">Nouvelle réservation</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- /contact -->
+
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <img src="logo-oyame.png" alt="O'yame">
+        <p>
+          La crêperie moderne de Sainte-Anne. Yames fraîches garnies, saveurs du monde et ambiance décontractée au coeur de la Guadeloupe.
+        </p>
+        <div class="footer-social">
+          <a href="#" target="_blank" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" target="_blank" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li onclick="showSection('accueil')">Accueil</li>
+          <li><a href="commander.html">Commander à emporter</a></li>
+          <li onclick="showSection('contact')">Réserver une table</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Sainte-Anne, 97180</li>
+          <li>Guadeloupe</li>
+          <li><a href="tel:+590000000000">+590 _ _ _ _ _ _ _ _</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-map-center">
+      <iframe src="https://maps.google.com/maps?q=O%27yame+Sainte-Anne+97180+Guadeloupe&hl=fr&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 O'yame – La Crêpe Moderne · Sainte-Anne · Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="https://kudjastudio.fr" target="_blank">Kudja Studio</a> · Guadeloupe</p>
+    </div>
+  </footer>
+
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <strong id="toast-title"></strong>
+    <span id="toast-msg"></span>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       JAVASCRIPT
+  ══════════════════════════════════ -->
+  <script>
+
+    // Navigation SPA
+    function showSection(name) {
+      document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+      const section = document.getElementById('section-' + name);
+      if (section) section.classList.add('active');
+
+      const btn = document.getElementById('nav-' + name);
+      if (btn) btn.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Menu mobile
+    function toggleMobileNav() {
+      document.getElementById('mobile-nav').classList.toggle('open');
+    }
+
+    // Filtres carte
+    function filterMenu(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.menu-cat').forEach(c => {
+        if (cat === 'all' || c.dataset.category === cat) {
+          c.style.display = 'block';
+          c.style.animation = 'none';
+          c.offsetHeight;
+          c.style.animation = 'fadeIn 0.3s ease';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    }
+
+    // Créneaux horaires
+    function updateTimeSlots() {
+      const service = document.getElementById('service').value;
+      document.getElementById('slots-midi').style.display = (service === 'midi') ? 'block' : 'none';
+      document.getElementById('slots-soir').style.display = (service === 'soir') ? 'block' : 'none';
+      document.querySelectorAll('input[name="creneau"]').forEach(r => r.checked = false);
+    }
+
+    // Formulaire réservation
+    function submitReservation(e) {
+      e.preventDefault();
+      const creneau = document.querySelector('input[name="creneau"]:checked');
+      if (!creneau) {
+        showToast('Créneau manquant', 'Veuillez sélectionner un horaire.');
+        return;
+      }
+      document.getElementById('resa-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'flex';
+    }
+
+    function resetForm() {
+      document.getElementById('resa-form').reset();
+      document.getElementById('resa-form').style.display = 'block';
+      document.getElementById('success-msg').style.display = 'none';
+      document.getElementById('slots-midi').style.display = 'none';
+      document.getElementById('slots-soir').style.display = 'none';
+    }
+
+    // Toast
+    function showToast(title, msg) {
+      document.getElementById('toast-title').textContent = title;
+      document.getElementById('toast-msg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => {
+      // Ouverture directe depuis commander.html
+      if (window.location.hash === '#reserver') showSection('contact');
+
+      // Date min = aujourd'hui
+      const today = new Date().toISOString().split('T')[0];
+      const dateInput = document.getElementById('date');
+      if (dateInput) dateInput.min = today;
+
+      // Parallax léger header
+      const header = document.getElementById('site-header');
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      }, { passive: true });
+
+      // Zoom-out hero
+      const bg = document.getElementById('heroBg');
+      if (bg) setTimeout(() => bg.classList.add('loaded'), 100);
+    });
+
+  </script>
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+</body>
+</html>

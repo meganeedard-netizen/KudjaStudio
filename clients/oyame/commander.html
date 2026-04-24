@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commander à emporter – O'yame · Sainte-Anne</title>
+  <meta name="description" content="Commandez vos Yames à emporter chez O'yame, la crêperie moderne de Sainte-Anne en Guadeloupe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --vert:        #1A4A2E;
+      --vert-fonce:  #0F2B1A;
+      --vert-moyen:  #2D7A4E;
+      --vert-clair:  #E8F5EC;
+      --jaune:       #F5C842;
+      --jaune-hover: #E3B530;
+      --creme:       #FAF8F3;
+      --blanc:       #FFFFFF;
+      --texte:       #1A3025;
+      --texte-clair: #5A7A65;
+      --border:      rgba(26,74,46,0.15);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: #F5F7F5; color: var(--texte); font-size: 15px; }
+    h1, h2, h3 { font-family: 'Fredoka', sans-serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--vert);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 48px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 500;
+      color: rgba(255,255,255,0.75); padding: 0.45rem 0.9rem; border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--blanc); background: rgba(255,255,255,0.1); }
+    .nav-links a.active { color: var(--jaune); }
+    .nav-links a.nav-cta {
+      background: var(--jaune); color: var(--vert-fonce) !important;
+      font-weight: 700; border-radius: 20px; padding: 0.45rem 1.2rem;
+    }
+    .nav-links a.nav-cta:hover { background: var(--jaune-hover); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+    .hamburger span { display: block; width: 23px; height: 2px; background: var(--blanc); border-radius: 2px; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,20,12,0.98); z-index: 200;
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Fredoka', sans-serif; font-size: 1.8rem; font-weight: 500;
+      color: var(--blanc); transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--jaune); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 1.75rem;
+      background: none; border: none; color: var(--blanc);
+      font-size: 2rem; cursor: pointer; opacity: 0.7;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 8rem 1.5rem 4rem; text-align: center;
+      background: var(--vert-fonce); color: var(--blanc);
+    }
+    .page-header .label {
+      font-family: 'Fredoka', sans-serif; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--jaune);
+      display: block; margin-bottom: 0.5rem;
+    }
+    .page-header h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin-bottom: 0.5rem; }
+    .page-header p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-top: 0.25rem; }
+
+    /* ── LAYOUT ── */
+    .commander-page {
+      max-width: 1300px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem;
+      display: grid; grid-template-columns: 1fr 360px; gap: 2.5rem; align-items: start;
+    }
+
+    /* ── CATÉGORIES MENU ── */
+    .menu-categories { display: flex; flex-direction: column; gap: 2.5rem; }
+    .menu-cat-title {
+      font-family: 'Fredoka', sans-serif; font-size: 1.5rem; font-weight: 600;
+      color: var(--vert); padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--vert-clair); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .menu-cat-title .cat-icon { font-size: 1.3rem; }
+    .menu-cat-note {
+      font-size: 0.8rem; color: var(--texte-clair); font-style: italic;
+      margin-bottom: 1rem; padding: 0.65rem 1rem;
+      background: var(--vert-clair); border-radius: 8px;
+      border-left: 3px solid var(--vert);
+    }
+
+    .menu-items-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .menu-item {
+      background: var(--blanc); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 1.1rem 1.2rem;
+      display: flex; flex-direction: column; gap: 0.45rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .menu-item:hover { border-color: var(--vert); box-shadow: 0 4px 16px rgba(26,74,46,0.1); }
+    .menu-item-name { font-family: 'Fredoka', sans-serif; font-size: 0.97rem; font-weight: 600; color: var(--texte); }
+    .menu-item-desc { font-size: 0.78rem; color: var(--texte-clair); font-style: italic; line-height: 1.45; }
+    .menu-item-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag-froid, .tag-vege {
+      font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 8px;
+    }
+    .tag-froid { background: #dbeafe; color: #1d4ed8; }
+    .tag-vege  { background: var(--vert-clair); color: var(--vert); }
+    .menu-item-footer {
+      display: flex; align-items: center; justify-content: space-between; margin-top: 0.35rem;
+    }
+    .menu-item-price {
+      font-family: 'Fredoka', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--vert);
+    }
+    .btn-add {
+      background: var(--vert); border: none; color: var(--blanc);
+      width: 32px; height: 32px; border-radius: 50%;
+      font-size: 1.4rem; line-height: 1; font-weight: 300;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-add:hover { background: var(--vert-moyen); transform: scale(1.1); }
+
+    /* ── PANIER ── */
+    .panier {
+      position: sticky; top: 88px;
+      background: var(--blanc); border-radius: 16px;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 32px rgba(26,74,46,0.1);
+      overflow: hidden;
+    }
+    .panier-header {
+      background: var(--vert-fonce); padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .panier-title {
+      font-family: 'Fredoka', sans-serif; font-size: 1.25rem;
+      font-weight: 600; color: var(--blanc);
+    }
+    .panier-badge {
+      background: var(--jaune); color: var(--vert-fonce);
+      font-family: 'Fredoka', sans-serif; font-size: 0.85rem; font-weight: 700;
+      padding: 0.2rem 0.65rem; border-radius: 20px; min-width: 28px; text-align: center;
+    }
+    .panier-body { padding: 1.25rem 1.5rem; }
+    .panier-empty {
+      text-align: center; padding: 2rem 0;
+      color: var(--texte-clair); font-size: 0.85rem; font-style: italic;
+    }
+    .panier-lines { display: flex; flex-direction: column; gap: 0; }
+    .panier-line {
+      display: flex; align-items: center; gap: 0.5rem; font-size: 0.84rem;
+      padding: 0.6rem 0; border-bottom: 1px solid rgba(26,74,46,0.07);
+    }
+    .panier-line:last-child { border-bottom: none; }
+    .panier-line-name { flex: 1; color: var(--texte); font-weight: 600; }
+    .panier-line-qty { display: flex; align-items: center; gap: 0.3rem; }
+    .panier-line-qty button {
+      background: var(--vert-clair); border: none; color: var(--vert);
+      width: 24px; height: 24px; border-radius: 50%;
+      font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s; font-family: inherit;
+    }
+    .panier-line-qty button:hover { background: #c8e8d0; }
+    .panier-line-qty span { width: 20px; text-align: center; font-weight: 700; font-size: 0.9rem; }
+    .panier-line-price {
+      font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--vert);
+      min-width: 50px; text-align: right; font-size: 0.9rem;
+    }
+    .panier-total {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-top: 1rem; padding-top: 0.85rem;
+      border-top: 2px solid var(--vert-clair);
+    }
+    .panier-total-label { font-weight: 700; font-size: 0.9rem; }
+    .panier-total-price {
+      font-family: 'Fredoka', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--vert);
+    }
+
+    /* Pickup slots */
+    .pickup-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--texte); margin: 1rem 0 0.6rem;
+    }
+    .pickup-slots { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .pickup-slot {
+      background: var(--vert-clair); border: 1.5px solid transparent;
+      color: var(--vert); font-family: 'Fredoka', sans-serif; font-size: 0.82rem; font-weight: 500;
+      padding: 0.28rem 0.6rem; border-radius: 8px; cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .pickup-slot:hover { background: #c8e8d0; border-color: var(--vert); }
+    .pickup-slot.selected { background: var(--vert); color: var(--blanc); border-color: var(--vert); }
+
+    .panier-note {
+      font-size: 0.74rem; color: var(--texte-clair); margin-top: 1rem;
+      font-style: italic; line-height: 1.55; text-align: center;
+    }
+    .btn-commander {
+      display: block; width: 100%; margin-top: 1.1rem;
+      padding: 0.95rem; border-radius: 12px;
+      background: var(--vert); color: var(--blanc); border: none;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.03em; cursor: pointer; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-commander:hover:not(:disabled) { background: var(--vert-moyen); transform: translateY(-1px); }
+    .btn-commander:disabled { opacity: 0.3; cursor: default; transform: none; }
+    .btn-vider {
+      display: block; width: 100%; margin-top: 0.5rem; padding: 0.6rem;
+      background: transparent; border: 1.5px solid var(--border);
+      color: var(--texte-clair); font-family: 'Fredoka', sans-serif;
+      font-size: 0.88rem; font-weight: 500; border-radius: 10px;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-vider:hover:not(:disabled) { border-color: #e05050; color: #e05050; }
+    .btn-vider:disabled { opacity: 0.25; cursor: default; }
+
+    /* Bouton panier flottant mobile */
+    .panier-float {
+      display: none; position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 150;
+      background: var(--vert); color: var(--blanc); border: none;
+      padding: 0.9rem 1.5rem; border-radius: 50px;
+      font-family: 'Fredoka', sans-serif; font-size: 0.97rem; font-weight: 700;
+      box-shadow: 0 6px 24px rgba(26,74,46,0.35); cursor: pointer;
+      transition: background 0.2s;
+    }
+    .panier-float:hover { background: var(--vert-moyen); }
+    .panier-float-badge {
+      background: var(--jaune); color: var(--vert-fonce);
+      padding: 0.1rem 0.5rem; border-radius: 10px; font-size: 0.88rem;
+      margin-left: 0.4rem;
+    }
+
+    /* Confirmation WhatsApp */
+    .confirm-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,20,12,0.6); z-index: 300;
+      align-items: center; justify-content: center; padding: 1.5rem;
+    }
+    .confirm-overlay.open { display: flex; }
+    .confirm-box {
+      background: var(--blanc); border-radius: 20px; padding: 2.5rem;
+      max-width: 480px; width: 100%; text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    .confirm-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .confirm-box h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    .confirm-box p { font-size: 0.9rem; color: var(--texte-clair); margin-bottom: 1.75rem; line-height: 1.6; }
+    .confirm-recap {
+      background: var(--vert-clair); border-radius: 12px; padding: 1rem 1.25rem;
+      text-align: left; margin-bottom: 1.5rem; font-size: 0.88rem;
+      color: var(--texte); line-height: 1.7;
+    }
+    .confirm-recap strong { font-family: 'Fredoka', sans-serif; font-size: 1rem; color: var(--vert); }
+    .confirm-btns { display: flex; flex-direction: column; gap: 0.75rem; }
+    .btn-wa {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.9rem; border-radius: 12px;
+      background: #25D366; color: var(--blanc); border: none;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-wa:hover { background: #1ebe5a; }
+    .btn-tel {
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.9rem; border-radius: 12px;
+      background: var(--vert); color: var(--blanc); border: none;
+      font-family: 'Fredoka', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+      text-decoration: none;
+    }
+    .btn-tel:hover { background: var(--vert-moyen); }
+    .btn-annuler {
+      background: none; border: 1.5px solid var(--border); color: var(--texte-clair);
+      padding: 0.75rem; border-radius: 12px;
+      font-family: 'Fredoka', sans-serif; font-size: 0.9rem; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-annuler:hover { border-color: var(--texte-clair); color: var(--texte); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .commander-page { grid-template-columns: 1fr; padding: 2rem 1.25rem 6rem; }
+      .panier { position: static; }
+      .panier-float { display: flex; align-items: center; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-header { padding: 6rem 1.25rem 2rem; }
+      .menu-items-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── FOOTER ── */
+    footer { background: var(--vert-fonce); color: var(--blanc); padding: 4rem 0 0; }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 3rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+    }
+    .footer-brand img { height: 72px; margin-bottom: 1rem; filter: brightness(0) invert(1); }
+    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.58); line-height: 1.65; }
+    .footer-social { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+    .footer-social a {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.75);
+      transition: 0.3s ease;
+    }
+    .footer-social a:hover { background: var(--jaune); color: var(--vert-fonce); }
+    .footer-col h4 {
+      font-family: 'Fredoka', sans-serif; font-size: 1.05rem;
+      color: var(--jaune); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li { font-size: 0.87rem; color: rgba(255,255,255,0.6); }
+    .footer-col ul li a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--blanc); }
+    .footer-map-center {
+      max-width: 860px; margin: 0 auto 2.5rem; padding: 0 1.5rem;
+      border-radius: 14px; overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .footer-map-center iframe { width: 100%; height: 260px; border: none; display: block; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 1.25rem 1.5rem; text-align: center;
+      font-size: 0.78rem; color: rgba(255,255,255,0.38);
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0.25rem 1.25rem;
+    }
+    .footer-bottom a { color: inherit; }
+    .footer-bottom a:hover { color: var(--blanc); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo-oyame.png" alt="O'yame">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#reserver">Réserver une table</a></li>
+      <li><a href="commander.html" class="active nav-cta">🥞 Menu &amp; Commander</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="index.html" onclick="closeMobile()">Accueil</a>
+  <a href="index.html#reserver" onclick="closeMobile()">Réserver une table</a>
+  <a href="commander.html" onclick="closeMobile()">Commander</a>
+</div>
+
+<!-- HEADER PAGE -->
+<div class="page-header">
+  <span class="label">O'yame · Sainte-Anne</span>
+  <h1>Commander à emporter</h1>
+  <p>Composez votre commande · Choisissez votre heure · Récupérez sur place</p>
+</div>
+
+<!-- PAGE COMMANDER -->
+<div class="commander-page">
+
+  <!-- MENU -->
+  <div class="menu-categories">
+
+    <!-- NOS YAMES -->
+    <div>
+      <div class="menu-cat-title"><span class="cat-icon">🥞</span> Nos Yames</div>
+      <p class="menu-cat-note">Servis avec crudités : salade verte, papaye verte râpée, tomates, sésame et vinaigrette maison. Recettes non modifiables.</p>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Basique</div>
+          <div class="menu-item-desc">Jambon, emmental, Vache qui rit.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">9,5 €</span>
+            <button class="btn-add" onclick="addToCart(1,'Le Basique',9.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Végé</div>
+          <div class="menu-item-tags"><span class="tag-vege">Végétarien</span></div>
+          <div class="menu-item-desc">Légumes mijotés, marinade maison (courgettes, carottes, poivrons, oignons).</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">12,5 €</span>
+            <button class="btn-add" onclick="addToCart(2,'Le Végé',12.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Cocorico</div>
+          <div class="menu-item-desc">Poulet rôti, légumes mijotés, marinade maison.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">13,5 €</span>
+            <button class="btn-add" onclick="addToCart(3,'Le Cocorico',13.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Fish</div>
+          <div class="menu-item-desc">Chicktaye de colin au Pikliz, légumes mijotés, marinade maison.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14 €</span>
+            <button class="btn-add" onclick="addToCart(4,'Le Fish',14)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Fromager</div>
+          <div class="menu-item-desc">Emmental, chèvre, brie, fromage raclette, pomme granny, cerneaux de noix.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14,5 €</span>
+            <button class="btn-add" onclick="addToCart(5,'Le Fromager',14.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Frontalier</div>
+          <div class="menu-item-desc">Bleu, jambon cru, pesto rosso, noix, tomates séchées, pomme de terre.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14,5 €</span>
+            <button class="btn-add" onclick="addToCart(6,'Le Frontalier',14.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">L'Alsacien</div>
+          <div class="menu-item-desc">Lardons, emmental, champignons frais, sauce moutarde miel, pomme de terre, oignons au vin blanc.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14,5 €</span>
+            <button class="btn-add" onclick="addToCart(7,'L\'Alsacien',14.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Lao</div>
+          <div class="menu-item-desc">Boeuf haché, carottes, vermicelle de riz, champignons noirs, menthe fraîche.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">15,5 €</span>
+            <button class="btn-add" onclick="addToCart(8,'Le Lao',15.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Caraïbéen</div>
+          <div class="menu-item-tags"><span class="tag-froid">Servi froid</span></div>
+          <div class="menu-item-desc">Tartare Marlin, féroce d'avocat, banane plantain, coleslaw maison.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">16 €</span>
+            <button class="btn-add" onclick="addToCart(9,'Le Caraïbéen',16)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Samourai Nordique</div>
+          <div class="menu-item-tags"><span class="tag-froid">Servi froid</span></div>
+          <div class="menu-item-desc">Saumon fumé, cream cheese wasabi, roquette, pois wasabi, cranberries.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">16 €</span>
+            <button class="btn-add" onclick="addToCart(10,'Le Samourai Nordique',16)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- APERO & PARTAGER -->
+    <div>
+      <div class="menu-cat-title"><span class="cat-icon">🫙</span> Apéro &amp; Partager</div>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Houmous Betterave &amp; Yaourt</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(11,'Houmous Betterave &amp; Yaourt',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Houmous Petits Pois &amp; Ricotta</div>
+          <div class="menu-item-desc">Menthe fraîche.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(12,'Houmous Petits Pois &amp; Ricotta',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Houmous Haricots Blancs &amp; Tomates Séchées</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(13,'Houmous Haricots Blancs &amp; Tomates Séchées',5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Le Poké'Yame</div>
+          <div class="menu-item-desc">Lentilles, salade verte, tomates, papaye verte râpée, croûtons, oeuf dur, sésame, houmous maison et vinaigrette.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">15 €</span>
+            <button class="btn-add" onclick="addToCart(14,'Le Poké\'Yame',15)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Menu Ti'Yame</div>
+          <div class="menu-item-desc">1 sirop + 1 Yame Basic ou Végé (format ti-yame) + 1 dessert classique.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">12,5 €</span>
+            <button class="btn-add" onclick="addToCart(15,'Menu Ti\'Yame',12.5)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COCKTAILS -->
+    <div>
+      <div class="menu-cat-title"><span class="cat-icon">🍹</span> Cocktails</div>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Cidre au Soleil</div>
+          <div class="menu-item-desc">Jus de mangue, rhum blanc, cidre, citron vert, gingembre.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">10 €</span>
+            <button class="btn-add" onclick="addToCart(16,'Cidre au Soleil',10)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Planteur Pétillant</div>
+          <div class="menu-item-desc">Jus de goyave et passion, rhum vieux, gingembre, cannelle, cidre.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">10 €</span>
+            <button class="btn-add" onclick="addToCart(17,'Planteur Pétillant',10)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Apple Gin</div>
+          <div class="menu-item-desc">Gin local, citron vert, cidre brut.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">10 €</span>
+            <button class="btn-add" onclick="addToCart(18,'Apple Gin',10)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Zion 🌿</div>
+          <div class="menu-item-desc">Jus de pomme, menthe fraîche, citron, gingembre. Sans alcool.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">8 €</span>
+            <button class="btn-add" onclick="addToCart(19,'Zion (sans alcool)',8)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">L'Anmou 🌿</div>
+          <div class="menu-item-desc">Jus de mangue, goyave, gingembre, citron. Sans alcool.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">8 €</span>
+            <button class="btn-add" onclick="addToCart(20,'L\'Anmou (sans alcool)',8)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Ti Soley 🌿</div>
+          <div class="menu-item-desc">Jus de passion, orange, ananas, vanille. Sans alcool.</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">8 €</span>
+            <button class="btn-add" onclick="addToCart(21,'Ti Soley (sans alcool)',8)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Ti-Punch blanc</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4 €</span>
+            <button class="btn-add" onclick="addToCart(22,'Ti-Punch blanc',4)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Ti-Punch vieux</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5 €</span>
+            <button class="btn-add" onclick="addToCart(23,'Ti-Punch vieux',5)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BIERES -->
+    <div>
+      <div class="menu-cat-title"><span class="cat-icon">🍺</span> Bières &amp; Cidres</div>
+      <div class="menu-items-grid">
+
+        <div class="menu-item">
+          <div class="menu-item-name">Gwada Blonde</div>
+          <div class="menu-item-desc">Bouteille 33cl</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4,5 €</span>
+            <button class="btn-add" onclick="addToCart(24,'Gwada Blonde',4.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Desperados</div>
+          <div class="menu-item-desc">Original ou Red</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">4,5 €</span>
+            <button class="btn-add" onclick="addToCart(25,'Desperados',4.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">La Lézarde Gwozey Peyi</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5,5 €</span>
+            <button class="btn-add" onclick="addToCart(26,'La Lézarde Gwozey Peyi',5.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">La Lézarde Gingembre</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">5,5 €</span>
+            <button class="btn-add" onclick="addToCart(27,'La Lézarde Gingembre',5.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Cidre "La Mordue"</div>
+          <div class="menu-item-desc">27cl · 6%</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">6,5 €</span>
+            <button class="btn-add" onclick="addToCart(28,'Cidre La Mordue',6.5)">+</button>
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-item-name">Cidre artisanal à la bouteille</div>
+          <div class="menu-item-footer">
+            <span class="menu-item-price">14 €</span>
+            <button class="btn-add" onclick="addToCart(29,'Cidre artisanal',14)">+</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- /menu -->
+
+  <!-- PANIER -->
+  <div class="panier" id="panier">
+    <div class="panier-header">
+      <span class="panier-title">🛒 Mon panier</span>
+      <span class="panier-badge" id="panierCount">0</span>
+    </div>
+    <div class="panier-body">
+      <div id="panierContent">
+        <p class="panier-empty">Ajoutez des Yames pour commencer 🥞</p>
+      </div>
+      <div id="panierPickup" style="display:none;">
+        <div class="pickup-label">Heure de récupération</div>
+        <div class="pickup-slots" id="pickupSlots"></div>
+      </div>
+      <p class="panier-note">Commande à récupérer sur place · Paiement à l'arrivée · Nous vous confirmons par téléphone ou WhatsApp</p>
+      <button class="btn-commander" id="btnCommander" disabled onclick="ouvrirConfirmation()">
+        Valider la commande
+      </button>
+      <button class="btn-vider" id="btnVider" disabled onclick="viderPanier()">
+        Vider le panier
+      </button>
+    </div>
+  </div>
+
+</div>
+<!-- /commander-page -->
+
+<!-- Bouton flottant mobile -->
+<button class="panier-float" id="panierFloat" onclick="scrollToPanier()">
+  🛒 Panier <span class="panier-float-badge" id="panierFloatCount">0</span>
+</button>
+
+<!-- Modale de confirmation -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-icon">🥞</div>
+    <h2>Votre commande</h2>
+    <p>Choisissez comment nous envoyer votre commande. Nous vous confirmons la disponibilité et l'heure de retrait.</p>
+    <div class="confirm-recap" id="confirmRecap"></div>
+    <div class="confirm-btns">
+      <button class="btn-wa" onclick="envoyerWhatsApp()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Envoyer sur WhatsApp
+      </button>
+      <a href="tel:+590000000000" class="btn-tel">
+        📞 Appeler le restaurant
+      </a>
+      <button class="btn-annuler" onclick="fermerConfirmation()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="background:var(--vert-fonce); text-align:center; padding:1rem; border-top:1px solid rgba(255,255,255,0.06);">
+  <span style="font-size:0.72rem; color:rgba(255,255,255,0.35); letter-spacing:0.06em;">
+    © 2025 O'yame – La Crêpe Moderne · Sainte-Anne &nbsp;·&nbsp;
+    Site réalisé par <a href="https://kudjastudio.fr" target="_blank" style="color:rgba(255,255,255,0.45); text-decoration:none;">Kudja Studio</a>
+  </span>
+</div>
+
+<script>
+  // ── MOBILE MENU ──
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+  document.getElementById('mobileClose').addEventListener('click', () => closeMobile());
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // ── PICKUP SLOTS ──
+  let selectedSlot = null;
+
+  function buildPickupSlots() {
+    const container = document.getElementById('pickupSlots');
+    container.innerHTML = '';
+    for (let h = 11; h < 22; h++) {
+      ['00', '30'].forEach(m => {
+        const label = `${String(h).padStart(2,'0')}h${m}`;
+        const btn = document.createElement('button');
+        btn.className = 'pickup-slot';
+        btn.textContent = label;
+        btn.addEventListener('click', () => {
+          selectedSlot = label;
+          container.querySelectorAll('.pickup-slot').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        });
+        container.appendChild(btn);
+      });
+    }
+  }
+  buildPickupSlots();
+
+  // ── PANIER ──
+  let cart = {};
+
+  function addToCart(id, name, price) {
+    if (cart[id]) { cart[id].qty++; }
+    else { cart[id] = { name, price, qty: 1 }; }
+    renderCart();
+
+    // Mini feedback visuel
+    const btns = document.querySelectorAll('.btn-add');
+    btns.forEach(btn => {
+      if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`addToCart(${id},`)) {
+        btn.textContent = '✓';
+        btn.style.background = 'var(--jaune)';
+        btn.style.color = 'var(--vert-fonce)';
+        setTimeout(() => { btn.textContent = '+'; btn.style.background = ''; btn.style.color = ''; }, 700);
+      }
+    });
+  }
+
+  function changeQty(id, delta) {
+    if (!cart[id]) return;
+    cart[id].qty += delta;
+    if (cart[id].qty <= 0) delete cart[id];
+    renderCart();
+  }
+
+  function viderPanier() {
+    cart = {};
+    selectedSlot = null;
+    renderCart();
+  }
+
+  function renderCart() {
+    const keys = Object.keys(cart);
+    const totalQty = keys.reduce((s, k) => s + cart[k].qty, 0);
+    const totalPrice = keys.reduce((s, k) => s + cart[k].qty * cart[k].price, 0);
+
+    document.getElementById('panierCount').textContent = totalQty;
+    document.getElementById('panierFloatCount').textContent = totalQty;
+    document.getElementById('btnCommander').disabled = totalQty === 0;
+    document.getElementById('btnVider').disabled = totalQty === 0;
+
+    const content = document.getElementById('panierContent');
+    const pickupEl = document.getElementById('panierPickup');
+
+    if (totalQty === 0) {
+      content.innerHTML = '<p class="panier-empty">Ajoutez des Yames pour commencer 🥞</p>';
+      pickupEl.style.display = 'none';
+      selectedSlot = null;
+      document.querySelectorAll('.pickup-slot').forEach(b => b.classList.remove('selected'));
+      return;
+    }
+
+    pickupEl.style.display = 'block';
+
+    let html = '<div class="panier-lines">';
+    keys.forEach(k => {
+      const item = cart[k];
+      const sub = (item.qty * item.price).toFixed(2).replace('.', ',');
+      html += `
+        <div class="panier-line">
+          <span class="panier-line-name">${item.name}</span>
+          <div class="panier-line-qty">
+            <button onclick="changeQty(${k},-1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${k},1)">+</button>
+          </div>
+          <span class="panier-line-price">${sub} €</span>
+        </div>`;
+    });
+    html += '</div>';
+    html += `<div class="panier-total">
+      <span class="panier-total-label">Total estimé</span>
+      <span class="panier-total-price">${totalPrice.toFixed(2).replace('.', ',')} €</span>
+    </div>`;
+    content.innerHTML = html;
+  }
+
+  // ── CONFIRMATION ──
+  function ouvrirConfirmation() {
+    const keys = Object.keys(cart);
+    if (!keys.length) return;
+    if (!selectedSlot) {
+      alert('Veuillez sélectionner une heure de récupération avant de valider.');
+      return;
+    }
+    const total = keys.reduce((s, k) => s + cart[k].qty * cart[k].price, 0);
+    const lines = keys.map(k => `• ${cart[k].name} × ${cart[k].qty} — ${(cart[k].qty * cart[k].price).toFixed(2).replace('.', ',')} €`).join('\n');
+    document.getElementById('confirmRecap').innerHTML =
+      `<strong>Récapitulatif</strong><br><br>${lines.replace(/\n/g,'<br>')}<br><br>
+       <strong>Heure de récupération :</strong> ${selectedSlot}<br>
+       <strong>Total estimé :</strong> ${total.toFixed(2).replace('.', ',')} €`;
+    document.getElementById('confirmOverlay').classList.add('open');
+  }
+
+  function fermerConfirmation() {
+    document.getElementById('confirmOverlay').classList.remove('open');
+  }
+
+  function envoyerWhatsApp() {
+    const keys = Object.keys(cart);
+    const total = keys.reduce((s, k) => s + cart[k].qty * cart[k].price, 0);
+    const lines = keys.map(k => `${cart[k].name} x${cart[k].qty}`).join('%0A');
+    const msg = `Bonjour O'yame%20!%0A%0AJe souhaite commander à emporter :%0A%0A${lines}%0A%0AHeure de récupération : ${selectedSlot}%0ATotal estimé : ${total.toFixed(2).replace('.', ',')} €%0A%0AMerci !`;
+    window.open(`https://wa.me/590000000000?text=${msg}`, '_blank');
+    fermerConfirmation();
+  }
+
+  function scrollToPanier() {
+    document.getElementById('panier').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Fermer modale en cliquant dehors
+  document.getElementById('confirmOverlay').addEventListener('click', function(e) {
+    if (e.target === this) fermerConfirmation();
+  });
+</script>
+
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <img src="logo-oyame.png" alt="O'yame">
+        <p>
+          La crêperie moderne de Sainte-Anne. Yames fraîches garnies, saveurs du monde et ambiance décontractée au coeur de la Guadeloupe.
+        </p>
+        <div class="footer-social">
+          <a href="#" target="_blank" aria-label="Instagram">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" target="_blank" aria-label="Facebook">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="commander.html">Commander à emporter</a></li>
+          <li><a href="index.html#reserver">Réserver une table</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Sainte-Anne, 97180</li>
+          <li>Guadeloupe</li>
+          <li><a href="tel:+590000000000">+590 _ _ _ _ _ _ _ _</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-map-center">
+      <iframe src="https://maps.google.com/maps?q=O%27yame+Sainte-Anne+97180+Guadeloupe&hl=fr&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 O'yame – La Crêpe Moderne · Sainte-Anne · Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="https://kudjastudio.fr" target="_blank">Kudja Studio</a> · Guadeloupe</p>
+    </div>
+  </footer>
+
+</body>
+</html>
