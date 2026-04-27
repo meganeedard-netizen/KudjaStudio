@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tendacayou — Cabanes dans les Arbres • Deshaies, Guadeloupe</title>
+    <meta name="description" content="Tendacayou, écolodge de luxe à Deshaies en Guadeloupe. 14 cabanes perchées dans les arbres avec vue sur la baie, spa bien-être et restaurant Le Poisson Rouge.">
+    <meta property="og:title" content="Tendacayou — Écolodge Premium Guadeloupe">
+    <meta property="og:description" content="14 cabanes dans les arbres à Deshaies, Guadeloupe. Spa, restaurant Le Poisson Rouge. Une expérience insolite et luxueuse au cœur de la nature caribéenne.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@200;300;400;500;600&family=Cormorant+Garamond:ital,wght@1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="tendacayou_ecolodge_logo.jpeg" alt="Tendacayou" class="logo-img">
+                <span class="logo-text">TENDACAYOU</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#cabanes">Les Cabanes</a></li>
+                <li><a href="#spa">Spa & Bien-être</a></li>
+                <li><a href="#restaurant">Restaurant</a></li>
+                <li><a href="#destination">Deshaies</a></li>
+                <li><a href="#reservation" class="nav-cta">Réserver</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <!-- Diaporama de fond -->
+        <div class="hero-slides" id="heroSlides">
+            <div class="hero-slide active" style="background-image: url('FITZCARRALDO-SPPHOTOGRAPHE10.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('KAZALEA-SPPHOTOGRAPHE13.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('ZENZEN-SPPHOTOGRAPHIE3.jpg')"></div>
+        </div>
+        <div class="hero-bg">
+            <div class="hero-leaves">
+                <div class="leaf leaf-1"></div>
+                <div class="leaf leaf-2"></div>
+                <div class="leaf leaf-3"></div>
+                <div class="leaf leaf-4"></div>
+                <div class="leaf leaf-5"></div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Écolodge & Spa • Guadeloupe</p>
+            <h1 class="hero-title">
+                Entre ciel<br>
+                <em>et forêt</em>
+            </h1>
+            <p class="hero-subtitle">14 cabanes perchées dans les arbres<br>au cœur de la nature de Deshaies</p>
+            <!-- Cabanes en défilement -->
+            <div class="hero-cabanes-ticker">
+                <span class="ticker-label">Nos habitations :</span>
+                <div class="ticker-track" id="tickerTrack">
+                    <span class="ticker-item active">Fitzcarraldo</span>
+                    <span class="ticker-item">Zen Zen</span>
+                    <span class="ticker-item">Château Mango</span>
+                    <span class="ticker-item">Kaz à Léa</span>
+                    <span class="ticker-item">Doudou An Mwen</span>
+                    <span class="ticker-item">Indigo</span>
+                    <span class="ticker-item">Pauline</span>
+                    <span class="ticker-item">Le Dojo</span>
+                </div>
+            </div>
+            <div class="hero-ctas">
+                <a href="#reservation" class="btn btn-primary">Réserver votre séjour</a>
+                <a href="#cabanes" class="btn btn-ghost">Découvrir les cabanes</a>
+            </div>
+        </div>
+        <!-- Indicateurs du slider -->
+        <div class="hero-dots">
+            <button class="hero-dot active" data-slide="0" aria-label="Fitzcarraldo"></button>
+            <button class="hero-dot" data-slide="1" aria-label="Kaz à Léa"></button>
+            <button class="hero-dot" data-slide="2" aria-label="Zen Zen"></button>
+        </div>
+        <div class="hero-scroll">
+            <span>Découvrir</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- BANDE SIGNATURE -->
+    <div class="signature-band">
+        <div class="sig-item">
+            <span class="sig-number">14</span>
+            <span class="sig-label">Cabanes dans les arbres</span>
+        </div>
+        <div class="sig-divider"></div>
+        <div class="sig-item">
+            <span class="sig-number">∞</span>
+            <span class="sig-label">Vue sur la Baie de Deshaies</span>
+        </div>
+        <div class="sig-divider"></div>
+        <div class="sig-item">
+            <span class="sig-number">1</span>
+            <span class="sig-label">Restaurant Le Poisson Rouge</span>
+        </div>
+        <div class="sig-divider"></div>
+        <div class="sig-item">
+            <span class="sig-number">✦</span>
+            <span class="sig-label">Spa & Massages</span>
+        </div>
+    </div>
+
+    <!-- L'EXPÉRIENCE -->
+    <section id="experience" class="experience section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Notre philosophie</p>
+                <h2 class="section-title">Une expérience<br><em>hors du commun</em></h2>
+                <p class="section-subtitle">Tendacayou vous invite à vivre une aventure sensorielle unique, perché au-dessus de la canopée, bercé par les sons de la forêt tropicale et le souffle de l'océan.</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar fade-in">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 5 C20 15, 8 20, 8 35 C8 48, 18 55, 30 55 C42 55, 52 48, 52 35 C52 20, 40 15, 30 5Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M30 20 C24 26, 18 28, 18 36 C18 42, 23 46, 30 46 C37 46, 42 42, 42 36 C42 28, 36 26, 30 20Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="30" y1="55" x2="30" y2="5" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+                        </svg>
+                    </div>
+                    <h3>Nature & Authenticité</h3>
+                    <p>Immergez-vous dans la forêt tropicale guadeloupéenne. Nos cabanes sont construites en harmonie avec la nature, préservant l'environnement exceptionnel de Deshaies.</p>
+                </div>
+                <div class="pillar fade-in" style="animation-delay:0.15s">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="10" width="40" height="40" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M20 30 L26 36 L40 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="30" cy="30" r="3" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Confort & Luxe</h3>
+                    <p>L'insolite ne rime pas avec inconfort. Chaque cabane offre un équipement haut de gamme, une décoration soignée et tous les conforts d'un hébergement premium.</p>
+                </div>
+                <div class="pillar fade-in" style="animation-delay:0.3s">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M10 30 Q20 18, 30 30 Q40 42, 50 30" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <line x1="30" y1="10" x2="30" y2="50" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+                        </svg>
+                    </div>
+                    <h3>Guadeloupe Sauvage</h3>
+                    <p>Deshaies, l'un des plus beaux villages de Guadeloupe, offre une baie d'exception. Tendacayou vous place au cœur d'un écrin de verdure et de mer turquoise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LES CABANES -->
+    <section id="cabanes" class="cabanes section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Hébergements insolites</p>
+                <h2 class="section-title">Nos 14 Habitations<br><em>Uniques</em></h2>
+                <p class="section-subtitle">Cabanes dans les arbres, cases créoles ou bungalows au bord de l'eau — chaque hébergement porte une histoire, une personnalité, une magie propre.</p>
+            </div>
+            <div class="cabanes-tabs">
+                <button class="tab-btn active" data-tab="arbres">
+                    Cabanes dans les Arbres
+                    <span class="tab-count">4</span>
+                </button>
+                <button class="tab-btn" data-tab="creoles">
+                    Cases Créoles
+                    <span class="tab-count">8</span>
+                </button>
+                <button class="tab-btn" data-tab="eau">
+                    Au Bord de l'Eau
+                    <span class="tab-count">2</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- CABANES DANS LES ARBRES -->
+        <div class="tab-panel active" id="tab-arbres">
+            <div class="cabanes-category-intro container">
+                <p class="category-desc">"Grimper à la cime du manguier…" — Construites en bois tropical, ces habitations perchées offrent une vue imprenable et une immersion totale dans la canopée.</p>
+            </div>
+            <div class="cabanes-grid container">
+
+                <div class="cabane-card fade-in">
+                    <div class="cabane-img c-fitzcarraldo">
+                        <div class="cabane-tag">Vue Baie de Deshaies</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Cabane dans les Arbres</p>
+                        <h3>Fitzcarraldo</h3>
+                        <p>Suspendue face à la baie de Deshaies, sur 3 niveaux ancrés dans des manguiers centenaires — "un bateau échoué dans les branches". Terrasse panoramique, bain japonais, lit sous les étoiles.</p>
+                        <div class="cabane-features">
+                            <span>2 à 4 personnes</span>
+                            <span>Jacuzzi</span>
+                            <span>Bain japonais</span>
+                            <span>Terrasse panoramique</span>
+                            <span>Douche plein air</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.1s">
+                    <div class="cabane-img c-doudou">
+                        <div class="cabane-tag">Romantique</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Cabane dans les Arbres</p>
+                        <h3>Doudou An Mwen</h3>
+                        <p>Vue mer d'un côté, chambre perchée de l'autre. Un jacuzzi niché dans les feuillages, une douche en plein air où les colibris viennent danser. Le refuge idéal pour les amoureux.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Jacuzzi dans les feuillages</span>
+                            <span>Bain japonais</span>
+                            <span>Douche plein air</span>
+                            <span>Jardin privé</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.2s">
+                    <div class="cabane-img c-dimitri">
+                        <div class="cabane-tag">Robinson de Luxe</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Cabane dans les Arbres</p>
+                        <h3>Cabane de Dimitri</h3>
+                        <p>L'ancienne maison d'enfance de Dimitri, transformée en refuge de luxe. Un bain japonais au sommet du manguier, une vue imprenable sur la mer des Caraïbes depuis la chambre.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Bain japonais au sommet</span>
+                            <span>Vue mer des Caraïbes</span>
+                            <span>Cabane de repos</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.3s">
+                    <div class="cabane-img c-chateau-mango">
+                        <div class="cabane-tag">Familiale & Groupe</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Cabane dans les Arbres</p>
+                        <h3>Château Mango</h3>
+                        <p>Un labyrinthe de passerelles entre forêt et ciel. 3 chambres, bassin de nage à contre-courant, barbecue et solarium. Le joyau convivial pour familles et groupes.</p>
+                        <div class="cabane-features">
+                            <span>2 à 6 personnes</span>
+                            <span>3 chambres doubles</span>
+                            <span>Bassin de nage</span>
+                            <span>Barbecue</span>
+                            <span>Solarium</span>
+                            <span>Vue mer Caraïbes</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CASES CRÉOLES -->
+        <div class="tab-panel" id="tab-creoles">
+            <div class="cabanes-category-intro container">
+                <p class="category-desc">"Relaxation à l'antillaise…" — Cases créoles en tôle ancienne, pierre, bambou et bois. Chacune porte un nom, un caractère, une âme distincte.</p>
+            </div>
+            <div class="cabanes-grid container">
+
+                <div class="cabane-card fade-in">
+                    <div class="cabane-img c-bougresse">
+                        <div class="cabane-tag">Case Créole</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>La Bougresse</h3>
+                        <p>Une case créole authentique aux accents guadeloupéens, nichée dans la végétation tropicale. Un havre de paix en matériaux naturels pour une reconnexion totale à l'essentiel.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Matériaux naturels</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.1s">
+                    <div class="cabane-img c-yes-papa">
+                        <div class="cabane-tag">Famille & Amis</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Yes Papa</h3>
+                        <p>"Le temps d'un séjour, Yes Papa vous ouvre ses bras." Balançoire face à la mer, salle de bain extérieure au chant des oiseaux, bain japonais pour la sérénité absolue.</p>
+                        <div class="cabane-features">
+                            <span>2 à 4 personnes</span>
+                            <span>2 chambres</span>
+                            <span>Bain japonais</span>
+                            <span>Salle de bain extérieure</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.2s">
+                    <div class="cabane-img c-mamoune">
+                        <div class="cabane-tag">Romantique</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Mamoune</h3>
+                        <p>Les alizés font danser les rideaux de la chambre. Jacuzzi extérieur avec vue panoramique sur la baie, hamac face à l'horizon marin. "Jolis rêves garantis."</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Jacuzzi vue baie</span>
+                            <span>Hamac vue mer</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.3s">
+                    <div class="cabane-img c-indigo">
+                        <div class="cabane-tag">Vue Mer</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Indigo</h3>
+                        <p>Bleu, rose pâle et rouge profond — les couleurs d'Indigo racontent la Guadeloupe. Jacuzzi sur la véranda, hamac, salle de bain en plein air dans les feuillages, l'une des plus belles vues du domaine.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Jacuzzi véranda</span>
+                            <span>Hamac</span>
+                            <span>Salle de bain extérieure</span>
+                            <span>Vue mer Caraïbes</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in">
+                    <div class="cabane-img c-suc-a-coco">
+                        <div class="cabane-tag">Case Créole</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Le Suc à Coco</h3>
+                        <p>Douce comme son nom, cette case créole conviviale vous accueille dans un écrin de verdure. Idéale pour petits groupes souhaitant vivre l'authenticité créole en pleine nature.</p>
+                        <div class="cabane-features">
+                            <span>2 à 4 personnes</span>
+                            <span>Case créole traditionnelle</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.1s">
+                    <div class="cabane-img c-zen-zen">
+                        <div class="cabane-tag">Zen & Contemplation</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Zen Zen</h3>
+                        <p>"Une immersion en nature, une ode à l'art de vivre Zen…" Des espaces intégrés au cœur de la végétation : salon suspendu dans un manguier, cuisine entre roche et jardin zen, rivière murmurante, jacuzzi sous tonnelle végétale.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Jacuzzi sous pergola</span>
+                            <span>Jardin zen & rivière</span>
+                            <span>Salon dans le manguier</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.2s">
+                    <div class="cabane-img c-dojo">
+                        <div class="cabane-tag">Accès Spa Privatif</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Le Dojo</h3>
+                        <p>Zen tropical en bambou, juchée au-dessus du spa avec escalier privatif. Accès direct aux bassins et jardins. Un refuge imprégné de sérénité, pour qui fait de la tranquillité un art de vivre.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Jacuzzi</span>
+                            <span>Accès spa direct</span>
+                            <span>Architecture bambou</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.3s">
+                    <div class="cabane-img c-kaz-lea">
+                        <div class="cabane-tag">Colorée & Conviviale</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Case Créole</p>
+                        <h3>Kaz à Léa</h3>
+                        <p>Une case créole haute en couleurs — mauves, fuchsias et bois sombre. Espace de vie généreux, hamac, vue panoramique sur la forêt tropicale. Généreuse et conviviale, parfaite pour familles ou amis.</p>
+                        <div class="cabane-features">
+                            <span>2 à 4 personnes</span>
+                            <span>Grande terrasse</span>
+                            <span>Vue forêt panoramique</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- AU BORD DE L'EAU -->
+        <div class="tab-panel" id="tab-eau">
+            <div class="cabanes-category-intro container">
+                <p class="category-desc">"La baignade n'est jamais très loin…" — Posés au bord de l'eau, ces deux bungalows créoles offrent une immersion totale entre ciel, arbres et rivière.</p>
+            </div>
+            <div class="cabanes-grid cabanes-grid--2col container">
+
+                <div class="cabane-card fade-in">
+                    <div class="cabane-img c-zanoli">
+                        <div class="cabane-tag">Bord de Rivière</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Bungalow Au Bord de l'Eau</p>
+                        <h3>Zanoli</h3>
+                        <p>Doux comme une alcôve, aux couleurs tropicales, à deux pas du restaurant. Bain japonais ou plongeon dans la piscine de rivière, terrasses multiples — deux choix, une seule promesse : le bonheur.</p>
+                        <div class="cabane-features">
+                            <span>2 personnes</span>
+                            <span>Bain japonais</span>
+                            <span>Plateforme de plongeon</span>
+                            <span>Piscine de rivière</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+                <div class="cabane-card fade-in" style="animation-delay:0.15s">
+                    <div class="cabane-img c-pauline">
+                        <div class="cabane-tag">Mezzanine sur l'Eau</div>
+                    </div>
+                    <div class="cabane-body">
+                        <p class="cabane-type">Bungalow Au Bord de l'Eau</p>
+                        <h3>Pauline</h3>
+                        <p>Un univers ouvert à la brise et aux oiseaux, avec une mezzanine suspendue directement au-dessus de l'eau. "Faites de la paresse un rituel." Fraîcheur, sérénité et murmure de la rivière.</p>
+                        <div class="cabane-features">
+                            <span>2 à 5 personnes</span>
+                            <span>2 chambres + mezzanine</span>
+                            <span>Bain japonais</span>
+                            <span>Mezzanine sur l'eau</span>
+                            <span>Kitchenette</span>
+                        </div>
+                        <a href="#reservation" class="btn-link">Réserver <span>→</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SPA -->
+    <section id="spa" class="spa section">
+        <div class="spa-inner">
+            <div class="spa-content fade-in">
+                <p class="section-eyebrow light">Bien-être & Sérénité</p>
+                <h2 class="section-title">Votre Sanctuaire<br><em>de Bien-être</em></h2>
+                <p>Au cœur de la forêt tropicale, notre spa vous invite à un ressourcement absolu. Bassins, hammam, sauna, bain japonais au lait de coco — des soins inspirés des richesses naturelles de la Guadeloupe.</p>
+                <p class="spa-horaires">Ouvert mercredi – dimanche, après-midi uniquement. Réservation obligatoire.</p>
+                <a href="#reservation" class="btn btn-gold">Réserver un soin</a>
+            </div>
+            <div class="spa-visual fade-in" style="animation-delay:0.2s">
+                <div class="spa-img-main">
+                    <div class="spa-img-overlay">
+                        <p class="spa-quote"><em>"Un espace où le temps s'arrête,<br>où la nature vous soigne"</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORFAITS -->
+        <div class="forfaits-section container">
+            <div class="forfaits-group fade-in">
+                <h3 class="forfaits-titre">Forfaits Solo</h3>
+                <div class="forfaits-grid">
+                    <div class="forfait-card">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Moment d'Évasion</h4>
+                                <span class="forfait-duree">1h30</span>
+                            </div>
+                            <span class="forfait-prix">85 €</span>
+                        </div>
+                        <p>30 min de massage relaxant ou soin du visage + 1h d'accès aux bassins & hammam.</p>
+                    </div>
+                    <div class="forfait-card">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Pause Nature</h4>
+                                <span class="forfait-duree">2h</span>
+                            </div>
+                            <span class="forfait-prix">115 €</span>
+                        </div>
+                        <p>1h de massage au choix + 1h d'accès bassins & hammam en pleine nature.</p>
+                    </div>
+                    <div class="forfait-card forfait-featured">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Suprême Détente</h4>
+                                <span class="forfait-duree">3h30</span>
+                            </div>
+                            <span class="forfait-prix">210 €</span>
+                        </div>
+                        <p>Sauna + 1h massage + gommage 30 min + bain japonais + champagne ou cocktail + 1h spa.</p>
+                    </div>
+                    <div class="forfait-card">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Matin Zen Solo</h4>
+                                <span class="forfait-duree">Matinée</span>
+                            </div>
+                            <span class="forfait-prix">135 €</span>
+                        </div>
+                        <p>Petit-déjeuner au Poisson Rouge + 1h bassins & hammam + 1h de massage.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forfaits-group fade-in" style="animation-delay:0.15s">
+                <h3 class="forfaits-titre">Forfaits Duo</h3>
+                <div class="forfaits-grid">
+                    <div class="forfait-card">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Douz'Amour</h4>
+                                <span class="forfait-duree">2h</span>
+                            </div>
+                            <span class="forfait-prix">250 €</span>
+                        </div>
+                        <p>30 min massage relaxant en duo + 1h accès spa + 30 min bain japonais au lait de coco + champagne ou cocktail.</p>
+                    </div>
+                    <div class="forfait-card">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Douceur en Duo</h4>
+                                <span class="forfait-duree">2h30</span>
+                            </div>
+                            <span class="forfait-prix">250 €</span>
+                        </div>
+                        <p>1h bassins, hammam & sauna + 1h massage en duo (californien, suédois, lomi-lomi ou bambous).</p>
+                    </div>
+                    <div class="forfait-card forfait-featured">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Moment d'Exception</h4>
+                                <span class="forfait-duree">3h</span>
+                            </div>
+                            <span class="forfait-prix">390 €</span>
+                        </div>
+                        <p>Gommage 30 min + 1h massage + bain japonais 30 min + champagne ou cocktail + 1h accès spa.</p>
+                    </div>
+                    <div class="forfait-card">
+                        <div class="forfait-header">
+                            <div>
+                                <h4>Matin Zen Duo</h4>
+                                <span class="forfait-duree">Matinée</span>
+                            </div>
+                            <span class="forfait-prix">260 €</span>
+                        </div>
+                        <p>Petit-déjeuner au Poisson Rouge (8h–9h45) + 1h bassins & hammam + 1h massage en duo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESTAURANT -->
+    <section id="restaurant" class="restaurant section">
+        <div class="container">
+            <div class="resto-header">
+                <p class="section-eyebrow">Gastronomie créole</p>
+                <h2 class="section-title">Le Poisson Rouge</h2>
+                <p class="section-subtitle"><em>La Table de Tendacayou</em></p>
+            </div>
+            <div class="resto-inner">
+                <div class="resto-visual fade-in">
+                    <div class="resto-img-main">
+                        <div class="resto-badge">
+                            <span>Cuisine</span>
+                            <strong>Créole & Fusion</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="resto-content fade-in" style="animation-delay:0.2s">
+                    <p class="resto-intro">Niché dans l'écrin de verdure de Tendacayou, Le Poisson Rouge invite à une expérience culinaire d'exception. Une cuisine créole authentique revisitée avec finesse, sublimée par les produits frais de Guadeloupe.</p>
+                    <div class="resto-infos">
+                        <div class="resto-info-item">
+                            <strong>Petit-déjeuner en habitation</strong>
+                            <span>7h30 – 9h30</span>
+                        </div>
+                        <div class="resto-info-item">
+                            <strong>Dîner en habitation</strong>
+                            <span>Jeudi soir — sur réservation</span>
+                        </div>
+                        <div class="resto-info-item">
+                            <strong>Le Poisson Rouge</strong>
+                            <span>Vendredi & samedi soir, dimanche midi</span>
+                        </div>
+                    </div>
+                    <a href="#reservation" class="btn btn-coral">Réserver une table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATION -->
+    <section id="destination" class="destination section">
+        <div class="destination-bg"></div>
+        <div class="destination-overlay"></div>
+        <div class="destination-content container">
+            <div class="section-header light fade-in">
+                <p class="section-eyebrow">L'écrin de verdure</p>
+                <h2 class="section-title">Deshaies,<br><em>la Guadeloupe Sauvage</em></h2>
+                <p class="section-subtitle">Tendacayou est né dans l'un des plus beaux cadres naturels de la Guadeloupe. Entre forêt tropicale, baie d'azur et villages authentiques.</p>
+            </div>
+            <div class="dest-cards">
+                <div class="dest-card fade-in">
+                    <div class="dest-card-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <path d="M20 4 C13 4, 4 12, 4 22 C4 30, 11 36, 20 36 C29 36, 36 30, 36 22 C36 12, 27 4, 20 4Z" stroke="currentColor" stroke-width="1.2"/>
+                            <path d="M20 36 L20 40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="20" cy="22" r="4" stroke="currentColor" stroke-width="1.2"/>
+                        </svg>
+                    </div>
+                    <h4>La Baie de Deshaies</h4>
+                    <p>Vue imprenable sur l'une des baies les plus préservées des Caraïbes, classée parmi les plus belles de Guadeloupe.</p>
+                </div>
+                <div class="dest-card fade-in" style="animation-delay:0.15s">
+                    <div class="dest-card-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <path d="M8 32 C8 32, 12 18, 20 16 C28 14, 32 26, 32 26" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                            <path d="M4 26 C4 26, 10 12, 20 8 C30 4, 36 20, 36 20" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                            <line x1="20" y1="36" x2="20" y2="8" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3"/>
+                        </svg>
+                    </div>
+                    <h4>Forêt Tropicale</h4>
+                    <p>Entouré d'une végétation luxuriante, Tendacayou vous plonge dans la forêt guadeloupéenne, à deux pas du Parc National.</p>
+                </div>
+                <div class="dest-card fade-in" style="animation-delay:0.3s">
+                    <div class="dest-card-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <path d="M6 28 Q10 14, 20 12 Q30 10, 34 28" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                            <path d="M6 28 L34 28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M4 32 L36 32" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+                            <path d="M2 36 L38 36" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <h4>Plages Secrètes</h4>
+                    <p>La plage de Deshaies, Grande Anse et ses eaux cristallines sont accessibles en quelques minutes depuis votre cabane.</p>
+                </div>
+                <div class="dest-card fade-in" style="animation-delay:0.45s">
+                    <div class="dest-card-icon">
+                        <svg viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="16" r="8" stroke="currentColor" stroke-width="1.2"/>
+                            <path d="M14 24 L8 36 M26 24 L32 36 M17 36 L23 36" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Village Authentique</h4>
+                    <p>Le village de Deshaies, ses marchés colorés, ses pêcheurs et ses ruelles fleuries témoignent d'une Guadeloupe préservée.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="galerie" class="galerie section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">L'atmosphère</p>
+                <h2 class="section-title">Tendacayou<br><em>en images</em></h2>
+            </div>
+        </div>
+        <div class="galerie-grid">
+            <div class="gal-item gal-wide gal-img-1 fade-in">
+                <div class="gal-hover"><span>Les Cabanes</span></div>
+            </div>
+            <div class="gal-item gal-img-2 fade-in" style="animation-delay:0.1s">
+                <div class="gal-hover"><span>Vue Panoramique</span></div>
+            </div>
+            <div class="gal-item gal-img-3 fade-in" style="animation-delay:0.2s">
+                <div class="gal-hover"><span>Le Spa</span></div>
+            </div>
+            <div class="gal-item gal-img-4 fade-in" style="animation-delay:0.1s">
+                <div class="gal-hover"><span>Le Poisson Rouge</span></div>
+            </div>
+            <div class="gal-item gal-wide gal-img-5 fade-in" style="animation-delay:0.2s">
+                <div class="gal-hover"><span>La Baie de Deshaies</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section class="temoignages section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Ils ont vécu l'expérience</p>
+                <h2 class="section-title">Vos retours<br><em>nous touchent</em></h2>
+            </div>
+            <div class="temoignages-grid">
+                <div class="temoignage fade-in">
+                    <div class="stars">★★★★★</div>
+                    <p>"Une expérience absolument magique. Se réveiller dans les arbres, entendre les oiseaux, voir la baie depuis notre terrasse… nous reviendrons chaque année."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">SL</div>
+                        <div>
+                            <strong>Sophie & Laurent</strong>
+                            <span>Paris — Séjour romantique</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temoignage fade-in" style="animation-delay:0.15s">
+                    <div class="stars">★★★★★</div>
+                    <p>"Le Poisson Rouge nous a proposé les meilleurs accras de notre vie. L'ambiance, le cadre, la cuisine créole… tout est parfait. Le spa est un vrai bijou."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">MC</div>
+                        <div>
+                            <strong>Marie-Claire</strong>
+                            <span>Lyon — Famille, 1 semaine</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="temoignage fade-in" style="animation-delay:0.3s">
+                    <div class="stars">★★★★★</div>
+                    <p>"Perché dans les arbres, en pleine nature, avec tout le confort d'un hôtel de luxe. C'est la définition même de l'expérience unique. Tendacayou, c'est inoubliable."</p>
+                    <div class="temoignage-author">
+                        <div class="author-avatar">JT</div>
+                        <div>
+                            <strong>Julien & Thomas</strong>
+                            <span>Bordeaux — Voyage en duo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RÉSERVATION -->
+    <section id="reservation" class="reservation section">
+        <div class="reservation-inner">
+            <div class="reservation-text fade-in">
+                <p class="section-eyebrow light">Votre séjour de rêve</p>
+                <h2 class="section-title">Réservez<br><em>votre escapade</em></h2>
+                <p>Notre équipe est à votre écoute pour créer votre séjour sur-mesure. Cabane, spa, dîner romantique, occasion spéciale — nous organisons tout pour vous.</p>
+                <div class="contact-infos">
+                    <div class="contact-item">
+                        <span class="contact-icon">✉</span>
+                        <div>
+                            <strong>Email</strong>
+                            <a href="mailto:contact@tendacayou.com">contact@tendacayou.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">✆</span>
+                        <div>
+                            <strong>Téléphone</strong>
+                            <a href="tel:+590590286760">+590 (0)590 28 67 60</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⊙</span>
+                        <div>
+                            <strong>Adresse</strong>
+                            <span>Deshaies, 97126 Guadeloupe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="reservation-form fade-in" style="animation-delay:0.2s">
+                <form id="contactForm" class="form">
+                    <h3>Demande de réservation</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" name="prenom" placeholder="Marie" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="marie@exemple.fr" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="arrivee">Arrivée</label>
+                            <input type="date" id="arrivee" name="arrivee" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="depart">Départ</label>
+                            <input type="date" id="depart" name="depart" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="prestation">Prestation souhaitée</label>
+                        <select id="prestation" name="prestation">
+                            <option value="">Sélectionner…</option>
+                            <option>Cabane Signature</option>
+                            <option>Cabane Prestige</option>
+                            <option>Cabane Nature</option>
+                            <option>Cabane Cocon</option>
+                            <option>Soin Spa</option>
+                            <option>Réservation Restaurant</option>
+                            <option>Séjour complet (cabane + spa + restaurant)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Occasion spéciale, demande particulière, nombre de personnes…"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Envoyer ma demande</button>
+                    <p class="form-note">Nous vous répondrons dans les 24 heures.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="tendacayou_ecolodge_logo.jpeg" alt="Tendacayou" class="logo-img footer-logo-img">
+                    <span>TENDACAYOU</span>
+                </div>
+                <p>Écolodge de luxe à Deshaies, Guadeloupe.<br>14 cabanes dans les arbres, spa & restaurant.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                            <rect x="2" y="2" width="20" height="20" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TripAdvisor">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="9" cy="12" r="2"/>
+                            <circle cx="15" cy="12" r="2"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h4>Hébergements</h4>
+                <ul>
+                    <li><a href="#cabanes">Les Cabanes</a></li>
+                    <li><a href="#cabanes">Cabane Signature</a></li>
+                    <li><a href="#cabanes">Cabane Prestige</a></li>
+                    <li><a href="#cabanes">Cabane Cocon</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav">
+                <h4>Prestations</h4>
+                <ul>
+                    <li><a href="#spa">Spa & Massages</a></li>
+                    <li><a href="#restaurant">Le Poisson Rouge</a></li>
+                    <li><a href="#destination">Activités</a></li>
+                    <li><a href="#reservation">Séjours sur-mesure</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav">
+                <h4>Informations</h4>
+                <ul>
+                    <li><a href="#destination">Deshaies, Guadeloupe</a></li>
+                    <li><a href="#reservation">Contact</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Tendacayou — Écolodge de luxe à Deshaies, Guadeloupe. Tous droits réservés.</p>
+            <p class="footer-credit">Site conçu avec ♥ pour l'exception caribéenne</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
