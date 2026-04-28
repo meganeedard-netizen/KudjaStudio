@@ -2067,13 +2067,38 @@ ul { list-style: none; }
 
 .form-group textarea { resize: vertical; min-height: 100px; }
 
-/* Prestation pre-filled (read-only) */
-.form-group input[readonly] {
+/* Bloc prestation avec poissons SVG */
+.prestation-display {
+    width: 100%;
+    min-height: 52px;
+    padding: 0.85rem 1rem;
+    border: 2px solid #e0ddd6;
+    border-radius: var(--radius);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
     background: var(--cream);
+    display: flex;
+    align-items: center;
+    transition: border-color var(--transition);
+}
+.prestation-placeholder {
+    color: #aaa;
+    font-size: 0.88rem;
+    font-style: italic;
+}
+.prestation-filled {
     color: var(--green-deep);
     font-weight: 600;
-    cursor: default;
-    border-color: var(--green-pale);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+.prestation-filled em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--text-mid);
+    font-size: 0.88rem;
 }
 
 /* Code promo field */

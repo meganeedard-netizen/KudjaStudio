@@ -1004,7 +1004,10 @@
                     </div>
                     <div class="form-group">
                         <label for="prestation">Prestation souhaitée</label>
-                        <input type="text" id="prestation" name="prestation" placeholder="Sélectionnez un hébergement ou un soin via le bouton Réserver" readonly>
+                        <div class="prestation-display" id="prestation-display">
+                            <span class="prestation-placeholder">Sélectionnez un hébergement ou un soin via le bouton Réserver</span>
+                        </div>
+                        <input type="hidden" id="prestation" name="prestation">
                     </div>
                     <div class="form-group">
                         <label for="message">Votre message</label>
@@ -1269,12 +1272,17 @@ function fermerSimulateur() {
     document.body.style.overflow = '';
 }
 
-function getFishEmoji(cabaneKey) {
+function getFishCount(cabaneKey) {
     const trois = ['fitzcarraldo','doudou','chateau-mango','zen-zen','dojo','kaz-a-lea'];
     const deux  = ['mamoune','indigo','dimitri'];
-    if (trois.includes(cabaneKey)) return '🐟🐟🐟';
-    if (deux.includes(cabaneKey))  return '🐟🐟';
-    return '🐟';
+    if (trois.includes(cabaneKey)) return 3;
+    if (deux.includes(cabaneKey))  return 2;
+    return 1;
+}
+function getFishHTML(n, premium) {
+    const cls = premium ? 'badge-premium-poisson' : 'badge-poisson';
+    const fish =  + FISH_SVG + ;
+    return '<span class="' + cls + '">' + fish.repeat(n) + '</span>';
 }
 
 function envoyerDemande() {
@@ -1307,7 +1315,7 @@ function envoyerDemande() {
     // Afficher le récap dans le formulaire
     const recap = document.getElementById('reservation-recap');
     if (recap) {
-        document.getElementById('recap-prestation').textContent = prestStr;
+        document.getElementById('recap-prestation').innerHTML = t.nom + ' ' + fishHTML;
         document.getElementById('recap-total').textContent = totalStr;
         recap.style.display = 'block';
     }
@@ -1340,6 +1348,8 @@ function reserverTable() {
     const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
     const prestStr = 'Réservation Restaurant Le Poisson Rouge' + (nbStr ? ' — ' + nbStr : '');
     setVal('prestation', prestStr);
+    const dispResto = document.getElementById('prestation-display');
+    if (dispResto) dispResto.innerHTML = '<span class="prestation-filled">' + prestStr + '</span>';
     if (date) setVal('date-restaurant', date);
     if (nbStr) {
         const pEl = document.getElementById('personnes');
@@ -1367,6 +1377,8 @@ function reserverSoin(btn, forfaitNom, forfaitPrix) {
     setVal('arrivee', dateVal);
     setVal('prestation', prestStr);
     setVal('tarif-estime', forfaitPrix || '');
+    const dispSpa = document.getElementById('prestation-display');
+    if (dispSpa) dispSpa.innerHTML = '<span class="prestation-filled">' + prestStr + '</span>';
 
     const recap = document.getElementById('reservation-recap');
     if (recap) {
