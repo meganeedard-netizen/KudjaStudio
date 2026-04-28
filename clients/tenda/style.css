@@ -1780,6 +1780,15 @@ ul { list-style: none; }
     padding: 0.9rem 1.2rem;
 }
 
+/* Forcer texte lisible dans l'en-tête vert foncé */
+.tarifs-header .col-cabane,
+.tarifs-header .col-capa,
+.tarifs-header .col-prix { color: #fff; }
+.tarifs-header .saison-bs-col  { color: #A8D8B8; }
+.tarifs-header .saison-hs-col  { color: var(--gold-light); }
+.tarifs-header .saison-ths-col { color: #F5A0A0; }
+.tarifs-header .saison-sep-col { color: #C8B8F0; }
+
 .tarifs-row {
     padding: 0.85rem 1.2rem;
     border-bottom: 1px solid #F0F0EA;
