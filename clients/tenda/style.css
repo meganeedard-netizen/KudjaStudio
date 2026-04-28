@@ -1295,6 +1295,46 @@ ul { list-style: none; }
     color: rgba(255,255,255,0.55);
 }
 
+.forfait-footer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.spa-date {
+    flex: 1;
+    padding: 0.5rem 0.7rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    outline: none;
+    transition: border-color 0.2s;
+    color-scheme: dark;
+}
+.spa-date:focus { border-color: var(--gold-light); }
+
+.spa-btn {
+    padding: 0.5rem 0.9rem;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.1s;
+}
+.spa-btn:hover { background: var(--gold-light); color: var(--text-dark); }
+.spa-btn:active { transform: scale(0.97); }
+
 /* ---------------------------------------------------
    RESTAURANT
    --------------------------------------------------- */
@@ -1775,8 +1815,8 @@ ul { list-style: none; }
 /* Fish badges */
 .fish-ico {
     display: inline-block;
-    width: 14px;
-    height: 9px;
+    width: 18px;
+    height: 11px;
     vertical-align: middle;
     margin-bottom: 1px;
 }
