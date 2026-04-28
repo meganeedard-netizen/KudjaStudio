@@ -1272,6 +1272,8 @@ function fermerSimulateur() {
     document.body.style.overflow = '';
 }
 
+const FISH_SVG = '<svg class="fish-ico" viewBox="0 0 22 14" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 7L0 1.5L0 12.5ZM5 7C5 2.5 19 2.5 21 7C19 11.5 5 11.5 5 7Z" fill="currentColor"/><circle cx="18" cy="5" r="1.2" fill="white"/></svg>';
+
 function getFishCount(cabaneKey) {
     const trois = ['fitzcarraldo','doudou','chateau-mango','zen-zen','dojo','kaz-a-lea'];
     const deux  = ['mamoune','indigo','dimitri'];
@@ -1281,8 +1283,7 @@ function getFishCount(cabaneKey) {
 }
 function getFishHTML(n, premium) {
     const cls = premium ? 'badge-premium-poisson' : 'badge-poisson';
-    const fish =  + FISH_SVG + ;
-    return '<span class="' + cls + '">' + fish.repeat(n) + '</span>';
+    return '<span class="' + cls + '">' + FISH_SVG.repeat(n) + '</span>';
 }
 
 function envoyerDemande() {
@@ -1291,14 +1292,17 @@ function envoyerDemande() {
     if (!a || !d || !currentCabane) return;
     const t = TARIFS[currentCabane];
     const { total, nuits } = calculerPrix(currentCabane, new Date(a), new Date(d));
-    const fish = getFishEmoji(currentCabane);
-    const prestStr = t.nom + ' ' + fish + ' — ' + t.capa;
+    const fishN    = getFishCount(currentCabane);
+    const premium  = ['fitzcarraldo','doudou','chateau-mango','zen-zen','dojo','kaz-a-lea'].includes(currentCabane);
+    const fishHTML = getFishHTML(fishN, premium);
     const totalStr = total.toLocaleString('fr-FR') + ' € (' + nuits + ' nuit' + (nuits > 1 ? 's' : '') + ')';
 
     const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
-    const nbP = document.getElementById('sim-personnes')?.value || '';
+    const nbP  = document.getElementById('sim-personnes')?.value || '';
     const nbStr = nbP ? nbP + (nbP === '1' ? ' personne' : ' personnes') : '';
-    setVal('prestation', prestStr);
+
+    // Champ caché (texte brut pour soumission)
+    setVal('prestation', t.nom + ' (' + '🐟'.repeat(fishN) + ') — ' + t.capa);
     setVal('arrivee', a);
     setVal('depart', d);
     setVal('cabane', t.nom);
@@ -1312,7 +1316,11 @@ function envoyerDemande() {
         }
     }
 
-    // Afficher le récap dans le formulaire
+    // Bloc visuel prestation (avec SVG)
+    const dispEl = document.getElementById('prestation-display');
+    if (dispEl) dispEl.innerHTML = '<span class="prestation-filled">' + t.nom + ' ' + fishHTML + ' <em>— ' + t.capa + '</em></span>';
+
+    // Récap estimatif
     const recap = document.getElementById('reservation-recap');
     if (recap) {
         document.getElementById('recap-prestation').innerHTML = t.nom + ' ' + fishHTML;
