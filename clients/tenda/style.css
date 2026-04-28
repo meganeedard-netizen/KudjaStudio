@@ -840,76 +840,76 @@ ul { list-style: none; }
 
 /* --- Cabanes dans les Arbres --- */
 .c-fitzcarraldo {
-    background-image: url('FITZCARRALDO-SPPHOTOGRAPHE4.jpg');
+    background-image: url('FITZCARRALDO-SPPHOTOGRAPHE4.webp');
     background-size: cover;
     background-position: center;
 }
 .c-doudou {
-    background-image: url('DOUDOU-SPPHOTOGRAPHIE14.jpg');
+    background-image: url('DOUDOU-SPPHOTOGRAPHIE14.webp');
     background-size: cover;
     background-position: center;
 }
 .c-dimitri {
-    background-image: url('CABANE-SPPHOTOGRAPHIE14.jpg');
+    background-image: url('CABANE-SPPHOTOGRAPHIE14.webp');
     background-size: cover;
     background-position: center;
 }
 .c-chateau-mango {
-    background-image: url('ChateauMango-SPPHOTOGRAPHE17.jpg');
+    background-image: url('ChateauMango-SPPHOTOGRAPHE17.webp');
     background-size: cover;
     background-position: center top;
 }
 
 /* --- Cases Créoles --- */
 .c-bougresse {
-    background-image: url('BOUGRESSE-SPPHOTOGRAPHIE5.jpg');
+    background-image: url('BOUGRESSE-SPPHOTOGRAPHIE5.webp');
     background-size: cover;
     background-position: center;
 }
 .c-yes-papa {
-    background-image: url('YESPAPA-SPPHOTOGRAPHIE1-1.jpg');
+    background-image: url('YESPAPA-SPPHOTOGRAPHIE1-1.webp');
     background-size: cover;
     background-position: center;
 }
 .c-mamoune {
-    background-image: url('MAMOUNE-SPPHOTOGRAPHIE1.jpg');
+    background-image: url('MAMOUNE-SPPHOTOGRAPHIE1.webp');
     background-size: cover;
     background-position: center;
 }
 .c-indigo {
-    background-image: url('DSC_3468-INDIGO.jpg');
+    background-image: url('DSC_3468-INDIGO.webp');
     background-size: cover;
     background-position: center top;
 }
 .c-suc-a-coco {
-    background-image: url('SUC-A-COCO-SPPHOTOGRAPHIE6.jpg');
+    background-image: url('SUC-A-COCO-SPPHOTOGRAPHIE6.webp');
     background-size: cover;
     background-position: center;
 }
 .c-zen-zen {
-    background-image: url('ZENZEN-SPPHOTOGRAPHIE14-1-1.jpg');
+    background-image: url('ZENZEN-SPPHOTOGRAPHIE14-1-1.webp');
     background-size: cover;
     background-position: center top;
 }
 .c-dojo {
-    background-image: url('DOJO-SPPHOTOGRAPHIE12.jpg');
+    background-image: url('DOJO-SPPHOTOGRAPHIE12.webp');
     background-size: cover;
     background-position: center;
 }
 .c-kaz-lea {
-    background-image: url('KAZALEA-SPPHOTOGRAPHE11.jpg');
+    background-image: url('KAZALEA-SPPHOTOGRAPHE11.webp');
     background-size: cover;
     background-position: center;
 }
 
 /* --- Au Bord de l'Eau --- */
 .c-zanoli {
-    background-image: url('zanoli-2000-01-01-00.03.15.jpg');
+    background-image: url('zanoli-2000-01-01-00.03.15.webp');
     background-size: cover;
     background-position: center;
 }
 .c-pauline {
-    background-image: url('pauline.DSC9791-Pol-1-1024x681.jpg');
+    background-image: url('pauline.DSC9791-Pol-1-1024x681.webp');
     background-size: cover;
     background-position: center top;
 }
@@ -1329,7 +1329,7 @@ ul { list-style: none; }
     position: relative;
     background:
         linear-gradient(to top, rgba(20,10,8,0.65) 0%, rgba(20,10,8,0.1) 50%, transparent 100%),
-        url('la table du poisson rouge restaurant.jpg') center / cover no-repeat;
+        url('la table du poisson rouge restaurant.webp') center / cover no-repeat;
     display: flex;
     align-items: flex-end;
     padding: 2rem;
