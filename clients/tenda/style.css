@@ -1674,6 +1674,122 @@ ul { list-style: none; }
 }
 
 /* ---------------------------------------------------
+   TARIFS
+   --------------------------------------------------- */
+.tarifs { background: var(--bg); }
+
+.tarifs-mention {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    margin-top: 0.8rem;
+}
+
+.saisons-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.saison-badge {
+    display: flex;
+    flex-direction: column;
+    padding: 0.55rem 1.1rem;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.saison-badge span {
+    font-weight: 400;
+    font-size: 0.72rem;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 0.1rem;
+}
+.saison-bs  { background: #EAF4ED; color: #2A6B3A; }
+.saison-hs  { background: #FEF3E2; color: #9A5B0A; }
+.saison-ths { background: #FDE8E8; color: #B83232; }
+.saison-sep { background: #F0EEFA; color: #5B3FA0; }
+
+.tarifs-table {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid #E8E8E0;
+    box-shadow: var(--shadow);
+}
+
+.tarifs-header, .tarifs-row {
+    display: grid;
+    grid-template-columns: 2fr 0.8fr 1fr 1fr 1.2fr 1fr;
+    align-items: center;
+}
+
+.tarifs-header {
+    background: var(--green-deep);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.9rem 1.2rem;
+}
+
+.tarifs-row {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid #F0F0EA;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    background: #fff;
+    transition: background 0.15s;
+}
+.tarifs-row:last-child { border-bottom: none; }
+.tarifs-row:hover { background: #F7FAF8; }
+
+.tarifs-row-premium { background: #FAFCFA; }
+.tarifs-row-luxe    { background: #FDF9F0; }
+.tarifs-row-luxe:hover { background: #FAF4E4; }
+
+.col-cabane { color: var(--green-deep); }
+.col-capa   { color: var(--text-mid); font-size: 0.8rem; }
+.col-prix   { font-weight: 600; color: var(--noir); }
+
+.badge-premium {
+    font-size: 0.65rem;
+    color: #C4952A;
+    margin-left: 0.3rem;
+    letter-spacing: 0.05em;
+}
+
+.saison-bs-col  { color: #2A6B3A; }
+.saison-hs-col  { color: #9A5B0A; }
+.saison-ths-col { color: #B83232; }
+.saison-sep-col { color: #5B3FA0; }
+
+.tarifs-note {
+    margin-top: 1.2rem;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .tarifs-header, .tarifs-row {
+        grid-template-columns: 1.6fr 0.7fr 1fr 1fr;
+    }
+    .tarifs-header .saison-ths-col,
+    .tarifs-header .saison-sep-col,
+    .tarifs-row .col-prix:nth-child(5),
+    .tarifs-row .col-prix:nth-child(6) { display: none; }
+}
+
+/* ---------------------------------------------------
    RÉSERVATION
    --------------------------------------------------- */
 .reservation {
