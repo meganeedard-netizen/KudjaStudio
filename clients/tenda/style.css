@@ -1527,7 +1527,7 @@ ul { list-style: none; }
 .galerie-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 240px 240px;
+    grid-auto-rows: 240px;
     gap: 8px;
     margin-top: 3rem;
 }
@@ -1563,11 +1563,25 @@ ul { list-style: none; }
     color: #fff;
 }
 
-.gal-img-1 { background: linear-gradient(135deg, #1A3A2A 0%, #0D2018 50%, #2D5A3D 100%); }
-.gal-img-2 { background: linear-gradient(135deg, #1B3A20 0%, #0E2A18 60%, #152810 100%); }
-.gal-img-3 { background: linear-gradient(135deg, #0F2A20 0%, #1A4030 50%, #0A1E14 100%); }
-.gal-img-4 { background: linear-gradient(135deg, #2A1808 0%, #3A2010 40%, #1A1008 100%); }
-.gal-img-5 { background: linear-gradient(135deg, #0A1E28 0%, #103040 40%, #0A2030 100%); }
+.gal-img-1  { background-image: url('KAZALEA-SPPHOTOGRAPHE13.webp'); background-size: cover; background-position: center; }
+.gal-img-2  { background-image: url('ZENZEN-SPPHOTOGRAPHIE3.webp'); background-size: cover; background-position: center; }
+.gal-img-3  { background-image: url('spa .webp'); background-size: cover; background-position: center; }
+.gal-img-4  { background-image: url('la table du poisson rouge restaurant.webp'); background-size: cover; background-position: center; }
+.gal-img-5  { background-image: url('FITZCARRALDO-SPPHOTOGRAPHE10.webp'); background-size: cover; background-position: center; }
+.gal-img-6  { background-image: url('CABANE-SPPHOTOGRAPHIE15.webp'); background-size: cover; background-position: center; }
+.gal-img-7  { background-image: url('CABANE-SPPHOTOGRAPHIE16.webp'); background-size: cover; background-position: center; }
+.gal-img-8  { background-image: url('CABANE-SPPHOTOGRAPHIE21.webp'); background-size: cover; background-position: center; }
+.gal-img-9  { background-image: url('CABANE-SPPHOTOGRAPHIE5.webp'); background-size: cover; background-position: center; }
+.gal-img-10 { background-image: url('ChateauMango-SPPHOTOGRAPHE2-1.webp'); background-size: cover; background-position: center; }
+.gal-img-11 { background-image: url('ChateauMango-SPPHOTOGRAPHE3-1.webp'); background-size: cover; background-position: center; }
+.gal-img-12 { background-image: url('ChateauMango-SPPHOTOGRAPHE9-1.webp'); background-size: cover; background-position: center; }
+.gal-img-13 { background-image: url('DOJO-SPPHOTOGRAPHIE32.webp'); background-size: cover; background-position: center; }
+.gal-img-14 { background-image: url('DOJO-SPPHOTOGRAPHIE7.webp'); background-size: cover; background-position: center; }
+.gal-img-15 { background-image: url('DOUDOU-SPPHOTOGRAPHIE2.webp'); background-size: cover; background-position: center; }
+.gal-img-16 { background-image: url('DOUDOU-SPPHOTOGRAPHIE5.webp'); background-size: cover; background-position: center; }
+.gal-img-17 { background-image: url('FITZCARRALDO-SPPHOTOGRAPHE24.webp'); background-size: cover; background-position: center; }
+.gal-img-18 { background-image: url('KAZALEA-SPPHOTOGRAPHE6.webp'); background-size: cover; background-position: center; }
+.gal-img-19 { background-image: url('MAMOUNE-SPPHOTOGRAPHIE13.webp'); background-size: cover; background-position: center; }
 
 /* ---------------------------------------------------
    TÉMOIGNAGES
