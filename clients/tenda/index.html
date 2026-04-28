@@ -628,7 +628,19 @@
                             <span>Vendredi & samedi soir, dimanche midi</span>
                         </div>
                     </div>
-                    <a href="#reservation" class="btn btn-coral">Réserver une table</a>
+                    <div class="resto-resa">
+                        <input type="date" id="resto-date" class="resto-date">
+                        <select id="resto-nb" class="resto-nb">
+                            <option value="1">1 pers.</option>
+                            <option value="2" selected>2 pers.</option>
+                            <option value="3">3 pers.</option>
+                            <option value="4">4 pers.</option>
+                            <option value="5">5 pers.</option>
+                            <option value="6">6 pers.</option>
+                            <option value="7+">7+ pers.</option>
+                        </select>
+                        <button class="btn btn-coral" onclick="reserverTable()">Réserver une table →</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -964,30 +976,50 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="arrivee">Arrivée</label>
-                            <input type="date" id="arrivee" name="arrivee" required>
+                            <input type="date" id="arrivee" name="arrivee">
                         </div>
                         <div class="form-group">
                             <label for="depart">Départ</label>
-                            <input type="date" id="depart" name="depart" required>
+                            <input type="date" id="depart" name="depart">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="personnes">Nombre de personnes</label>
+                            <select id="personnes" name="personnes">
+                                <option value="">Sélectionner…</option>
+                                <option>1 personne</option>
+                                <option>2 personnes</option>
+                                <option>3 personnes</option>
+                                <option>4 personnes</option>
+                                <option>5 personnes</option>
+                                <option>6 personnes</option>
+                                <option>7 personnes ou plus</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-restaurant">Date (restaurant)</label>
+                            <input type="date" id="date-restaurant" name="date-restaurant">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="prestation">Prestation souhaitée</label>
-                        <select id="prestation" name="prestation">
-                            <option value="">Sélectionner…</option>
-                            <option>Séjour cabane 🐟 — à partir de 219 €/nuit</option>
-                            <option>Séjour cabane 🐟🐟 — à partir de 324 €/nuit</option>
-                            <option>Séjour cabane 🐟🐟🐟 — à partir de 372 €/nuit</option>
-                            <option>Soin Spa</option>
-                            <option>Réservation Restaurant</option>
-                            <option>Séjour complet (cabane + spa + restaurant)</option>
-                        </select>
+                        <input type="text" id="prestation" name="prestation" placeholder="Sélectionnez un hébergement ou un soin via le bouton Réserver" readonly>
                     </div>
                     <div class="form-group">
                         <label for="message">Votre message</label>
                         <textarea id="message" name="message" rows="4" placeholder="Occasion spéciale, demande particulière, nombre de personnes…"></textarea>
                     </div>
+                    <div class="form-group form-group--promo">
+                        <label for="code-promo">Code promo (optionnel)</label>
+                        <input type="text" id="code-promo" name="code-promo" placeholder="ex : TENDA2025" autocomplete="off">
+                    </div>
+                    <div id="reservation-recap" class="reservation-recap" style="display:none">
+                        <div class="recap-ligne"><span>Prestation</span><strong id="recap-prestation"></strong></div>
+                        <div class="recap-ligne recap-total"><span>Total estimé</span><strong id="recap-total"></strong></div>
+                    </div>
                     <input type="hidden" id="cabane" name="cabane">
+                    <input type="hidden" id="tarif-estime" name="tarif-estime">
                     <button type="submit" class="btn btn-primary btn-full">Envoyer ma demande</button>
                     <p class="form-note">Nous vous répondrons dans les 24 heures.</p>
                 </form>
@@ -1081,6 +1113,18 @@
                     <label for="sim-depart">Départ</label>
                     <input type="date" id="sim-depart" />
                 </div>
+            </div>
+
+            <div class="sim-field">
+                <label for="sim-personnes">Nombre de personnes</label>
+                <select id="sim-personnes">
+                    <option value="1">1 personne</option>
+                    <option value="2" selected>2 personnes</option>
+                    <option value="3">3 personnes</option>
+                    <option value="4">4 personnes</option>
+                    <option value="5">5 personnes</option>
+                    <option value="6">6 personnes</option>
+                </select>
             </div>
 
             <div id="sim-result" class="sim-result" style="display:none">
@@ -1225,16 +1269,49 @@ function fermerSimulateur() {
     document.body.style.overflow = '';
 }
 
+function getFishEmoji(cabaneKey) {
+    const trois = ['fitzcarraldo','doudou','chateau-mango','zen-zen','dojo','kaz-a-lea'];
+    const deux  = ['mamoune','indigo','dimitri'];
+    if (trois.includes(cabaneKey)) return '🐟🐟🐟';
+    if (deux.includes(cabaneKey))  return '🐟🐟';
+    return '🐟';
+}
+
 function envoyerDemande() {
     const a = document.getElementById('sim-arrivee').value;
     const d = document.getElementById('sim-depart').value;
-    const nom = TARIFS[currentCabane]?.nom || '';
-    const cabaneInput = document.getElementById('cabane');
-    const arriveeInput = document.getElementById('arrivee');
-    const departInput  = document.getElementById('depart');
-    if (cabaneInput)  cabaneInput.value = nom;
-    if (arriveeInput) arriveeInput.value = a;
-    if (departInput)  departInput.value  = d;
+    if (!a || !d || !currentCabane) return;
+    const t = TARIFS[currentCabane];
+    const { total, nuits } = calculerPrix(currentCabane, new Date(a), new Date(d));
+    const fish = getFishEmoji(currentCabane);
+    const prestStr = t.nom + ' ' + fish + ' — ' + t.capa;
+    const totalStr = total.toLocaleString('fr-FR') + ' € (' + nuits + ' nuit' + (nuits > 1 ? 's' : '') + ')';
+
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    const nbP = document.getElementById('sim-personnes')?.value || '';
+    const nbStr = nbP ? nbP + (nbP === '1' ? ' personne' : ' personnes') : '';
+    setVal('prestation', prestStr);
+    setVal('arrivee', a);
+    setVal('depart', d);
+    setVal('cabane', t.nom);
+    setVal('tarif-estime', totalStr);
+    if (nbStr) {
+        const pEl = document.getElementById('personnes');
+        if (pEl) {
+            for (let i = 0; i < pEl.options.length; i++) {
+                if (pEl.options[i].text === nbStr) { pEl.selectedIndex = i; break; }
+            }
+        }
+    }
+
+    // Afficher le récap dans le formulaire
+    const recap = document.getElementById('reservation-recap');
+    if (recap) {
+        document.getElementById('recap-prestation').textContent = prestStr;
+        document.getElementById('recap-total').textContent = totalStr;
+        recap.style.display = 'block';
+    }
+
     fermerSimulateur();
     document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
 }
@@ -1255,21 +1332,49 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') fermerSimulateur();
 });
 
-// ── Réservation soins spa ────────────────────────────────────────────────────
-function reserverSoin(btn, forfaitNom) {
-    const dateVal = btn.previousElementSibling.value;
-    const arriveeInput = document.getElementById('arrivee');
-    const prestationSelect = document.getElementById('prestation');
-    const messageTA = document.getElementById('message');
-    if (arriveeInput) arriveeInput.value = dateVal;
-    if (prestationSelect) {
-        for (let i = 0; i < prestationSelect.options.length; i++) {
-            if (prestationSelect.options[i].text.includes('Spa')) {
-                prestationSelect.selectedIndex = i; break;
+// ── Réservation restaurant ─────────────────────────────────────────────────────
+function reserverTable() {
+    const date = document.getElementById('resto-date')?.value || '';
+    const nb   = document.getElementById('resto-nb')?.value || '';
+    const nbStr = nb ? nb + (nb === '1' ? ' personne' : (nb === '7+' ? ' personnes ou plus' : ' personnes')) : '';
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    const prestStr = 'Réservation Restaurant Le Poisson Rouge' + (nbStr ? ' — ' + nbStr : '');
+    setVal('prestation', prestStr);
+    if (date) setVal('date-restaurant', date);
+    if (nbStr) {
+        const pEl = document.getElementById('personnes');
+        if (pEl) {
+            for (let i = 0; i < pEl.options.length; i++) {
+                if (pEl.options[i].text === nbStr) { pEl.selectedIndex = i; break; }
             }
         }
     }
-    if (messageTA) messageTA.value = 'Forfait spa : ' + forfaitNom;
+    const recap = document.getElementById('reservation-recap');
+    if (recap) {
+        document.getElementById('recap-prestation').textContent = prestStr;
+        document.getElementById('recap-total').textContent = date ? 'Le ' + new Date(date).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'}) : '';
+        recap.style.display = 'block';
+    }
+    fermerSimulateur();
+    document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Réservation soins spa ────────────────────────────────────────────────────
+function reserverSoin(btn, forfaitNom, forfaitPrix) {
+    const dateVal = btn.previousElementSibling.value;
+    const prestStr = 'Soin Spa — ' + forfaitNom + (forfaitPrix ? ' — ' + forfaitPrix : '');
+    const setVal = (id, v) => { const el = document.getElementById(id); if (el) el.value = v; };
+    setVal('arrivee', dateVal);
+    setVal('prestation', prestStr);
+    setVal('tarif-estime', forfaitPrix || '');
+
+    const recap = document.getElementById('reservation-recap');
+    if (recap) {
+        document.getElementById('recap-prestation').textContent = prestStr;
+        document.getElementById('recap-total').textContent = forfaitPrix || '';
+        recap.style.display = forfaitPrix ? 'block' : 'none';
+    }
+
     fermerSimulateur();
     document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
 }
@@ -1277,12 +1382,13 @@ function reserverSoin(btn, forfaitNom) {
 document.addEventListener('DOMContentLoaded', function() {
     const today = new Date().toISOString().split('T')[0];
     document.querySelectorAll('.forfait-card').forEach(function(card) {
-        const nom = card.querySelector('h4')?.textContent?.trim() || '';
+        const nom   = card.querySelector('h4')?.textContent?.trim() || '';
+        const prix  = card.querySelector('.forfait-prix')?.textContent?.trim() || '';
         const footer = document.createElement('div');
         footer.className = 'forfait-footer';
         footer.innerHTML =
             '<input type="date" class="spa-date" min="' + today + '">' +
-            '<button class="spa-btn" onclick="reserverSoin(this, \'' + nom.replace(/'/g, "\\'") + '\')">Réserver <span>→</span></button>';
+            '<button class="spa-btn" onclick="reserverSoin(this, \'' + nom.replace(/'/g, "\\'") + '\', \'' + prix.replace(/'/g, "\\'") + '\')">Réserver <span>→</span></button>';
         card.appendChild(footer);
     });
 });
