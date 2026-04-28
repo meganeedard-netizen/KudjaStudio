@@ -1765,6 +1765,13 @@ ul { list-style: none; }
     margin-left: 0.3rem;
     letter-spacing: 0.05em;
 }
+.badge-etoile {
+    font-size: 0.65rem;
+    color: #A0895A;
+    margin-left: 0.3rem;
+    letter-spacing: 0.05em;
+}
+.tarifs-row-deux-etoiles { background: #FAFAF7; }
 
 .saison-bs-col  { color: #2A6B3A; }
 .saison-hs-col  { color: #9A5B0A; }
