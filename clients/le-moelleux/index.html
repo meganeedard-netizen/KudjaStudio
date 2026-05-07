@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Moelleux — Boucherie · Épicerie Fine · Primeur · Traiteur — Basse-Terre, Guadeloupe</title>
+  <meta name="description" content="Le Moelleux, votre boucherie - épicerie fine - primeur - traiteur à Basse-Terre, Zone de Calebassier en Guadeloupe. Produits locaux, frais et de saison. Ouvert du mardi au dimanche." />
+  <meta name="keywords" content="boucherie Basse-Terre, épicerie fine Guadeloupe, primeur Calebassier, traiteur Guadeloupe, produits locaux, Le Moelleux" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lemoelleux-guadeloupe.fr/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Le Moelleux — Boucherie · Épicerie Fine · Primeur · Traiteur" />
+  <meta property="og:description" content="Produits locaux, frais et de saison à Basse-Terre, Guadeloupe. Boucherie, épicerie fine, primeur, traiteur." />
+  <meta property="og:image" content="images/boutique-le-moelleux-basse-terre-guadeloupe.webp" />
+  <meta property="og:locale" content="fr_FR" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "GroceryStore",
+    "name": "Le Moelleux",
+    "description": "Boucherie, épicerie fine, primeur et traiteur à Basse-Terre, Guadeloupe. Produits locaux, frais et de saison.",
+    "image": "images/boutique-le-moelleux-basse-terre-guadeloupe.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Zone de Calebassier",
+      "addressLocality": "Basse-Terre",
+      "postalCode": "97100",
+      "addressRegion": "Guadeloupe",
+      "addressCountry": "FR"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday"],
+        "opens": "08:00",
+        "closes": "14:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "08:00",
+        "closes": "14:00"
+      }
+    ],
+    "servesCuisine": "Antillaise, Créole",
+    "priceRange": "$$",
+    "hasMap": "https://www.google.com/maps/search/Le+Moelleux+Zone+de+Calebassier+Basse-Terre+Guadeloupe"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --vert:       #2A4A2C;
+      --vert-clair: #3D6B40;
+      --rouge:      #8C1C13;
+      --creme:      #F8F3EC;
+      --beige:      #EDE5D8;
+      --brun:       #3C2415;
+      --or:         #C9974A;
+      --texte:      #1E1E1E;
+      --gris:       #6B6B6B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--texte);
+      background: var(--creme);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(248, 243, 236, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 151, 74, 0.2);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,.08); }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 48px;
+      width: 48px;
+      object-fit: contain;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--rouge);
+      letter-spacing: .02em;
+      line-height: 1.1;
+    }
+    .nav-logo-text span { color: var(--rouge); }
+    .nav-logo-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gris);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--brun);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--rouge); }
+
+    .nav-cta {
+      background: var(--rouge) !important;
+      color: #fff !important;
+      padding: .5rem 1.3rem;
+      border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--brun) !important; }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--brun);
+      border-radius: 2px;
+      transition: .3s;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-slider {
+      position: absolute;
+      inset: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(30,20,10,.45) 0%,
+        rgba(30,20,10,.25) 50%,
+        rgba(30,20,10,.65) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      padding: 0 5%;
+      max-width: 780px;
+    }
+
+    .hero-logo {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      margin-bottom: 1.2rem;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,.5));
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,151,74,.7);
+      color: var(--or);
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: .4rem 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: .9rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,.4);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(.95rem, 2.2vw, 1.15rem);
+      font-weight: 300;
+      letter-spacing: .06em;
+      margin-bottom: .5rem;
+      opacity: .9;
+    }
+
+    .hero-location {
+      font-size: .8rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--rouge);
+      color: #fff;
+      padding: .85rem 2.2rem;
+      font-size: .88rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--brun); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,.7);
+      color: #fff;
+      padding: .85rem 2.2rem;
+      font-size: .88rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background .25s, transform .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.15); transform: translateY(-2px); }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      gap: .6rem;
+    }
+    .hero-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.4);
+      cursor: pointer;
+      transition: background .3s, transform .3s;
+    }
+    .hero-dot.active { background: var(--or); transform: scale(1.3); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 5%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: rgba(255,255,255,.6);
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,.4);
+      animation: scrollLine 2s ease infinite;
+    }
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── BANDE RAYONS ─── */
+    .rayons-bande {
+      background: var(--brun);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .rayon-item {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1.1rem 2.4rem;
+      color: var(--beige);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-right: 1px solid rgba(255,255,255,.1);
+    }
+    .rayon-item:last-child { border-right: none; }
+    .rayon-icon { font-size: 1.2rem; }
+
+    /* ─── SECTION COMMUNE ─── */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--rouge);
+      font-weight: 600;
+      margin-bottom: .7rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      color: var(--brun);
+      line-height: 1.2;
+      margin-bottom: 1.1rem;
+    }
+    .section-text {
+      color: var(--gris);
+      font-size: .98rem;
+      line-height: 1.85;
+      max-width: 560px;
+    }
+    .divider {
+      width: 46px;
+      height: 3px;
+      background: var(--or);
+      margin: 1.2rem 0;
+    }
+
+    /* ─── À PROPOS ─── */
+    #apropos { background: var(--creme); }
+
+    .apropos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .apropos-img-wrap { position: relative; }
+    .apropos-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .apropos-img-accent {
+      position: absolute;
+      width: 55%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      bottom: -2.5rem;
+      right: -2.5rem;
+      border: 6px solid var(--creme);
+      border-radius: 2px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.12);
+    }
+    .apropos-valeurs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 2.8rem;
+      border-top: 1px solid rgba(60,36,21,.12);
+    }
+    .valeur-item {
+      padding: 1.4rem 1.6rem 1.4rem 0;
+      border-bottom: 1px solid rgba(60,36,21,.12);
+    }
+    .valeur-item:nth-child(odd) {
+      border-right: 1px solid rgba(60,36,21,.12);
+      padding-right: 1.6rem;
+    }
+    .valeur-item:nth-child(even) {
+      padding-left: 1.6rem;
+      padding-right: 0;
+    }
+    .valeur-num {
+      font-family: 'Playfair Display', serif;
+      font-size: .75rem;
+      color: var(--or);
+      letter-spacing: .16em;
+      margin-bottom: .5rem;
+    }
+    .valeur-item strong {
+      display: block;
+      font-size: .9rem;
+      color: var(--brun);
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+    .valeur-item p { font-size: .8rem; color: var(--gris); line-height: 1.6; }
+
+    /* ─── PRODUITS ─── */
+    #produits { background: var(--beige); }
+
+    .produits-header {
+      max-width: 1200px;
+      margin: 0 auto 3.5rem;
+    }
+    .produits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .produit-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .produit-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .produit-card:hover img { transform: scale(1.07); }
+    .produit-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(30,10,5,.85) 0%, rgba(30,10,5,.1) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      transition: background .3s;
+    }
+    .produit-card:hover .produit-overlay {
+      background: linear-gradient(to top, rgba(140,28,19,.85) 0%, rgba(140,28,19,.2) 70%);
+    }
+    .produit-cat {
+      font-size: .67rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: .4rem;
+    }
+    .produit-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: .5rem;
+    }
+    .produit-desc {
+      font-size: .77rem;
+      color: rgba(255,255,255,.8);
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .3s, transform .3s;
+    }
+    .produit-card:hover .produit-desc { opacity: 1; transform: translateY(0); }
+
+    /* ─── GALERIE ─── */
+    #galerie {
+      background: var(--brun);
+      padding: 5rem 5%;
+    }
+    .galerie-header {
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+    }
+    .galerie-header .section-title { color: var(--creme); }
+    .galerie-header .section-label { color: var(--or); }
+
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 220px);
+      gap: 8px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .galerie-item { overflow: hidden; cursor: pointer; }
+    .galerie-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .galerie-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease, filter .5s;
+    }
+    .galerie-item:hover img { transform: scale(1.05); filter: brightness(1.1); }
+
+    /* ─── TRAITEUR ─── */
+    #traiteur { background: var(--creme); }
+
+    .traiteur-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .traiteur-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+    .traiteur-list {
+      list-style: none;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+    }
+    .traiteur-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      font-size: .93rem;
+      color: var(--gris);
+      line-height: 1.5;
+    }
+    .traiteur-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      margin-top: 2px;
+      background: var(--rouge);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 70%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* ─── HORAIRES ─── */
+    #horaires { background: var(--beige); }
+
+    .horaires-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .horaires-table { width: 100%; border-collapse: collapse; }
+    .horaires-table tr { border-bottom: 1px solid rgba(60,36,21,.1); }
+    .horaires-table tr:last-child { border-bottom: none; }
+    .horaires-table td { padding: .9rem 0; font-size: .93rem; }
+    .horaires-table td:first-child { color: var(--brun); font-weight: 600; width: 55%; }
+    .horaires-table td:last-child { color: var(--gris); text-align: right; }
+
+    .badge-ouvert {
+      display: inline-block;
+      background: #2A6B30;
+      color: #fff;
+      font-size: .62rem;
+      letter-spacing: .08em;
+      padding: .2rem .6rem;
+      border-radius: 20px;
+      margin-left: .5rem;
+      vertical-align: middle;
+    }
+    .ferme { color: #bbb !important; }
+
+    .contact-infos { display: flex; flex-direction: column; gap: 1.4rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon {
+      width: 42px; height: 42px;
+      background: var(--brun);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--or);
+      font-size: 1rem;
+    }
+    .contact-item-text strong {
+      display: block;
+      font-size: .77rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--brun);
+      margin-bottom: .25rem;
+    }
+    .contact-item-text span {
+      font-size: .91rem;
+      color: var(--gris);
+      line-height: 1.6;
+    }
+
+    /* ─── PANNEAU COMMANDE ─── */
+    .cmd-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30,15,8,.55);
+      z-index: 200;
+      backdrop-filter: blur(3px);
+    }
+    .cmd-overlay.open { display: block; }
+
+    .cmd-panel {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: 100%;
+      max-width: 520px;
+      background: var(--creme);
+      z-index: 201;
+      overflow-y: auto;
+      transform: translateX(100%);
+      transition: transform .38s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cmd-panel.open { transform: translateX(0); }
+
+    .cmd-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 2.2rem 2.5rem 1.5rem;
+      border-bottom: 1px solid rgba(201,151,74,.25);
+      flex-shrink: 0;
+    }
+    .cmd-header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--brun);
+      line-height: 1.2;
+    }
+    .cmd-header-title em { color: var(--rouge); }
+    .cmd-header-sub {
+      font-size: .83rem;
+      color: var(--gris);
+      margin-top: .4rem;
+      line-height: 1.5;
+    }
+    .cmd-close {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      color: var(--gris);
+      cursor: pointer;
+      padding: .3rem .5rem;
+      transition: color .2s;
+      flex-shrink: 0;
+      margin-top: .3rem;
+    }
+    .cmd-close:hover { color: var(--rouge); }
+
+    .cmd-body { padding: 2rem 2.5rem 3rem; flex: 1; }
+
+    .commande-form { /* form inside panel */ }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.3rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: .45rem; }
+    .form-group.full { grid-column: span 2; }
+
+    .form-group label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--brun);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: .75rem 1rem;
+      border: 1.5px solid #DDD5C8;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: .93rem;
+      color: var(--texte);
+      background: var(--creme);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rouge);
+      box-shadow: 0 0 0 3px rgba(140,28,19,.1);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-select-wrap { position: relative; }
+    .form-select-wrap select { width: 100%; cursor: pointer; }
+    .form-select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gris);
+      pointer-events: none;
+      font-size: .9rem;
+    }
+
+    .form-note {
+      font-size: .8rem;
+      color: var(--gris);
+      margin-top: .3rem;
+    }
+
+    .form-submit {
+      margin-top: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .form-submit p {
+      font-size: .8rem;
+      color: var(--gris);
+      max-width: 320px;
+      line-height: 1.5;
+    }
+
+    .form-success {
+      display: none;
+      background: #EAF5EA;
+      border: 1.5px solid #5A9B5A;
+      border-radius: 4px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .form-success p { color: #2A6B30; font-weight: 500; font-size: .95rem; }
+    .form-success.visible { display: block; }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .commande-form { padding: 2rem 1.4rem; }
+      .form-submit { flex-direction: column; align-items: stretch; }
+      .form-submit .btn-primary { text-align: center; }
+    }
+
+    /* ─── MAP BANNER ─── */
+    .map-banner {
+      background: var(--vert);
+      padding: 3rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .map-banner-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      color: #fff;
+      margin-bottom: .3rem;
+    }
+    .map-banner-text { color: rgba(255,255,255,.8); font-size: .95rem; }
+    .btn-map {
+      background: var(--or);
+      color: var(--brun);
+      padding: .85rem 2rem;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background .25s;
+      white-space: nowrap;
+    }
+    .btn-map:hover { background: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--brun);
+      color: rgba(255,255,255,.55);
+      padding: 3.5rem 5% 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand-logo {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: .8rem;
+      text-decoration: none;
+    }
+    .footer-brand-logo img {
+      height: 58px;
+      width: 58px;
+      object-fit: contain;
+    }
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--creme);
+      font-weight: 700;
+    }
+    .footer-brand p {
+      font-size: .82rem;
+      line-height: 1.75;
+      max-width: 240px;
+    }
+    .footer-col h4 {
+      color: var(--or);
+      font-size: .73rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .footer-col p, .footer-col li { font-size: .83rem; line-height: 1.9; list-style: none; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      font-size: .76rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .produits-grid { grid-template-columns: repeat(2, 1fr); }
+      .galerie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 200px);
+      }
+      .galerie-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        background: var(--creme);
+        padding: 1.5rem 5%;
+        gap: 1rem;
+        border-bottom: 2px solid var(--beige);
+      }
+      .nav-links.open { display: flex; }
+      .nav-burger { display: flex; }
+      .nav-cta { display: none; }
+
+      .apropos-grid, .traiteur-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .apropos-img-accent { display: none; }
+
+      .horaires-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .produits-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      .galerie-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .galerie-item { aspect-ratio: 1; height: auto; }
+      .galerie-item:nth-child(1) { grid-column: span 2; }
+
+      .rayon-item { padding: .85rem 1.3rem; font-size: .7rem; gap: .45rem; }
+      section { padding: 4rem 5%; }
+    }
+
+    @media (max-width: 480px) {
+      .produits-grid { grid-template-columns: 1fr; }
+      .apropos-valeurs { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .hero-btns a { width: 100%; text-align: center; max-width: 280px; }
+      .nav-logo-sub { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo" aria-label="Le Moelleux — Accueil">
+      <img src="images/logo-le-moelleux-transparant.png" alt="Logo Le Moelleux" width="48" height="48" />
+      <div>
+        <div class="nav-logo-text">Le <span>Moelleux</span></div>
+        <div class="nav-logo-sub">Basse-Terre · Guadeloupe</div>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#apropos">Notre histoire</a></li>
+      <li><a href="#produits">Nos rayons</a></li>
+      <li><a href="#traiteur">Traiteur</a></li>
+      <li><a href="#" onclick="openCommande(); return false;" class="nav-cta">Commander</a></li>
+    </ul>
+    <div class="nav-burger" id="burger" role="button" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Bienvenue au Moelleux">
+    <div class="hero-slider" role="presentation">
+      <div class="hero-slide active" style="background-image:url('images/boucherie-le-moelleux-guadeloupe.webp')"></div>
+      <div class="hero-slide" style="background-image:url('images/epicerie-fine-le-moelleux-basse-terre.webp')"></div>
+      <div class="hero-slide" style="background-image:url('images/primeur-fruits-legumes-le-moelleux.webp')"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Le Moelleux</h1>
+      <p class="hero-subtitle">Boucherie &nbsp;·&nbsp; Épicerie Fine &nbsp;·&nbsp; Primeur &nbsp;·&nbsp; Traiteur</p>
+      <div class="hero-btns">
+        <a href="#produits" class="btn-outline">Découvrir nos produits</a>
+        <a href="#" onclick="openCommande(); return false;" class="btn-primary">Commander</a>
+      </div>
+    </div>
+    <div class="hero-dots" id="heroDots" role="tablist" aria-label="Diaporama">
+      <div class="hero-dot active" data-i="0" role="tab" aria-label="Image 1"></div>
+      <div class="hero-dot" data-i="1" role="tab" aria-label="Image 2"></div>
+      <div class="hero-dot" data-i="2" role="tab" aria-label="Image 3"></div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">Défiler</div>
+  </section>
+
+
+  <!-- À PROPOS -->
+  <section id="apropos" aria-labelledby="apropos-title">
+    <div class="apropos-grid">
+      <div class="apropos-img-wrap">
+        <img
+          src="images/devanture-le-moelleux-basse-terre.webp"
+          alt="Le Moelleux, boucherie épicerie fine à Basse-Terre"
+          class="apropos-img-main"
+          width="600" height="750"
+          loading="lazy"
+        />
+        <img
+          src="images/produits-frais-le-moelleux-guadeloupe.webp"
+          alt="Produits frais au Moelleux, Guadeloupe"
+          class="apropos-img-accent"
+          width="330" height="330"
+          loading="lazy"
+        />
+      </div>
+      <div>
+        <p class="section-label">Notre histoire</p>
+        <h2 class="section-title" id="apropos-title">Le goût du local,<br><em>au cœur de la Guadeloupe</em></h2>
+        <div class="divider"></div>
+        <p class="section-text">
+          Au Moelleux, nous avons choisi de mettre à l'honneur le meilleur de la Guadeloupe. Viandes sélectionnées avec soin, fruits et légumes de saison cultivés ici, épicerie fine et spécialités antillaises : tout est pensé pour vous offrir des produits frais, authentiques et savoureux.
+        </p>
+        <p class="section-text" style="margin-top:1rem;">
+          Notre équipe vous accueille dans une boutique conviviale, à la Zone de Calebassier, pour vous accompagner dans vos choix du quotidien comme pour vos grandes occasions.
+        </p>
+        <div class="apropos-valeurs">
+          <div class="valeur-item">
+            <div class="valeur-num">01</div>
+            <strong>Produits locaux</strong>
+            <p>Circuits courts, producteurs guadeloupéens privilégiés à chaque saison.</p>
+          </div>
+          <div class="valeur-item">
+            <div class="valeur-num">02</div>
+            <strong>Fraîcheur garantie</strong>
+            <p>Arrivages réguliers pour vous assurer des produits ultra frais.</p>
+          </div>
+          <div class="valeur-item">
+            <div class="valeur-num">03</div>
+            <strong>Sélection fine</strong>
+            <p>Des références pointues en épicerie pour sortir de l'ordinaire.</p>
+          </div>
+          <div class="valeur-item">
+            <div class="valeur-num">04</div>
+            <strong>Conseil sur mesure</strong>
+            <p>Une équipe passionnée prête à vous guider dans vos choix.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUITS -->
+  <section id="produits" aria-labelledby="produits-title">
+    <div class="produits-header">
+      <p class="section-label">Nos rayons</p>
+      <h2 class="section-title" id="produits-title">Ce qui fait notre richesse</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="produits-grid">
+      <div class="produit-card">
+        <img
+          src="images/epicerie-fine-le-moelleux-basse-terre.webp"
+          alt="Boucherie Le Moelleux — viandes fraîches Guadeloupe"
+          width="400" height="533"
+          loading="lazy"
+        />
+        <div class="produit-overlay">
+          <span class="produit-cat">Rayon</span>
+          <h3 class="produit-name">Boucherie</h3>
+          <p class="produit-desc">Viandes fraîches sélectionnées avec soin : bœuf, porc, volaille, agneau et spécialités locales.</p>
+        </div>
+      </div>
+      <div class="produit-card">
+        <img
+          src="images/boucherie-le-moelleux-guadeloupe.webp"
+          alt="Épicerie fine Le Moelleux — produits d'exception Basse-Terre"
+          width="400" height="533"
+          loading="lazy"
+        />
+        <div class="produit-overlay">
+          <span class="produit-cat">Rayon</span>
+          <h3 class="produit-name">Épicerie Fine</h3>
+          <p class="produit-desc">Une sélection de produits d'exception : condiments, conserves, épices, rhums et douceurs des îles.</p>
+        </div>
+      </div>
+      <div class="produit-card">
+        <img
+          src="images/primeur-fruits-legumes-le-moelleux.webp"
+          alt="Primeur fruits et légumes frais Le Moelleux, Guadeloupe"
+          width="400" height="533"
+          loading="lazy"
+        />
+        <div class="produit-overlay">
+          <span class="produit-cat">Rayon</span>
+          <h3 class="produit-name">Primeur</h3>
+          <p class="produit-desc">Fruits et légumes frais de Guadeloupe et des Antilles, cueillis à maturité et renouvelés régulièrement.</p>
+        </div>
+      </div>
+      <div class="produit-card">
+        <img
+          src="images/traiteur-le-moelleux-plats.png"
+          alt="Service traiteur Le Moelleux — plats cuisinés Guadeloupe"
+          width="400" height="533"
+          loading="lazy"
+        />
+        <div class="produit-overlay">
+          <span class="produit-cat">Rayon</span>
+          <h3 class="produit-name">Traiteur</h3>
+          <p class="produit-desc">Plats cuisinés maison, marinades, préparations festives pour régaler vos proches sans vous compliquer la vie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" aria-labelledby="galerie-title">
+    <div class="galerie-header">
+      <p class="section-label">Galerie</p>
+      <h2 class="section-title" id="galerie-title">L'ambiance du Moelleux</h2>
+    </div>
+    <div class="galerie-grid">
+      <div class="galerie-item">
+        <img src="images/boutique-le-moelleux-basse-terre-guadeloupe.webp" alt="La boutique Le Moelleux, Zone de Calebassier, Basse-Terre" loading="lazy" />
+      </div>
+      <div class="galerie-item">
+        <img src="images/rayon-le-moelleux-calebassier.webp" alt="Rayon Le Moelleux, boucherie Basse-Terre" loading="lazy" />
+      </div>
+      <div class="galerie-item">
+        <img src="images/boudin-le-moelleux.webp" alt="Boudin créole Le Moelleux, Guadeloupe" loading="lazy" />
+      </div>
+      <div class="galerie-item">
+        <img src="images/viande-le-moelleux.webp" alt="Viandes fraîches Le Moelleux, boucherie Basse-Terre" loading="lazy" />
+      </div>
+      <div class="galerie-item">
+        <img src="images/rhum-le-moelleux.webp" alt="Rhums et spiritueux Le Moelleux, épicerie fine Guadeloupe" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAITEUR -->
+  <section id="traiteur" aria-labelledby="traiteur-title">
+    <div class="traiteur-grid">
+      <div>
+        <p class="section-label">Traiteur</p>
+        <h2 class="section-title" id="traiteur-title">Pour vos repas<br><em>et vos événements</em></h2>
+        <div class="divider"></div>
+        <p class="section-text">
+          Que ce soit pour un repas du quotidien ou pour célébrer un moment particulier, notre service traiteur vous prépare des plats cuisinés généreux, dans la tradition culinaire guadeloupéenne.
+        </p>
+        <ul class="traiteur-list">
+          <li>Plats cuisinés maison disponibles en boutique</li>
+          <li>Viandes marinées prêtes à cuire</li>
+          <li>Préparations pour événements et réceptions</li>
+          <li>Bocaux et conserves maison</li>
+          <li>Conseils personnalisés pour vos menus</li>
+        </ul>
+        <a href="#" onclick="openCommande(); return false;" class="btn-primary">Commander</a>
+      </div>
+      <img
+        src="images/traiteur-le-moelleux-plats.png"
+        alt="Service traiteur Le Moelleux — spécialités culinaires guadeloupéennes"
+        class="traiteur-img"
+        width="600" height="450"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <!-- COMMANDE -->
+  <!-- PANNEAU COMMANDE -->
+  <div class="cmd-overlay" id="cmdOverlay" onclick="closeCommande()"></div>
+  <div class="cmd-panel" id="cmdPanel">
+    <div class="cmd-header">
+      <div>
+        <h2 class="cmd-header-title">Passer une <em>commande</em></h2>
+        <p class="cmd-header-sub">Nous la préparons avec soin et vous confirmons par téléphone.</p>
+      </div>
+      <button class="cmd-close" onclick="closeCommande()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="cmd-body">
+      <form class="commande-form" id="commandeForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required />
+          </div>
+
+          <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tel">Téléphone *</label>
+            <input type="tel" id="tel" name="tel" placeholder="0690 00 00 00" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.fr" />
+          </div>
+
+          <div class="form-group">
+            <label for="rayon">Rayon concerné *</label>
+            <div class="form-select-wrap">
+              <select id="rayon" name="rayon" required>
+                <option value="" disabled selected>Choisir un rayon</option>
+                <option value="boucherie">Boucherie</option>
+                <option value="epicerie">Épicerie Fine</option>
+                <option value="primeur">Primeur</option>
+                <option value="traiteur">Traiteur</option>
+                <option value="multiple">Plusieurs rayons</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date de retrait souhaitée *</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <div class="form-group full">
+            <label for="details">Détails de la commande *</label>
+            <textarea id="details" name="details" placeholder="Produits souhaités, quantités, préparations spéciales..." required></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <p>✓ &nbsp;Votre commande a bien été envoyée ! Nous vous recontactons rapidement pour confirmer.</p>
+        </div>
+
+        <div class="form-submit">
+          <p>Sous réserve de disponibilité. Confirmation par téléphone ou email.</p>
+          <button type="submit" class="btn-primary">Envoyer ma commande</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- MAP BANNER -->
+  <div class="map-banner">
+    <div>
+      <p class="map-banner-title">Où nous trouver ?</p>
+      <p class="map-banner-text">Zone de Calebassier - Basse-Terre</p>
+    </div>
+  </div>
+
+  <!-- CARTE GOOGLE MAPS -->
+  <div style="width:100%; height:420px; display:block;">
+    <iframe
+      src="https://maps.google.com/maps?q=Le+Moelleux+Zone+de+Calebassier+Basse-Terre+Guadeloupe&output=embed&hl=fr&z=16"
+      width="100%"
+      height="420"
+      style="border:0; display:block;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Localisation Le Moelleux — Zone de Calebassier, Basse-Terre, Guadeloupe"
+    ></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="footer-brand-logo" aria-label="Le Moelleux — Accueil">
+          <img src="images/logo-le-moelleux-transparant.png" alt="Logo Le Moelleux" width="44" height="44" loading="lazy" />
+          <span class="footer-brand-name">Le Moelleux</span>
+        </a>
+        <p>Votre boucherie - épicerie fine - primeur - traiteur de confiance en Guadeloupe. Produits frais, locaux et de saison.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Nos rayons</h4>
+        <ul>
+          <li>Boucherie</li>
+          <li>Épicerie Fine</li>
+          <li>Primeur</li>
+          <li>Traiteur</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Horaires</h4>
+        <p>Mer – Sam : 8h – 18h</p>
+        <p>Mar & Dim : 8h – 14h</p>
+        <p>Lundi : Fermé</p>
+      </div>
+      <div class="footer-col">
+        <h4>Localisation</h4>
+        <p>Zone de Calebassier</p>
+        <p>Basse-Terre</p>
+        <p>Guadeloupe (97100)</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Le Moelleux — Tous droits réservés</span>
+      <span style="color:rgba(255,255,255,.35)">Site réalisé par Kudja Studio</span>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll shadow
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Hero slider
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    let current = 0, timer;
+
+    function goTo(i) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = i;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function startAuto() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo((current + 1) % slides.length), 5000);
+    }
+
+    dots.forEach(d => d.addEventListener('click', () => {
+      goTo(+d.dataset.i);
+      startAuto();
+    }));
+
+    startAuto();
+
+    // Panneau commande
+    function openCommande() {
+      document.getElementById('cmdOverlay').classList.add('open');
+      document.getElementById('cmdPanel').classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      const dateInput = document.getElementById('date');
+      if (dateInput && !dateInput.min) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dateInput.min = tomorrow.toISOString().split('T')[0];
+        dateInput.addEventListener('input', () => {
+          const d = new Date(dateInput.value);
+          dateInput.setCustomValidity(d.getDay() === 1 ? 'Le Moelleux est fermé le lundi.' : '');
+        });
+      }
+    }
+
+    function closeCommande() {
+      document.getElementById('cmdOverlay').classList.remove('open');
+      document.getElementById('cmdPanel').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCommande();
+    });
+
+    // Soumission formulaire
+    const form = document.getElementById('commandeForm');
+    const success = document.getElementById('formSuccess');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+
+        const data = new FormData(form);
+        const body = `Prénom : ${data.get('prenom')} ${data.get('nom')}
+Téléphone : ${data.get('tel')}
+Email : ${data.get('email') || '—'}
+Rayon : ${data.get('rayon')}
+Date souhaitée : ${data.get('date')}
+Commande : ${data.get('details')}`;
+
+        window.location.href = `mailto:VOTRE_EMAIL_ICI?subject=Commande Le Moelleux - ${data.get('prenom')} ${data.get('nom')}&body=${encodeURIComponent(body)}`;
+
+        success.classList.add('visible');
+        form.querySelectorAll('input, select, textarea, button[type=submit]').forEach(el => el.disabled = true);
+      });
+    }
+
+    // Highlight today's hours
+    const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+    const aujourdhui = jours[new Date().getDay()];
+    document.querySelectorAll('.horaires-table tbody tr').forEach(row => {
+      const cell = row.cells[0];
+      if (cell && cell.textContent.trim() === aujourdhui) {
+        row.style.fontWeight = '700';
+        const badge = document.createElement('span');
+        badge.className = 'badge-ouvert';
+        badge.textContent = "Aujourd'hui";
+        cell.appendChild(badge);
+      }
+    });
+  </script>
+</body>
+</html>
