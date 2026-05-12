@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macha Café · Jarry, Guadeloupe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream: #F8F4EE;
+            --white: #FEFDF9;
+            --matcha: #6B8E3A;
+            --matcha-mid: #89AE52;
+            --matcha-light: #C2D899;
+            --matcha-pale: #EEF4E3;
+            --matcha-dark: #4A6A22;
+            --wood: #C08A52;
+            --wood-dark: #8B5E30;
+            --wood-pale: #F5EDE0;
+            --text: #2A2018;
+            --text-muted: #7A6A58;
+            --border: rgba(107,142,58,0.18);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+            line-height: 1.15;
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--matcha);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--matcha-dark);
+        }
+
+        .section-sub {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 520px;
+        }
+
+        section { padding: 6rem 0; }
+
+        .container {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.4rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s, box-shadow 0.4s, padding 0.35s;
+        }
+
+        nav.scrolled {
+            background: rgba(248,244,238,0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 var(--border);
+            padding: 0.9rem 2.5rem;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: white;
+            text-decoration: none;
+            line-height: 1;
+            transition: color 0.4s;
+        }
+
+        .nav-logo span {
+            display: block;
+            font-style: italic;
+            font-size: 0.78rem;
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            opacity: 0.85;
+            margin-top: 2px;
+        }
+
+        nav.scrolled .nav-logo { color: var(--text); }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: rgba(255,255,255,0.82);
+            transition: color 0.3s;
+        }
+
+        nav.scrolled .nav-links a { color: var(--text-muted); }
+        .nav-links a:hover { color: var(--matcha) !important; }
+
+        .nav-cta {
+            background: var(--matcha) !important;
+            color: white !important;
+            padding: 0.5rem 1.3rem;
+            border-radius: 50px;
+            transition: background 0.3s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--wood) !important; transform: translateY(-1px); }
+
+        /* ── HERO ── */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 580px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('vert -macha.png') center/cover no-repeat;
+            transform: scale(1.06);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(25,42,10,0.52) 0%,
+                rgba(18,32,8,0.38) 45%,
+                rgba(10,20,5,0.62) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-city {
+            font-size: 0.68rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4.5rem, 14vw, 9rem);
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            line-height: 0.88;
+        }
+
+        .hero-cafe {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.4rem, 4vw, 2.2rem);
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 0.25em;
+            opacity: 0.88;
+            margin-bottom: 2.25rem;
+        }
+
+        .hero-tagline {
+            font-size: clamp(0.85rem, 1.8vw, 1rem);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            opacity: 0.8;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero-scroll {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.55);
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .hero-scroll svg { animation: arrowbounce 2s ease-in-out infinite; }
+
+        @keyframes arrowbounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(7px); }
+        }
+
+        /* ── UNIVERS ── */
+        #univers { background: var(--white); }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .organic-img {
+            border-radius: 4px 90px 4px 90px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            position: relative;
+        }
+
+        .organic-img-alt {
+            border-radius: 90px 4px 90px 4px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .univers-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+            font-style: italic;
+            color: var(--matcha-dark);
+            line-height: 1.5;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--matcha-light);
+            margin: 1.5rem 0 1.5rem;
+        }
+
+        .text-body {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.82;
+            margin-bottom: 0.9rem;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 2rem;
+        }
+
+        .chip {
+            background: var(--matcha-pale);
+            color: var(--matcha-dark);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            padding: 0.38rem 1rem;
+            border-radius: 50px;
+        }
+
+        /* ── CARTE ── */
+        #carte { background: var(--cream); }
+
+        .carte-head { text-align: center; margin-bottom: 3.5rem; }
+        .carte-head .section-sub { margin: 0 auto; }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.28s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--matcha);
+            border-color: var(--matcha);
+            color: white;
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Menu list (boissons / fraîcheurs) */
+        .menu-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+
+        .menu-category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--matcha-dark);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .menu-items { display: flex; flex-direction: column; gap: 0; }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px dashed rgba(107,142,58,0.12);
+        }
+
+        .menu-item:last-child { border-bottom: none; }
+
+        .item-name { font-size: 0.88rem; font-weight: 400; color: var(--text); }
+        .item-sub { font-size: 0.74rem; color: var(--text-muted); margin-top: 0.1rem; }
+
+        .item-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--matcha);
+            white-space: nowrap;
+        }
+
+        /* Cards (bowls) */
+        .bowls-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+
+        @media (min-width: 700px) { .bowls-grid { grid-template-columns: repeat(4,1fr); } }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.32s, box-shadow 0.32s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 45px rgba(107,142,58,0.13);
+        }
+
+        .menu-card-img { aspect-ratio: 4/3; overflow: hidden; }
+        .menu-card-img img { transition: transform 0.5s; }
+        .menu-card:hover .menu-card-img img { transform: scale(1.06); }
+
+        .menu-card-body { padding: 1.1rem 1.25rem 1.4rem; }
+
+        .menu-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-card-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+        .menu-card-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--matcha);
+            margin-top: 0.6rem;
+            font-weight: 400;
+        }
+
+        /* Tartines list */
+        .tartines-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+
+        .tartine-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.25rem 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.28s, box-shadow 0.28s;
+        }
+
+        .tartine-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(107,142,58,0.1);
+        }
+
+        .tartine-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .tartine-desc { font-size: 0.77rem; color: var(--text-muted); line-height: 1.55; }
+
+        .tartine-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--wood);
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.22rem 0.75rem;
+            border-radius: 50px;
+            margin-top: 0.75rem;
+        }
+
+        .tag-matcha { background: var(--matcha-pale); color: var(--matcha-dark); }
+        .tag-wood { background: var(--wood-pale); color: var(--wood-dark); }
+
+        /* ── COWORKING ── */
+        #coworking { background: var(--matcha-pale); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .feature {
+            background: white;
+            border-radius: 14px;
+            padding: 1.2rem;
+        }
+
+        .feature-icon { margin-bottom: 0.6rem; color: var(--matcha); display: flex; }
+        .feature-name { font-weight: 500; font-size: 0.88rem; margin-bottom: 0.15rem; }
+        .feature-desc { font-size: 0.77rem; color: var(--text-muted); }
+
+        /* ── BTN ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            padding: 0.85rem 2rem;
+            transition: all 0.28s;
+            cursor: pointer;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-matcha { background: var(--matcha); color: white; }
+        .btn-matcha:hover {
+            background: var(--matcha-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(107,142,58,0.28);
+        }
+
+        .btn-wood { background: var(--wood); color: white; }
+        .btn-wood:hover {
+            background: var(--wood-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(192,138,82,0.28);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--matcha);
+            border: 1.5px solid var(--matcha);
+        }
+        .btn-outline:hover { background: var(--matcha); color: white; transform: translateY(-2px); }
+
+        /* ── BOUTIQUE ── */
+        #boutique { background: var(--wood-pale); }
+
+        .boutique-intro {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 4rem;
+        }
+
+        .boutique-intro .section-sub { margin: 0 auto; }
+
+        .creations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .creation-card {
+            background: var(--white);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.32s, box-shadow 0.32s;
+        }
+
+        .creation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 50px rgba(139,94,48,0.14);
+        }
+
+        .creation-img {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .creation-img img { transition: transform 0.5s; }
+        .creation-card:hover .creation-img img { transform: scale(1.06); }
+
+        .creation-body {
+            padding: 1.1rem 1.4rem 1.4rem;
+        }
+
+        .creation-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .creation-desc { font-size: 0.79rem; color: var(--text-muted); line-height: 1.6; }
+
+        .creation-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--wood-pale);
+            color: var(--wood-dark);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.22rem 0.75rem;
+            border-radius: 50px;
+            margin-top: 0.7rem;
+        }
+
+        /* ── ÉVÉNEMENTS ── */
+        #evenements { background: var(--white); }
+
+        .ev-head { text-align: center; margin-bottom: 3.5rem; }
+        .ev-head .section-sub { margin: 0 auto; }
+
+        .ev-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 1.75rem;
+        }
+
+        .ev-card {
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+
+        .ev-card img { transition: transform 0.5s; }
+        .ev-card:hover img { transform: scale(1.07); }
+
+        .ev-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,25,8,0.78) 0%, transparent 55%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.75rem;
+            color: white;
+        }
+
+        .ev-tag {
+            font-size: 0.63rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            opacity: 0.75;
+            margin-bottom: 0.4rem;
+        }
+
+        .ev-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+
+        .ev-desc { font-size: 0.78rem; opacity: 0.72; }
+
+        /* ── CONTACT ── */
+        #contact {
+            background: var(--matcha);
+            color: white;
+            padding: 5.5rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        #contact .section-label { color: rgba(255,255,255,0.6); }
+        #contact .section-title { color: white; }
+        #contact .section-sub { color: rgba(255,255,255,0.75); max-width: none; }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            margin-top: 2.25rem;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            width: 42px; height: 42px;
+            background: rgba(255,255,255,0.14);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .info-label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0.62;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-val { font-size: 0.93rem; opacity: 0.9; line-height: 1.6; }
+
+        .map-box {
+            background: rgba(255,255,255,0.12);
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #17220D;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.78rem;
+            line-height: 1.8;
+        }
+
+        footer strong { color: rgba(255,255,255,0.75); }
+
+        /* ── ANIMATIONS ── */
+        .fade {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .fade.d1 { transition-delay: 0.1s; }
+        .fade.d2 { transition-delay: 0.2s; }
+        .fade.d3 { transition-delay: 0.32s; }
+
+        .fade.in { opacity: 1; transform: none; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 880px) {
+            .two-col,
+            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+            .creations-grid { grid-template-columns: 1fr 1fr; }
+
+            .organic-img-alt { order: -1; aspect-ratio: 16/9; border-radius: 18px; }
+
+            .ev-grid { grid-template-columns: 1fr 1fr; }
+            .tartines-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 580px) {
+            nav { padding: 1rem 1.2rem; }
+            nav.scrolled { padding: 0.75rem 1.2rem; }
+            .nav-links { display: none; }
+
+            section { padding: 3.5rem 0; }
+            .container { padding: 0 1.25rem; }
+
+            .ev-grid,
+            .features-grid,
+            .menu-cols,
+            .bowls-grid,
+            .tartines-grid,
+            .creations-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a href="#hero" class="nav-logo">MACHA <span>café</span></a>
+    <ul class="nav-links">
+        <li><a href="#carte">La Carte</a></li>
+        <li><a href="#coworking">Coworking</a></li>
+        <li><a href="#boutique">Boutique</a></li>
+        <li><a href="#evenements">Événements</a></li>
+        <li><a href="#contact" class="nav-cta">Nous trouver</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-city">Jarry · Guadeloupe</p>
+        <h1 class="hero-name">MACHA</h1>
+        <p class="hero-cafe">café</p>
+        <p class="hero-tagline">La nature s'invite chez vous</p>
+        <a href="#univers" class="hero-scroll">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <path d="M11 4v14M5 12l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Découvrir
+        </a>
+    </div>
+</section>
+
+<!-- UNIVERS -->
+<section id="univers">
+    <div class="container">
+        <div class="two-col">
+            <div class="organic-img fade">
+                <img src="salon-macha.webp" alt="L'espace Macha Café">
+            </div>
+            <div>
+                <span class="section-label fade">Notre univers</span>
+                <h2 class="section-title fade d1">Un lieu de vie<br><em>entre nature et douceur</em></h2>
+                <blockquote class="univers-quote fade d2">
+                    "Un espace pensé pour nourrir le corps, l'esprit et la créativité."
+                </blockquote>
+                <p class="text-body fade d2">Niché à Jarry en Guadeloupe, Macha Café est bien plus qu'un café. C'est un lieu de vie où la nature s'exprime dans chaque détail, avec des boissons saines préparées avec soin, un espace coworking chaleureux et des créations en bois artisanales.</p>
+                <p class="text-body fade d3">Ici, le temps ralentit. On savoure un acaï bowl, on travaille dans la lumière douce, on repart avec une pièce unique.</p>
+                <div class="chips fade d3">
+                    <span class="chip">Café & Matcha</span>
+                    <span class="chip">Smoothies & Jus</span>
+                    <span class="chip">Superfoods</span>
+                    <span class="chip">Coworking</span>
+                    <span class="chip">Mobilier Bois</span>
+                    <span class="chip">Ateliers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CARTE -->
+<section id="carte">
+    <div class="container">
+        <div class="carte-head">
+            <span class="section-label fade">Notre carte</span>
+            <h2 class="section-title fade d1">Des saveurs<br><em>qui font du bien</em></h2>
+            <p class="section-sub fade d2">Tout est préparé maison, avec des ingrédients sains. Chaque tasse, chaque bol est une invitation à prendre soin de vous.</p>
+        </div>
+
+        <div class="tabs fade">
+            <button class="tab-btn active" data-tab="boissons">Boissons Chaudes</button>
+            <button class="tab-btn" data-tab="fraicheurs">Boosters & Fraîcheurs</button>
+            <button class="tab-btn" data-tab="bowls">Bowls</button>
+            <button class="tab-btn" data-tab="tartines">Tartines</button>
+        </div>
+
+        <!-- BOISSONS CHAUDES -->
+        <div class="tab-panel active" id="tab-boissons">
+            <div class="menu-cols">
+                <div class="fade">
+                    <p class="menu-category-title">Café & Thé</p>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div><div class="item-name">Espresso</div></div>
+                            <span class="item-price">2,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Café Allongé</div></div>
+                            <span class="item-price">3 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Americano</div></div>
+                            <span class="item-price">3,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Cappuccino</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Café Latte</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Thé / Infusion</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade d1">
+                    <p class="menu-category-title">Lattes & Spécialités</p>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div><div class="item-name">Chocolat Chaud</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Matcha Latte</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Moringa Latte</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Clitoria Latte</div></div>
+                            <span class="item-price">4,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div><div class="item-name">Lait d'Or</div><div class="item-sub">Curcuma, lait végétal, épices douces</div></div>
+                            <span class="item-price">5 €</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOOSTERS & FRAÎCHEURS -->
+        <div class="tab-panel" id="tab-fraicheurs">
+            <div class="menu-cols">
+                <div class="fade">
+                    <p class="menu-category-title">Shots & Soft</p>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">Warrior Shot</div>
+                                <div class="item-sub">Gingembre, citron, eau de coco</div>
+                            </div>
+                            <span class="item-price">2,50 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">Ginger Ale</div>
+                                <div class="item-sub">Eau pétillante, sirop, gingembre, citron</div>
+                            </div>
+                            <span class="item-price">5 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">Rose Marie</div>
+                                <div class="item-sub">Eau pétillante, sirop de rose, hibiscus, citron</div>
+                            </div>
+                            <span class="item-price">5 €</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade d1">
+                    <p class="menu-category-title">Limonades & Jus</p>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">Citronnade</div>
+                                <div class="item-sub">Eau minérale, citron, sirop d'agave</div>
+                            </div>
+                            <span class="item-price">5 €</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <div class="item-name">Booster</div>
+                                <div class="item-sub">Jus ou smoothie du jour</div>
+                            </div>
+                            <span class="item-price">6 €</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOWLS -->
+        <div class="tab-panel" id="tab-bowls">
+            <div class="bowls-grid">
+                <div class="menu-card fade">
+                    <div class="menu-card-img"><img src="2025-07-31.webp" alt="Douceur Croquante"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-title">Douceur Croquante</h3>
+                        <p class="menu-card-desc">Yaourt grec, miel & granola</p>
+                        <div class="menu-card-price">8 €</div>
+                    </div>
+                </div>
+                <div class="menu-card fade d1">
+                    <div class="menu-card-img"><img src="acai macha.webp" alt="Classic Açaï"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-title">Classic Açaï</h3>
+                        <p class="menu-card-desc">Açaï, fruits rouges, banane, peanut butter & granola</p>
+                        <div class="menu-card-price">9 €</div>
+                    </div>
+                </div>
+                <div class="menu-card fade d2">
+                    <div class="menu-card-img"><img src="evenements.png" alt="Choco Love"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-title">Choco Love</h3>
+                        <p class="menu-card-desc">Banane, cacao 100%, peanut butter & granola</p>
+                        <div class="menu-card-price">9 €</div>
+                    </div>
+                </div>
+                <div class="menu-card fade d3">
+                    <div class="menu-card-img"><img src="superfood - energy balls.png" alt="Protein Boost"></div>
+                    <div class="menu-card-body">
+                        <h3 class="menu-card-title">Protein Boost</h3>
+                        <p class="menu-card-desc">Banane, mangue, fromage frais, spiruline, peanut butter <span class="tag tag-matcha" style="margin:0;">25g protéine</span></p>
+                        <div class="menu-card-price">12 €</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TARTINES -->
+        <div class="tab-panel" id="tab-tartines">
+            <div class="tartines-grid">
+                <div class="tartine-card fade">
+                    <div>
+                        <div class="tartine-name">Grilled Cheese</div>
+                        <div class="tartine-desc">Pain grillé, fromage fondu croustillant</div>
+                    </div>
+                    <span class="tartine-price">6,50 €</span>
+                </div>
+                <div class="tartine-card fade d1">
+                    <div>
+                        <div class="tartine-name">Grilled Serrano</div>
+                        <div class="tartine-desc">Jambon serrano grillé, fromage fondant</div>
+                    </div>
+                    <span class="tartine-price">8,50 €</span>
+                </div>
+                <div class="tartine-card fade">
+                    <div>
+                        <div class="tartine-name">Labné</div>
+                        <div class="tartine-desc">Labné, huile d'olive, zaatar, aromates, olives</div>
+                    </div>
+                    <span class="tartine-price">9 €</span>
+                </div>
+                <div class="tartine-card fade d1">
+                    <div>
+                        <div class="tartine-name">Méditerranéenne</div>
+                        <div class="tartine-desc">Jambon serrano & fromage frais</div>
+                    </div>
+                    <span class="tartine-price">9 €</span>
+                </div>
+                <div class="tartine-card fade" style="grid-column: 1 / -1; max-width: 460px;">
+                    <div>
+                        <div class="tartine-name">Peanut Butter & Jelly</div>
+                        <div class="tartine-desc">Fromage frais, peanut butter & coulis de myrtille</div>
+                    </div>
+                    <span class="tartine-price">8 €</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COWORKING -->
+<section id="coworking">
+    <div class="container">
+        <div class="two-col">
+            <div>
+                <span class="section-label fade">Espace coworking</span>
+                <h2 class="section-title fade d1">Travaillez dans<br><em>une atmosphère apaisante</em></h2>
+                <p class="section-sub fade d2">Un espace pensé pour les créatifs, les freelances et les nomades digitaux qui cherchent un cadre inspirant en Guadeloupe.</p>
+
+                <div class="features-grid fade d2">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                <path d="M11 17.5a1 1 0 100-2 1 1 0 000 2z" fill="currentColor"/>
+                                <path d="M7.5 14a5 5 0 017 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M4 10.5a9.5 9.5 0 0114 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M1 7a14 14 0 0120 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-name">Wifi haut débit</div>
+                        <div class="feature-desc">Connexion stable et rapide</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                <path d="M4 10.5V8a2 2 0 012-2h10a2 2 0 012 2v2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <rect x="3" y="10" width="16" height="6" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M2 12.5A1.5 1.5 0 013.5 11v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M20 12.5A1.5 1.5 0 0118.5 11v3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7 16v2M15 16v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-name">Confort bois & cuir</div>
+                        <div class="feature-desc">Mobilier chaleureux unique</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                <path d="M5 8h11l-1.5 9H6.5L5 8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M15.5 10.5H17a2 2 0 010 4h-1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M8 19h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M8.5 6c0-1.5 1-2.5 2.5-2.5s2.5.8 2.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-name">Boissons healthy</div>
+                        <div class="feature-desc">Matcha, café, jus frais</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                <rect x="3" y="6" width="5" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                <rect x="8.5" y="4.5" width="5" height="13.5" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M14 6l4.2 1.1a1 1 0 01.7 1.2l-2.5 9.4a1 1 0 01-1.2.7L14 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="feature-name">Bibliothèque</div>
+                        <div class="feature-desc">Livres & ressources sur place</div>
+                    </div>
+                </div>
+
+                <a href="#contact" class="btn btn-matcha fade d3">
+                    Réserver une place
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <path d="M3 7.5h9M8 4l4 3.5L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="organic-img-alt fade d1">
+                <img src="espace co-working.png" alt="Coworking Macha Café">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BOUTIQUE BOIS -->
+<section id="boutique">
+    <div class="container">
+        <div class="boutique-intro fade">
+            <span class="section-label">Créations bois</span>
+            <h2 class="section-title">Mobilier artisanal<br><em>sur commande</em></h2>
+            <p class="section-sub">Chaque pièce est fabriquée à la main avec des bois nobles. Cuisine, chambre, salle de bain, salon : nous concevons des meubles uniques, pensés pour votre espace et vos envies.</p>
+        </div>
+
+        <div class="creations-grid">
+            <div class="creation-card fade">
+                <div class="creation-img">
+                    <img src="images création bois/table-bois.png" alt="Table à manger live edge">
+                </div>
+                <div class="creation-body">
+                    <h3 class="creation-name">Table Live Edge</h3>
+                    <p class="creation-desc">Plateau massif en bois brut, tranche naturelle conservée. Structure acier noir. Pièce maîtresse de salle à manger.</p>
+                    <span class="creation-badge">Sur commande</span>
+                </div>
+            </div>
+            <div class="creation-card fade d1">
+                <div class="creation-img">
+                    <img src="images création bois/etagere-bois.png" alt="Étagères flottantes bois">
+                </div>
+                <div class="creation-body">
+                    <h3 class="creation-name">Étagères Flottantes</h3>
+                    <p class="creation-desc">Tablettes en bois massif aux veinures apparentes, fixation invisible. Idéales pour salon ou bibliothèque.</p>
+                    <span class="creation-badge">Sur commande</span>
+                </div>
+            </div>
+            <div class="creation-card fade d2">
+                <div class="creation-img">
+                    <img src="images création bois/meuble-bois.png" alt="Meuble vasque salle de bain">
+                </div>
+                <div class="creation-body">
+                    <h3 class="creation-name">Meuble Vasque</h3>
+                    <p class="creation-desc">Meuble salle de bain en bois clair avec niche ouverte. Sobre et naturel, s'intègre à tout style.</p>
+                    <span class="creation-badge">Sur commande</span>
+                </div>
+            </div>
+            <div class="creation-card fade">
+                <div class="creation-img">
+                    <img src="images création bois/cuisine-bois.png" alt="Plan de travail cuisine bois">
+                </div>
+                <div class="creation-body">
+                    <h3 class="creation-name">Plan de Travail Cuisine</h3>
+                    <p class="creation-desc">Plateau en bois massif traité pour cuisine. Chaleur naturelle et résistance au quotidien, esprit tropical.</p>
+                    <span class="creation-badge">Sur commande</span>
+                </div>
+            </div>
+            <div class="creation-card fade d1">
+                <div class="creation-img">
+                    <img src="images création bois/chambre-bois.png" alt="Bardage chambre bois">
+                </div>
+                <div class="creation-body">
+                    <h3 class="creation-name">Bardage & Tête de Lit</h3>
+                    <p class="creation-desc">Lames de bois verticales pour habiller un mur ou une tête de lit. Effet cocooning chaleureux et élégant.</p>
+                    <span class="creation-badge">Sur commande</span>
+                </div>
+            </div>
+            <div class="creation-card fade d2">
+                <div class="creation-img">
+                    <img src="images création bois/lit bois.png" alt="Lit en bois massif">
+                </div>
+                <div class="creation-body">
+                    <h3 class="creation-name">Lit en Bois Massif</h3>
+                    <p class="creation-desc">Structure de lit sobre et robuste en bois naturel. Finition satinée, assemblage artisanal soigné.</p>
+                    <span class="creation-badge">Sur commande</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fade" style="text-align:center; margin-top:3rem;">
+            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1.5rem;">
+                Toutes nos créations sont réalisées à la commande, adaptées à vos dimensions et vos envies.
+            </p>
+            <a href="#contact" class="btn btn-wood">
+                Demander un devis
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M3 7.5h9M8 4l4 3.5L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ÉVÉNEMENTS -->
+<section id="evenements">
+    <div class="container">
+        <div class="ev-head">
+            <span class="section-label fade">Événements & Ateliers</span>
+            <h2 class="section-title fade d1">Vivez des expériences<br><em>hors du commun</em></h2>
+            <p class="section-sub fade d2">Yoga, méditation, ateliers créatifs, networking... Macha Café est aussi un espace d'événements bien-être et de rencontres.</p>
+        </div>
+
+        <div class="ev-grid">
+            <div class="ev-card fade">
+                <img src="evenements (2).png" alt="Ateliers Bien-être">
+                <div class="ev-overlay">
+                    <span class="ev-tag">Bien-être</span>
+                    <h3 class="ev-title">Yoga & Méditation</h3>
+                    <p class="ev-desc">Sessions régulières dans une atmosphère zen</p>
+                </div>
+            </div>
+            <div class="ev-card fade d1">
+                <img src="blog excursion kudja studio.png" alt="Networking">
+                <div class="ev-overlay">
+                    <span class="ev-tag">Rencontres</span>
+                    <h3 class="ev-title">Networking Créatif</h3>
+                    <p class="ev-desc">Connectez-vous avec la communauté locale autour d'un matcha</p>
+                </div>
+            </div>
+            <div class="ev-card fade d2">
+                <img src="blog excursion kudja studio (2).png" alt="Ateliers créatifs">
+                <div class="ev-overlay">
+                    <span class="ev-tag">Créativité</span>
+                    <h3 class="ev-title">Ateliers & Workshops</h3>
+                    <p class="ev-desc">Art, artisanat et expression libre dans un cadre unique</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div>
+                <span class="section-label fade">Venir nous voir</span>
+                <h2 class="section-title fade d1">On est à Jarry,<br>venez nous dire bonjour</h2>
+                <p class="section-sub fade d2">On vous accueille du lundi au samedi dans notre espace chaleureux de la zone industrielle de Jarry.</p>
+
+                <div class="info-list fade d2">
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2a6 6 0 016 6c0 4.5-6 10-6 10S4 12.5 4 8a6 6 0 016-6z" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="10" cy="8" r="2.25" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Adresse</div>
+                            <div class="info-val">Zone Industrielle de Jarry<br>97122 Baie-Mahault, Guadeloupe</div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M10 6v4.5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Horaires</div>
+                            <div class="info-val">Lun – Ven : 7h30 – 18h00<br>Samedi : 9h00 – 15h00</div>
+                        </div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <rect x="3" y="3" width="14" height="14" rx="4.5" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="14.25" cy="5.75" r="0.9" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Instagram</div>
+                            <div class="info-val">@macha.cafe.guadeloupe</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-box fade d1">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.0!2d-61.577!3d16.263!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTbCsDE1JzQ4LjAiTiA2McKwMzQnMzcuMiJX!5e0!3m2!1sfr!2sfr!4v1699000000000"
+                    title="Macha Café · Jarry, Guadeloupe"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <strong>Macha Café</strong> · Zone de Jarry, Guadeloupe<br>
+    <span style="font-style:italic; opacity:0.6">"La nature s'invite chez vous"</span><br>
+    <span style="margin-top:0.5rem; display:block;">© 2025 Macha Café · Tous droits réservés</span>
+</footer>
+
+<script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    const heroBg = document.getElementById('heroBg');
+
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+        if (window.scrollY < window.innerHeight) {
+            heroBg.style.transform = `scale(1.06) translateY(${window.scrollY * 0.28}px)`;
+        }
+    });
+
+    // Fade-in on scroll
+    const fades = document.querySelectorAll('.fade');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    fades.forEach(el => obs.observe(el));
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            const panel = document.getElementById('tab-' + this.dataset.tab);
+            if (panel) {
+                panel.classList.add('active');
+                panel.querySelectorAll('.fade').forEach(el => {
+                    el.classList.remove('in');
+                    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
