@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chez Giorgio | Restaurant Italo-Antillais à Pointe-à-Pitre, Guadeloupe</title>
+  <meta name="description" content="Restaurant de cuisine italo-antillaise au cœur de Pointe-à-Pitre, Guadeloupe. Lasagnes maison, carbonara de poulpe, cocktails artisanaux. Commander à emporter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bleu:       #3D5F8E;
+      --bleu-fonce: #1E3A66;
+      --bleu-nuit:  #0F2040;
+      --bleu-pale:  #E8EFF8;
+      --dore:       #C9A96E;
+      --dore-clair: #DEC08E;
+      --creme:      #FDFAF5;
+      --sable:      #F4EDD8;
+      --bois:       #7A5530;
+      --texte:      #1A1A2E;
+      --muted:      #6A7090;
+      --border:     rgba(61,95,142,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; background: var(--creme); color: var(--texte); line-height: 1.7; overflow-x: hidden; }
+    h1, h2, h3 { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 400; line-height: 1.2; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; border: none; background: none; }
+
+    /* HEADER */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; transition: background 0.4s, box-shadow 0.4s; }
+    header.scrolled { background: var(--bleu-nuit); box-shadow: 0 2px 24px rgba(0,0,0,0.3); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 72px; display: flex; align-items: center; justify-content: center; }
+    .header-logo { display: flex; align-items: center; }
+    nav { display: flex; align-items: center; gap: 0.15rem; }
+    .nav-link { padding: 0.5rem 1rem; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.82); transition: color 0.2s; border-radius: 2px; }
+    .nav-link:hover, .nav-link.active { color: var(--dore); }
+    .burger { display: none; flex-direction: column; gap: 5px; width: 32px; padding: 4px; cursor: pointer; }
+    .burger span { display: block; height: 1.5px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s; }
+    .mobile-nav { display: none; flex-direction: column; background: var(--bleu-nuit); padding: 0.75rem 2rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.07); }
+    .mobile-nav a { padding: 0.85rem 0; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.78); border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover { color: var(--dore); }
+    .mobile-nav.open { display: flex; }
+
+    /* HERO */
+    .hero { position: relative; height: 100vh; min-height: 640px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('images/tomate-burrata.png') center/cover no-repeat; transform: scale(1.06); transition: transform 8s ease; }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,32,64,0.55) 0%, rgba(15,32,64,0.72) 60%, rgba(15,32,64,0.88) 100%); }
+    .hero-content { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 1.4rem; padding: 2rem; }
+    .hero-logo { width: 210px; height: auto; }
+    .hero-sep { width: 48px; height: 1.5px; background: var(--dore); }
+    .hero-tagline { font-size: 0.68rem; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(255,255,255,0.68); }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem; }
+    .btn { padding: 0.88rem 2.4rem; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; border-radius: 2px; transition: all 0.25s; display: inline-block; cursor: pointer; }
+    .btn-dore { background: var(--dore); color: var(--bleu-nuit); }
+    .btn-dore:hover { background: var(--dore-clair); }
+    .btn-outline-blanc { background: transparent; color: rgba(255,255,255,0.88); border: 1.5px solid rgba(255,255,255,0.45); }
+    .btn-outline-blanc:hover { border-color: var(--dore); color: var(--dore); }
+
+    /* BANDEAU */
+    .bandeau { background: var(--bleu); padding: 0.95rem 2rem; text-align: center; }
+    .bandeau p { font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
+
+    /* LABELS COMMUNS */
+    .section-label { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--dore); margin-bottom: 0.8rem; font-family: 'Manrope', sans-serif; }
+
+    /* TEASER ACCUEIL */
+    .teaser { padding: 7rem 2rem; background: var(--creme); }
+    .teaser-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .teaser-photos { position: relative; padding-bottom: 3.5rem; }
+    .teaser-ext { width: 100%; height: 380px; object-fit: cover; border-radius: 2px; }
+    .teaser-int { position: absolute; bottom: 0; right: -2rem; width: 62%; height: 210px; object-fit: cover; object-position: center top; border: 5px solid white; box-shadow: 0 8px 28px rgba(15,32,64,0.18); border-radius: 2px; }
+    .teaser-text h2 { font-size: clamp(2rem, 3.5vw, 3rem); color: var(--bleu-fonce); margin-bottom: 1.5rem; }
+    .teaser-text h2 em { font-style: italic; color: var(--bleu); }
+    .teaser-text p { color: var(--muted); font-size: 0.93rem; margin-bottom: 1rem; }
+    .teaser-sep { width: 40px; height: 1.5px; background: var(--dore); margin: 2rem 0; }
+    .teaser-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bleu); transition: color 0.2s; }
+    .teaser-link:hover { color: var(--dore); }
+    .teaser-link::after { content: '→'; }
+
+    /* AVIS */
+    .avis-section { background: var(--sable); padding: 5rem 2rem; }
+    .avis-inner { max-width: 1100px; margin: 0 auto; }
+    .avis-header { text-align: center; margin-bottom: 3rem; }
+    .avis-header h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--bleu-fonce); margin-bottom: 0.8rem; }
+    .avis-header h2 em { font-style: italic; color: var(--bleu); }
+    .avis-global { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .avis-etoiles { color: #F5A623; font-size: 1.4rem; letter-spacing: 0.05em; }
+    .avis-note { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; color: var(--bleu-fonce); font-weight: 500; }
+    .avis-count { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    .avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .avis-card { background: white; border-radius: 4px; padding: 1.8rem; box-shadow: 0 2px 16px rgba(61,95,142,0.07); display: flex; flex-direction: column; gap: 1rem; }
+    .avis-card-top { display: flex; align-items: center; gap: 0.75rem; }
+    .avis-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--bleu); display: flex; align-items: center; justify-content: center; font-family: 'Bodoni Moda', serif; font-size: 1rem; color: white; flex-shrink: 0; }
+    .avis-auteur { font-weight: 600; font-size: 0.88rem; color: var(--texte); }
+    .avis-card-etoiles { color: #F5A623; font-size: 0.85rem; }
+    .avis-texte { font-size: 0.85rem; color: var(--muted); line-height: 1.65; font-style: italic; }
+    .avis-google { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 2.5rem; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    .avis-google svg { width: 16px; height: 16px; }
+
+    /* ICONE PANIER HEADER */
+    .cart-btn { position: relative; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; cursor: pointer; background: none; border: none; }
+    .cart-btn:hover { background: rgba(255,255,255,0.12); }
+    .cart-btn svg { width: 22px; height: 22px; stroke: white; fill: none; stroke-width: 1.8; }
+    .cart-badge { position: absolute; top: 2px; right: 2px; background: var(--dore); color: var(--bleu-nuit); font-size: 0.58rem; font-weight: 700; line-height: 1; min-width: 16px; height: 16px; border-radius: 8px; display: flex; align-items: center; justify-content: center; padding: 0 3px; opacity: 0; transform: scale(0.7); transition: opacity 0.2s, transform 0.2s; font-family: 'Manrope', sans-serif; }
+    .cart-badge.visible { opacity: 1; transform: scale(1); }
+
+    /* PANIER PANEL */
+    .cart-overlay { position: fixed; inset: 0; background: rgba(15,32,64,0.5); z-index: 400; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 400px; max-width: 95vw; background: var(--bleu-nuit); z-index: 500; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: -4px 0 40px rgba(0,0,0,0.3); }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 1.6rem; border-bottom: 1px solid rgba(201,169,110,0.15); flex-shrink: 0; }
+    .cart-panel-title { font-family: 'Bodoni Moda', serif; font-size: 1.3rem; color: white; }
+    .cart-close { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s; font-size: 1.2rem; color: rgba(255,255,255,0.45); cursor: pointer; background: none; border: none; }
+    .cart-close:hover { background: rgba(255,255,255,0.1); color: white; }
+    .cart-items-list { flex: 1; overflow-y: auto; padding: 1.2rem 1.6rem; }
+    .cart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: 0.9rem; color: rgba(255,255,255,0.3); text-align: center; }
+    .cart-empty svg { width: 48px; height: 48px; stroke: rgba(255,255,255,0.18); fill: none; stroke-width: 1.4; }
+    .cart-empty p { font-size: 0.82rem; font-style: italic; }
+    .cart-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,169,110,0.1); }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img { width: 48px; height: 48px; flex-shrink: 0; border-radius: 2px; overflow: hidden; }
+    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cart-item-no-img { width: 48px; height: 48px; flex-shrink: 0; background: rgba(255,255,255,0.07); border-radius: 2px; display: flex; align-items: center; justify-content: center; }
+    .cart-item-no-img svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 1.5; }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.88); margin-bottom: 2px; }
+    .cart-item-price { font-family: 'Bodoni Moda', serif; font-size: 1rem; color: var(--dore); white-space: nowrap; }
+    .cart-qty { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+    .cart-qty-btn { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: rgba(255,255,255,0.7); transition: all 0.2s; cursor: pointer; background: none; }
+    .cart-qty-btn:hover { border-color: var(--dore); color: var(--dore); }
+    .cart-qty-num { font-size: 0.82rem; font-weight: 600; min-width: 18px; text-align: center; color: white; }
+    .cart-item-remove { font-size: 0.7rem; color: rgba(255,255,255,0.25); cursor: pointer; padding: 0 0.2rem; transition: color 0.2s; background: none; border: none; }
+    .cart-item-remove:hover { color: #e05555; }
+    .cart-panel-footer { border-top: 1px solid rgba(201,169,110,0.15); padding: 1.2rem 1.6rem 1.5rem; flex-shrink: 0; }
+    .cart-total-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+    .cart-total-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+    .cart-total-amount { font-family: 'Bodoni Moda', serif; font-size: 1.6rem; color: var(--dore); font-weight: 400; }
+    .btn-commander { width: 100%; padding: 0.95rem; background: var(--dore); color: var(--bleu-nuit); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background 0.25s; font-family: inherit; margin-bottom: 0.6rem; }
+    .btn-commander:hover { background: var(--dore-clair); }
+    .cart-clear { font-size: 0.62rem; color: rgba(255,255,255,0.25); text-decoration: underline; display: block; text-align: center; cursor: pointer; transition: color 0.2s; background: none; border: none; font-family: inherit; }
+    .cart-clear:hover { color: #e05555; }
+    .panier-note { font-size: 0.66rem; color: rgba(255,255,255,0.25); margin-top: 0.6rem; font-style: italic; text-align: center; line-height: 1.5; }
+    .panier-form { margin-top: 1rem; display: none; border-top: 1px solid rgba(201,169,110,0.15); padding-top: 1rem; }
+    .panier-form.visible { display: block; }
+    .panier-form input, .panier-form select, .panier-form textarea { width: 100%; padding: 0.7rem 0.85rem; margin-bottom: 0.7rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; color: white; font-family: 'Manrope', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.2s; }
+    .panier-form input::placeholder, .panier-form textarea::placeholder { color: rgba(255,255,255,0.28); }
+    .panier-form input:focus, .panier-form select:focus, .panier-form textarea:focus { border-color: var(--dore); }
+    .panier-form textarea { resize: none; height: 70px; }
+    .panier-form-label { font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.3rem; display: block; }
+    .slots-label { font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; display: block; margin: 0.9rem 0 0.5rem; }
+    .slots-group-title { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dore); margin: 0.8rem 0 0.4rem; display: block; }
+    .slots-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35rem; margin-bottom: 0.5rem; }
+    .time-slot { position: relative; }
+    .time-slot input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .time-slot label { display: flex; align-items: center; justify-content: center; padding: 0.45rem 0.2rem; border: 1px solid rgba(255,255,255,0.12); font-size: 0.72rem; font-weight: 500; cursor: pointer; transition: 0.2s; color: rgba(255,255,255,0.7); text-align: center; border-radius: 2px; background: rgba(255,255,255,0.04); }
+    .time-slot input[type="radio"]:checked + label { background: var(--dore); border-color: var(--dore); color: var(--bleu-nuit); font-weight: 700; }
+    .time-slot label:hover { border-color: var(--dore); color: var(--dore); background: rgba(201,169,110,0.1); }
+    .btn-send { width: 100%; padding: 0.9rem; background: var(--bleu); color: white; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s; font-family: inherit; }
+    .btn-send:hover { background: var(--bleu-fonce); }
+    .panier-success { display: none; text-align: center; padding: 3rem 1.6rem; flex-direction: column; align-items: center; gap: 0.75rem; }
+    .panier-success.visible { display: flex; }
+    .panier-success p { color: rgba(255,255,255,0.6); font-size: 0.82rem; line-height: 1.6; }
+    .panier-success strong { display: block; color: var(--dore); font-size: 1.2rem; font-family: 'Bodoni Moda', serif; }
+    .panier-success span { font-size: 2.5rem; }
+
+    /* FAB MOBILE */
+    .panier-fab { display: none; position: fixed; bottom: 1.5rem; left: 1rem; right: 1rem; z-index: 300; background: var(--dore); color: var(--bleu-nuit); border: none; border-radius: 3px; padding: 1rem 1.5rem; font-family: 'Manrope', sans-serif; font-size: 0.88rem; font-weight: 700; cursor: pointer; box-shadow: 0 6px 24px rgba(0,0,0,0.25); align-items: center; justify-content: space-between; transition: transform 0.2s, background 0.2s; }
+    .panier-fab:hover { background: var(--dore-clair); }
+    .panier-fab:active { transform: scale(0.98); }
+    .panier-fab-left { display: flex; align-items: center; gap: 0.6rem; }
+    .panier-fab-badge { background: var(--bleu-nuit); color: white; border-radius: 2px; padding: 0.1rem 0.5rem; font-size: 0.72rem; font-weight: 700; }
+    .panier-fab-total { font-size: 0.95rem; }
+    @media (max-width: 1024px) { .panier-fab { display: flex; } }
+
+    /* FOOTER */
+    footer { background: var(--bleu-nuit); border-top: 1px solid rgba(201,169,110,0.12); padding: 3.5rem 2rem; text-align: center; }
+    .footer-logo img { height: 60px; margin: 0 auto; }
+    .footer-sep { width: 30px; height: 1px; background: var(--dore); opacity: 0.4; margin: 1.2rem auto; }
+    .footer-name { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+    .footer-sub { font-size: 0.58rem; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+    .footer-kudja { margin-top: 2rem; font-size: 0.6rem; color: rgba(255,255,255,0.18); }
+    .footer-kudja a { color: rgba(255,255,255,0.32); transition: color 0.2s; }
+    .footer-kudja a:hover { color: var(--dore); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) { .teaser-inner { grid-template-columns: 1fr; gap: 3.5rem; } }
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .burger { display: flex; }
+      .hero-logo { width: 160px; }
+      .teaser-int { width: 55%; height: 170px; right: -1rem; }
+      .avis-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero-buttons { flex-direction: column; align-items: stretch; text-align: center; }
+      .teaser-int { display: none; }
+      .teaser-ext { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="main-header">
+    <div class="header-inner">
+      <a class="header-logo" href="index.html"></a>
+      <nav>
+        <a class="nav-link active" href="index.html">Accueil</a>
+        <a class="nav-link" href="restaurant.html">Notre Histoire</a>
+        <a class="nav-link" href="carte.html">La Carte</a>
+        <a class="nav-link" href="commander.html">Commander</a>
+      </nav>
+      <button class="cart-btn" onclick="toggleCart()" title="Mon panier">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge" id="cart-badge">0</span>
+      </button>
+      <button class="burger" id="burger" onclick="toggleNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="index.html" onclick="toggleNav()">Accueil</a>
+      <a href="restaurant.html" onclick="toggleNav()">Notre Histoire</a>
+      <a href="carte.html" onclick="toggleNav()">La Carte</a>
+      <a href="commander.html" onclick="toggleNav()" style="color: var(--dore); font-weight: 700;">Commander à emporter</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img class="hero-logo" src="logo-chez-giorgio.png" alt="Chez Giorgio Restaurant Bar">
+      <div class="hero-sep"></div>
+      <p class="hero-tagline">Cuisine Italo-Antillaise &middot; Pointe-à-Pitre, Guadeloupe</p>
+      <div class="hero-buttons">
+        <a class="btn btn-dore" href="commander.html">Commander à Emporter</a>
+        <a class="btn btn-outline-blanc" href="carte.html">Voir la Carte</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDEAU -->
+  <div class="bandeau">
+    <p>Déjeuner · Mardi au Samedi &nbsp;&nbsp;|&nbsp;&nbsp; Dîner · Jeudi au Samedi</p>
+  </div>
+
+  <!-- TEASER RESTAURANT -->
+  <section class="teaser">
+    <div class="teaser-inner">
+      <div class="teaser-photos">
+        <img class="teaser-ext" src="images/restaurant-exterieur.png" alt="Chez Giorgio — Façade">
+        <img class="teaser-int" src="images/restaurant-intérieur.png" alt="Chez Giorgio — Salle">
+      </div>
+      <div class="teaser-text">
+        <span class="section-label">Le Restaurant</span>
+        <h2>L'Italie rencontre<br><em>les Antilles</em></h2>
+        <p>Chez Giorgio, deux cultures se retrouvent autour d'une même table. La cuisine italienne, carpaccios délicats, arancinis croustillants et lasagnes maison, rencontre les saveurs authentiques de la Guadeloupe.</p>
+        <p>Une cuisine généreuse, raffinée et sincère, servie dans un cadre moderne et chaleureux au coeur de Pointe-à-Pitre.</p>
+        <div class="teaser-sep"></div>
+        <a class="teaser-link" href="restaurant.html">Découvrir notre histoire</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS GOOGLE -->
+  <section class="avis-section">
+    <div class="avis-inner">
+      <div class="avis-header">
+        <h2>Ce que disent<br><em>nos clients</em></h2>
+        <div class="avis-global">
+          <span class="avis-etoiles">★★★★★</span>
+          <span class="avis-note">5 / 5</span>
+        </div>
+        <p class="avis-count">22 avis Google</p>
+      </div>
+      <div class="avis-grid">
+        <div class="avis-card">
+          <div class="avis-card-top">
+            <div class="avis-avatar">L</div>
+            <div>
+              <p class="avis-auteur">Lisa Verney</p>
+              <div class="avis-card-etoiles">★★★★★</div>
+            </div>
+          </div>
+          <p class="avis-texte">Super restaurant avec de très bons produits locaux avec une pointe italienne dans les plats. Bien situé à 5min à pied du marché. Très bon rapport qualité prix, je le recommande !</p>
+        </div>
+        <div class="avis-card">
+          <div class="avis-card-top">
+            <div class="avis-avatar">N</div>
+            <div>
+              <p class="avis-auteur">Nolan REUNIF</p>
+              <div class="avis-card-etoiles">★★★★★</div>
+            </div>
+          </div>
+          <p class="avis-texte">Très bon service et cuisine excellente, accueil tout simplement majestueux, je reviendrai.</p>
+        </div>
+        <div class="avis-card">
+          <div class="avis-card-top">
+            <div class="avis-avatar">G</div>
+            <div>
+              <p class="avis-auteur">Germain Lebastard</p>
+              <div class="avis-card-etoiles">★★★★★</div>
+            </div>
+          </div>
+          <p class="avis-texte">J'ai eu la chance de tomber sur ce petit restaurant à Pointe-à-Pitre, un endroit très sympa et convivial avec une cuisine fusion Italo-Créole. Je me suis régalé, la carbonara de poulpe c'est quelque chose d'incroyable !</p>
+        </div>
+      </div>
+      <p class="avis-google">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        Avis vérifiés Google
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="logo-chez-giorgio.png" alt="Chez Giorgio"></div>
+    <div class="footer-sep"></div>
+    <p class="footer-name">Chez Giorgio</p>
+    <p class="footer-sub">Restaurant · Bar · Pointe-à-Pitre, Guadeloupe</p>
+    <p class="footer-kudja">Site réalisé par <a href="https://kudjastudio.fr" target="_blank">Kudja Studio</a></p>
+  </footer>
+
+  <!-- PANIER PANEL -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-panel-header">
+      <span class="cart-panel-title">Mon panier</span>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list">
+      <div class="cart-empty">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <p>Votre panier est vide</p>
+      </div>
+    </div>
+    <div class="panier-success" id="panier-success">
+      <span>🎉</span>
+      <strong>Commande reçue !</strong>
+      <p>Nous vous recontactons très bientôt pour confirmer votre retrait.</p>
+    </div>
+    <div class="cart-panel-footer" id="cart-footer" style="display:none">
+      <div class="cart-total-line">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-amount" id="cart-total">0 €</span>
+      </div>
+      <button class="btn-commander" onclick="goCommander()">Valider la commande</button>
+      <button class="cart-clear" onclick="clearCart()">Vider le panier</button>
+      <p class="panier-note">Retrait sur place · Confirmation par téléphone</p>
+      <div class="panier-form" id="panier-form">
+        <label class="panier-form-label">Prénom &amp; Nom</label>
+        <input type="text" id="pf-nom" placeholder="Jean Dupont">
+        <label class="panier-form-label">Téléphone</label>
+        <input type="tel" id="pf-tel" placeholder="06 xx xx xx xx">
+        <label class="panier-form-label">Date de retrait</label>
+        <input type="date" id="pf-date">
+        <span class="slots-label">Créneau de retrait</span>
+        <span class="slots-group-title">Déjeuner — mar. au sam.</span>
+        <div class="slots-grid">
+          <div class="time-slot"><input type="radio" name="creneau" id="s1" value="10h00"><label for="s1">10h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s2" value="10h30"><label for="s2">10h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s3" value="11h00"><label for="s3">11h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s4" value="11h30"><label for="s4">11h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s5" value="12h00"><label for="s5">12h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s6" value="12h30"><label for="s6">12h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s7" value="13h00"><label for="s7">13h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s8" value="13h30"><label for="s8">13h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s9" value="14h00"><label for="s9">14h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s10" value="14h30"><label for="s10">14h30</label></div>
+        </div>
+        <span class="slots-group-title">Dîner — jeu. au sam.</span>
+        <div class="slots-grid">
+          <div class="time-slot"><input type="radio" name="creneau" id="s11" value="18h00"><label for="s11">18h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s12" value="18h30"><label for="s12">18h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s13" value="19h00"><label for="s13">19h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s14" value="19h30"><label for="s14">19h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s15" value="20h00"><label for="s15">20h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s16" value="20h30"><label for="s16">20h30</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s17" value="21h00"><label for="s17">21h00</label></div>
+          <div class="time-slot"><input type="radio" name="creneau" id="s18" value="21h30"><label for="s18">21h30</label></div>
+        </div>
+        <label class="panier-form-label" style="margin-top:0.5rem">Note (allergies, demandes…)</label>
+        <textarea id="pf-note" placeholder="Allergies, cuisson, demandes spéciales…"></textarea>
+        <button class="btn-send" onclick="sendOrder()">Envoyer ma commande</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAB MOBILE -->
+  <button class="panier-fab" id="panier-fab" onclick="openCart()">
+    <div class="panier-fab-left">
+      <span class="panier-fab-badge" id="fab-count">0</span>
+      <span class="panier-fab-label">Voir mon panier</span>
+    </div>
+    <span class="panier-fab-total" id="fab-total">0 €</span>
+  </button>
+
+  <script>
+    /* Header scroll */
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
+    if (window.scrollY > 50) header.classList.add('scrolled');
+
+    /* Hero */
+    setTimeout(() => document.getElementById('heroBg').classList.add('loaded'), 100);
+
+    /* Mobile nav */
+    function toggleNav() { document.getElementById('mobile-nav').classList.toggle('open'); }
+
+    /* Panier localStorage */
+    let cart = {};
+
+    function saveCart() { localStorage.setItem('giorgio_cart', JSON.stringify(cart)); }
+    function loadCart() { try { cart = JSON.parse(localStorage.getItem('giorgio_cart') || '{}'); } catch(e) { cart = {}; } }
+
+    function openCart() {
+      document.getElementById('cart-panel').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCart() {
+      document.getElementById('cart-panel').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.contains('open') ? closeCart() : openCart();
+    }
+
+    function addToCart(id, name, price, img) {
+      if (cart[id]) { cart[id].qty++; } else { cart[id] = { name, price, img, qty: 1 }; }
+      saveCart(); renderCart(); openCart();
+    }
+    function updateQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) delete cart[id];
+      saveCart(); renderCart();
+    }
+    function removeFromCart(id) { delete cart[id]; saveCart(); renderCart(); }
+    function clearCart() {
+      cart = {}; saveCart();
+      const pf = document.getElementById('panier-form');
+      const ps = document.getElementById('panier-success');
+      if (pf) pf.classList.remove('visible');
+      if (ps) ps.classList.remove('visible');
+      renderCart();
+    }
+
+    function renderCart() {
+      const ids = Object.keys(cart);
+      const count = ids.reduce((s, k) => s + cart[k].qty, 0);
+      const total = ids.reduce((s, k) => s + cart[k].price * cart[k].qty, 0);
+      const fmt = v => v % 1 === 0 ? v.toFixed(0) : v.toFixed(2).replace('.',',');
+
+      const badge = document.getElementById('cart-badge');
+      if (badge) { badge.textContent = count; badge.classList.toggle('visible', count > 0); }
+
+      const fab = document.getElementById('panier-fab');
+      if (fab) {
+        if (count > 0) {
+          fab.style.display = 'flex';
+          document.getElementById('fab-count').textContent = count;
+          document.getElementById('fab-total').textContent = fmt(total) + ' €';
+        } else { fab.style.display = 'none'; }
+      }
+
+      const list = document.getElementById('cart-items-list');
+      const footer = document.getElementById('cart-footer');
+      if (!list || !footer) return;
+
+      if (ids.length === 0) {
+        list.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Votre panier est vide</p></div>';
+        footer.style.display = 'none'; return;
+      }
+
+      let html = '';
+      ids.forEach(k => {
+        const it = cart[k];
+        const imgHtml = it.img ? `<div class="cart-item-img"><img src="${it.img}" alt="${it.name}"></div>` : `<div class="cart-item-no-img"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>`;
+        html += `<div class="cart-item">${imgHtml}<div class="cart-item-info"><div class="cart-item-name">${it.name}</div></div><div class="cart-qty"><button class="cart-qty-btn" onclick="updateQty('${k}',-1)">−</button><span class="cart-qty-num">${it.qty}</span><button class="cart-qty-btn" onclick="updateQty('${k}',1)">+</button></div><span class="cart-item-price">${fmt(it.price * it.qty)} €</span><button class="cart-item-remove" onclick="removeFromCart('${k}')" title="Supprimer">✕</button></div>`;
+      });
+
+      list.innerHTML = html;
+      footer.style.display = 'block';
+      document.getElementById('cart-total').textContent = fmt(total) + ' €';
+    }
+
+    function goCommander() { window.location.href = 'commander.html'; }
+
+    function showPanierForm() {
+      const pf = document.getElementById('panier-form');
+      if (pf) { pf.classList.add('visible'); pf.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    }
+
+    function sendOrder() {
+      const nom = document.getElementById('pf-nom').value.trim();
+      const tel = document.getElementById('pf-tel').value.trim();
+      const creneauEl = document.querySelector('input[name="creneau"]:checked');
+      if (!nom || !tel) { alert('Merci de renseigner votre nom et téléphone.'); return; }
+      if (!creneauEl) { alert('Merci de choisir un créneau de retrait.'); return; }
+      document.getElementById('cart-items-list').innerHTML = '';
+      document.getElementById('cart-footer').style.display = 'none';
+      document.getElementById('panier-form').classList.remove('visible');
+      document.getElementById('panier-success').classList.add('visible');
+      cart = {}; saveCart();
+      const badge = document.getElementById('cart-badge');
+      if (badge) { badge.textContent = 0; badge.classList.remove('visible'); }
+      const fab = document.getElementById('panier-fab');
+      if (fab) fab.style.display = 'none';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadCart(); renderCart();
+      const d = document.getElementById('pf-date');
+      if (d) d.min = new Date().toISOString().split('T')[0];
+    });
+  </script>
+
+</body>
+</html>
