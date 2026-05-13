@@ -23,6 +23,7 @@
       --texte:      #1A1A2E;
       --muted:      #6A7090;
       --border:     rgba(61,95,142,0.15);
+      --border-dore: rgba(201,169,110,0.25);
     }
 
     html { scroll-behavior: smooth; }
@@ -62,41 +63,38 @@
     .page-hero p { font-size: 0.88rem; color: rgba(255,255,255,0.5); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 0.5rem; }
     .hero-sep { width: 40px; height: 1.5px; background: var(--dore); margin: 1.2rem auto 0; opacity: 0.5; }
 
-    /* FILTRE ONGLETS */
+    /* ONGLETS */
     .carte-nav { background: var(--sable); border-bottom: 1px solid var(--border); position: sticky; top: 72px; z-index: 100; }
-    .carte-nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+    .carte-nav-inner { max-width: 900px; margin: 0 auto; padding: 0 2rem; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
     .carte-nav-inner::-webkit-scrollbar { display: none; }
     .carte-tab { padding: 1rem 1.5rem; font-size: 0.63rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; white-space: nowrap; cursor: pointer; background: none; border-top: none; border-left: none; border-right: none; font-family: inherit; }
     .carte-tab.active, .carte-tab:hover { color: var(--bleu-fonce); border-bottom-color: var(--dore); }
 
-    /* SECTIONS CARTE */
-    .carte-section { padding: 5rem 2rem; }
-    .carte-section:nth-child(even) { background: var(--sable); }
-    .carte-inner { max-width: 1100px; margin: 0 auto; }
-    .carte-section-head { margin-bottom: 3rem; }
-    .carte-section-head h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: var(--bleu-fonce); }
-    .carte-section-head h2 em { font-style: italic; color: var(--bleu); }
-    .carte-sep { width: 36px; height: 1.5px; background: var(--dore); margin: 1rem 0; }
-    .carte-section-head p { font-size: 0.88rem; color: var(--muted); max-width: 480px; }
+    /* CONTENU MENU */
+    .menu-section { display: none; padding: 5rem 2rem 6rem; }
+    .menu-section.active { display: block; }
+    .menu-inner { max-width: 740px; margin: 0 auto; }
 
-    /* GRILLE PLATS */
-    .plats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .menu-header { text-align: center; margin-bottom: 4rem; }
+    .menu-header h2 { font-size: clamp(2rem, 4vw, 3rem); color: var(--bleu-fonce); }
+    .menu-header h2 em { font-style: italic; color: var(--bleu); }
+    .menu-header-sub { font-size: 0.76rem; color: var(--muted); margin-top: 0.5rem; font-style: italic; letter-spacing: 0.05em; }
+    .menu-header-sep { width: 36px; height: 1.5px; background: var(--dore); margin: 1.2rem auto 0; border-radius: 2px; opacity: 0.7; }
 
-    .plat-card { background: white; border-radius: 4px; overflow: hidden; box-shadow: 0 2px 16px rgba(61,95,142,0.07); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
-    .plat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 36px rgba(61,95,142,0.14); }
-    .plat-img { aspect-ratio: 4/3; overflow: hidden; position: relative; }
-    .plat-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .plat-card:hover .plat-img img { transform: scale(1.05); }
-    .plat-body { padding: 1.2rem 1.4rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
-    .plat-name { font-family: 'Bodoni Moda', serif; font-size: 1.2rem; color: var(--bleu-fonce); margin-bottom: 0.35rem; }
-    .plat-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
-    .plat-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-    .plat-price { font-family: 'Bodoni Moda', serif; font-size: 1.4rem; color: var(--bleu-fonce); }
-    .btn-add { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--dore); color: var(--bleu-nuit); border: none; border-radius: 2px; padding: 0.55rem 1.1rem; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.2s, transform 0.15s; font-family: inherit; }
-    .btn-add:hover { background: var(--dore-clair); transform: translateY(-1px); }
-    .btn-add svg { width: 14px; height: 14px; }
+    .menu-item { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 1.3rem 0; border-bottom: 1px solid var(--border-dore); }
+    .menu-item:last-child { border-bottom: none; }
+    .menu-item-left { flex: 1; }
+    .menu-item-name { font-size: 0.92rem; font-weight: 600; color: var(--texte); margin-bottom: 0.3rem; letter-spacing: 0.01em; }
+    .menu-item-desc { font-size: 0.78rem; color: var(--muted); font-style: italic; line-height: 1.65; }
+    .menu-item-price { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; color: var(--bleu-fonce); white-space: nowrap; flex-shrink: 0; }
 
-    /* PANIER PANEL (identique index) */
+    /* CTA COMMANDER */
+    .cta-commander { text-align: center; margin-top: 4rem; padding: 2.5rem; background: var(--sable); border-radius: 4px; border: 1px solid var(--border-dore); }
+    .cta-commander p { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.2rem; font-style: italic; }
+    .btn-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--dore); color: var(--bleu-nuit); border: none; border-radius: 2px; padding: 0.85rem 2rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; font-family: inherit; }
+    .btn-cta:hover { background: var(--dore-clair); }
+
+    /* PANIER PANEL */
     .cart-overlay { position: fixed; inset: 0; background: rgba(15,32,64,0.5); z-index: 400; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .cart-overlay.open { opacity: 1; pointer-events: all; }
     .cart-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 400px; max-width: 95vw; background: var(--bleu-nuit); z-index: 500; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: -4px 0 40px rgba(0,0,0,0.3); }
@@ -111,8 +109,6 @@
     .cart-empty p { font-size: 0.82rem; font-style: italic; }
     .cart-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,169,110,0.1); }
     .cart-item:last-child { border-bottom: none; }
-    .cart-item-img { width: 48px; height: 48px; flex-shrink: 0; border-radius: 2px; overflow: hidden; }
-    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
     .cart-item-no-img { width: 48px; height: 48px; flex-shrink: 0; background: rgba(255,255,255,0.07); border-radius: 2px; display: flex; align-items: center; justify-content: center; }
     .cart-item-no-img svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 1.5; }
     .cart-item-info { flex: 1; }
@@ -128,28 +124,10 @@
     .cart-total-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
     .cart-total-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
     .cart-total-amount { font-family: 'Bodoni Moda', serif; font-size: 1.6rem; color: var(--dore); }
-    .btn-commander { width: 100%; padding: 0.95rem; background: var(--dore); color: var(--bleu-nuit); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background 0.25s; font-family: inherit; margin-bottom: 0.6rem; }
-    .btn-commander:hover { background: var(--dore-clair); }
+    .btn-go-commander { width: 100%; padding: 0.95rem; background: var(--dore); color: var(--bleu-nuit); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background 0.25s; font-family: inherit; margin-bottom: 0.6rem; }
+    .btn-go-commander:hover { background: var(--dore-clair); }
     .cart-clear { font-size: 0.62rem; color: rgba(255,255,255,0.25); text-decoration: underline; display: block; text-align: center; cursor: pointer; transition: color 0.2s; background: none; border: none; font-family: inherit; }
     .cart-clear:hover { color: #e05555; }
-    .panier-note { font-size: 0.66rem; color: rgba(255,255,255,0.25); margin-top: 0.6rem; font-style: italic; text-align: center; line-height: 1.5; }
-    .panier-form { margin-top: 1rem; display: none; border-top: 1px solid rgba(201,169,110,0.15); padding-top: 1rem; }
-    .panier-form.visible { display: block; }
-    .panier-form input, .panier-form select, .panier-form textarea { width: 100%; padding: 0.7rem 0.85rem; margin-bottom: 0.7rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 2px; color: white; font-family: 'Manrope', sans-serif; font-size: 0.82rem; outline: none; transition: border-color 0.2s; }
-    .panier-form input::placeholder, .panier-form textarea::placeholder { color: rgba(255,255,255,0.28); }
-    .panier-form input:focus, .panier-form select:focus, .panier-form textarea:focus { border-color: var(--dore); }
-    .panier-form textarea { resize: none; height: 70px; }
-    .panier-form-label { font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.3rem; display: block; }
-    .slots-label { font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 600; display: block; margin: 0.9rem 0 0.5rem; }
-    .slots-group-title { font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dore); margin: 0.8rem 0 0.4rem; display: block; }
-    .slots-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35rem; margin-bottom: 0.5rem; }
-    .time-slot { position: relative; }
-    .time-slot input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
-    .time-slot label { display: flex; align-items: center; justify-content: center; padding: 0.45rem 0.2rem; border: 1px solid rgba(255,255,255,0.12); font-size: 0.72rem; font-weight: 500; cursor: pointer; transition: 0.2s; color: rgba(255,255,255,0.7); text-align: center; border-radius: 2px; background: rgba(255,255,255,0.04); }
-    .time-slot input[type="radio"]:checked + label { background: var(--dore); border-color: var(--dore); color: var(--bleu-nuit); font-weight: 700; }
-    .time-slot label:hover { border-color: var(--dore); color: var(--dore); }
-    .btn-send { width: 100%; padding: 0.9rem; background: var(--bleu); color: white; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s; font-family: inherit; }
-    .btn-send:hover { background: var(--bleu-fonce); }
     .panier-success { display: none; text-align: center; padding: 3rem 1.6rem; flex-direction: column; align-items: center; gap: 0.75rem; }
     .panier-success.visible { display: flex; }
     .panier-success p { color: rgba(255,255,255,0.6); font-size: 0.82rem; line-height: 1.6; }
@@ -174,12 +152,16 @@
     .footer-kudja a:hover { color: var(--dore); }
 
     /* RESPONSIVE */
-    @media (max-width: 900px) { .plats-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 768px) {
       nav { display: none; }
       .burger { display: flex; }
+      .menu-item { gap: 1rem; }
+      .menu-item-name { font-size: 0.85rem; }
+      .menu-item-desc { font-size: 0.74rem; }
     }
-    @media (max-width: 520px) { .plats-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) {
+      .carte-tab { padding: 0.85rem 0.9rem; font-size: 0.55rem; letter-spacing: 0.12em; }
+    }
   </style>
 </head>
 <body>
@@ -220,295 +202,188 @@
     <div class="hero-sep"></div>
   </div>
 
-  <!-- ONGLETS NAVIGATION -->
+  <!-- ONGLETS -->
   <div class="carte-nav">
     <div class="carte-nav-inner">
-      <button class="carte-tab active" onclick="scrollTo('entrees')">Entrées & Tapas</button>
-      <button class="carte-tab" onclick="scrollTo('plats')">Plats</button>
-      <button class="carte-tab" onclick="scrollTo('desserts')">Desserts</button>
-      <button class="carte-tab" onclick="scrollTo('cocktails')">Cocktails & Boissons</button>
+      <button class="carte-tab active" onclick="showTab('entrees', this)">Entrées & Tapas</button>
+      <button class="carte-tab" onclick="showTab('plats', this)">Plats</button>
+      <button class="carte-tab" onclick="showTab('desserts', this)">Desserts</button>
+      <button class="carte-tab" onclick="showTab('cocktails', this)">Cocktails & Boissons</button>
     </div>
   </div>
 
   <!-- ENTRÉES & TAPAS -->
-  <section class="carte-section" id="entrees">
-    <div class="carte-inner">
-      <div class="carte-section-head">
+  <div class="menu-section active" id="tab-entrees">
+    <div class="menu-inner">
+      <div class="menu-header">
         <span class="section-label">Pour commencer</span>
-        <h2>Entrées <em>& Tapas</em></h2>
-        <div class="carte-sep"></div>
-        <p>Des bouchées généreuses pour ouvrir l'appétit, entre tradition italienne et touches créoles.</p>
+        <h2>Entrées <em>&amp; Tapas</em></h2>
+        <div class="menu-header-sep"></div>
       </div>
-      <div class="plats-grid">
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/brushetta- tapas.png" alt="Bruschetta"></div>
-          <div class="plat-body">
-            <div class="plat-name">Bruschetta</div>
-            <p class="plat-desc">Pain grillé à l'huile d'olive, tomates confites, basilic frais et ail.</p>
-            <div class="plat-footer">
-              <span class="plat-price">8 €</span>
-              <button class="btn-add" onclick="addToCart('bruschetta','Bruschetta',8,'images/brushetta- tapas.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Bruschetta</p>
+          <p class="menu-item-desc">Pain grillé à l'huile d'olive, tomates confites, basilic frais et ail</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/arrancini-entrée.png" alt="Arancini"></div>
-          <div class="plat-body">
-            <div class="plat-name">Arancini</div>
-            <p class="plat-desc">Boulettes de riz croustillantes, farcies à la viande et au fromage fondant.</p>
-            <div class="plat-footer">
-              <span class="plat-price">9 €</span>
-              <button class="btn-add" onclick="addToCart('arancini','Arancini',9,'images/arrancini-entrée.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">8 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Arancini</p>
+          <p class="menu-item-desc">Boulettes de riz croustillantes, farcies à la viande et au fromage fondant</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/carpaccio poisson.png" alt="Carpaccio de Poisson"></div>
-          <div class="plat-body">
-            <div class="plat-name">Carpaccio de Poisson</div>
-            <p class="plat-desc">Poisson frais tranché finement, citron vert, huile d'olive et herbes du jardin.</p>
-            <div class="plat-footer">
-              <span class="plat-price">12 €</span>
-              <button class="btn-add" onclick="addToCart('carpaccio','Carpaccio de Poisson',12,'images/carpaccio poisson.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">9 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Carpaccio de Poisson</p>
+          <p class="menu-item-desc">Poisson frais tranché finement, citron vert, huile d'olive et herbes du jardin</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/tomate-burrata.png" alt="Tomate Burrata"></div>
-          <div class="plat-body">
-            <div class="plat-name">Tomate Burrata</div>
-            <p class="plat-desc">Burrata crémeuse, tomates du marché, basilic et filet d'huile d'olive.</p>
-            <div class="plat-footer">
-              <span class="plat-price">11 €</span>
-              <button class="btn-add" onclick="addToCart('burrata','Tomate Burrata',11,'images/tomate-burrata.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">12 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Tomate Burrata</p>
+          <p class="menu-item-desc">Burrata crémeuse, tomates du marché, basilic et filet d'huile d'olive</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/salade et samoussa.png" alt="Salade & Samoussa"></div>
-          <div class="plat-body">
-            <div class="plat-name">Salade & Samoussa</div>
-            <p class="plat-desc">Salade fraîche maison accompagnée de samoussas croustillants aux légumes.</p>
-            <div class="plat-footer">
-              <span class="plat-price">10 €</span>
-              <button class="btn-add" onclick="addToCart('samoussa','Salade & Samoussa',10,'images/salade et samoussa.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">11 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Salade &amp; Samoussa</p>
+          <p class="menu-item-desc">Salade fraîche maison accompagnée de samoussas croustillants aux légumes</p>
         </div>
+        <span class="menu-item-price">10 €</span>
+      </div>
+
+      <div class="cta-commander">
+        <p>Envie de commander à emporter ?</p>
+        <a class="btn-cta" href="commander.html">Commander en ligne</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- PLATS -->
-  <section class="carte-section" id="plats">
-    <div class="carte-inner">
-      <div class="carte-section-head">
+  <div class="menu-section" id="tab-plats">
+    <div class="menu-inner">
+      <div class="menu-header">
         <span class="section-label">L'essentiel</span>
         <h2>Nos <em>Plats</em></h2>
-        <div class="carte-sep"></div>
-        <p>Des recettes généreuses préparées avec des produits locaux et des techniques italiennes.</p>
+        <div class="menu-header-sep"></div>
       </div>
-      <div class="plats-grid">
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/lasagnes.png" alt="Lasagnes Maison"></div>
-          <div class="plat-body">
-            <div class="plat-name">Lasagnes Maison</div>
-            <p class="plat-desc">Pâtes fraîches maison, sauce béchamel onctueuse, fromage gratiné.</p>
-            <div class="plat-footer">
-              <span class="plat-price">16 €</span>
-              <button class="btn-add" onclick="addToCart('lasagnes','Lasagnes Maison',16,'images/lasagnes.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Lasagne au Bœuf</p>
+          <p class="menu-item-desc">Pâtes fraîches maison, sauce béchamel onctueuse, fromage gratiné</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/lasagne aux boeufs.png" alt="Lasagne au Bœuf"></div>
-          <div class="plat-body">
-            <div class="plat-name">Lasagne au Bœuf</div>
-            <p class="plat-desc">Bœuf mijoté, sauce tomate maison, pâtes fraîches et parmesan affiné.</p>
-            <div class="plat-footer">
-              <span class="plat-price">17 €</span>
-              <button class="btn-add" onclick="addToCart('lasagne-boeuf','Lasagne au Bœuf',17,'images/lasagne aux boeufs.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">16 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Poulpe Grillé</p>
+          <p class="menu-item-desc">Poulpe de Guadeloupe grillé, légumes rôtis, sauce citronnée et herbes fraîches</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/poulpe grillé.png" alt="Poulpe Grillé"></div>
-          <div class="plat-body">
-            <div class="plat-name">Poulpe Grillé</div>
-            <p class="plat-desc">Poulpe de Guadeloupe grillé, légumes rôtis, sauce citronnée et herbes fraîches.</p>
-            <div class="plat-footer">
-              <span class="plat-price">19 €</span>
-              <button class="btn-add" onclick="addToCart('poulpe','Poulpe Grillé',19,'images/poulpe grillé.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">19 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Poké Bowl Poisson</p>
+          <p class="menu-item-desc">Poisson mariné, riz, avocat, légumes croquants et sauce maison</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/poké bowl poisson.png" alt="Poké Bowl Poisson"></div>
-          <div class="plat-body">
-            <div class="plat-name">Poké Bowl Poisson</div>
-            <p class="plat-desc">Poisson mariné, riz, avocat, légumes croquants et sauce maison.</p>
-            <div class="plat-footer">
-              <span class="plat-price">16 €</span>
-              <button class="btn-add" onclick="addToCart('poke-poisson','Poké Bowl Poisson',16,'images/poké bowl poisson.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">16 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Poké Bowl Bœuf</p>
+          <p class="menu-item-desc">Bœuf tranché, riz vinaigré, edamame, concombre et sauce teriyaki</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/pokébow boeuf.png" alt="Poké Bowl Bœuf"></div>
-          <div class="plat-body">
-            <div class="plat-name">Poké Bowl Bœuf</div>
-            <p class="plat-desc">Bœuf tranché, riz vinaigré, edamame, concombre et sauce teriyaki.</p>
-            <div class="plat-footer">
-              <span class="plat-price">17 €</span>
-              <button class="btn-add" onclick="addToCart('poke-boeuf','Poké Bowl Bœuf',17,'images/pokébow boeuf.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
-        </div>
+        <span class="menu-item-price">17 €</span>
+      </div>
+
+      <div class="cta-commander">
+        <p>Envie de commander à emporter ?</p>
+        <a class="btn-cta" href="commander.html">Commander en ligne</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- DESSERTS -->
-  <section class="carte-section" id="desserts">
-    <div class="carte-inner">
-      <div class="carte-section-head">
+  <div class="menu-section" id="tab-desserts">
+    <div class="menu-inner">
+      <div class="menu-header">
         <span class="section-label">Pour finir</span>
         <h2>Nos <em>Desserts</em></h2>
-        <div class="carte-sep"></div>
-        <p>Des douceurs italiennes revisitées avec les saveurs des Antilles.</p>
+        <div class="menu-header-sep"></div>
       </div>
-      <div class="plats-grid">
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/tiramisu café.png" alt="Tiramisu Café"></div>
-          <div class="plat-body">
-            <div class="plat-name">Tiramisu Café</div>
-            <p class="plat-desc">Tiramisu maison au café, mascarpone léger et cacao amer.</p>
-            <div class="plat-footer">
-              <span class="plat-price">7 €</span>
-              <button class="btn-add" onclick="addToCart('tiramisu','Tiramisu Café',7,'images/tiramisu café.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Tiramisu Café</p>
+          <p class="menu-item-desc">Tiramisu maison au café, mascarpone léger et cacao amer</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/dessert mousse au chocolat.png" alt="Mousse au Chocolat"></div>
-          <div class="plat-body">
-            <div class="plat-name">Mousse au Chocolat</div>
-            <p class="plat-desc">Mousse légère au chocolat noir, crème fouettée et éclats de fèves de cacao.</p>
-            <div class="plat-footer">
-              <span class="plat-price">7 €</span>
-              <button class="btn-add" onclick="addToCart('mousse-choco','Mousse au Chocolat',7,'images/dessert mousse au chocolat.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">7 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Mousse au Chocolat</p>
+          <p class="menu-item-desc">Mousse légère au chocolat noir, crème fouettée et éclats de fèves de cacao</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/tarte tarin pommes.png" alt="Tarte Tatin aux Pommes"></div>
-          <div class="plat-body">
-            <div class="plat-name">Tarte Tatin</div>
-            <p class="plat-desc">Tarte tatin aux pommes caramélisées, pâte feuilletée dorée, boule de glace vanille.</p>
-            <div class="plat-footer">
-              <span class="plat-price">8 €</span>
-              <button class="btn-add" onclick="addToCart('tarte-tatin','Tarte Tatin',8,'images/tarte tarin pommes.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">7 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Tarte Tatin</p>
+          <p class="menu-item-desc">Tarte tatin aux pommes caramélisées, pâte feuilletée dorée, boule de glace vanille</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/mocoeur coulant au chchocholat.png" alt="Moelleux au Chocolat"></div>
-          <div class="plat-body">
-            <div class="plat-name">Moelleux Coulant</div>
-            <p class="plat-desc">Cœur coulant au chocolat noir, servi tiède avec une crème anglaise vanillée.</p>
-            <div class="plat-footer">
-              <span class="plat-price">8 €</span>
-              <button class="btn-add" onclick="addToCart('moelleux','Moelleux Coulant',8,'images/mocoeur coulant au chchocholat.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">8 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Moelleux Coulant</p>
+          <p class="menu-item-desc">Cœur coulant au chocolat noir, servi tiède avec une crème anglaise vanillée</p>
         </div>
+        <span class="menu-item-price">8 €</span>
+      </div>
+
+      <div class="cta-commander">
+        <p>Envie de commander à emporter ?</p>
+        <a class="btn-cta" href="commander.html">Commander en ligne</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- COCKTAILS -->
-  <section class="carte-section" id="cocktails">
-    <div class="carte-inner">
-      <div class="carte-section-head">
+  <div class="menu-section" id="tab-cocktails">
+    <div class="menu-inner">
+      <div class="menu-header">
         <span class="section-label">Bar</span>
-        <h2>Cocktails <em>& Boissons</em></h2>
-        <div class="carte-sep"></div>
-        <p>Des créations artisanales inspirées des saveurs antillaises.</p>
+        <h2>Cocktails <em>&amp; Boissons</em></h2>
+        <div class="menu-header-sep"></div>
       </div>
-      <div class="plats-grid">
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/cocktails.png" alt="Cocktails"></div>
-          <div class="plat-body">
-            <div class="plat-name">Cocktails Maison</div>
-            <p class="plat-desc">Sélection de cocktails artisanaux préparés avec des spiritueux et fruits locaux.</p>
-            <div class="plat-footer">
-              <span class="plat-price">9 €</span>
-              <button class="btn-add" onclick="addToCart('cocktail','Cocktail Maison',9,'images/cocktails.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Cocktails Maison</p>
+          <p class="menu-item-desc">Sélection de cocktails artisanaux préparés avec des spiritueux et fruits locaux</p>
         </div>
-        <div class="plat-card">
-          <div class="plat-img"><img src="images/jardin madras.png" alt="Jardin Madras"></div>
-          <div class="plat-body">
-            <div class="plat-name">Jardin Madras</div>
-            <p class="plat-desc">Cocktail signature aux saveurs créoles, rhum vieux, fruit de la passion et gingembre.</p>
-            <div class="plat-footer">
-              <span class="plat-price">10 €</span>
-              <button class="btn-add" onclick="addToCart('jardin-madras','Jardin Madras',10,'images/jardin madras.png')">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Ajouter
-              </button>
-            </div>
-          </div>
+        <span class="menu-item-price">9 €</span>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-left">
+          <p class="menu-item-name">Jardin Madras</p>
+          <p class="menu-item-desc">Cocktail signature aux saveurs créoles, rhum vieux, fruit de la passion et gingembre</p>
         </div>
+        <span class="menu-item-price">10 €</span>
+      </div>
+
+      <div class="cta-commander">
+        <p>Envie de commander à emporter ?</p>
+        <a class="btn-cta" href="commander.html">Commander en ligne</a>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -541,43 +416,8 @@
         <span class="cart-total-label">Total</span>
         <span class="cart-total-amount" id="cart-total">0 €</span>
       </div>
-      <button class="btn-commander" onclick="showPanierForm()">Valider la commande</button>
+      <a class="btn-go-commander" href="commander.html">Commander à emporter</a>
       <button class="cart-clear" onclick="clearCart()">Vider le panier</button>
-      <p class="panier-note">Retrait sur place · Confirmation par téléphone</p>
-      <div class="panier-form" id="panier-form">
-        <label class="panier-form-label">Prénom & Nom</label>
-        <input type="text" id="pf-nom" placeholder="Jean Dupont">
-        <label class="panier-form-label">Téléphone</label>
-        <input type="tel" id="pf-tel" placeholder="+590 690 00 00 00">
-        <label class="panier-form-label">Date de retrait</label>
-        <input type="date" id="pf-date">
-        <span class="slots-label">Créneau de retrait</span>
-        <span class="slots-group-title">Déjeuner — mar. au sam.</span>
-        <div class="slots-grid">
-          <div class="time-slot"><input type="radio" name="creneau" id="s1" value="10h00"><label for="s1">10h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s2" value="10h30"><label for="s2">10h30</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s3" value="11h00"><label for="s3">11h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s4" value="11h30"><label for="s4">11h30</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s5" value="12h00"><label for="s5">12h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s6" value="12h30"><label for="s6">12h30</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s7" value="13h00"><label for="s7">13h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s8" value="13h30"><label for="s8">13h30</label></div>
-        </div>
-        <span class="slots-group-title">Dîner — jeu. au sam.</span>
-        <div class="slots-grid">
-          <div class="time-slot"><input type="radio" name="creneau" id="s11" value="18h00"><label for="s11">18h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s12" value="18h30"><label for="s12">18h30</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s13" value="19h00"><label for="s13">19h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s14" value="19h30"><label for="s14">19h30</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s15" value="20h00"><label for="s15">20h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s16" value="20h30"><label for="s16">20h30</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s17" value="21h00"><label for="s17">21h00</label></div>
-          <div class="time-slot"><input type="radio" name="creneau" id="s18" value="21h30"><label for="s18">21h30</label></div>
-        </div>
-        <label class="panier-form-label" style="margin-top:0.5rem">Note (allergies, demandes…)</label>
-        <textarea id="pf-note" placeholder="Allergies, cuisson, demandes spéciales…"></textarea>
-        <button class="btn-send" onclick="sendOrder()">Envoyer ma commande</button>
-      </div>
     </div>
   </div>
 
@@ -592,37 +432,21 @@
   <script>
     function toggleNav() { document.getElementById('mobile-nav').classList.toggle('open'); }
 
-    function scrollTo(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function showTab(id, btn) {
+      document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.carte-tab').forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+      btn.classList.add('active');
     }
-
-    let cart = {};
-    function saveCart() { localStorage.setItem('giorgio_cart', JSON.stringify(cart)); }
-    function loadCart() { try { cart = JSON.parse(localStorage.getItem('giorgio_cart') || '{}'); } catch(e) { cart = {}; } }
 
     function openCart() { document.getElementById('cart-panel').classList.add('open'); document.getElementById('cart-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
     function closeCart() { document.getElementById('cart-panel').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); document.body.style.overflow = ''; }
     function toggleCart() { document.getElementById('cart-panel').classList.contains('open') ? closeCart() : openCart(); }
 
-    function addToCart(id, name, price, img) {
-      if (cart[id]) { cart[id].qty++; } else { cart[id] = { name, price, img, qty: 1 }; }
-      saveCart(); renderCart(); openCart();
-    }
-    function updateQty(id, delta) {
-      if (!cart[id]) return;
-      cart[id].qty += delta;
-      if (cart[id].qty <= 0) delete cart[id];
-      saveCart(); renderCart();
-    }
-    function removeFromCart(id) { delete cart[id]; saveCart(); renderCart(); }
-    function clearCart() {
-      cart = {}; saveCart();
-      document.getElementById('panier-form').classList.remove('visible');
-      document.getElementById('panier-success').classList.remove('visible');
-      renderCart();
-    }
+    let cart = {};
+    function saveCart() { localStorage.setItem('giorgio_cart', JSON.stringify(cart)); }
+    function loadCart() { try { cart = JSON.parse(localStorage.getItem('giorgio_cart') || '{}'); } catch(e) { cart = {}; } }
+    function clearCart() { cart = {}; saveCart(); renderCart(); }
 
     function renderCart() {
       const ids = Object.keys(cart);
@@ -651,38 +475,22 @@
       let html = '';
       ids.forEach(k => {
         const it = cart[k];
-        const imgHtml = it.img ? `<div class="cart-item-img"><img src="${it.img}" alt="${it.name}"></div>` : `<div class="cart-item-no-img"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>`;
-        html += `<div class="cart-item">${imgHtml}<div class="cart-item-info"><div class="cart-item-name">${it.name}</div></div><div class="cart-qty"><button class="cart-qty-btn" onclick="updateQty('${k}',-1)">−</button><span class="cart-qty-num">${it.qty}</span><button class="cart-qty-btn" onclick="updateQty('${k}',1)">+</button></div><span class="cart-item-price">${fmt(it.price * it.qty)} €</span><button class="cart-item-remove" onclick="removeFromCart('${k}')" title="Supprimer">✕</button></div>`;
+        html += `<div class="cart-item"><div class="cart-item-no-img"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div><div class="cart-item-info"><div class="cart-item-name">${it.name}</div></div><div class="cart-qty"><button class="cart-qty-btn" onclick="updateQty('${k}',-1)">−</button><span class="cart-qty-num">${it.qty}</span><button class="cart-qty-btn" onclick="updateQty('${k}',1)">+</button></div><span class="cart-item-price">${fmt(it.price * it.qty)} €</span><button class="cart-item-remove" onclick="removeFromCart('${k}')" title="Supprimer">✕</button></div>`;
       });
       list.innerHTML = html;
       footer.style.display = 'block';
       document.getElementById('cart-total').textContent = fmt(total) + ' €';
     }
 
-    function showPanierForm() {
-      const pf = document.getElementById('panier-form');
-      pf.classList.add('visible');
-      pf.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    function updateQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) delete cart[id];
+      saveCart(); renderCart();
     }
+    function removeFromCart(id) { delete cart[id]; saveCart(); renderCart(); }
 
-    function sendOrder() {
-      const nom = document.getElementById('pf-nom').value.trim();
-      const tel = document.getElementById('pf-tel').value.trim();
-      const creneauEl = document.querySelector('input[name="creneau"]:checked');
-      if (!nom || !tel) { alert('Merci de renseigner votre nom et téléphone.'); return; }
-      if (!creneauEl) { alert('Merci de choisir un créneau de retrait.'); return; }
-      document.getElementById('cart-items-list').innerHTML = '';
-      document.getElementById('cart-footer').style.display = 'none';
-      document.getElementById('panier-form').classList.remove('visible');
-      document.getElementById('panier-success').classList.add('visible');
-      cart = {}; saveCart(); renderCart();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadCart(); renderCart();
-      const d = document.getElementById('pf-date');
-      if (d) d.min = new Date().toISOString().split('T')[0];
-    });
+    document.addEventListener('DOMContentLoaded', () => { loadCart(); renderCart(); });
   </script>
 
 </body>
