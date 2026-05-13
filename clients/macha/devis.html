@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demande de devis · Créations Bois · Macha Café</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream: #F8F4EE;
+            --white: #FEFDF9;
+            --matcha: #6B8E3A;
+            --matcha-dark: #4A6A22;
+            --matcha-pale: #EEF4E3;
+            --wood: #C08A52;
+            --wood-dark: #8B5E30;
+            --wood-pale: #F5EDE0;
+            --text: #2A2018;
+            --text-muted: #7A6A58;
+            --border: rgba(107,142,58,0.18);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: rgba(248,244,238,0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 var(--border);
+            padding: 1rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .nav-logo span {
+            display: block;
+            font-style: italic;
+            font-size: 0.78rem;
+            font-weight: 300;
+            letter-spacing: 0.18em;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-back:hover { color: var(--wood); }
+
+        /* ── HERO MINI ── */
+        .page-hero {
+            background: var(--wood-pale);
+            padding: 4rem 2.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(192,138,82,0.15);
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--wood);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .page-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .page-hero h1 em { font-style: italic; color: var(--wood-dark); }
+
+        .page-hero p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* ── FORM ── */
+        .form-wrap {
+            max-width: 760px;
+            margin: 4rem auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .form-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 4px 40px rgba(139,94,48,0.08);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group.full { grid-column: 1 / -1; }
+
+        label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        input, select, textarea {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--cream);
+            border: 1.5px solid transparent;
+            border-radius: 10px;
+            padding: 0.8rem 1rem;
+            outline: none;
+            transition: border-color 0.25s, background 0.25s;
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--wood);
+            background: var(--white);
+        }
+
+        select { cursor: pointer; }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+            line-height: 1.6;
+        }
+
+        .form-divider {
+            grid-column: 1 / -1;
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0.5rem 0;
+        }
+
+        .form-section-title {
+            grid-column: 1 / -1;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--wood-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .submit-wrap {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--wood);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            padding: 1rem 2.5rem;
+            cursor: pointer;
+            transition: background 0.28s, transform 0.2s, box-shadow 0.28s;
+        }
+
+        .btn-submit:hover {
+            background: var(--wood-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(192,138,82,0.32);
+        }
+
+        .form-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* ── CONFIRMATION ── */
+        .confirm-msg {
+            display: none;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .confirm-msg.show { display: block; }
+
+        .confirm-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--matcha-pale);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--matcha);
+        }
+
+        .confirm-msg h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 0.75rem;
+        }
+
+        .confirm-msg p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .btn-retour {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--wood);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 0.85rem 2rem;
+            transition: background 0.28s;
+        }
+
+        .btn-retour:hover { background: var(--wood-dark); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #17220D;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            font-size: 0.78rem;
+        }
+
+        footer strong { color: rgba(255,255,255,0.75); }
+
+        /* ── WHATSAPP ── */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 200;
+            width: 54px;
+            height: 54px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+        }
+
+        .whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 580px) {
+            nav { padding: 1rem 1.2rem; }
+            .form-card { padding: 1.75rem 1.25rem; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: 1; }
+            .form-divider, .form-section-title, .submit-wrap { grid-column: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">MACHA <span>café</span></a>
+    <a href="index.html" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Retour au site
+    </a>
+</nav>
+
+<div class="page-hero">
+    <span class="section-label">Créations bois</span>
+    <h1>Demande de <em>devis</em></h1>
+    <p>Décrivez-nous votre projet, nous vous répondons sous 48h avec une estimation personnalisée.</p>
+</div>
+
+<div class="form-wrap">
+    <div class="form-card">
+
+        <form id="devisForm">
+            <div class="form-grid">
+
+                <p class="form-section-title">Vos coordonnées</p>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom *</label>
+                    <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
+                </div>
+                <div class="form-group">
+                    <label for="nom">Nom *</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone" placeholder="+590 690 00 00 00">
+                </div>
+
+                <hr class="form-divider">
+                <p class="form-section-title">Votre projet</p>
+
+                <div class="form-group full">
+                    <label for="type">Type de création *</label>
+                    <select id="type" name="type" required>
+                        <option value="" disabled selected>Choisissez une création</option>
+                        <option value="table">Table Live Edge</option>
+                        <option value="etagere">Étagères Flottantes</option>
+                        <option value="vasque">Meuble Vasque</option>
+                        <option value="cuisine">Plan de Travail Cuisine</option>
+                        <option value="bardage">Bardage & Tête de Lit</option>
+                        <option value="lit">Lit en Bois Massif</option>
+                        <option value="autre">Autre / Sur mesure</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dimensions">Dimensions souhaitées</label>
+                    <input type="text" id="dimensions" name="dimensions" placeholder="Ex : 180 × 90 cm">
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget envisagé</label>
+                    <select id="budget" name="budget">
+                        <option value="" disabled selected>Sélectionner</option>
+                        <option value="500-1000">500 € – 1 000 €</option>
+                        <option value="1000-2000">1 000 € – 2 000 €</option>
+                        <option value="2000-5000">2 000 € – 5 000 €</option>
+                        <option value="5000+">+ de 5 000 €</option>
+                        <option value="nc">Je ne sais pas encore</option>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <label for="description">Description du projet *</label>
+                    <textarea id="description" name="description" required placeholder="Décrivez votre projet, le style souhaité, le bois, l'utilisation prévue..."></textarea>
+                </div>
+
+                <div class="submit-wrap">
+                    <button type="submit" class="btn-submit">
+                        Envoyer ma demande
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M2 8h12M9 4l5 4-5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <p class="form-note">Réponse sous 48h · Devis gratuit et sans engagement</p>
+                </div>
+
+            </div>
+        </form>
+
+        <div class="confirm-msg" id="confirmMsg">
+            <div class="confirm-icon">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                    <path d="M6 15l6 6 12-12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2>Demande envoyée !</h2>
+            <p>Merci pour votre intérêt. Nous avons bien reçu votre demande et vous répondrons sous 48h avec un devis personnalisé.</p>
+            <a href="index.html" class="btn-retour">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M10 3L5 7.5l5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Retour au site
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    <strong>Macha Café</strong> · Zone de Jarry, Guadeloupe<br>
+    <span style="margin-top:0.35rem; display:block; opacity:0.45;">Site créé par Kudja Studio</span>
+</footer>
+
+<a href="https://wa.me/590690866789?text=Bonjour%20Macha%20Caf%C3%A9%2C%20je%20souhaite%20avoir%20plus%20d%27informations%20!" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter Macha Café sur WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+<script>
+    document.getElementById('devisForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        this.style.display = 'none';
+        document.getElementById('confirmMsg').classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
+</body>
+</html>
