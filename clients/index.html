@@ -112,12 +112,38 @@
       margin-top: .8rem;
     }
 
+    .notif {
+      display: none;
+      font-size: .88rem;
+      font-weight: 600;
+      margin-top: .8rem;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+    }
+    .notif.success { background: #e8f5e9; color: #2e7d32; }
+    .notif.info    { background: #e3f2fd; color: #1565c0; }
+
     .footer {
       margin-top: 2.5rem;
       font-size: .8rem;
       color: #aaa;
     }
     .footer a { color: var(--coral); text-decoration: none; }
+
+    .admin-badge {
+      display: none;
+      position: fixed;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      background: #1565c0;
+      color: #fff;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .4rem .8rem;
+      border-radius: 20px;
+      letter-spacing: .03em;
+    }
   </style>
 </head>
 <body>
@@ -135,40 +161,104 @@
     <button onclick="acceder()">Accéder à mon site</button>
 
     <div class="error" id="erreur">Code incorrect. Vérifiez votre code.</div>
+    <div class="notif" id="notif"></div>
   </div>
 
   <p class="footer">Un projet avec <a href="https://kudjastudio.fr">Kudja Studio</a></p>
 
+  <div class="admin-badge" id="admin-badge">Mode admin actif</div>
+
   <script>
+    // ─── À REMPLIR APRÈS CONFIGURATION SHEETDB ────────────────────────────────
+    const SHEETDB_URL = 'https://sheetdb.io/api/v1/ye959w4mkc3f8';
+    // ──────────────────────────────────────────────────────────────────────────
+
+    const ADMIN_CODE = 'KUDJA'; // Code secret pour ne pas enregistrer tes propres visites
+
     const clients = {
-      "NSK": "/previews/nsk/index.html",
-      "PASSION": "/clients/passion-du-fournil/index.html",
-      "GARAGE": "/clients/garage/index.html",
-      "TERRASSE": "/clients/terrasse/index.html",
-      "FINE": "/clients/fine/index.html",
-      "LANKA": "/clients/lanka/index.html",
-      "OYAME": "/clients/oyame/index.html",
-      "TENDA": "/clients/tenda/index.html",
+      "NSK":        "/previews/nsk/index.html",
+      "PASSION":    "/clients/passion-du-fournil/index.html",
+      "GARAGE":     "/clients/garage/index.html",
+      "TERRASSE":   "/clients/terrasse/index.html",
+      "FINE":       "/clients/fine/index.html",
+      "LANKA":      "/clients/lanka/index.html",
+      "OYAME":      "/clients/oyame/index.html",
+      "TENDA":      "/clients/tenda/index.html",
       "TENDACAYOU": "/clients/tenda/index.html",
-      "MOELLEUX": "/clients/le-moelleux/index.html",
-      "MACHA": "/clients/macha/index.html",
-      "GIORGIO": "/clients/giorgio/index.html"
+      "MOELLEUX":   "/clients/le-moelleux/index.html",
+      "MACHA":      "/clients/macha/index.html",
+      "GIORGIO":    "/clients/giorgio/index.html"
     };
+
+    function init() {
+      if (localStorage.getItem('kudja_admin') === 'true') {
+        document.getElementById('admin-badge').style.display = 'block';
+      }
+    }
+
+    function trackVisit(clientCode) {
+      if (localStorage.getItem('kudja_admin') === 'true') return;
+      if (!SHEETDB_URL) return;
+
+      const now = new Date();
+      fetch(SHEETDB_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data: [{
+            Date:   now.toLocaleDateString('fr-FR'),
+            Heure:  now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+            Client: clientCode
+          }]
+        })
+      }).catch(() => {});
+    }
+
+    function showNotif(msg, type) {
+      const el = document.getElementById('notif');
+      el.textContent = msg;
+      el.className = 'notif ' + type;
+      el.style.display = 'block';
+      document.getElementById('erreur').style.display = 'none';
+      document.getElementById('code').value = '';
+      document.getElementById('code').style.borderColor = '#e8e8e8';
+      setTimeout(() => { el.style.display = 'none'; }, 3500);
+    }
 
     function acceder() {
       const code = document.getElementById('code').value.trim().toUpperCase();
+
+      // Entrer KUDJA active/désactive le mode admin (tes connexions ne sont plus comptées)
+      if (code === ADMIN_CODE) {
+        const isAdmin = localStorage.getItem('kudja_admin') === 'true';
+        if (isAdmin) {
+          localStorage.removeItem('kudja_admin');
+          document.getElementById('admin-badge').style.display = 'none';
+          showNotif('Mode admin désactivé.', 'info');
+        } else {
+          localStorage.setItem('kudja_admin', 'true');
+          document.getElementById('admin-badge').style.display = 'block';
+          showNotif('Mode admin activé — tes visites ne seront pas enregistrées.', 'success');
+        }
+        return;
+      }
+
       if (clients[code]) {
+        trackVisit(code);
         window.location.href = clients[code];
       } else {
         const err = document.getElementById('erreur');
         err.style.display = 'block';
+        document.getElementById('notif').style.display = 'none';
         document.getElementById('code').style.borderColor = '#E45339';
       }
     }
 
-    document.getElementById('code').addEventListener('keydown', function(e) {
+    document.getElementById('code').addEventListener('keydown', e => {
       if (e.key === 'Enter') acceder();
     });
+
+    init();
   </script>
 
 </body>

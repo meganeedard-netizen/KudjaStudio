@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin connexions — Kudja Studio</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F4F4F4;
+      --noir: #181818;
+      --coral: #E28588;
+      --coral-vif: #E45339;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    /* ── Login ── */
+    .login-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--noir);
+      letter-spacing: -.02em;
+      text-decoration: none;
+      margin-bottom: 3rem;
+    }
+    .logo span { color: var(--coral); }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.07);
+      text-align: center;
+    }
+
+    .card h1 { font-size: 1.3rem; font-weight: 800; color: var(--noir); margin-bottom: .5rem; }
+    .card p   { color: #666; font-size: .9rem; margin-bottom: 2rem; line-height: 1.5; }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      border: 2px solid #e8e8e8;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--noir);
+      background: var(--bg);
+      outline: none;
+      transition: border-color .2s;
+      margin-bottom: 1.2rem;
+    }
+    input[type="password"]:focus { border-color: var(--coral); }
+
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--coral-vif);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn:hover { background: #c9462d; }
+
+    .btn-small {
+      padding: .55rem 1.1rem;
+      background: var(--noir);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-small:hover { background: #333; }
+    .btn-small.outline {
+      background: transparent;
+      color: var(--noir);
+      border: 2px solid #ddd;
+    }
+    .btn-small.outline:hover { border-color: var(--noir); }
+
+    .error { display: none; color: var(--coral-vif); font-size: .88rem; font-weight: 600; margin-top: .8rem; }
+
+    /* ── Dashboard ── */
+    #dashboard { display: none; max-width: 900px; margin: 0 auto; }
+
+    .dash-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .dash-title { font-size: 1.5rem; font-weight: 800; color: var(--noir); }
+    .dash-title span { color: var(--coral); }
+
+    .dash-actions { display: flex; gap: .8rem; align-items: center; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    }
+    .stat-card .val { font-size: 2rem; font-weight: 800; color: var(--noir); line-height: 1; }
+    .stat-card .lbl { font-size: .82rem; color: #888; margin-top: .35rem; }
+
+    .section {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+      margin-bottom: 1.5rem;
+    }
+    .section h2 { font-size: 1rem; font-weight: 800; color: var(--noir); margin-bottom: 1.2rem; }
+
+    .client-bars { display: flex; flex-direction: column; gap: .7rem; }
+    .client-row  { display: flex; align-items: center; gap: .8rem; }
+    .client-name { font-size: .85rem; font-weight: 700; color: var(--noir); min-width: 100px; text-transform: uppercase; letter-spacing: .05em; }
+    .bar-wrap    { flex: 1; background: #f0f0f0; border-radius: 6px; height: 10px; overflow: hidden; }
+    .bar-fill    { height: 100%; background: var(--coral-vif); border-radius: 6px; transition: width .5s; }
+    .client-count { font-size: .82rem; color: #888; font-weight: 600; min-width: 28px; text-align: right; }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      text-align: left;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: 0 .8rem .8rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    tbody tr:hover { background: #fafafa; }
+    tbody td {
+      padding: .75rem .8rem;
+      font-size: .9rem;
+      color: var(--noir);
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--noir);
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .2rem .6rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .empty-state { text-align: center; padding: 2rem; color: #aaa; font-size: .9rem; }
+
+    .admin-mode-banner {
+      background: #e3f2fd;
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      font-size: .85rem;
+      color: #1565c0;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .dash-header { flex-direction: column; align-items: flex-start; }
+      .section { padding: 1.4rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── LOGIN ── -->
+  <div class="login-wrap" id="login-wrap">
+    <a class="logo" href="https://kudjastudio.fr">Kudja<span>.</span>Studio</a>
+    <div class="card">
+      <h1>Espace admin</h1>
+      <p>Accès réservé à Kudja Studio.</p>
+      <input type="password" id="pwd" placeholder="Mot de passe" autocomplete="off" autofocus>
+      <button class="btn" onclick="login()">Accéder</button>
+      <div class="error" id="login-error">Mot de passe incorrect.</div>
+    </div>
+  </div>
+
+  <!-- ── DASHBOARD ── -->
+  <div id="dashboard">
+
+    <div class="dash-header">
+      <div class="dash-title">Kudja<span>.</span>Studio &mdash; Connexions clients</div>
+      <div class="dash-actions">
+        <button class="btn-small outline" onclick="loadData()">Rafraîchir</button>
+        <button class="btn-small" onclick="logout()">Déconnexion</button>
+      </div>
+    </div>
+
+    <div class="admin-mode-banner" id="admin-banner">
+      Mode admin actif sur cet appareil &mdash; tes propres connexions ne sont pas enregistrées.
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="val" id="stat-total">—</div>
+        <div class="lbl">Connexions totales</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="stat-month">—</div>
+        <div class="lbl">Ce mois-ci</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="stat-clients">—</div>
+        <div class="lbl">Clients différents</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="stat-last">—</div>
+        <div class="lbl">Dernière connexion</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Connexions par client</h2>
+      <div id="client-bars" class="client-bars">
+        <div class="empty-state">Chargement...</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Historique <span id="count-label" style="color:#aaa;font-weight:600;font-size:.85rem"></span></h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Heure</th><th>Client</th></tr>
+          </thead>
+          <tbody id="log-body">
+            <tr><td colspan="3" class="empty-state">Chargement...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ─── À REMPLIR ─────────────────────────────────────────────────────────────
+    const ADMIN_PASSWORD = 'KUDJAADMIN'; // Mot de passe de cette page
+    const SHEETDB_URL    = 'https://sheetdb.io/api/v1/ye959w4mkc3f8';
+    // ──────────────────────────────────────────────────────────────────────────
+
+    function login() {
+      const val = document.getElementById('pwd').value.trim().toUpperCase();
+      if (val === ADMIN_PASSWORD) {
+        document.getElementById('login-wrap').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        sessionStorage.setItem('kudja_auth', '1');
+        if (localStorage.getItem('kudja_admin') === 'true') {
+          document.getElementById('admin-banner').style.display = 'block';
+        }
+        loadData();
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+        document.getElementById('pwd').style.borderColor = '#E45339';
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem('kudja_auth');
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('login-wrap').style.display = 'flex';
+      document.getElementById('pwd').value = '';
+      document.getElementById('login-error').style.display = 'none';
+    }
+
+    async function loadData() {
+      if (!SHEETDB_URL) {
+        renderEmpty('URL SheetDB non configurée. Suis les instructions de configuration.');
+        return;
+      }
+      try {
+        const res = await fetch(SHEETDB_URL);
+        const data = await res.json();
+        // SheetDB retourne les lignes dans l'ordre d'insertion — on inverse pour avoir le plus récent en premier
+        const rows = [...data].reverse().filter(r => r.Client);
+        renderStats(rows);
+        renderBars(rows);
+        renderLog(rows);
+      } catch {
+        renderEmpty('Impossible de charger les données. Vérifie l\'URL SheetDB.');
+      }
+    }
+
+    function renderStats(data) {
+      const now = new Date();
+      const mois = now.toLocaleDateString('fr-FR', { month: '2-digit' });
+      const an   = now.getFullYear().toString().slice(-2);
+      const thisMonth = data.filter(r => {
+        const parts = (r.Date || '').split('/');
+        return parts[1] === mois && parts[2] === an;
+      });
+      const unique = new Set(data.map(r => r.Client)).size;
+
+      document.getElementById('stat-total').textContent   = data.length;
+      document.getElementById('stat-month').textContent   = thisMonth.length;
+      document.getElementById('stat-clients').textContent = unique;
+      document.getElementById('stat-last').textContent    = data[0]?.Date || '—';
+    }
+
+    function renderBars(data) {
+      const counts = {};
+      data.forEach(r => { counts[r.Client] = (counts[r.Client] || 0) + 1; });
+      const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      const max = sorted[0]?.[1] || 1;
+      const el = document.getElementById('client-bars');
+
+      if (!sorted.length) { el.innerHTML = '<div class="empty-state">Aucune donnée.</div>'; return; }
+
+      el.innerHTML = sorted.map(([client, count]) => `
+        <div class="client-row">
+          <div class="client-name">${client}</div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(count / max * 100)}%"></div></div>
+          <div class="client-count">${count}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderLog(data) {
+      document.getElementById('count-label').textContent = `(${data.length} entrée${data.length > 1 ? 's' : ''})`;
+      const tbody = document.getElementById('log-body');
+
+      if (!data.length) {
+        tbody.innerHTML = '<tr><td colspan="3" class="empty-state">Aucune connexion enregistrée.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = data.map(r => `
+        <tr>
+          <td>${r.Date}</td>
+          <td>${r.Heure}</td>
+          <td><span class="badge">${r.Client}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderEmpty(msg) {
+      ['stat-total','stat-month','stat-clients','stat-last'].forEach(id => document.getElementById(id).textContent = '—');
+      document.getElementById('client-bars').innerHTML = `<div class="empty-state">${msg}</div>`;
+      document.getElementById('log-body').innerHTML = `<tr><td colspan="3" class="empty-state">${msg}</td></tr>`;
+      document.getElementById('count-label').textContent = '';
+    }
+
+    if (sessionStorage.getItem('kudja_auth') === '1') {
+      document.getElementById('login-wrap').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      if (localStorage.getItem('kudja_admin') === 'true') {
+        document.getElementById('admin-banner').style.display = 'block';
+      }
+      loadData();
+    }
+
+    document.getElementById('pwd').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+  </script>
+
+</body>
+</html>
