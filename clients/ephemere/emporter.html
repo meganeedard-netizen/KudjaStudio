@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Emporter · L'Éphémère</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=recoleta@400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose:       #D97984;
+            --rose-pale:  #f2d8db;
+            --beige:      #F4E9D8;
+            --sage:       #8FA9A5;
+            --sage-light: #ddecea;
+            --caramel:    #C8956C;
+            --white:      #FFFFFF;
+            --dark:       #2C2220;
+            --text:       #4a3c38;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+            padding: 1.4rem 5rem;
+            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+            background: rgba(244,233,216,0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+        }
+        .nav-logo { justify-self: start; }
+        .nav-logo img { height: 38px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active-page { color: var(--rose); }
+        .nav-cta { background: var(--rose); color: white !important; padding: 0.55rem 1.5rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 0.45rem; }
+        .nav-cta:hover { background: var(--caramel) !important; }
+        .nav-right { justify-self: end; display: flex; align-items: center; gap: 1rem; }
+
+        /* Cart button */
+        .cart-toggle {
+            position: relative;
+            display: flex; align-items: center; gap: 0.5rem;
+            background: var(--dark); color: white;
+            border: none; cursor: pointer;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem; letter-spacing: 0.1em;
+            transition: background 0.3s;
+        }
+        .cart-toggle:hover { background: var(--rose); }
+        .cart-badge {
+            display: none; position: absolute;
+            top: -6px; right: -6px;
+            width: 20px; height: 20px;
+            background: var(--rose); color: white;
+            border-radius: 50%;
+            font-size: 0.7rem; font-weight: 700;
+            align-items: center; justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── CART PANEL ── */
+        .cart-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(44,34,32,0.45);
+            z-index: 400;
+            backdrop-filter: blur(2px);
+        }
+        .cart-overlay.open { display: block; }
+
+        .cart-panel {
+            position: fixed; top: 0; right: 0; bottom: 0;
+            width: 420px; max-width: 100vw;
+            background: white;
+            z-index: 500;
+            display: flex; flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+        }
+        .cart-panel.open { transform: translateX(0); }
+
+        .cart-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.6rem 1.8rem;
+            border-bottom: 1px solid #f0e9e2;
+        }
+        .cart-header-title {
+            font-family: 'Recoleta', serif;
+            font-size: 1.5rem; color: var(--dark);
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .cart-count-pill {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.72rem; font-weight: 700;
+            background: var(--rose); color: white;
+            border-radius: 50px; padding: 0.1rem 0.6rem;
+            display: none;
+        }
+        .cart-close {
+            background: none; border: none; cursor: pointer;
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text); font-size: 1.2rem;
+            transition: background 0.2s;
+        }
+        .cart-close:hover { background: var(--beige); }
+
+        .cart-body { flex: 1; overflow-y: auto; padding: 1.2rem 1.8rem; }
+
+        .cart-empty {
+            text-align: center; padding: 4rem 1rem;
+            color: #b0a09a; font-size: 0.9rem; line-height: 1.8;
+        }
+        .cart-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        .cart-item {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f5f0ec;
+        }
+        .cart-item:last-child { border-bottom: none; }
+        .cart-item-img {
+            width: 64px; height: 64px;
+            border-radius: 50%; object-fit: cover;
+            flex-shrink: 0;
+        }
+        .cart-item-info { flex: 1; min-width: 0; }
+        .cart-item-name {
+            font-family: 'Recoleta', serif;
+            font-size: 0.95rem; color: var(--dark);
+            margin-bottom: 0.2rem;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .cart-item-unit { font-size: 0.75rem; color: #b0a09a; }
+        .cart-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; flex-shrink: 0; }
+        .cart-item-price { font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--rose); }
+        .qty-controls { display: flex; align-items: center; gap: 0.4rem; }
+        .qty-btn {
+            width: 28px; height: 28px; border-radius: 50%;
+            border: 1.5px solid var(--rose-pale);
+            background: white; color: var(--rose);
+            cursor: pointer; font-size: 1rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; line-height: 1;
+        }
+        .qty-btn:hover { background: var(--rose); color: white; border-color: var(--rose); }
+        .qty-val { font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--dark); min-width: 18px; text-align: center; }
+
+        .cart-footer { padding: 1.4rem 1.8rem; border-top: 1px solid #f0e9e2; background: white; }
+        .cart-subtotal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.85rem; color: #9a8a86; }
+        .cart-total-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.4rem; }
+        .cart-total-label { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; letter-spacing: 0.08em; color: var(--dark); }
+        .cart-total-price { font-family: 'Recoleta', serif; font-size: 1.6rem; color: var(--dark); }
+        .btn-valider {
+            width: 100%; padding: 1rem;
+            background: var(--rose); color: white;
+            border: none; border-radius: 50px; cursor: pointer;
+            font-family: 'Fredoka', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em;
+            transition: background 0.3s; margin-bottom: 0.6rem;
+        }
+        .btn-valider:hover { background: var(--caramel); }
+        .btn-valider:disabled { background: #d4c8c4; cursor: default; }
+        .btn-vider {
+            width: 100%; padding: 0.55rem;
+            background: none; color: #b0a09a;
+            border: none; cursor: pointer;
+            font-family: 'Poppins', sans-serif; font-size: 0.78rem;
+            transition: color 0.2s;
+        }
+        .btn-vider:hover { color: var(--rose); }
+        .cart-mention { text-align: center; font-size: 0.72rem; color: #c8b8b4; letter-spacing: 0.04em; margin-top: 0.5rem; }
+
+        /* ── CONFIRMATION MODAL ── */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(44,34,32,0.5);
+            z-index: 600; align-items: center; justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: white; border-radius: 24px;
+            padding: 3rem 2.5rem; max-width: 420px; width: 90%;
+            text-align: center;
+        }
+        .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .modal-title { font-family: 'Recoleta', serif; font-size: 1.8rem; color: var(--dark); margin-bottom: 0.8rem; }
+        .modal-text { font-size: 0.9rem; color: #7a6a66; line-height: 1.75; margin-bottom: 2rem; }
+        .modal-btn {
+            display: inline-block; padding: 0.8rem 2.4rem;
+            background: var(--rose); color: white;
+            border: none; border-radius: 50px; cursor: pointer;
+            font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.1em;
+            transition: background 0.3s;
+        }
+        .modal-btn:hover { background: var(--caramel); }
+
+        /* ── HERO PAGE ── */
+        .page-hero { position: relative; height: 55vh; min-height: 400px; overflow: hidden; }
+        .page-hero-bg { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+        .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(44,34,32,0.55) 0%, rgba(44,34,32,0.35) 60%, rgba(44,34,32,0.7) 100%); }
+        .page-hero-content { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; padding-top: 80px; }
+        .page-hero-tag { font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.3em; color: var(--rose-pale); margin-bottom: 0.8rem; }
+        .page-hero-title { font-family: 'Recoleta', serif; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; color: white; line-height: 1.1; }
+        .page-hero-title em { font-style: italic; font-weight: 400; color: var(--rose-pale); }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal.delay-1 { transition-delay: 0.15s; }
+
+        /* ── COMMUN ── */
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-tag { font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.7rem; }
+        .section-title { font-family: 'Recoleta', serif; font-size: clamp(2.2rem,4vw,3.4rem); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 1.2rem; }
+        .section-title em { font-style: italic; font-weight: 400; }
+        .section-body { font-size: 0.97rem; line-height: 1.85; color: #7a6a66; font-weight: 300; }
+
+        /* ── INTRO ── */
+        #emporter-intro { background: var(--beige); padding: 6rem 5rem 4rem; text-align: center; }
+        #emporter-intro .section-body { max-width: 520px; margin: 0 auto; }
+        .info-band { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem; }
+        .info-pill { display: flex; align-items: center; gap: 0.5rem; background: white; border-radius: 50px; padding: 0.6rem 1.4rem; font-size: 0.82rem; color: var(--text); }
+
+        /* ── GRILLE PRODUITS ── */
+        #produits { background: var(--white); padding: 5rem 5rem 7rem; }
+        .cat-label { font-family: 'Fredoka', sans-serif; font-size: 1.05rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin: 4rem 0 2.2rem; }
+        .cat-label:first-child { margin-top: 0; }
+        .produits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+        .produit-card { text-align: center; }
+        .produit-photo-wrap { margin: 0 auto 1.4rem; width: 170px; height: 170px; }
+        .produit-photo { width: 170px; height: 170px; border-radius: 50%; object-fit: cover; display: block; transition: transform 0.45s ease, box-shadow 0.45s ease; box-shadow: 0 8px 28px rgba(0,0,0,0.10); }
+        .produit-card:hover .produit-photo { transform: scale(1.05); box-shadow: 0 14px 40px rgba(0,0,0,0.15); }
+        .produit-name { font-family: 'Recoleta', serif; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.3rem; }
+        .produit-desc { font-size: 0.76rem; color: #a09090; line-height: 1.6; margin-bottom: 0.7rem; font-style: italic; }
+        .produit-price { font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--rose); margin-bottom: 1.1rem; }
+        .btn-ajouter {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 1.3rem;
+            background: var(--dark); color: white;
+            border: none; border-radius: 50px; cursor: pointer;
+            font-family: 'Fredoka', sans-serif; font-size: 0.9rem; letter-spacing: 0.08em;
+            transition: background 0.3s;
+        }
+        .btn-ajouter:hover { background: var(--rose); }
+        .btn-ajouter-icon { font-size: 1rem; }
+
+        /* ── CTA ── */
+        .cta-section { background: var(--beige); padding: 5rem 5rem; text-align: center; }
+        .cta-section p { font-family: 'Recoleta', serif; font-size: clamp(1.4rem,2.5vw,2rem); color: var(--dark); margin-bottom: 2rem; font-style: italic; }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-rose { display: inline-block; padding: 0.75rem 2rem; background: var(--rose); color: white; text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; transition: background 0.3s; }
+        .btn-rose:hover { background: var(--caramel); }
+        .btn-outline { display: inline-block; padding: 0.75rem 2rem; border: 1.5px solid var(--dark); color: var(--dark); text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--dark); color: white; }
+
+        /* ── INSTAGRAM ── */
+        .insta-section { background: var(--dark); padding: 6rem 5rem; text-align: center; }
+        .insta-icon { font-size: 2.4rem; margin-bottom: 1.2rem; }
+        .insta-title { font-family: 'Recoleta', serif; font-size: clamp(1.8rem,3.5vw,2.8rem); color: white; line-height: 1.2; margin-bottom: 1rem; }
+        .insta-title em { font-style: italic; font-weight: 400; color: var(--rose-pale); }
+        .insta-sub { font-size: 0.92rem; color: rgba(255,255,255,0.5); max-width: 460px; margin: 0 auto 0.9rem; line-height: 1.8; font-weight: 300; }
+        .insta-handle { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--rose); margin-bottom: 2.2rem; }
+        .insta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.4rem; background: var(--rose); color: white; text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.12em; transition: background 0.3s; }
+        .insta-btn:hover { background: var(--caramel); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--dark); color: white; padding: 5rem 5rem 0; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .footer-logo img { height: 52px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); }
+        .footer-tagline { font-family: 'Recoleta', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.8rem; }
+        .socials { display: flex; gap: 0.8rem; }
+        .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: all 0.3s; }
+        .social-btn:hover { background: var(--rose); border-color: var(--rose); color: white; }
+        .footer-col h4 { font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.5rem; }
+        .h-row { display: flex; justify-content: space-between; font-size: 0.86rem; padding: 0.35rem 0; color: rgba(255,255,255,0.55); }
+        .h-row strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+        .h-row .closed { color: rgba(255,255,255,0.3); }
+        footer address { font-style: normal; font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 2; }
+        footer address a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.3s; }
+        footer address a:hover { color: var(--rose); }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 1.8rem 0; display: flex; justify-content: space-between; font-size: 0.76rem; color: rgba(255,255,255,0.22); letter-spacing: 0.08em; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            nav { padding: 1.2rem 2.5rem; }
+            #emporter-intro, #produits, .cta-section, .insta-section, footer { padding-left: 2.5rem; padding-right: 2.5rem; }
+            .produits-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .produits-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid > div:first-child { grid-column: 1 / -1; }
+            .cart-panel { width: 100vw; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.4rem; }
+            .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; flex-direction: column; background: rgba(244,233,216,0.98); backdrop-filter: blur(12px); padding: 1.5rem 2rem 2rem; gap: 1.2rem; box-shadow: 0 12px 32px rgba(0,0,0,0.12); z-index: 250; }
+            .nav-links.open { display: flex; }
+            .burger { display: flex; }
+            #emporter-intro, #produits, .cta-section, .insta-section { padding: 4rem 1.4rem; }
+            footer { padding: 4rem 1.4rem 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-grid > div:first-child { grid-column: auto; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+        @media (max-width: 520px) {
+            .produits-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .produit-photo-wrap, .produit-photo { width: 130px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+        <div class="cart-header-title">
+            Mon panier
+            <span class="cart-count-pill" id="cartCountPill">0</span>
+        </div>
+        <button class="cart-close" onclick="closeCart()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="cart-body" id="cartBody">
+        <div class="cart-empty">
+            <div class="cart-empty-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d4c8c4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <div>Votre panier est vide.<br>Ajoutez vos plats préférés !</div>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-subtotal">
+            <span>Retrait sur place</span>
+            <span>Gratuit</span>
+        </div>
+        <div class="cart-total-row">
+            <span class="cart-total-label">Total</span>
+            <span class="cart-total-price" id="cartTotal">0 €</span>
+        </div>
+        <button class="btn-valider" id="btnValider" onclick="validerCommande()" disabled>
+            Valider la commande
+        </button>
+        <button class="btn-vider" onclick="viderPanier()">Vider le panier</button>
+        <p class="cart-mention">Retrait sur place · Confirmation par WhatsApp</p>
+    </div>
+</div>
+
+<!-- CONFIRMATION MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+        <div class="modal-icon">✅</div>
+        <h2 class="modal-title">Commande envoyée !</h2>
+        <p class="modal-text">Votre commande a bien été reçue. Elle sera prête dans <strong>15 à 20 minutes</strong>. Venez la récupérer directement à L'Éphémère.</p>
+        <button class="modal-btn" onclick="closeModal()">Parfait, merci !</button>
+    </div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo"><a href="index.html"><img src="logo.webp" alt="L'Éphémère"></a></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html">Menu</a></li>
+        <li><a href="boissons.html">Boissons</a></li>
+        <li><a href="emporter.html" class="nav-cta active-page">À Emporter</a></li>
+    </ul>
+    <div class="nav-right">
+        <button class="cart-toggle" onclick="toggleCart()" aria-label="Mon panier">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Panier
+            <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO PAGE -->
+<div class="page-hero">
+    <img class="page-hero-bg" src="ephemere-2.png" alt="À Emporter L'Éphémère">
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <p class="page-hero-tag">L'Éphémère</p>
+        <h1 class="page-hero-title">À<br><em>Emporter</em></h1>
+    </div>
+</div>
+
+<!-- INTRO -->
+<section id="emporter-intro">
+    <div class="section-inner reveal">
+        <p class="section-tag">Emportez L'Éphémère</p>
+        <h2 class="section-title">Nos plats,<br><em>où vous voulez</em></h2>
+        <p class="section-body">Toute la gourmandise de L'Éphémère, à déguster chez vous, au bureau ou en plein air. Composez votre commande et récupérez-la directement au restaurant.</p>
+        <div class="info-band">
+            <div class="info-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Commande en ligne
+            </div>
+            <div class="info-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Prêt en 15 à 20 min
+            </div>
+            <div class="info-pill">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Retrait sur place
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUITS -->
+<section id="produits">
+    <div class="section-inner">
+
+        <p class="cat-label reveal">Brunch &amp; Salé</p>
+        <div class="produits-grid reveal delay-1">
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="ephemere-2.png" alt="Eggs Benedict">
+                </div>
+                <div class="produit-name">Eggs Benedict</div>
+                <div class="produit-desc">Pain maison, œufs pochés, sauce hollandaise</div>
+                <div class="produit-price">16 €</div>
+                <button class="btn-ajouter" onclick="addToCart('eggs-benedict','Eggs Benedict',16,'ephemere-2.png')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="ephemere pancake 2025-05-16.webp" alt="Pancakes">
+                </div>
+                <div class="produit-name">Pancake Burger</div>
+                <div class="produit-desc">Bœuf black angus, oignons caramélisés, sauce cheddar</div>
+                <div class="produit-price">20 €</div>
+                <button class="btn-ajouter" onclick="addToCart('pancake-burger','Pancake Burger',20,'ephemere pancake 2025-05-16.webp')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="ephemere salade 2025-05-16.webp" alt="Salade fraîche">
+                </div>
+                <div class="produit-name">Salade Maison</div>
+                <div class="produit-desc">Fraîche, généreuse et pleine de saveurs</div>
+                <div class="produit-price">15 €</div>
+                <button class="btn-ajouter" onclick="addToCart('salade-maison','Salade Maison',15,'ephemere salade 2025-05-16.webp')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="ephemere-3.png" alt="Avocado Toast">
+                </div>
+                <div class="produit-name">Avocado Toast</div>
+                <div class="produit-desc">Tartine, guacamole maison, œuf au plat, bacon</div>
+                <div class="produit-price">17 €</div>
+                <button class="btn-ajouter" onclick="addToCart('avocado-toast','Avocado Toast',17,'ephemere-3.png')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+        </div>
+
+        <p class="cat-label reveal">Gaufres &amp; Douceurs</p>
+        <div class="produits-grid reveal delay-1">
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="epehemere gaufres 2025-05-16.webp" alt="Gaufres gourmandes">
+                </div>
+                <div class="produit-name">Gaufres Gourmandes</div>
+                <div class="produit-desc">Topping au choix, chantilly maison</div>
+                <div class="produit-price">À partir de 4 €</div>
+                <button class="btn-ajouter" onclick="addToCart('gaufres','Gaufres Gourmandes',4,'epehemere gaufres 2025-05-16.webp')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="ephemere moelleux pistache 2025-05-16.webp" alt="Moelleux pistache">
+                </div>
+                <div class="produit-name">Cœur Coulant Pistache</div>
+                <div class="produit-desc">Moelleux chaud, cœur coulant intensément gourmand</div>
+                <div class="produit-price">14 €</div>
+                <button class="btn-ajouter" onclick="addToCart('coulant-pistache','Cœur Coulant Pistache',14,'ephemere moelleux pistache 2025-05-16.webp')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="brunch.webp" alt="Brioche Perdue">
+                </div>
+                <div class="produit-name">Brioche Perdue</div>
+                <div class="produit-desc">Compotée de pommes, caramel beurre salé maison</div>
+                <div class="produit-price">13,50 €</div>
+                <button class="btn-ajouter" onclick="addToCart('brioche-perdue','Brioche Perdue',13.5,'brunch.webp')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+            <div class="produit-card">
+                <div class="produit-photo-wrap">
+                    <img class="produit-photo" src="boissons ephemere 2025-05-16.webp" alt="Boissons à emporter">
+                </div>
+                <div class="produit-name">Boissons Signatures</div>
+                <div class="produit-desc">Lattes, mocktails, smoothies à emporter aussi</div>
+                <div class="produit-price">À partir de 5 €</div>
+                <button class="btn-ajouter" onclick="addToCart('boissons','Boissons Signatures',5,'boissons ephemere 2025-05-16.webp')">
+                    <span class="btn-ajouter-icon">+</span> Ajouter au panier
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section reveal">
+    <p>Envie de manger sur place ?</p>
+    <div class="cta-btns">
+        <a href="carte.html" class="btn-rose">Voir le menu complet</a>
+        <a href="boissons.html" class="btn-outline">Nos boissons</a>
+    </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="insta-section reveal">
+    <div class="insta-icon">📸</div>
+    <h2 class="insta-title">Retrouvez-nous<br><em>sur Instagram</em></h2>
+    <p class="insta-sub">Coulisses, créations du moment, ambiance et coups de cœur : tout se passe sur notre Instagram.</p>
+    <p class="insta-handle">@lephemere.fwi</p>
+    <a href="https://www.instagram.com/lephemere.fwi/" target="_blank" rel="noopener" class="insta-btn">Voir nos dernières publications</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo"><img src="logo.webp" alt="L'Éphémère"></div>
+            <p class="footer-tagline">"Ralentir, partager,<br>savourer l'instant."</p>
+            <div class="socials">
+                <a class="social-btn" href="https://www.instagram.com/lephemere.fwi/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                <a class="social-btn" href="#" aria-label="Facebook">FB</a>
+                <a class="social-btn" href="#" aria-label="TikTok">TK</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Horaires</h4>
+            <div class="h-row"><strong>Lundi</strong><span class="closed">Fermé</span></div>
+            <div class="h-row"><strong>Mardi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Mercredi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Jeudi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Vendredi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Samedi</strong><span>9h à 17h</span></div>
+            <div class="h-row"><strong>Dimanche</strong><span>9h à 17h</span></div>
+        </div>
+        <div class="footer-col">
+            <h4>Nous trouver</h4>
+            <address>
+                Immeuble Magic<br>
+                1 Rue Jean Gothland<br>
+                Baie-Mahault 97122, Guadeloupe<br><br>
+                <a href="tel:+5900590501673">0590 50 16 73</a><br>
+                <a href="mailto:contact@lephemere.fr">contact@lephemere.fr</a>
+            </address>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2025 L'Éphémère · Food · Drink · Chill</span>
+        <span>Tous droits réservés</span>
+        <span>Site réalisé par <a href="https://kudjastudio.fr" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.3s;" onmouseover="this.style.color='#D97984'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Kudja Studio</a></span>
+    </div>
+</footer>
+
+<script>
+    /* ── CART STATE ── */
+    let cart = [];
+
+    function addToCart(id, name, price, img) {
+        const existing = cart.find(i => i.id === id);
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push({ id, name, price, img, qty: 1 });
+        }
+        renderCart();
+        openCart();
+    }
+
+    function updateQty(id, delta) {
+        const item = cart.find(i => i.id === id);
+        if (!item) return;
+        item.qty += delta;
+        if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+        renderCart();
+    }
+
+    function viderPanier() {
+        cart = [];
+        renderCart();
+    }
+
+    function renderCart() {
+        const body = document.getElementById('cartBody');
+        const totalEl = document.getElementById('cartTotal');
+        const badge = document.getElementById('cartBadge');
+        const pill = document.getElementById('cartCountPill');
+        const btnV = document.getElementById('btnValider');
+
+        const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+        const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+        badge.textContent = totalQty;
+        badge.style.display = totalQty > 0 ? 'flex' : 'none';
+        pill.textContent = totalQty;
+        pill.style.display = totalQty > 0 ? 'inline-block' : 'none';
+
+        totalEl.textContent = totalPrice % 1 === 0
+            ? totalPrice + ' €'
+            : totalPrice.toFixed(2).replace('.', ',') + ' €';
+
+        btnV.disabled = cart.length === 0;
+
+        if (cart.length === 0) {
+            body.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d4c8c4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div>Votre panier est vide.<br>Ajoutez vos plats préférés !</div></div>`;
+            return;
+        }
+
+        body.innerHTML = cart.map(item => {
+            const itemTotal = item.price * item.qty;
+            const itemTotalStr = itemTotal % 1 === 0
+                ? itemTotal + ' €'
+                : itemTotal.toFixed(2).replace('.', ',') + ' €';
+            return `
+            <div class="cart-item">
+                <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-unit">${item.price % 1 === 0 ? item.price : item.price.toFixed(2).replace('.', ',')} € / unité</div>
+                </div>
+                <div class="cart-item-right">
+                    <div class="cart-item-price">${itemTotalStr}</div>
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="updateQty('${item.id}', -1)">−</button>
+                        <span class="qty-val">${item.qty}</span>
+                        <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+                    </div>
+                </div>
+            </div>`;
+        }).join('');
+    }
+
+    /* ── CART PANEL ── */
+    function openCart() {
+        document.getElementById('cartPanel').classList.add('open');
+        document.getElementById('cartOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCart() {
+        document.getElementById('cartPanel').classList.remove('open');
+        document.getElementById('cartOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function toggleCart() {
+        document.getElementById('cartPanel').classList.contains('open') ? closeCart() : openCart();
+    }
+
+    /* ── VALIDATION ── */
+    function validerCommande() {
+        closeCart();
+        document.getElementById('modalOverlay').classList.add('open');
+        cart = [];
+        renderCart();
+    }
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('open');
+    }
+
+    /* ── NAV BURGER ── */
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+        document.getElementById('burger').classList.toggle('open');
+    }
+    document.getElementById('navLinks').querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('burger').classList.remove('open');
+        });
+    });
+
+    /* ── REVEAL ── */
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boissons · L'Éphémère</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=recoleta@400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose:       #D97984;
+            --rose-pale:  #f2d8db;
+            --beige:      #F4E9D8;
+            --sage:       #8FA9A5;
+            --sage-light: #ddecea;
+            --caramel:    #C8956C;
+            --gold:       #C9A84C;
+            --white:      #FFFFFF;
+            --dark:       #2C2220;
+            --text:       #4a3c38;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+            padding: 1.4rem 5rem;
+            display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+            background: rgba(244,233,216,0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+            transition: padding 0.4s;
+        }
+        .nav-logo { justify-self: start; }
+        .burger { justify-self: end; }
+        .nav-logo img { height: 38px; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--rose); }
+        .nav-cta { background: var(--rose); color: white !important; padding: 0.55rem 1.5rem; border-radius: 50px; display: inline-flex; align-items: center; gap: 0.45rem; }
+        .nav-cta:hover { background: var(--caramel) !important; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .burger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s; }
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* ── HERO PAGE ── */
+        .page-hero {
+            position: relative;
+            height: 42vh;
+            min-height: 320px;
+            background: linear-gradient(150deg, var(--beige) 0%, #ede0cc 60%, var(--sage-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .page-hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            padding-top: 80px;
+        }
+        .page-hero-tag {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            color: var(--sage);
+            margin-bottom: 0.8rem;
+        }
+        .page-hero-title {
+            font-family: 'Recoleta', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--sage);
+            line-height: 1.1;
+        }
+        .page-hero-title em { font-style: italic; font-weight: 400; color: var(--sage); }
+
+        /* ── REVEAL ── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal.delay-1 { transition-delay: 0.15s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ── COMMON ── */
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-tag { font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.7rem; }
+        .section-title { font-family: 'Recoleta', serif; font-size: clamp(2.2rem,4vw,3.6rem); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 1.4rem; }
+        .section-title em { font-style: italic; font-weight: 400; }
+        .section-body { font-size: 0.97rem; line-height: 1.85; color: #7a6a66; font-weight: 300; max-width: 540px; }
+
+        /* ── BOISSONS ── */
+        #boissons { background: white; padding: 7rem 5rem; }
+        .boissons-top { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: flex-start; margin-bottom: 3.5rem; }
+        .boissons-img-wrap { position: relative; }
+        .boissons-img-wrap img { width: 100%; max-height: 520px; object-fit: cover; border-radius: 20px; display: block; }
+        .boissons-badge { position: absolute; top: -1.4rem; right: -1.4rem; width: 108px; height: 108px; background: var(--rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; color: white; font-family: 'Recoleta', serif; font-size: 0.95rem; font-style: italic; line-height: 1.35; padding: 1rem; }
+
+        /* Drink tabs */
+        .drink-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .drink-tab-btn { padding: 0.45rem 1.2rem; border: 1.5px solid var(--beige); background: transparent; cursor: pointer; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); border-radius: 50px; transition: all 0.25s; }
+        .drink-tab-btn.active, .drink-tab-btn:hover { background: var(--sage); border-color: var(--sage); color: white; }
+        .drink-panel { display: none; }
+        .drink-panel.active { display: block; animation: fadeIn 0.4s ease; }
+
+        .drink-list { list-style: none; }
+        .drink-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 0.95rem 0; border-bottom: 1px solid #f0e9e2; }
+        .drink-item:last-child { border-bottom: none; }
+        .drink-info-name { font-family: 'Recoleta', serif; font-size: 1.15rem; color: var(--dark); }
+        .drink-info-desc { font-size: 0.78rem; color: #b09890; margin-top: 0.1rem; }
+        .drink-price { color: var(--rose); font-size: 1rem; white-space: nowrap; flex-shrink: 0; }
+        .drink-cat { font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sage); margin: 1.5rem 0 0.2rem; }
+        .drink-note { background: var(--beige); border-radius: 10px; padding: 0.8rem 1.1rem; font-size: 0.8rem; color: var(--text); margin-top: 1.2rem; line-height: 1.7; }
+        .drink-note strong { color: var(--dark); }
+
+        /* ── QUOTE ── */
+        .quote-section { background: var(--sage); padding: 6rem 5rem; text-align: center; }
+        .quote-text { font-family: 'Recoleta', serif; font-style: italic; font-size: clamp(1.8rem,3.5vw,3rem); color: white; line-height: 1.4; max-width: 780px; margin: 0 auto 1.5rem; }
+        .quote-author { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+        /* ── RETOUR ── */
+        .retour-section { background: var(--beige); padding: 5rem 5rem; text-align: center; }
+        .retour-section p { font-family: 'Recoleta', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--dark); margin-bottom: 2rem; font-style: italic; }
+        .retour-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-rose { display: inline-block; padding: 0.75rem 2rem; background: var(--rose); color: white; text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; transition: background 0.3s; }
+        .btn-rose:hover { background: var(--caramel); }
+        .btn-outline { display: inline-block; padding: 0.75rem 2rem; border: 1.5px solid var(--dark); color: var(--dark); text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; transition: all 0.3s; }
+        .btn-outline:hover { background: var(--dark); color: white; }
+
+        /* ── INSTAGRAM ── */
+        .insta-section { background: var(--dark); padding: 6rem 5rem; text-align: center; }
+        .insta-icon { font-size: 2.4rem; margin-bottom: 1.2rem; }
+        .insta-title { font-family: 'Recoleta', serif; font-size: clamp(1.8rem,3.5vw,2.8rem); color: white; line-height: 1.2; margin-bottom: 1rem; }
+        .insta-title em { font-style: italic; font-weight: 400; color: var(--rose-pale); }
+        .insta-sub { font-size: 0.92rem; color: rgba(255,255,255,0.5); max-width: 460px; margin: 0 auto 0.9rem; line-height: 1.8; font-weight: 300; }
+        .insta-handle { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; color: var(--rose); margin-bottom: 2.2rem; }
+        .insta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2.4rem; background: var(--rose); color: white; text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.12em; transition: background 0.3s; }
+        .insta-btn:hover { background: var(--caramel); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--dark); color: white; padding: 5rem 5rem 0; }
+        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .footer-logo img { height: 52px; margin-bottom: 1.5rem; filter: brightness(0) invert(1); }
+        .footer-tagline { font-family: 'Recoleta', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 1.8rem; }
+        .socials { display: flex; gap: 0.8rem; }
+        .social-btn { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.18); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: all 0.3s; }
+        .social-btn:hover { background: var(--rose); border-color: var(--rose); color: white; }
+        .footer-col h4 { font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.5rem; }
+        .h-row { display: flex; justify-content: space-between; font-size: 0.86rem; padding: 0.35rem 0; color: rgba(255,255,255,0.55); }
+        .h-row strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+        .h-row .closed { color: rgba(255,255,255,0.3); }
+        footer address { font-style: normal; font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 2; }
+        footer address a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.3s; }
+        footer address a:hover { color: var(--rose); }
+        .reserve-cta { display: inline-block; margin-top: 1.8rem; padding: 0.72rem 1.8rem; background: var(--rose); color: white; text-decoration: none; border-radius: 50px; font-family: 'Fredoka', sans-serif; font-size: 1rem; letter-spacing: 0.14em; transition: background 0.3s; }
+        .reserve-cta:hover { background: var(--caramel); }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; padding: 1.8rem 0; display: flex; justify-content: space-between; font-size: 0.76rem; color: rgba(255,255,255,0.22); letter-spacing: 0.08em; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            nav, #boissons, .quote-section, .retour-section, footer { padding-left: 2.5rem; padding-right: 2.5rem; }
+            .boissons-top { gap: 3rem; }
+        }
+        @media (max-width: 900px) {
+            .boissons-top { grid-template-columns: 1fr; }
+            .boissons-img-wrap { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid > div:first-child { grid-column: 1 / -1; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.4rem; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(244,233,216,0.98); backdrop-filter: blur(12px); padding: 1.5rem 2rem 2rem; gap: 1.2rem; box-shadow: 0 12px 32px rgba(0,0,0,0.12); }
+            .nav-links.open { display: flex; }
+            .burger { display: flex; }
+            #boissons { padding: 4.5rem 1.4rem; }
+            .quote-section, .retour-section { padding: 4rem 1.4rem; }
+            footer { padding: 4rem 1.4rem 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-grid > div:first-child { grid-column: auto; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo"><a href="index.html"><img src="logo.webp" alt="L'Éphémère"></a></div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html">Menu</a></li>
+        <li><a href="boissons.html" class="active">Boissons</a></li>
+        <li><a href="emporter.html" class="nav-cta">À Emporter</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- HERO PAGE -->
+<div class="page-hero">
+    <div class="page-hero-content">
+        <p class="page-hero-tag">L'Éphémère</p>
+        <h1 class="page-hero-title">Nos <em>Boissons</em></h1>
+    </div>
+</div>
+
+<!-- BOISSONS -->
+<section id="boissons">
+    <div class="section-inner">
+        <div class="boissons-top reveal">
+            <div class="boissons-img-wrap">
+                <img src="boissons ephemere 2025-05-16.webp" alt="Boissons signatures L'Éphémère" loading="lazy">
+                <div class="boissons-badge">Boissons<br>Signatures</div>
+            </div>
+            <div>
+                <p class="section-tag">À boire</p>
+                <h2 class="section-title">Des boissons<br><em>pensées comme des plats</em></h2>
+                <p class="section-body">Chaque verre est une création. Fleurs comestibles, épices, herbes fraîches : nos boissons sont aussi belles à regarder qu'à savourer.</p>
+            </div>
+        </div>
+
+        <div class="drink-tabs reveal delay-1">
+            <button class="drink-tab-btn active" data-dtab="chaudes">Boissons Chaudes</button>
+            <button class="drink-tab-btn" data-dtab="froides">Boissons Froides</button>
+            <button class="drink-tab-btn" data-dtab="mocktails">Mocktails</button>
+            <button class="drink-tab-btn" data-dtab="cocktails">Cocktails &amp; Créations</button>
+        </div>
+
+        <!-- Boissons Chaudes -->
+        <div class="drink-panel active" id="dtab-chaudes">
+            <ul class="drink-list">
+                <li class="drink-item"><div><div class="drink-info-name">Expresso / Allongé</div></div><span class="drink-price">3 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Café aromatisé</div><div class="drink-info-desc">Caramel ou vanille</div></div><span class="drink-price">3,30 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Double expresso</div></div><span class="drink-price">4 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Cappuccino</div></div><span class="drink-price">4 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Chocolat maison</div></div><span class="drink-price">5 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Thé / Infusion</div></div><span class="drink-price">5 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Ubé Latte</div></div><span class="drink-price">7 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Matcha Latte</div></div><span class="drink-price">7 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Chocolat Gourmand</div><div class="drink-info-desc">Chocolat maison, glace vanille et crème fouettée</div></div><span class="drink-price">7 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Caramel Macchiato</div><div class="drink-info-desc">Sirop de caramel, café, mousse de lait</div></div><span class="drink-price">7 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Latte Vanille</div><div class="drink-info-desc">Sirop de vanille, café, mousse de lait</div></div><span class="drink-price">7 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Matcha Latte Fruit</div><div class="drink-info-desc">Mangue, fraise ou framboise</div></div><span class="drink-price">8 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Ubé Latte Fruit</div><div class="drink-info-desc">Myrtille, framboise ou fraise</div></div><span class="drink-price">8 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Latte Pistache</div><div class="drink-info-desc">Sirop de pistache, café, crème fouettée, pistache concassée, mousse de lait</div></div><span class="drink-price">8 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Latte Spéculos</div><div class="drink-info-desc">Sirop de spéculos, café, crème fouettée, biscuit spéculos, mousse de lait</div></div><span class="drink-price">8 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Latte Cookies</div><div class="drink-info-desc">Sirop de cookies, café, crème fouettée, cookies, mousse de lait</div></div><span class="drink-price">8 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Latte Chouchou</div><div class="drink-info-desc">Sirop de chouchou, café, crème fouettée, chouchou (cacahuète caramélisée), mousse de lait</div></div><span class="drink-price">8 €</span></li>
+            </ul>
+            <div class="drink-note">
+                <strong>Make it Better :</strong> Lait d'amande +1,50 € &nbsp;·&nbsp; Lait d'avoine +1,50 € &nbsp;·&nbsp; Crème fouettée +0,50 €<br>
+                ❄️ Tous les lattes sont disponibles en <strong>version glacée</strong>
+            </div>
+        </div>
+
+        <!-- Boissons Froides -->
+        <div class="drink-panel" id="dtab-froides">
+            <ul class="drink-list">
+                <li class="drink-item"><div><div class="drink-info-name">Eau plate Capes 1,5L</div></div><span class="drink-price">4 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Cannette 33cl</div></div><span class="drink-price">4,50 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Jus maison</div></div><span class="drink-price">5 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Thé glacé maison</div></div><span class="drink-price">5 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Orange pressée</div></div><span class="drink-price">5 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">San Pellegrino 1L</div></div><span class="drink-price">5 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Limonade maison</div><div class="drink-info-desc">Purée de fruits en option +1,50 €</div></div><span class="drink-price">6 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Smoothie</div></div><span class="drink-price">7 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Milkshake</div><div class="drink-info-desc">Chouchou, Nutella, Fraise ou Spéculos</div></div><span class="drink-price">9 €</span></li>
+            </ul>
+        </div>
+
+        <!-- Mocktails -->
+        <div class="drink-panel" id="dtab-mocktails">
+            <ul class="drink-list">
+                <li class="drink-item"><div><div class="drink-info-name">Virgin Mojito</div></div><span class="drink-price">11 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Virgin Mojito Fruits</div></div><span class="drink-price">12 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Sunset</div><div class="drink-info-desc">Jus d'ananas, jus de passion, purée de fraise, sirop de vanille, citron</div></div><span class="drink-price">11 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Tropical Muse</div><div class="drink-info-desc">Purée de mangue, purée de framboise, sirop de pamplemousse, eau pétillante, jus de citron</div></div><span class="drink-price">12 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Golden Basil</div><div class="drink-info-desc">Sirop de basilic, sirop de pamplemousse, sirop de vanille, jus de passion</div></div><span class="drink-price">13 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Ginger Glow</div><div class="drink-info-desc">Jus d'orange, purée de pêche, jus de citron, ginger beer</div></div><span class="drink-price">13 €</span></li>
+            </ul>
+        </div>
+
+        <!-- Cocktails & Créations -->
+        <div class="drink-panel" id="dtab-cocktails">
+            <div class="drink-cat">Cocktails</div>
+            <ul class="drink-list">
+                <li class="drink-item"><div><div class="drink-info-name">Mimosa</div><div class="drink-info-desc">Champagne, jus d'orange</div></div><span class="drink-price">12 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Amaretto Sour</div></div><span class="drink-price">13 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Mojito Classique</div></div><span class="drink-price">13 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Mojito aux Fruits</div></div><span class="drink-price">14 €</span></li>
+            </ul>
+            <div class="drink-cat">Créations</div>
+            <ul class="drink-list">
+                <li class="drink-item"><div><div class="drink-info-name">Passion Twist</div><div class="drink-info-desc">Rhum silver Bologne, rhum gold Bologne, jus de passion, jus de citron, basilic</div></div><span class="drink-price">14 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Ginger Glitter</div><div class="drink-info-desc">Purée de framboise, jus de passion, jus de citron, ginger beer, rhum vieux</div></div><span class="drink-price">14 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Spicy Lover</div><div class="drink-info-desc">Sirop de piment, sirop de vanille, jus de passion, jus de citron, ginger beer, rhum vieux</div></div><span class="drink-price">14 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Savana</div><div class="drink-info-desc">Purée de pêche, rhum blanc, citron, jus d'ananas, sirop de grenadine</div></div><span class="drink-price">14 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Fleur de Rosé</div><div class="drink-info-desc">Vodka, vin rosé, jus de citron · Sirop au choix : pêche, hibiscus, pamplemousse, fraise des bois</div></div><span class="drink-price">14,50 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">L'Éphémère</div><div class="drink-info-desc">Hennessy, amaretto, jus de passion, sirop d'orgeat, citron</div></div><span class="drink-price">16 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Porn Star Martini</div><div class="drink-info-desc">Vodka, jus de passion, purée de passion, sirop de vanille, shot de champagne</div></div><span class="drink-price">16 €</span></li>
+                <li class="drink-item"><div><div class="drink-info-name">Fraîcheur des Bois</div><div class="drink-info-desc">Vodka, crème de cassis, champagne, citron, sirop de sucre de canne, purée de myrtille</div></div><span class="drink-price">16 €</span></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section reveal">
+    <p class="quote-text">"Parce que rien ne dure éternellement… Chaque instant est précieux"</p>
+    <span class="quote-author">L'Éphémère &nbsp;·&nbsp; Food · Drink · Chill</span>
+</div>
+
+<!-- RETOUR -->
+<div class="retour-section reveal">
+    <p>Envie de manger quelque chose ?</p>
+    <div class="retour-btns">
+        <a href="carte.html" class="btn-rose">Voir le menu</a>
+    </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="insta-section reveal">
+    <div class="insta-icon">📸</div>
+    <h2 class="insta-title">Retrouvez-nous<br><em>sur Instagram</em></h2>
+    <p class="insta-sub">Coulisses, créations du moment, ambiance et coups de cœur : tout se passe sur notre Instagram.</p>
+    <p class="insta-handle">@lephemere.fwi</p>
+    <a href="https://www.instagram.com/lephemere.fwi/" target="_blank" rel="noopener" class="insta-btn">Voir nos dernières publications</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <div class="footer-logo"><img src="logo.webp" alt="L'Éphémère"></div>
+            <p class="footer-tagline">"Ralentir, partager,<br>savourer l'instant."</p>
+            <div class="socials">
+                <a class="social-btn" href="https://www.instagram.com/lephemere.fwi/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+                <a class="social-btn" href="#" aria-label="Facebook">FB</a>
+                <a class="social-btn" href="#" aria-label="TikTok">TK</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Horaires</h4>
+            <div class="h-row"><strong>Lundi</strong><span class="closed">Fermé</span></div>
+            <div class="h-row"><strong>Mardi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Mercredi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Jeudi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Vendredi</strong><span>8h à 18h</span></div>
+            <div class="h-row"><strong>Samedi</strong><span>9h à 17h</span></div>
+            <div class="h-row"><strong>Dimanche</strong><span>9h à 17h</span></div>
+        </div>
+        <div class="footer-col">
+            <h4>Nous trouver</h4>
+            <address>
+                Immeuble Magic<br>
+                1 Rue Jean Gothland<br>
+                Baie-Mahault 97122, Guadeloupe<br><br>
+                <a href="tel:+5900590501673">0590 50 16 73</a><br>
+                <a href="mailto:contact@lephemere.fr">contact@lephemere.fr</a>
+            </address>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2025 L'Éphémère · Food · Drink · Chill</span>
+        <span>Tous droits réservés</span>
+        <span>Site réalisé par <a href="https://kudjastudio.fr" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4); text-decoration:none; transition:color 0.3s;" onmouseover="this.style.color='#D97984'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Kudja Studio</a></span>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('open');
+        document.getElementById('burger').classList.toggle('open');
+    }
+    document.getElementById('navLinks').querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.getElementById('navLinks').classList.remove('open');
+            document.getElementById('burger').classList.remove('open');
+        });
+    });
+
+    document.querySelectorAll('.drink-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.drink-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.drink-tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('dtab-' + btn.dataset.dtab).classList.add('active');
+            btn.classList.add('active');
+        });
+    });
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
