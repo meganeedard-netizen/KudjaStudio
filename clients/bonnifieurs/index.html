@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Bonnifieurs — Caribbean Coffee Lovers</title>
+  <meta name="description" content="L'Atelier de torréfaction artisanal en Guadeloupe. Coffee-shop dédié au café de spécialité et aux saveurs du bassin caribéen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="logo.webp" alt="Les Bonnifieurs logo">
+        <div>
+          <span class="nav-logo-text">Les Bonnifieurs</span>
+          <span class="nav-logo-sub">Caribbean Coffee Lovers</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html">La Carte</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="reservation.html" class="btn-nav">Réserver une salle</a></li>
+      </ul>
+      <a href="boutique.html" class="nav-cart-btn" aria-label="Boutique" title="Boutique">
+        <i data-lucide="shopping-bag"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image: url('bar-comptoir.webp')"></div>
+    <div class="hero-content">
+      <img class="hero-logo" src="logo.webp" alt="Les Bonnifieurs">
+      <div class="hero-tagline">Guadeloupe, Antilles Françaises</div>
+      <h1>Les Bonnifieurs</h1>
+      <p class="hero-sub">Un café, une douceur, un moment rien qu'à vous.</p>
+      <div class="hero-cta">
+        <a href="carte.html" class="btn btn-primary">Découvrir la carte</a>
+        <a href="histoire.html" class="btn btn-outline">Notre histoire</a>
+      </div>
+    </div>
+    <div class="hero-scroll">Découvrir</div>
+  </section>
+
+  <!-- INTRO -->
+  <section>
+    <div class="container intro-split">
+      <div class="intro-text">
+        <span class="section-tag">L'Atelier</span>
+        <h2 class="section-title">Un café de spécialité,<br>ancré dans la Caraïbe</h2>
+        <p class="section-sub">Nous torréfions nos grains d'exception tout droit venus du bassin caribéen. Jamaïque, Panama, Nicaragua, Guatemala... et notre belle Guadeloupe selon les saisons.</p>
+        <p class="section-sub" style="margin-top:.8rem">De l'espresso intense aux méthodes douces pour les puristes — V60, Chemex, Siphon. Mais aussi un matcha de qualité, des chocolats onctueux et des boissons fraîches aux fruits locaux.</p>
+        <a href="histoire.html" class="btn btn-outline-dark" style="margin-top:2rem">Qui sommes-nous</a>
+      </div>
+      <div class="intro-img-wrap">
+        <img src="tasse-to-go.webp" alt="L'Atelier Les Bonnifieurs" class="intro-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGES CARDS -->
+  <section style="background: var(--creme); padding: 5.5rem 2rem;">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:3rem">
+        <span class="section-tag">Explorer</span>
+        <h2 class="section-title">Tout ce qui fait Les Bonnifieurs</h2>
+      </div>
+      <div class="cards-grid">
+        <a href="carte.html" class="card">
+          <img src="boisson-glacee-cafe.webp" alt="La Carte" class="card-img">
+          <div class="card-body">
+            <span class="card-tag">Menu</span>
+            <div class="card-title">La Carte</div>
+            <p class="card-text">Cafés, matcha, boissons fraîches, gâteaux et salades préparés chaque jour avec soin et passion.</p>
+            <span class="card-arrow">Voir la carte &rarr;</span>
+          </div>
+        </a>
+        <a href="boutique.html" class="card">
+          <img src="cafes-selection.webp" alt="Boutique" class="card-img">
+          <div class="card-body">
+            <span class="card-tag">Boutique</span>
+            <div class="card-title">Nos Cafés à emporter</div>
+            <p class="card-text">Grains torréfiés maison et accessoires pour recréer votre tasse d'exception à la maison.</p>
+            <span class="card-arrow">Voir la boutique &rarr;</span>
+          </div>
+        </a>
+        <a href="evenements.html" class="card">
+          <img src="affiche-methodes-douces.webp" alt="Événements" class="card-img">
+          <div class="card-body">
+            <span class="card-tag">Agenda</span>
+            <div class="card-title">Ateliers &amp; Événements</div>
+            <p class="card-text">Ateliers de dégustation, expos, soirées. L'atelier vit au rythme de la culture caribéenne.</p>
+            <span class="card-arrow">Voir l'agenda &rarr;</span>
+          </div>
+        </a>
+        <a href="reservation.html" class="card">
+          <img src="terrasse-verriere.webp" alt="Salle de réunion" class="card-img">
+          <div class="card-body">
+            <span class="card-tag">Privatisation</span>
+            <div class="card-title">Réserver la salle</div>
+            <p class="card-text">Salle calme et confortable pour vos réunions ou sessions de travail. 1 à 12 personnes, à partir de 30 euros/h.</p>
+            <span class="card-arrow">Réserver &rarr;</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX QUOTE -->
+  <div class="divider-img" style="background-image: url('salle-interieure.webp')">
+    <div class="divider-overlay">
+      <blockquote>Chaque tasse raconte une origine, une rencontre, un voyage au coeur de la Caraïbe.</blockquote>
+    </div>
+  </div>
+
+  <!-- ORIGINES -->
+  <section>
+    <div class="container origines-grid">
+      <div>
+        <span class="section-tag">Nos Origines</span>
+        <h2 class="section-title">Du grain à la tasse,<br>avec passion</h2>
+        <p class="section-sub">Nous sélectionnons des micro-lots de café aux quatre coins du bassin caribéen et d'Amérique centrale pour vous offrir des profils aromatiques uniques, torréfiés avec soin dans notre atelier en Guadeloupe.</p>
+        <div class="origins-list" style="margin-top:2rem">
+          <div class="origin-item">🇯🇲 Jamaïque</div>
+          <div class="origin-item">🇵🇦 Panama</div>
+          <div class="origin-item">🇳🇮 Nicaragua</div>
+          <div class="origin-item">🇬🇹 Guatemala</div>
+          <div class="origin-item">🇲🇽 Mexique</div>
+          <div class="origin-item">🇨🇷 Costa Rica</div>
+          <div class="origin-item">🇬🇵 Guadeloupe</div>
+        </div>
+        <a href="boutique.html" class="btn btn-primary" style="margin-top:2.5rem">Commander nos cafés</a>
+      </div>
+      <div>
+        <img src="origines-caribbeennes.webp" alt="Origines caribéennes" class="origines-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA RESERVATION -->
+  <div class="cta-band">
+    <h2>Besoin d'un espace calme pour travailler ?</h2>
+    <p>Privatisez notre salle de réunion pour 1 à 12 personnes. Prise électrique, silence garanti.</p>
+    <a href="reservation.html" class="btn btn-outline">Réserver la salle</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.webp" alt="Les Bonnifieurs">
+        <div class="brand-name">Les Bonnifieurs</div>
+        <div class="brand-sub">Caribbean Coffee Lovers</div>
+        <p class="brand-desc">Coffee-shop et atelier de torréfaction artisanal en Guadeloupe, dédié au café de spécialité.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/bonnifieurs/?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/les.bonnifieurs/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="histoire.html">Notre Histoire</a></li>
+          <li><a href="carte.html">La Carte</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="reservation.html">Réserver la salle</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours-col">
+        <h4>Horaires</h4>
+        <p>Lun - Ven : 6h00 - 18h00</p>
+        <p>Samedi : 9h00 - 14h00</p>
+        <p>Dimanche : Fermé</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous trouver</h4>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="map-pin"></i></span>
+          <span>Immeuble Gesmar<br>Bd de la Pointe Jarry<br>Baie-Mahault 97122, Guadeloupe</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="phone"></i></span>
+          <a href="tel:+590590986617">0590 98 66 17</a>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="mail"></i></span>
+          <a href="mailto:les.bonnifieurs@gmail.com">les.bonnifieurs@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Les+Bonnifieurs+Baie-Mahault+Guadeloupe&output=embed"
+        width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Les Bonnifieurs sur Google Maps">
+      </iframe>
+      <a href="https://maps.app.goo.gl/myr5it4pmAzZHaKd7" target="_blank" rel="noopener noreferrer" class="footer-map-btn">Ouvrir dans Google Maps &rarr;</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Les Bonnifieurs. Tous droits réservés.</span>
+      <span>Caribbean Coffee Lovers</span>
+    </div>
+  </footer>
+
+
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Carte — Les Bonnifieurs</title>
+  <meta name="description" content="La carte des Bonnifieurs : cafés, méthodes douces, matcha, sans café, boissons fraîches, gâteaux et salades.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .carte-hero-img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      aspect-ratio: 21/9;
+      display: block;
+      margin-bottom: 3rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,.1);
+    }
+    .menu-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .personalisation-box {
+      background: var(--noir);
+      color: #fff;
+      border-radius: 20px;
+      padding: 2rem 2.5rem;
+      margin-top: 3rem;
+    }
+    .personalisation-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: .8rem;
+      color: var(--caramel);
+    }
+    .perso-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .perso-item {
+      background: rgba(255,255,255,.07);
+      border-radius: 12px;
+      padding: .9rem 1.1rem;
+      font-size: .88rem;
+      color: rgba(255,255,255,.85);
+    }
+    .perso-item strong { color: #fff; display: block; margin-bottom: .2rem; font-size: .95rem; }
+    .note-box {
+      background: var(--bordeaux-bg);
+      border: 1px solid rgba(123,29,29,.25);
+      border-radius: 16px;
+      padding: 1.2rem 1.6rem;
+      margin-top: 2rem;
+      font-size: .88rem;
+      color: var(--bordeaux);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="logo.webp" alt="Les Bonnifieurs logo">
+        <div>
+          <span class="nav-logo-text">Les Bonnifieurs</span>
+          <span class="nav-logo-sub">Caribbean Coffee Lovers</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html" class="active">La Carte</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="reservation.html" class="btn-nav">Réserver une salle</a></li>
+      </ul>
+      <a href="boutique.html" class="nav-cart-btn" aria-label="Boutique" title="Boutique">
+        <i data-lucide="shopping-bag"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('matcha-gateau-plateau.webp')"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <span>La Carte</span>
+      </div>
+      <h1>La Carte</h1>
+      <p>Café, matcha, boissons et gourmandises</p>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section>
+    <div class="container">
+
+      <!-- ONGLETS -->
+      <div class="menu-nav">
+        <button class="menu-tab active" onclick="showTab('cafe')">Cafés</button>
+        <button class="menu-tab" onclick="showTab('methodes')">Méthodes douces</button>
+        <button class="menu-tab" onclick="showTab('matcha')">Matcha</button>
+        <button class="menu-tab" onclick="showTab('sans-cafe')">Sans café</button>
+        <button class="menu-tab" onclick="showTab('creux')">Un Petit Creux</button>
+      </div>
+
+      <!-- ── CAFÉS ── -->
+      <div class="menu-section active" id="tab-cafe">
+        <div class="menu-section-header">
+          <div>
+            <div class="menu-section-title">Avec Café</div>
+            <p class="menu-section-sub">Grains torréfiés dans notre atelier, extraits avec soin par nos baristas.</p>
+          </div>
+          <div style="font-size:.75rem; color:var(--text-light); font-weight:700; text-align:right; white-space:nowrap">Classique / Grand</div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Cafés purs</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Espresso</div>
+              <div class="menu-item-desc">Serré, intense</div>
+            </div>
+            <div class="menu-item-price">2,50 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Double Espresso</div>
+              <div class="menu-item-desc">Double extraction</div>
+            </div>
+            <div class="menu-item-price">3,90 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Café Filtre</div>
+              <div class="menu-item-desc">V60, Chemex ou méthode du jour</div>
+            </div>
+            <div class="menu-item-price">3,55 / 3,65 €</div>
+          </div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Base Espresso — chaud ou froid</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Café Latte</div>
+              <div class="menu-item-desc">Espresso, lait vapeur onctueux</div>
+            </div>
+            <div class="menu-item-price">4,00 / 4,50 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Caramel Macchiato</div>
+              <div class="menu-item-desc">Espresso, lait vapeur, sirop caramel</div>
+            </div>
+            <div class="menu-item-price">4,85 / 5,25 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Mocha Latte</div>
+              <div class="menu-item-desc">Espresso, lait vapeur, chocolat</div>
+            </div>
+            <div class="menu-item-price">4,95 / 5,35 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cappuccino</div>
+              <div class="menu-item-desc">Espresso, mousse de lait généreuse</div>
+            </div>
+            <div class="menu-item-price">4,50 / 4,85 €</div>
+          </div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Boissons froides — Glacées</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cold Brew</div>
+              <div class="menu-item-desc">Infusion à froid 18h, doux et sans amertume</div>
+            </div>
+            <div class="menu-item-price">3,95 / 4,25 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cold Brew Latte</div>
+              <div class="menu-item-desc">Cold Brew, lait froid</div>
+            </div>
+            <div class="menu-item-price">4,35 / 4,65 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Nitro Cold Brew</div>
+              <div class="menu-item-desc">Cold Brew infusé à l'azote, texture crémeuse</div>
+            </div>
+            <div class="menu-item-price">4,15 / 4,55 €</div>
+          </div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Boissons froides — Mixées</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Frappé Espresso</div>
+              <div class="menu-item-desc">Espresso, glaçons pilés</div>
+            </div>
+            <div class="menu-item-price">4,85 / 5,25 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Frappé Espresso Latte</div>
+              <div class="menu-item-desc">Espresso, lait, glaçons pilés</div>
+            </div>
+            <div class="menu-item-price">4,85 / 5,25 €</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── MÉTHODES DOUCES ── -->
+      <div class="menu-section" id="tab-methodes">
+        <div class="menu-section-header">
+          <div>
+            <div class="menu-section-title">Méthodes Douces</div>
+            <p class="menu-section-sub">Selon les origines disponibles à l'Atelier. Demandez à notre barista l'origine du moment.</p>
+          </div>
+        </div>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">V60</div>
+              <div class="menu-item-desc">Filtration précise, café propre et expressif. 250 ml</div>
+            </div>
+            <div class="menu-item-price">4,80 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Chemex</div>
+              <div class="menu-item-desc">Corps élégant, grande clarté aromatique. 350 ml</div>
+            </div>
+            <div class="menu-item-price">5,20 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Siphon</div>
+              <div class="menu-item-desc">Immersion et vaporisation pour une pureté rare. 250 ml</div>
+            </div>
+            <div class="menu-item-price">5,50 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">French Press</div>
+              <div class="menu-item-desc">Infusion complète, café rond et charnu. 350 ml</div>
+            </div>
+            <div class="menu-item-price">4,50 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cold Brew</div>
+              <div class="menu-item-desc">Infusion à froid 18h. Doux, sans amertume</div>
+            </div>
+            <div class="menu-item-price">4,80 €</div>
+          </div>
+        </div>
+        <div class="note-box">
+          Les méthodes douces sont proposées selon les origines disponibles. Nos baristas vous guideront vers l'origine et la méthode les mieux adaptés à vos goûts du moment.
+        </div>
+      </div>
+
+      <!-- ── MATCHA ── -->
+      <div class="menu-section" id="tab-matcha">
+        <div class="menu-section-header">
+          <div>
+            <div class="menu-section-title">Matcha</div>
+            <p class="menu-section-sub">Matcha cérémonial de qualité, chaud ou froid, préparé avec soin à l'Atelier.</p>
+          </div>
+          <div style="font-size:.75rem; color:var(--text-light); font-weight:700; text-align:right; white-space:nowrap">Classique / Grand</div>
+        </div>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Matcha</div>
+              <div class="menu-item-desc">Base matcha pure, eau chaude ou froide</div>
+            </div>
+            <div class="menu-item-price">5,55 / 5,75 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Matcha Latte</div>
+              <div class="menu-item-desc">Matcha cérémonial, lait vapeur onctueux</div>
+            </div>
+            <div class="menu-item-price">5,75 / 5,95 €</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SANS CAFÉ ── -->
+      <div class="menu-section" id="tab-sans-cafe">
+        <div class="menu-section-header">
+          <div>
+            <div class="menu-section-title">Sans Café</div>
+            <p class="menu-section-sub">Chaud ou froid, pour toutes les envies sans caféine.</p>
+          </div>
+          <div style="font-size:.75rem; color:var(--text-light); font-weight:700; text-align:right; white-space:nowrap">Petit / Classique / Grand</div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Chaud ou froid</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cascara</div>
+              <div class="menu-item-desc">Infusion des cerises de café séchées. Fruité et léger</div>
+            </div>
+            <div class="menu-item-price">4,20 / 4,50 / 4,70 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Chocolat</div>
+              <div class="menu-item-desc">Chocolat onctueux, lait entier</div>
+            </div>
+            <div class="menu-item-price">4,35 / 4,65 / 4,95 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Thé / Infusion</div>
+              <div class="menu-item-desc">Sélection du moment</div>
+            </div>
+            <div class="menu-item-price">3,90 / 4,10 / 4,40 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Chaï Latte</div>
+              <div class="menu-item-desc">Epices indiennes, lait vapeur mousseux</div>
+            </div>
+            <div class="menu-item-price">— / 5,15 / 5,35 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Ube Latte</div>
+              <div class="menu-item-desc">Igname violet, lait vapeur. Doux et original</div>
+            </div>
+            <div class="menu-item-price">— / 5,35 / 5,55 €</div>
+          </div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Boissons froides</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Thé Glacé</div>
+              <div class="menu-item-desc">Infusion froide maison</div>
+            </div>
+            <div class="menu-item-price">4,10 / 4,40 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Frappé Mangue Passion</div>
+              <div class="menu-item-desc">Mangue, fruit de la passion, glaçons pilés</div>
+            </div>
+            <div class="menu-item-price">4,00 / 4,50 €</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Frappé Base Lait</div>
+              <div class="menu-item-desc">Lait, sirop au choix, glaçons pilés</div>
+            </div>
+            <div class="menu-item-price">4,85 / 5,25 €</div>
+          </div>
+        </div>
+
+        <div class="personalisation-box">
+          <h3>Personnalisez votre boisson</h3>
+          <div class="perso-grid">
+            <div class="perso-item"><strong>Espresso shot</strong>+0,70 €</div>
+            <div class="perso-item"><strong>Sirop</strong>+0,50 €</div>
+            <div class="perso-item"><strong>Crème fouettée</strong>+0,70 €</div>
+            <div class="perso-item"><strong>Lait de vache</strong>+0,50 €</div>
+            <div class="perso-item"><strong>Lait végétal</strong>+1,00 €</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── UN PETIT CREUX ── -->
+      <div class="menu-section" id="tab-creux">
+        <div class="menu-section-header">
+          <div>
+            <div class="menu-section-title">Un Petit Creux</div>
+            <p class="menu-section-sub">Pour accompagner votre boisson à toute heure — la sélection du jour est affichée en salle.</p>
+          </div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Sucrés</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Salade de fruits</div>
+              <div class="menu-item-desc">Fruits tropicaux frais de saison</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Cinnamon Roll</div>
+              <div class="menu-item-desc">Brioche à la cannelle, glaçage vanille</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tiramisu</div>
+              <div class="menu-item-desc">Mascarpone, café, biscuits croquants</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Forêt Noire</div>
+              <div class="menu-item-desc">Génoise, chantilly, cerises</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Tarte aux Pommes</div>
+              <div class="menu-item-desc">Pâte croustillante, pommes fondantes</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Muffin au Chocolat</div>
+              <div class="menu-item-desc">Moelleux, coeur fondant</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Muffin aux Fruits</div>
+              <div class="menu-item-desc">Fruits frais ou confits selon le jour</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Viennoiseries</div>
+              <div class="menu-item-desc">Croissant, pain au chocolat, pain aux raisins...</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+        </div>
+
+        <p style="font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--bordeaux); margin-bottom:.8rem">Salés</p>
+        <div class="menu-grid" style="margin-bottom:2rem">
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Salade Lunch</div>
+              <div class="menu-item-desc">Fraîche et colorée, produits locaux, garniture du jour</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <div class="menu-item-name">Sandwich</div>
+              <div class="menu-item-desc">Pain artisanal, garnitures fraîches selon arrivage</div>
+            </div>
+            <div class="menu-item-price">Prix du jour</div>
+          </div>
+        </div>
+
+        <div class="note-box">
+          La vitrine change chaque jour selon les arrivages. Les prix et disponibilités sont affichés en salle. Parfait pour un en-cas gourmand à toute heure !
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PHOTO AMBIANCE -->
+  <div class="divider-img" style="background-image: url('matcha-frappe-cookie.webp')">
+    <div class="divider-overlay">
+      <blockquote style="white-space: nowrap">Un café, une douceur, un moment rien qu'à vous.</blockquote>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <h2>Envie de nos cafés chez vous ?</h2>
+    <p>Retrouvez notre sélection de grains torréfiés et nos accessoires dans la boutique en ligne.</p>
+    <a href="boutique.html" class="btn btn-outline">Visiter la boutique</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.webp" alt="Les Bonnifieurs">
+        <div class="brand-name">Les Bonnifieurs</div>
+        <div class="brand-sub">Caribbean Coffee Lovers</div>
+        <p class="brand-desc">Coffee-shop et atelier de torréfaction artisanal en Guadeloupe, dédié au café de spécialité.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/bonnifieurs/?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/les.bonnifieurs/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="histoire.html">Notre Histoire</a></li>
+          <li><a href="carte.html">La Carte</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="reservation.html">Réserver la salle</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours-col">
+        <h4>Horaires</h4>
+        <p>Lun - Ven : 6h00 - 18h00</p>
+        <p>Samedi : 9h00 - 14h00</p>
+        <p>Dimanche : Fermé</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous trouver</h4>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="map-pin"></i></span>
+          <span>Immeuble Gesmar<br>Bd de la Pointe Jarry<br>Baie-Mahault 97122, Guadeloupe</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="phone"></i></span>
+          <a href="tel:+590590986617">0590 98 66 17</a>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="mail"></i></span>
+          <a href="mailto:les.bonnifieurs@gmail.com">les.bonnifieurs@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Les+Bonnifieurs+Baie-Mahault+Guadeloupe&output=embed"
+        width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Les Bonnifieurs sur Google Maps">
+      </iframe>
+      <a href="https://maps.app.goo.gl/myr5it4pmAzZHaKd7" target="_blank" rel="noopener noreferrer" class="footer-map-btn">Ouvrir dans Google Maps &rarr;</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Les Bonnifieurs. Tous droits réservés.</span>
+      <span>Caribbean Coffee Lovers</span>
+    </div>
+  </footer>
+
+  <script>
+
+    function showTab(id) {
+      document.querySelectorAll('.menu-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

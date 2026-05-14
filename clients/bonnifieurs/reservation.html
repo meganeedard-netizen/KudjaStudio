@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réserver la salle — Les Bonnifieurs</title>
+  <meta name="description" content="Privatisez la salle de réunion de L'Atelier Les Bonnifieurs. Calme, 1 à 12 personnes, prise électrique. À partir de 30 euros/h.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .resa-section {
+      padding-top: 4rem;
+      padding-bottom: 5rem;
+    }
+
+    .tarif-highlight {
+      background: var(--bordeaux);
+      color: #fff;
+      border-radius: 20px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .tarif-highlight-icon { flex-shrink: 0; display: flex; align-items: center; }
+    .tarif-highlight p { font-size: .9rem; color: rgba(255,255,255,.8); line-height: 1.6; }
+    .tarif-highlight strong { color: #fff; }
+
+    .resa-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .resa-gallery img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      display: block;
+    }
+    .resa-gallery img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+    .resa-gallery img:not(:first-child) {
+      aspect-ratio: 4/3;
+    }
+
+    .confiance-carousel-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-top: 2.5rem;
+    }
+    .confiance-carousel {
+      display: flex;
+      gap: 1.2rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: .5rem .2rem 1rem;
+    }
+    .confiance-carousel::-webkit-scrollbar { display: none; }
+
+    .confiance-card {
+      flex: 0 0 clamp(190px, 28%, 250px);
+      scroll-snap-align: start;
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.5rem 1.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      text-align: center;
+    }
+    .confiance-icon { margin-bottom: .8rem; }
+    .confiance-title { font-weight: 700; color: var(--noir); margin-bottom: .4rem; font-size: .95rem; }
+    .confiance-text { font-size: .82rem; color: var(--text-light); line-height: 1.5; }
+
+    .carousel-btn {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: #fff;
+      border: 1px solid var(--border, #E0D5C5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      transition: background .2s, color .2s;
+      color: var(--bordeaux);
+    }
+    .carousel-btn:hover { background: var(--bordeaux); color: #fff; }
+    .carousel-btn svg { width: 1.1rem; height: 1.1rem; stroke-width: 2.5; }
+
+    .form-success {
+      display: none;
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      color: #2e7d32;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .resa-gallery { grid-template-columns: 1fr; }
+      .resa-gallery img:first-child { grid-column: auto; aspect-ratio: 4/3; }
+      .tarif-highlight { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="logo.webp" alt="Les Bonnifieurs logo">
+        <div>
+          <span class="nav-logo-text">Les Bonnifieurs</span>
+          <span class="nav-logo-sub">Caribbean Coffee Lovers</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html">La Carte</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="reservation.html" class="btn-nav active">Réserver une salle</a></li>
+      </ul>
+      <a href="boutique.html" class="nav-cart-btn" aria-label="Boutique" title="Boutique">
+        <i data-lucide="shopping-bag"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('terrasse-verriere.webp')"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <span>Réserver la salle</span>
+      </div>
+      <h1>Réserver la salle</h1>
+      <p>Salle de réunion privatisable</p>
+    </div>
+  </div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <section class="resa-section">
+    <div class="container">
+      <div class="resa-grid">
+
+        <!-- INFO GAUCHE -->
+        <div>
+          <div class="tarif-highlight">
+            <div class="tarif-highlight-icon"><i data-lucide="map-pin"></i></div>
+            <p>Notre salle de réunion se situe au coeur de <strong>L'Atelier Les Bonnifieurs</strong>. Un espace calme, sans musique, idéal pour vos réunions, sessions de travail ou ateliers privés.</p>
+          </div>
+
+          <h2>Tarifs</h2>
+          <ul class="tarif-list">
+            <li>
+              <div>
+                <span class="tarif-label">1 heure</span>
+                <span class="tarif-sub">Session courte, idéale pour un point d'équipe</span>
+              </div>
+              <span class="tarif-price">30 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="tarif-label">Demi-journée</span>
+                <span class="tarif-sub">Environ 4 heures — matin ou après-midi</span>
+              </div>
+              <span class="tarif-price">75 €</span>
+            </li>
+            <li>
+              <div>
+                <span class="tarif-label">Journée complète</span>
+                <span class="tarif-sub">Toute une journée de travail ou de formation</span>
+              </div>
+              <span class="tarif-price">150 €</span>
+            </li>
+          </ul>
+
+          <div style="margin-bottom:1.5rem">
+            <p style="font-weight:700; color:var(--noir); margin-bottom:.8rem; font-size:.9rem; text-transform:uppercase; letter-spacing:.06em">Caractéristiques</p>
+            <ul class="features-list">
+              <li class="feature-tag">1 à 12 personnes</li>
+              <li class="feature-tag">Calme garanti</li>
+              <li class="feature-tag">Sans musique</li>
+              <li class="feature-tag">Prises électriques</li>
+              <li class="feature-tag">Climatisation</li>
+              <li class="feature-tag">Wi-Fi inclus</li>
+              <li class="feature-tag">Café offert</li>
+            </ul>
+          </div>
+
+          <p style="font-size:.88rem; color:var(--text-light); line-height:1.75">Un café de bienvenue est inclus dans votre réservation. Des commandes supplémentaires peuvent être passées directement au bar de l'Atelier.</p>
+
+          <!-- GALERIE -->
+          <div class="resa-gallery">
+            <img src="terrasse-verriere.webp" alt="La salle de l'Atelier">
+            <img src="salle-interieure.webp" alt="Intérieur de l'Atelier">
+            <img src="salle-art.webp" alt="Ambiance de l'Atelier">
+          </div>
+        </div>
+
+        <!-- FORMULAIRE DROITE -->
+        <div class="resa-form">
+          <h3>Demande de réservation</h3>
+          <form id="resa-form" onsubmit="submitForm(event)">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" placeholder="Votre prénom" required>
+              </div>
+              <div class="form-group">
+                <label>Nom</label>
+                <input type="text" placeholder="Votre nom" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="votre@email.com" required>
+            </div>
+
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input type="tel" placeholder="0690 XX XX XX">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date souhaitée</label>
+                <input type="date" required>
+              </div>
+              <div class="form-group">
+                <label>Durée</label>
+                <select required>
+                  <option value="">Choisir...</option>
+                  <option value="1h">1 heure — 30 €</option>
+                  <option value="demi">Demi-journée — 75 €</option>
+                  <option value="journee">Journée complète — 150 €</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Heure de début</label>
+                <input type="time" required>
+              </div>
+              <div class="form-group">
+                <label>Nombre de personnes</label>
+                <select required>
+                  <option value="">...</option>
+                  <option>1 personne</option>
+                  <option>2 personnes</option>
+                  <option>3 personnes</option>
+                  <option>4 personnes</option>
+                  <option>5 personnes</option>
+                  <option>6 personnes</option>
+                  <option>7 personnes</option>
+                  <option>8 personnes</option>
+                  <option>9 personnes</option>
+                  <option>10 personnes</option>
+                  <option>11 personnes</option>
+                  <option>12 personnes</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Objet de la réunion (facultatif)</label>
+              <textarea placeholder="Réunion d'équipe, formation, atelier privé, session de travail..."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Envoyer ma demande</button>
+            <p class="form-note">Nous vous confirmons la disponibilité sous 24h. Aucun prélèvement avant confirmation.</p>
+          </form>
+          <div class="form-success" id="form-success">
+            Votre demande a bien été envoyée. Nous vous recontactons sous 24h pour confirmer votre réservation.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIANCE -->
+  <section style="background:var(--creme); padding: 4rem 2rem;">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:2.5rem">
+        <span class="section-tag">Pourquoi nous choisir</span>
+        <h2 class="section-title">Un espace pensé pour vous</h2>
+      </div>
+      <div class="confiance-carousel-wrap">
+        <button class="carousel-btn" id="conf-prev" aria-label="Précédent">
+          <i data-lucide="chevron-left"></i>
+        </button>
+        <div class="confiance-carousel" id="confiance-carousel">
+          <div class="confiance-card">
+            <div class="confiance-icon"><i data-lucide="volume-x"></i></div>
+            <div class="confiance-title">Silence garanti</div>
+            <p class="confiance-text">Aucune musique dans la salle. Un environnement propice à la concentration et aux échanges.</p>
+          </div>
+          <div class="confiance-card">
+            <div class="confiance-icon"><i data-lucide="zap"></i></div>
+            <div class="confiance-title">Prises électriques</div>
+            <p class="confiance-text">Des prises disponibles à chaque poste. Pas de souci d'autonomie pour vos ordinateurs.</p>
+          </div>
+          <div class="confiance-card">
+            <div class="confiance-icon"><i data-lucide="coffee"></i></div>
+            <div class="confiance-title">Café de bienvenue</div>
+            <p class="confiance-text">Un café de spécialité offert pour commencer votre session dans les meilleures conditions.</p>
+          </div>
+          <div class="confiance-card">
+            <div class="confiance-icon"><i data-lucide="wifi"></i></div>
+            <div class="confiance-title">Wi-Fi haut débit</div>
+            <p class="confiance-text">Connexion internet incluse pour toute la durée de votre réservation.</p>
+          </div>
+          <div class="confiance-card">
+            <div class="confiance-icon"><i data-lucide="home"></i></div>
+            <div class="confiance-title">Cadre inspirant</div>
+            <p class="confiance-text">Dans l'enceinte d'un atelier artisanal unique, avec l'ambiance chaleureuse des Bonnifieurs.</p>
+          </div>
+          <div class="confiance-card">
+            <div class="confiance-icon"><i data-lucide="calendar"></i></div>
+            <div class="confiance-title">Flexibilité</div>
+            <p class="confiance-text">De 1 à 12 personnes, à l'heure, à la demi-journée ou à la journée selon vos besoins.</p>
+          </div>
+        </div>
+        <button class="carousel-btn" id="conf-next" aria-label="Suivant">
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARALLAX -->
+  <div class="divider-img" style="background-image: url('bar-comptoir.webp')">
+    <div class="divider-overlay">
+      <blockquote>Travaillez dans un cadre qui vous inspire, au rythme du café caribéen.</blockquote>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.webp" alt="Les Bonnifieurs">
+        <div class="brand-name">Les Bonnifieurs</div>
+        <div class="brand-sub">Caribbean Coffee Lovers</div>
+        <p class="brand-desc">Coffee-shop et atelier de torréfaction artisanal en Guadeloupe, dédié au café de spécialité.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/bonnifieurs/?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/les.bonnifieurs/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="histoire.html">Notre Histoire</a></li>
+          <li><a href="carte.html">La Carte</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="reservation.html">Réserver la salle</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours-col">
+        <h4>Horaires</h4>
+        <p>Lun - Ven : 6h00 - 18h00</p>
+        <p>Samedi : 9h00 - 14h00</p>
+        <p>Dimanche : Fermé</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous trouver</h4>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="map-pin"></i></span>
+          <span>Immeuble Gesmar<br>Bd de la Pointe Jarry<br>Baie-Mahault 97122, Guadeloupe</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="phone"></i></span>
+          <a href="tel:+590590986617">0590 98 66 17</a>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="mail"></i></span>
+          <a href="mailto:les.bonnifieurs@gmail.com">les.bonnifieurs@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Les+Bonnifieurs+Baie-Mahault+Guadeloupe&output=embed"
+        width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Les Bonnifieurs sur Google Maps">
+      </iframe>
+      <a href="https://maps.app.goo.gl/myr5it4pmAzZHaKd7" target="_blank" rel="noopener noreferrer" class="footer-map-btn">Ouvrir dans Google Maps &rarr;</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Les Bonnifieurs. Tous droits réservés.</span>
+      <span>Caribbean Coffee Lovers</span>
+    </div>
+  </footer>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById('resa-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    lucide.createIcons();
+    const carousel = document.getElementById('confiance-carousel');
+    const scrollStep = () => carousel.querySelector('.confiance-card').offsetWidth + 19;
+    document.getElementById('conf-prev').addEventListener('click', () => carousel.scrollBy({ left: -scrollStep(), behavior: 'smooth' }));
+    document.getElementById('conf-next').addEventListener('click', () => carousel.scrollBy({ left: scrollStep(), behavior: 'smooth' }));
+  </script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique — Les Bonnifieurs</title>
+  <meta name="description" content="Commandez les cafés de spécialité et accessoires des Bonnifieurs. Grains torréfiés artisanalement en Guadeloupe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .boutique-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    .boutique-intro img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      aspect-ratio: 4/3;
+      display: block;
+      box-shadow: 0 16px 40px rgba(0,0,0,.1);
+    }
+    .commande-box {
+      background: var(--creme);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-top: 3rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .commande-box-text { flex: 1; min-width: 220px; }
+    .commande-box-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: .4rem;
+    }
+    .commande-box-text p { font-size: .88rem; color: var(--text-light); line-height: 1.6; }
+
+    .accessoires-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .accessoire-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,.06);
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+      transition: transform .25s;
+    }
+    .accessoire-card:hover { transform: translateY(-4px); }
+    .accessoire-icon { flex-shrink: 0; display: flex; align-items: center; }
+    .accessoire-info {}
+    .accessoire-name { font-weight: 700; color: var(--noir); font-size: .95rem; margin-bottom: .25rem; }
+    .accessoire-desc { font-size: .83rem; color: var(--text-light); line-height: 1.5; margin-bottom: .6rem; }
+    .accessoire-price { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--bordeaux); }
+
+    .section-divider {
+      border: none;
+      border-top: 2px solid var(--border);
+      margin: 3.5rem 0;
+    }
+
+    @media (max-width: 700px) {
+      .boutique-intro { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── PANIER PANEL ── */
+    .cart-overlay { position: fixed; inset: 0; background: rgba(20,20,20,.65); z-index: 900; opacity: 0; pointer-events: none; transition: opacity .3s; }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+    .cart-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 380px; max-width: 95vw; background: var(--noir); z-index: 1000; display: flex; flex-direction: column; transform: translateX(100%); transition: transform .35s cubic-bezier(.4,0,.2,1); box-shadow: -4px 0 40px rgba(0,0,0,.4); }
+    .cart-panel.open { transform: translateX(0); }
+    .cart-panel-header { display: flex; align-items: center; justify-content: space-between; padding: 1.3rem 1.6rem; border-bottom: 1px solid rgba(255,255,255,.08); flex-shrink: 0; }
+    .cart-panel-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; }
+    .cart-close { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.1rem; color: rgba(255,255,255,.45); cursor: pointer; background: none; border: none; transition: background .2s; }
+    .cart-close:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .cart-items-list { flex: 1; overflow-y: auto; padding: 1.2rem 1.6rem; }
+    .cart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: .9rem; color: rgba(255,255,255,.3); text-align: center; }
+    .cart-empty svg { width: 44px; height: 44px; }
+    .cart-empty p { font-size: .82rem; font-style: italic; }
+    .cart-item { display: flex; align-items: center; gap: .75rem; padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img { width: 48px; height: 48px; flex-shrink: 0; border-radius: 8px; overflow: hidden; }
+    .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-name { font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.88); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cart-item-price { font-family: 'Playfair Display', serif; font-size: .95rem; color: var(--caramel); white-space: nowrap; }
+    .cart-qty { display: flex; align-items: center; gap: .35rem; flex-shrink: 0; }
+    .cart-qty-btn { width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: .85rem; color: rgba(255,255,255,.7); transition: all .2s; cursor: pointer; background: none; }
+    .cart-qty-btn:hover { border-color: var(--caramel); color: var(--caramel); }
+    .cart-qty-num { font-size: .82rem; font-weight: 600; min-width: 18px; text-align: center; color: #fff; }
+    .cart-item-remove { font-size: .7rem; color: rgba(255,255,255,.2); cursor: pointer; padding: 0 .2rem; transition: color .2s; background: none; border: none; }
+    .cart-item-remove:hover { color: #e05555; }
+    .cart-panel-footer { border-top: 1px solid rgba(255,255,255,.08); padding: 1.2rem 1.6rem 1.5rem; flex-shrink: 0; }
+    .cart-total-line { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem; }
+    .cart-total-label { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .cart-total-amount { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--caramel); }
+    .btn-valider { width: 100%; padding: .9rem; background: var(--bordeaux); color: #fff; font-size: .68rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; border: none; border-radius: 100px; cursor: pointer; transition: background .2s; font-family: inherit; margin-bottom: .6rem; }
+    .btn-valider:hover { background: var(--bordeaux-mid); }
+    .cart-clear { font-size: .62rem; color: rgba(255,255,255,.25); text-decoration: underline; display: block; text-align: center; cursor: pointer; transition: color .2s; background: none; border: none; font-family: inherit; }
+    .cart-clear:hover { color: #e05555; }
+    .panier-note { font-size: .66rem; color: rgba(255,255,255,.22); margin-top: .6rem; font-style: italic; text-align: center; line-height: 1.5; }
+    .panier-form { margin-top: 1rem; display: none; border-top: 1px solid rgba(255,255,255,.08); padding-top: 1rem; }
+    .panier-form.visible { display: block; }
+    .panier-form-label { font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: .3rem; display: block; }
+    .panier-form input, .panier-form textarea { width: 100%; padding: .7rem .85rem; margin-bottom: .7rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 8px; color: #fff; font-family: inherit; font-size: .82rem; outline: none; transition: border-color .2s; }
+    .panier-form input::placeholder, .panier-form textarea::placeholder { color: rgba(255,255,255,.28); }
+    .panier-form input:focus, .panier-form textarea:focus { border-color: var(--bordeaux); }
+    .panier-form textarea { resize: none; height: 65px; }
+    .btn-send { width: 100%; padding: .9rem; background: rgba(255,255,255,.08); color: #fff; font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; border: 1px solid rgba(255,255,255,.2); border-radius: 100px; cursor: pointer; transition: all .2s; font-family: inherit; }
+    .btn-send:hover { background: rgba(255,255,255,.15); }
+    .panier-success { display: none; text-align: center; padding: 3rem 1.6rem; flex-direction: column; align-items: center; gap: .75rem; }
+    .panier-success.visible { display: flex; }
+    .panier-success strong { display: block; color: var(--caramel); font-size: 1.2rem; font-family: 'Playfair Display', serif; }
+    .panier-success p { color: rgba(255,255,255,.6); font-size: .82rem; line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="logo.webp" alt="Les Bonnifieurs logo">
+        <div>
+          <span class="nav-logo-text">Les Bonnifieurs</span>
+          <span class="nav-logo-sub">Caribbean Coffee Lovers</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html">La Carte</a></li>
+        <li><a href="boutique.html" class="active">Boutique</a></li>
+        <li><a href="evenements.html">Événements</a></li>
+        <li><a href="reservation.html" class="btn-nav">Réserver une salle</a></li>
+      </ul>
+      <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Mon panier" title="Mon panier">
+        <i data-lucide="shopping-bag"></i>
+        <span class="nav-cart-badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('grains-cafe.webp')"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <span>Boutique</span>
+      </div>
+      <h1>Boutique</h1>
+      <p>Cafés torréfiés &amp; accessoires</p>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section>
+    <div class="container">
+      <div class="boutique-intro">
+        <div>
+          <span class="section-tag">Torréfaction Artisanale</span>
+          <h2 class="section-title">Le meilleur du bassin caribéen chez vous</h2>
+          <p class="section-sub">Nos cafés sont sélectionnés sur des micro-lots d'exception, torréfiés dans notre atelier en Guadeloupe selon un profil pensé pour sublimer chaque origine.</p>
+          <p class="section-sub" style="margin-top:.8rem">Disponibles en grains ou moulus, en format 250 g ou selon disponibilité. Commandez en ligne ou directement à l'Atelier.</p>
+        </div>
+        <img src="sacs-cafe-boutique.webp" alt="Cafés des Bonnifieurs">
+      </div>
+
+      <!-- FILTRES -->
+      <div class="boutique-filters">
+        <button class="filter-btn active" onclick="filterProducts('tous', this)">Tous</button>
+        <button class="filter-btn" onclick="filterProducts('cafe', this)">Cafés</button>
+        <button class="filter-btn" onclick="filterProducts('filtre', this)">Filtre / Méthodes</button>
+        <button class="filter-btn" onclick="filterProducts('special', this)">Spécialités</button>
+      </div>
+
+      <!-- PRODUITS -->
+      <div class="product-grid" id="product-grid">
+
+        <div class="product-card" data-cat="cafe">
+          <div class="product-img-wrap">
+            <img src="origines-caribbeennes.webp" alt="Mexique Chiapas" class="product-img">
+            <span class="product-badge">Micro-lot Bio</span>
+          </div>
+          <div class="product-body">
+            <div class="product-origin">Mexique, Chiapas</div>
+            <div class="product-name">Chiapas Organic</div>
+            <p class="product-notes">Notes de fruits rouges confits adoucies par des notes florales et vanillées. Idéal en espresso ou en méthode douce.</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">14,90 €</div>
+                <span class="product-size">250 g — grains ou moulu</span>
+              </div>
+              <button class="btn-add" onclick="addToCart('chiapas','Chiapas Organic',14.90,'origines-caribbeennes.webp')"><svg viewBox="0 0 14 14" fill="none" style="width:12px;height:12px;flex-shrink:0"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="cafe filtre">
+          <div class="product-img-wrap">
+            <img src="origines-caribbeennes.webp" alt="Costa Rica Valle Occidental" class="product-img">
+          </div>
+          <div class="product-body">
+            <div class="product-origin">Costa Rica, Valle Occidental</div>
+            <div class="product-name">Valle Occidental</div>
+            <p class="product-notes">Premiers arômes de fruits jaunes et caramel, puis des saveurs de raisins blancs et clémentines. Exceptionnel en V60.</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">14,90 €</div>
+                <span class="product-size">250 g — grains ou moulu</span>
+              </div>
+              <button class="btn-add" onclick="addToCart('valle','Valle Occidental',14.90,'origines-caribbeennes.webp')"><svg viewBox="0 0 14 14" fill="none" style="width:12px;height:12px;flex-shrink:0"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="cafe">
+          <div class="product-img-wrap">
+            <img src="origines-caribbeennes.webp" alt="Guatemala Antigua" class="product-img">
+          </div>
+          <div class="product-body">
+            <div class="product-origin">Guatemala, Antigua</div>
+            <div class="product-name">Antigua Classic</div>
+            <p class="product-notes">Notes rondes de caramel avec une touche de fruits secs. Un café équilibré, parfait pour l'espresso quotidien.</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">12,90 €</div>
+                <span class="product-size">250 g — grains ou moulu</span>
+              </div>
+              <button class="btn-add" onclick="addToCart('antigua','Antigua Classic',12.90,'origines-caribbeennes.webp')"><svg viewBox="0 0 14 14" fill="none" style="width:12px;height:12px;flex-shrink:0"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="cafe filtre">
+          <div class="product-img-wrap">
+            <img src="origines-caribbeennes.webp" alt="Panama" class="product-img">
+            <span class="product-badge">Nouveauté</span>
+          </div>
+          <div class="product-body">
+            <div class="product-origin">Panama</div>
+            <div class="product-name">Panama Volcanic</div>
+            <p class="product-notes">Profil floral et fruité, grande complexité. Les sols volcaniques du Panama donnent à ce café une personnalité rare.</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">15,90 €</div>
+                <span class="product-size">250 g — grains ou moulu</span>
+              </div>
+              <button class="btn-add" onclick="addToCart('panama','Panama Volcanic',15.90,'origines-caribbeennes.webp')"><svg viewBox="0 0 14 14" fill="none" style="width:12px;height:12px;flex-shrink:0"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="cafe filtre">
+          <div class="product-img-wrap">
+            <img src="origines-caribbeennes.webp" alt="Nicaragua" class="product-img">
+          </div>
+          <div class="product-body">
+            <div class="product-origin">Nicaragua</div>
+            <div class="product-name">Nicaragua Altura</div>
+            <p class="product-notes">Douceur naturelle, notes de chocolat au lait et d'agrumes. Un café accessible et délicieux, apprécié de tous.</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">12,90 €</div>
+                <span class="product-size">250 g — grains ou moulu</span>
+              </div>
+              <button class="btn-add" onclick="addToCart('nicaragua','Nicaragua Altura',12.90,'origines-caribbeennes.webp')"><svg viewBox="0 0 14 14" fill="none" style="width:12px;height:12px;flex-shrink:0"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card" data-cat="special">
+          <div class="product-img-wrap">
+            <img src="origines-caribbeennes.webp" alt="Cascara" class="product-img">
+            <span class="product-badge">Original</span>
+          </div>
+          <div class="product-body">
+            <div class="product-origin">Séchage naturel</div>
+            <div class="product-name">Cascara</div>
+            <p class="product-notes">Infusion des cerises de café séchées. Fruité, léger, proche du thé. Une découverte unique à préparer chez vous.</p>
+            <div class="product-footer">
+              <div>
+                <div class="product-price">11,90 €</div>
+                <span class="product-size">100 g</span>
+              </div>
+              <button class="btn-add" onclick="addToCart('cascara','Cascara',11.90,'origines-caribbeennes.webp')"><svg viewBox="0 0 14 14" fill="none" style="width:12px;height:12px;flex-shrink:0"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <hr class="section-divider">
+
+      <!-- ACCESSOIRES -->
+      <div style="margin-bottom:2rem">
+        <span class="section-tag">Équipement</span>
+        <h2 class="section-title">Accessoires &amp; matériel</h2>
+        <p class="section-sub">Tout le nécessaire pour préparer vos cafés de spécialité avec les bonnes méthodes à la maison.</p>
+      </div>
+
+      <div class="accessoires-grid">
+        <div class="accessoire-card">
+          <div class="accessoire-icon"><i data-lucide="droplets"></i></div>
+          <div class="accessoire-info">
+            <div class="accessoire-name">Dripper V60</div>
+            <p class="accessoire-desc">Hario V60 en verre ou céramique. La référence pour le café filtre.</p>
+            <div class="accessoire-price">À partir de 18 €</div>
+          </div>
+        </div>
+        <div class="accessoire-card">
+          <div class="accessoire-icon"><i data-lucide="beaker"></i></div>
+          <div class="accessoire-info">
+            <div class="accessoire-name">Chemex</div>
+            <p class="accessoire-desc">Carafe en verre borosilicaté, filtre en papier épais. Design iconique.</p>
+            <div class="accessoire-price">À partir de 45 €</div>
+          </div>
+        </div>
+        <div class="accessoire-card">
+          <div class="accessoire-icon"><i data-lucide="thermometer"></i></div>
+          <div class="accessoire-info">
+            <div class="accessoire-name">Bouilloire col de cygne</div>
+            <p class="accessoire-desc">Pour verser avec précision sur votre V60 ou Chemex. Indispensable.</p>
+            <div class="accessoire-price">À partir de 35 €</div>
+          </div>
+        </div>
+        <div class="accessoire-card">
+          <div class="accessoire-icon"><i data-lucide="scale"></i></div>
+          <div class="accessoire-info">
+            <div class="accessoire-name">Balance de précision</div>
+            <p class="accessoire-desc">Avec minuteur intégré. Reproductibilité garantie dans chaque extraction.</p>
+            <div class="accessoire-price">À partir de 25 €</div>
+          </div>
+        </div>
+        <div class="accessoire-card">
+          <div class="accessoire-icon"><i data-lucide="cog"></i></div>
+          <div class="accessoire-info">
+            <div class="accessoire-name">Moulin manuel</div>
+            <p class="accessoire-desc">Mouture à la demande, réglable finement. Essentiel pour un café frais.</p>
+            <div class="accessoire-price">À partir de 55 €</div>
+          </div>
+        </div>
+        <div class="accessoire-card">
+          <div class="accessoire-icon"><i data-lucide="gift"></i></div>
+          <div class="accessoire-info">
+            <div class="accessoire-name">Box Découverte</div>
+            <p class="accessoire-desc">3 origines différentes + guide de préparation. Le cadeau parfait pour les amateurs.</p>
+            <div class="accessoire-price">À partir de 35 €</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.webp" alt="Les Bonnifieurs">
+        <div class="brand-name">Les Bonnifieurs</div>
+        <div class="brand-sub">Caribbean Coffee Lovers</div>
+        <p class="brand-desc">Coffee-shop et atelier de torréfaction artisanal en Guadeloupe, dédié au café de spécialité.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/bonnifieurs/?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/les.bonnifieurs/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="histoire.html">Notre Histoire</a></li>
+          <li><a href="carte.html">La Carte</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="reservation.html">Réserver la salle</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours-col">
+        <h4>Horaires</h4>
+        <p>Lun - Ven : 6h00 - 18h00</p>
+        <p>Samedi : 9h00 - 14h00</p>
+        <p>Dimanche : Fermé</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous trouver</h4>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="map-pin"></i></span>
+          <span>Immeuble Gesmar<br>Bd de la Pointe Jarry<br>Baie-Mahault 97122, Guadeloupe</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="phone"></i></span>
+          <a href="tel:+590590986617">0590 98 66 17</a>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="mail"></i></span>
+          <a href="mailto:les.bonnifieurs@gmail.com">les.bonnifieurs@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Les+Bonnifieurs+Baie-Mahault+Guadeloupe&output=embed"
+        width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Les Bonnifieurs sur Google Maps">
+      </iframe>
+      <a href="https://maps.app.goo.gl/myr5it4pmAzZHaKd7" target="_blank" rel="noopener noreferrer" class="footer-map-btn">Ouvrir dans Google Maps &rarr;</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Les Bonnifieurs. Tous droits réservés.</span>
+      <span>Caribbean Coffee Lovers</span>
+    </div>
+  </footer>
+
+  <script>
+
+    function filterProducts(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (cat === 'tous' || card.dataset.cat.includes(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <!-- PANIER PANEL -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <div class="cart-panel" id="cart-panel">
+    <div class="cart-panel-header">
+      <span class="cart-panel-title">Mon panier</span>
+      <button class="cart-close" onclick="closeCart()">&#10005;</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list">
+      <div class="cart-empty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <p>Votre panier est vide</p>
+      </div>
+    </div>
+    <div class="panier-success" id="panier-success">
+      <strong>Commande reçue !</strong>
+      <p>Nous vous contactons très bientôt pour confirmer votre commande.</p>
+    </div>
+    <div class="cart-panel-footer" id="cart-footer" style="display:none">
+      <div class="cart-total-line">
+        <span class="cart-total-label">Total estimé</span>
+        <span class="cart-total-amount" id="cart-total">0 €</span>
+      </div>
+      <button class="btn-valider" onclick="showPanierForm()">Finaliser ma commande</button>
+      <button class="cart-clear" onclick="clearCart()">Vider le panier</button>
+      <p class="panier-note">Retrait à l'Atelier · Confirmation par téléphone</p>
+      <div class="panier-form" id="panier-form">
+        <label class="panier-form-label">Prénom &amp; Nom</label>
+        <input type="text" id="pf-nom" placeholder="Votre nom">
+        <label class="panier-form-label">Téléphone</label>
+        <input type="tel" id="pf-tel" placeholder="0690 XX XX XX">
+        <label class="panier-form-label">Note (facultatif)</label>
+        <textarea id="pf-note" placeholder="Grains ou moulu, format souhaité&#8230;"></textarea>
+        <button class="btn-send" onclick="sendOrder()">Envoyer ma commande</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let cart = {};
+    function saveCart() { localStorage.setItem('bonnifieurs_cart', JSON.stringify(cart)); }
+    function loadCart() { try { cart = JSON.parse(localStorage.getItem('bonnifieurs_cart') || '{}'); } catch(e) { cart = {}; } }
+    function openCart() { document.getElementById('cart-panel').classList.add('open'); document.getElementById('cart-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeCart() { document.getElementById('cart-panel').classList.remove('open'); document.getElementById('cart-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+    function toggleCart() { document.getElementById('cart-panel').classList.contains('open') ? closeCart() : openCart(); }
+    function addToCart(id, name, price, img) {
+      if (cart[id]) { cart[id].qty++; } else { cart[id] = { name, price, img, qty: 1 }; }
+      saveCart(); renderCart(); openCart();
+    }
+    function updateQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id].qty += delta;
+      if (cart[id].qty <= 0) delete cart[id];
+      saveCart(); renderCart();
+    }
+    function removeFromCart(id) { delete cart[id]; saveCart(); renderCart(); }
+    function clearCart() { cart = {}; saveCart(); document.getElementById('panier-form').classList.remove('visible'); document.getElementById('panier-success').classList.remove('visible'); renderCart(); }
+    function renderCart() {
+      const ids = Object.keys(cart);
+      const count = ids.reduce((s, k) => s + cart[k].qty, 0);
+      const total = ids.reduce((s, k) => s + cart[k].price * cart[k].qty, 0);
+      const fmt = v => v.toFixed(2).replace('.', ',') + ' €';
+      const badge = document.getElementById('cart-badge');
+      if (badge) { badge.textContent = count; badge.style.display = count > 0 ? 'flex' : 'none'; }
+      const list = document.getElementById('cart-items-list');
+      const footer = document.getElementById('cart-footer');
+      if (!list || !footer) return;
+      if (ids.length === 0) {
+        list.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><p>Votre panier est vide</p></div>';
+        footer.style.display = 'none'; return;
+      }
+      let html = '';
+      ids.forEach(k => {
+        const it = cart[k];
+        const imgHtml = it.img ? `<div class="cart-item-img"><img src="${it.img}" alt="${it.name}"></div>` : '';
+        html += `<div class="cart-item">${imgHtml}<div class="cart-item-info"><div class="cart-item-name">${it.name}</div></div><div class="cart-qty"><button class="cart-qty-btn" onclick="updateQty('${k}',-1)">&#8722;</button><span class="cart-qty-num">${it.qty}</span><button class="cart-qty-btn" onclick="updateQty('${k}',1)">+</button></div><span class="cart-item-price">${fmt(it.price * it.qty)}</span><button class="cart-item-remove" onclick="removeFromCart('${k}')" title="Supprimer">&#10005;</button></div>`;
+      });
+      list.innerHTML = html;
+      footer.style.display = 'block';
+      document.getElementById('cart-total').textContent = fmt(total);
+    }
+    function showPanierForm() { const pf = document.getElementById('panier-form'); pf.classList.add('visible'); pf.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    function sendOrder() {
+      const nom = document.getElementById('pf-nom').value.trim();
+      const tel = document.getElementById('pf-tel').value.trim();
+      if (!nom || !tel) { alert('Merci de renseigner votre nom et téléphone.'); return; }
+      document.getElementById('cart-items-list').innerHTML = '';
+      document.getElementById('cart-footer').style.display = 'none';
+      document.getElementById('panier-form').classList.remove('visible');
+      document.getElementById('panier-success').classList.add('visible');
+      cart = {}; saveCart(); renderCart();
+    }
+    document.addEventListener('DOMContentLoaded', () => { loadCart(); renderCart(); });
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

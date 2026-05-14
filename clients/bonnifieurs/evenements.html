@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Événements — Les Bonnifieurs</title>
+  <meta name="description" content="Ateliers de dégustation, expos, soirées. Le calendrier des événements de L'Atelier Les Bonnifieurs en Guadeloupe.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .event-img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+      aspect-ratio: 16/7;
+      display: block;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 12px 40px rgba(0,0,0,.1);
+    }
+
+    .event-price {
+      display: inline-block;
+      background: var(--bordeaux-bg);
+      color: var(--bordeaux);
+      border-radius: 100px;
+      padding: .3rem .85rem;
+      font-size: .78rem;
+      font-weight: 700;
+      border: 1px solid rgba(123,29,29,.2);
+      margin-right: .5rem;
+    }
+
+    .event-register {
+      display: inline-block;
+      margin-top: 1rem;
+      background: var(--bordeaux);
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: .6rem 1.4rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .2s;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .event-register:hover { background: var(--bordeaux-mid); }
+
+    .ateliers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .atelier-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,.07);
+      transition: transform .3s;
+    }
+    .atelier-card:hover { transform: translateY(-5px); }
+
+    .atelier-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+    }
+
+    .atelier-card-body { padding: 1.5rem; }
+    .atelier-card-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      margin-bottom: .4rem;
+      display: block;
+    }
+    .atelier-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--noir);
+      margin-bottom: .5rem;
+    }
+    .atelier-card-desc { font-size: .88rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1rem; }
+    .atelier-card-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="logo.webp" alt="Les Bonnifieurs logo">
+        <div>
+          <span class="nav-logo-text">Les Bonnifieurs</span>
+          <span class="nav-logo-sub">Caribbean Coffee Lovers</span>
+        </div>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="histoire.html">Notre Histoire</a></li>
+        <li><a href="carte.html">La Carte</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="evenements.html" class="active">Événements</a></li>
+        <li><a href="reservation.html" class="btn-nav">Réserver une salle</a></li>
+      </ul>
+      <a href="boutique.html" class="nav-cart-btn" aria-label="Boutique" title="Boutique">
+        <i data-lucide="shopping-bag"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('salle-art.webp')"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <span>Événements</span>
+      </div>
+      <h1>Événements</h1>
+      <p>Ateliers, Expositions &amp; Soirées</p>
+    </div>
+  </div>
+
+  <!-- PROCHAINS EVENEMENTS -->
+  <section>
+    <div class="container">
+
+      <div style="margin-bottom:2.5rem">
+        <span class="section-tag">Agenda</span>
+        <h2 class="section-title">Prochains événements</h2>
+        <p class="section-sub">Retrouvez tous nos ateliers, expositions et soirées. Réservation conseillée, places limitées.</p>
+      </div>
+
+      <!-- FILTRES -->
+      <div class="events-filter">
+        <button class="filter-btn active" onclick="filterEvents('tous', this)">Tous</button>
+        <button class="filter-btn" onclick="filterEvents('atelier', this)">Ateliers</button>
+        <button class="filter-btn" onclick="filterEvents('expo', this)">Expositions</button>
+        <button class="filter-btn" onclick="filterEvents('soiree', this)">Soirées</button>
+      </div>
+
+      <div class="event-list" id="event-list">
+
+        <div class="event-card" data-cat="atelier">
+          <div class="event-date">
+            <div class="event-day">07</div>
+            <div class="event-month">Juin</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Atelier</span>
+            <div class="event-title">Initiation au Café de Spécialité</div>
+            <p class="event-desc">Découvrez les fondamentaux du café de spécialité : la notion de terroir, les profils de torréfaction, la dégustation guidée. Notre barista vous guide pas à pas dans l'univers caribéen du café.</p>
+            <div class="event-meta">
+              <span><i data-lucide="clock"></i> 10h00 - 12h00</span>
+              <span><i data-lucide="users"></i> 6 à 10 personnes</span>
+              <span class="event-price">25 € / pers.</span>
+            </div>
+            <a href="#inscription" class="event-register">Je m'inscris</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-cat="atelier">
+          <div class="event-date">
+            <div class="event-day">14</div>
+            <div class="event-month">Juin</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Atelier</span>
+            <div class="event-title">Slow Coffee : Maîtrisez le V60 et le Chemex</div>
+            <p class="event-desc">Atelier pratique sur les méthodes douces. Apprenez à doser, moudre et verser pour extraire le meilleur de vos cafés. Chaque participant repart avec ses propres recettes et une bag de café offerte.</p>
+            <div class="event-meta">
+              <span><i data-lucide="clock"></i> 10h00 - 12h30</span>
+              <span><i data-lucide="users"></i> 4 à 8 personnes</span>
+              <span class="event-price">35 € / pers.</span>
+            </div>
+            <a href="#inscription" class="event-register">Je m'inscris</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-cat="expo">
+          <div class="event-date">
+            <div class="event-day">21</div>
+            <div class="event-month">Juin</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Exposition</span>
+            <div class="event-title">Vernissage — Artiste local à découvrir</div>
+            <p class="event-desc">L'Atelier accueille un nouvel artiste guadeloupéen pour une exposition de peintures et photographies. Entrée libre, œuvres en vente. Un événement convivial autour d'un café de spécialité.</p>
+            <div class="event-meta">
+              <span><i data-lucide="clock"></i> 18h00 - 21h00</span>
+              <span><i data-lucide="ticket"></i> Entrée libre</span>
+            </div>
+            <a href="#inscription" class="event-register">En savoir plus</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-cat="atelier">
+          <div class="event-date">
+            <div class="event-day">28</div>
+            <div class="event-month">Juin</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Atelier</span>
+            <div class="event-title">Torréfaction : de la cerise à la tasse</div>
+            <p class="event-desc">Plongez dans les coulisses de notre atelier de torréfaction. Comprenez les étapes de transformation du grain, les profils de chauffe et comment la torréfaction influence le goût dans votre tasse.</p>
+            <div class="event-meta">
+              <span><i data-lucide="clock"></i> 09h00 - 11h30</span>
+              <span><i data-lucide="users"></i> 4 à 6 personnes</span>
+              <span class="event-price">45 € / pers.</span>
+            </div>
+            <a href="#inscription" class="event-register">Je m'inscris</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-cat="soiree">
+          <div class="event-date">
+            <div class="event-day">05</div>
+            <div class="event-month">Juil.</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Soirée</span>
+            <div class="event-title">Soirée Caribbean Coffee &amp; Culture</div>
+            <p class="event-desc">Une soirée dédiée au café caribéen, à la musique et aux rencontres. Dégustations de cafés rares, cocktails à base de Cascara, musique live. L'Atelier se transforme pour une nuit festive et culturelle.</p>
+            <div class="event-meta">
+              <span><i data-lucide="clock"></i> 19h00 - 22h00</span>
+              <span><i data-lucide="music"></i> Musique live</span>
+              <span class="event-price">15 € / pers.</span>
+            </div>
+            <a href="#inscription" class="event-register">Je m'inscris</a>
+          </div>
+        </div>
+
+        <div class="event-card" data-cat="atelier">
+          <div class="event-date">
+            <div class="event-day">12</div>
+            <div class="event-month">Juil.</div>
+          </div>
+          <div class="event-body">
+            <span class="event-tag">Atelier</span>
+            <div class="event-title">Découverte du Matcha Cérémonial</div>
+            <p class="event-desc">Initiez-vous au matcha japonais de qualité ceremoniale. Histoire, préparation traditionnelle au chasen, et dégustation comparée avec notre matcha latte signature. Un voyage des sens.</p>
+            <div class="event-meta">
+              <span><i data-lucide="clock"></i> 10h00 - 11h30</span>
+              <span><i data-lucide="users"></i> 4 à 8 personnes</span>
+              <span class="event-price">25 € / pers.</span>
+            </div>
+            <a href="#inscription" class="event-register">Je m'inscris</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ATELIERS RÉGULIERS -->
+  <section style="background: var(--creme);">
+    <div class="container">
+      <div style="text-align:center; margin-bottom:3rem">
+        <span class="section-tag">Toute l'année</span>
+        <h2 class="section-title">Nos ateliers permanents</h2>
+        <p class="section-sub" style="margin:0 auto">Ces ateliers sont proposés régulièrement. Contactez-nous pour planifier votre session.</p>
+      </div>
+      <div class="ateliers-grid">
+        <div class="atelier-card">
+          <img src="affiche-methodes-douces.webp" alt="Slow Coffee" class="atelier-card-img">
+          <div class="atelier-card-body">
+            <span class="atelier-card-tag">Atelier café</span>
+            <div class="atelier-card-title">Slow Coffee — Méthodes douces</div>
+            <p class="atelier-card-desc">V60, Chemex, Siphon, French Press. Apprenez à préparer un café d'exception à la maison avec les bonnes techniques.</p>
+            <div class="atelier-card-footer">
+              <span style="font-family:'Playfair Display',serif; color:var(--bordeaux); font-size:1.1rem; font-weight:700">À partir de 35 €</span>
+              <a href="#inscription" class="event-register">Réserver</a>
+            </div>
+          </div>
+        </div>
+        <div class="atelier-card">
+          <img src="v60-bar.webp" alt="Initiation espresso" class="atelier-card-img">
+          <div class="atelier-card-body">
+            <span class="atelier-card-tag">Atelier café</span>
+            <div class="atelier-card-title">Initiation Espresso</div>
+            <p class="atelier-card-desc">Maîtrisez l'extraction espresso : dosage, mouture, pression. Comprenez pourquoi chaque paramètre compte dans votre tasse.</p>
+            <div class="atelier-card-footer">
+              <span style="font-family:'Playfair Display',serif; color:var(--bordeaux); font-size:1.1rem; font-weight:700">À partir de 30 €</span>
+              <a href="#inscription" class="event-register">Réserver</a>
+            </div>
+          </div>
+        </div>
+        <div class="atelier-card">
+          <img src="atelier-matcha.webp" alt="Découverte matcha" class="atelier-card-img">
+          <div class="atelier-card-body">
+            <span class="atelier-card-tag">Atelier boissons</span>
+            <div class="atelier-card-title">Monde du Matcha</div>
+            <p class="atelier-card-desc">Immersion dans l'univers du thé vert japonais. Des origines au Latte en passant par la cérémonie traditionnelle.</p>
+            <div class="atelier-card-footer">
+              <span style="font-family:'Playfair Display',serif; color:var(--bordeaux); font-size:1.1rem; font-weight:700">À partir de 25 €</span>
+              <a href="#inscription" class="event-register">Réserver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSCRIPTION -->
+  <section id="inscription">
+    <div class="container" style="max-width:700px; text-align:center">
+      <span class="section-tag">Contact</span>
+      <h2 class="section-title">Réserver votre place</h2>
+      <p class="section-sub" style="margin:0 auto 2.5rem">Pour vous inscrire à un atelier ou nous soumettre une demande d'événement sur-mesure, contactez-nous directement.</p>
+      <div style="background:#fff; border-radius:24px; padding:2.5rem; box-shadow:0 8px 40px rgba(0,0,0,.08)">
+        <form onsubmit="return false">
+          <div class="form-group">
+            <label>Nom complet</label>
+            <input type="text" placeholder="Votre nom">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="votre@email.com">
+          </div>
+          <div class="form-group">
+            <label>Atelier ou événement souhaité</label>
+            <select>
+              <option value="">Sélectionner...</option>
+              <option>Initiation au Café de Spécialité</option>
+              <option>Slow Coffee — V60 et Chemex</option>
+              <option>Torréfaction : de la cerise à la tasse</option>
+              <option>Soirée Caribbean Coffee</option>
+              <option>Découverte du Matcha</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (facultatif)</label>
+            <textarea placeholder="Nombre de participants, date souhaitée, questions..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Envoyer ma demande</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="logo.webp" alt="Les Bonnifieurs">
+        <div class="brand-name">Les Bonnifieurs</div>
+        <div class="brand-sub">Caribbean Coffee Lovers</div>
+        <p class="brand-desc">Coffee-shop et atelier de torréfaction artisanal en Guadeloupe, dédié au café de spécialité.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/bonnifieurs/?locale=fr_FR" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/les.bonnifieurs/" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="histoire.html">Notre Histoire</a></li>
+          <li><a href="carte.html">La Carte</a></li>
+          <li><a href="boutique.html">Boutique</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="reservation.html">Réserver la salle</a></li>
+        </ul>
+      </nav>
+      <div class="footer-hours-col">
+        <h4>Horaires</h4>
+        <p>Lun - Ven : 6h00 - 18h00</p>
+        <p>Samedi : 9h00 - 14h00</p>
+        <p>Dimanche : Fermé</p>
+      </div>
+      <div class="footer-contact">
+        <h4>Nous trouver</h4>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="map-pin"></i></span>
+          <span>Immeuble Gesmar<br>Bd de la Pointe Jarry<br>Baie-Mahault 97122, Guadeloupe</span>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="phone"></i></span>
+          <a href="tel:+590590986617">0590 98 66 17</a>
+        </div>
+        <div class="footer-contact-row">
+          <span class="fc-dot"><i data-lucide="mail"></i></span>
+          <a href="mailto:les.bonnifieurs@gmail.com">les.bonnifieurs@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Les+Bonnifieurs+Baie-Mahault+Guadeloupe&output=embed"
+        width="100%" height="230" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Les Bonnifieurs sur Google Maps">
+      </iframe>
+      <a href="https://maps.app.goo.gl/myr5it4pmAzZHaKd7" target="_blank" rel="noopener noreferrer" class="footer-map-btn">Ouvrir dans Google Maps &rarr;</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2025 Les Bonnifieurs. Tous droits réservés.</span>
+      <span>Caribbean Coffee Lovers</span>
+    </div>
+  </footer>
+
+  <script>
+
+    function filterEvents(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.event-card').forEach(card => {
+        card.style.display = (cat === 'tous' || card.dataset.cat === cat) ? 'grid' : 'none';
+      });
+    }
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
