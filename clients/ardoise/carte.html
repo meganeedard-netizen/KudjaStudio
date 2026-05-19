@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Carte — L'Ardoise | Burger &amp; Fish Bar</title>
+  <meta name="description" content="Découvrez la carte de L'Ardoise : burgers faits maison, plats signature, cocktails, desserts et menu enfant.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Great+Vibes&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-main">L'ARDOISE</span>
+        <span class="nav-logo-sub">Burger &amp; Fish Bar</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html"     class="nav-link">Accueil</a></li>
+        <li><a href="carte.html"     class="nav-link active">La Carte</a></li>
+        <li><a href="commander.html" class="nav-link">Commander</a></li>
+        <li><a href="#" onclick="openReservSidebar(); return false;"  class="nav-link cta-link">Réserver</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero" style="background-image: url('burger.webp');">
+    <div class="page-hero-inner">
+      <p class="breadcrumb"><a href="index.html">Accueil</a> &nbsp;/&nbsp; La Carte</p>
+      <h1 class="section-title">LA CARTE</h1>
+      <p style="font-family: var(--font-script); font-size: 22px; color: var(--gold);">Une cuisine sincère &amp; gourmande</p>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <section class="carte-section">
+    <div class="container">
+
+      <!-- TABS -->
+      <div class="menu-tabs">
+        <button class="menu-tab active" data-target="entrees">Entrées</button>
+        <button class="menu-tab" data-target="burgers">Burgers</button>
+        <button class="menu-tab" data-target="signature">Plats Signature</button>
+        <button class="menu-tab" data-target="desserts">Desserts</button>
+        <button class="menu-tab" data-target="cocktails">Cocktails &amp; Boissons</button>
+        <button class="menu-tab" data-target="enfants">Menu Enfant</button>
+      </div>
+
+      <!-- ===== PANEL : ENTRÉES ===== -->
+      <div class="menu-panel active" id="entrees">
+        <p class="menu-cat-title">Entrées</p>
+        <p class="menu-cat-note">Pour commencer en beauté</p>
+        <div class="menu-items">
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Chicken Raïta</span>
+              <span class="mi-price">10,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poulet mariné aux épices douces, sauce raïta maison au yaourt et concombre.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Les Rillettes de l'Ardoise</span>
+              <span class="mi-price">9,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Notre spécialité maison, préparée avec amour. À partager ou à dévorer seul.</p>
+            <span class="mi-badge">Maison</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Tartare de Poisson</span>
+              <span class="mi-price">12,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poisson frais du jour taillé au couteau, assaisonné avec finesse. Fraîcheur garantie.</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== PANEL : BURGERS ===== -->
+      <div class="menu-panel" id="burgers">
+        <p class="menu-cat-title">Burgers</p>
+        <p class="menu-cat-note">Tous servis avec frites maison spicy &mdash; 100% faits maison</p>
+        <div class="menu-items">
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">SuperKrust Chicken</span>
+              <span class="mi-price">19,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poulet croustillant pané maison, sauce signature, crudités fraîches. Le classique qui ne déçoit jamais.</p>
+            <span class="mi-badge">Fait maison</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">O.M.G!</span>
+              <span class="mi-price">23,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Notre burger signature, généreux à l'extrême. Une expérience gustative hors norme.</p>
+            <span class="mi-badge">Best-seller</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">The Fish Burger!</span>
+              <span class="mi-price">24,50&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poisson frais en burger, sauce tartare maison, salade, tomate. L'alliance parfaite terre-mer.</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Sexxxy Caliente</span>
+              <span class="mi-price">21,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Pour les amateurs de sensations fortes. Épices, piment doux, sauce secrète qui réchauffe l'âme.</p>
+            <span class="mi-badge">Épicé</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Kréyòl Burger</span>
+              <span class="mi-price">24,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Notre hommage à la Guadeloupe. Saveurs créoles authentiques dans un burger premium généreux.</p>
+            <span class="mi-badge">Spécialité</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== PANEL : PLATS SIGNATURE ===== -->
+      <div class="menu-panel" id="signature">
+        <div style="margin-bottom: 48px;">
+          <p class="menu-cat-title">Plats Signature</p>
+          <p class="menu-cat-note">L'expression de notre passion pour les produits frais</p>
+        </div>
+        <div class="menu-items">
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Tataki de Thon</span>
+              <span class="mi-price">28,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Thon saisi à la plancha, sésame, sauce ponzu maison, légumes du moment. Un incontournable.</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Poulpe Red Chimichurri</span>
+              <span class="mi-price">27,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poulpe fondant, sauce chimichurri rouge vibrante, légumes rôtis. Caractère et générosité.</p>
+            <span class="mi-badge">Spécialité</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Tikka Masala</span>
+              <span class="mi-price">26,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Dorade royale en sauce Tikka Masala maison, parfums d'Asie, riz basmati. Voyage assuré.</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">La Bavette Tranch&eacute;e</span>
+              <span class="mi-price">27,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Bavette de boeuf maturée, tranchée et servie rosée, sauce au choix, frites maison croustillantes.</p>
+            <span class="mi-badge">Viande</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Tartare de Poisson du Jour</span>
+              <span class="mi-price">25,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poisson du marché taillé à la main, condiments frais, huile de qualité. La mer dans l'assiette.</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Ceviche de Poisson</span>
+              <span class="mi-price">27,90&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Marinade citron vert, piment, oignon rouge, coriandre. Une fraîcheur intense et parfumée.</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== PANEL : DESSERTS ===== -->
+      <div class="menu-panel" id="desserts">
+        <div style="margin-bottom: 48px;">
+          <p class="menu-cat-title">Desserts</p>
+          <p class="menu-cat-note">La note sucrée qui couronne un grand repas</p>
+        </div>
+        <div class="menu-items">
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Cheesecake Revisit&eacute;, Coulis Maison</span>
+              <span class="mi-price">10,95&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Notre interprétation gourmande du cheesecake new-yorkais, coulis de fruits maison.</p>
+            <span class="mi-badge">Fait maison</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Mousse au Nutella Li&eacute;geois</span>
+              <span class="mi-price">10,95&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Légère et généreuse, cette mousse est un péché mignon que l'on ne regrette jamais.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Le Brownie Macchiato</span>
+              <span class="mi-price">12,95&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Brownie moelleux aux notes de café, coeur fondant, servi tiède avec crème glacée.</p>
+            <span class="mi-badge">Best-seller</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">The Key Lime Pie</span>
+              <span class="mi-price">12,50&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Tarte acidulée aux citrons verts des Caraïbes, fond sablé croustillant, chantilly légère.</p>
+            <span class="mi-badge">Spécialité</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Caf&eacute; Gourmand</span>
+              <span class="mi-price">11,50&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Un café accompagné d'une sélection de mignardises maison. La conclusion parfaite.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== PANEL : COCKTAILS & BOISSONS ===== -->
+      <div class="menu-panel" id="cocktails">
+
+        <div style="margin-bottom: 48px;">
+          <p class="menu-cat-title">Cocktails &amp; Boissons</p>
+          <p class="menu-cat-note">Des créations uniques et des classiques revisités</p>
+        </div>
+
+        <div class="cocktails-grid">
+
+          <!-- Mojitos -->
+          <div class="cktl-group">
+            <p class="cktl-group-title">MOJITOS</p>
+            <p class="cktl-group-sub">Frais, menthe, citron vert</p>
+            <div class="cktl-item">
+              <div>
+                <p class="cktl-name">Mojito Classique</p>
+                <p class="cktl-sub">Rhum Vieux +7€ &middot; Version Virgin 10€</p>
+              </div>
+              <span class="cktl-price">11&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <div>
+                <p class="cktl-name">Mojito Fruits Rouges</p>
+                <p class="cktl-sub">Rhum Vieux +7€ &middot; Version Virgin 11€</p>
+              </div>
+              <span class="cktl-price">12&thinsp;€</span>
+            </div>
+          </div>
+
+          <!-- Classiques -->
+          <div class="cktl-group">
+            <p class="cktl-group-title">CLASSIQUES</p>
+            <p class="cktl-group-sub">Les incontournables du bar</p>
+            <div class="cktl-item">
+              <p class="cktl-name">Da&iuml;kiri</p>
+              <span class="cktl-price">11&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Ca&iuml;pirinh</p>
+              <span class="cktl-price">11&thinsp;€</span>
+            </div>
+          </div>
+
+          <!-- Créations signature -->
+          <div class="cktl-group">
+            <p class="cktl-group-title">NOS CRÉATIONS</p>
+            <p class="cktl-group-sub">Cocktails signature de L'Ardoise</p>
+            <div class="cktl-item">
+              <p class="cktl-name">Noya</p>
+              <span class="cktl-price">14&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Aphrodite</p>
+              <span class="cktl-price">15&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Carmen</p>
+              <span class="cktl-price">14&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Isla</p>
+              <span class="cktl-price">14&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Jefe</p>
+              <span class="cktl-price">15&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Scarlett</p>
+              <span class="cktl-price">14&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Geisha</p>
+              <span class="cktl-price">15&thinsp;€</span>
+            </div>
+          </div>
+
+          <!-- Mocktails -->
+          <div class="cktl-group">
+            <p class="cktl-group-title">MOCKTAILS</p>
+            <p class="cktl-group-sub">Sans alcool, 100% saveurs</p>
+            <div class="cktl-item">
+              <p class="cktl-name">Tentation</p>
+              <span class="cktl-price">10&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Arlequin</p>
+              <span class="cktl-price">10&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Passion&eacute;</p>
+              <span class="cktl-price">11&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Dolce Vita</p>
+              <span class="cktl-price">11&thinsp;€</span>
+            </div>
+            <div class="cktl-item">
+              <p class="cktl-name">Guana</p>
+              <span class="cktl-price">10&thinsp;€</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Boissons chaudes -->
+        <div style="margin-top: 50px;">
+          <p style="font-family: var(--font-display); font-size: 18px; letter-spacing: 3px; color: var(--white); margin-bottom: 6px;">BOISSONS CHAUDES</p>
+          <p style="font-size: 13px; color: var(--gray); font-style: italic; margin-bottom: 20px;">Pour terminer en douceur</p>
+          <div class="boissons-grid">
+            <div class="bois-item">
+              <span class="bois-name">Caf&eacute;</span>
+              <span class="bois-price">3,50&thinsp;€</span>
+            </div>
+            <div class="bois-item">
+              <span class="bois-name">Th&eacute; Kusmi</span>
+              <span class="bois-price">4&thinsp;€</span>
+            </div>
+            <div class="bois-item">
+              <span class="bois-name">Infusion</span>
+              <span class="bois-price">4&thinsp;€</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===== PANEL : MENU ENFANT ===== -->
+      <div class="menu-panel" id="enfants">
+        <p class="menu-cat-title">Menu Enfant</p>
+        <p class="menu-cat-note">Pour les moins de 12 ans &mdash; Inclus : frites, jus de fruit et dessert</p>
+        <div class="menu-items">
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Steak Frites</span>
+              <span class="mi-price">13&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Un steak tendre et savoureux avec frites maison croustillantes. Le classique des petits gourmets.</p>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Nuggets de Poisson du Jour</span>
+              <span class="mi-price">13&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Poisson frais en nuggets dorés maison, légers et savoureux. Les enfants adorent !</p>
+            <span class="mi-badge">Poisson frais</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="mi-header">
+              <span class="mi-name">Burger au Poulet Croustillant</span>
+              <span class="mi-price">14&thinsp;€</span>
+            </div>
+            <p class="mi-desc">Mini burger au poulet croustillant, sauce douce maison. Le burger des futurs grands.</p>
+            <span class="mi-badge">Fait maison</span>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 36px; background: var(--card); padding: 28px 32px; border-left: 3px solid var(--gold); border-radius: 2px;">
+          <p style="font-size: 13px; color: var(--light-gray); font-weight: 300; line-height: 1.8;">
+            <strong style="color: var(--gold);">Inclus dans chaque menu :</strong> Frites maison spicy, jus de fruit de votre choix et un dessert (glace ou brownie maison). Le sourire est offert.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="container">
+      <h2>COMMANDER À EMPORTER</h2>
+      <p>Régalez-vous chez vous avec nos plats faits maison</p>
+      <a href="commander.html" class="btn btn-dark">Passer ma commande</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="foot-logo-main">L'ARDOISE</span>
+          <span class="foot-logo-sub">Burger &amp; Fish Bar</span>
+          <p class="footer-desc">Burgers faits maison, poissons frais, cocktails signature.</p>
+        </div>
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="index.html"     class="footer-link">Accueil</a></li>
+            <li><a href="carte.html"     class="footer-link">La Carte</a></li>
+            <li><a href="commander.html" class="footer-link">Commander à emporter</a></li>
+            <li><a href="#" onclick="openReservSidebar(); return false;"  class="footer-link">Réserver une table</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-col-title">Contact</p>
+          <div class="footer-info">
+            <div class="foot-row">
+              <svg class="foot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span class="foot-text" style="white-space:nowrap;"><a href="https://maps.app.goo.gl/jZ2KFRrCfaK7ScBE7" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">ZI de Jarry, Immeuble Magic, Baie-Mahault 97122</a></span>
+            </div>
+            <div class="foot-row">
+              <svg class="foot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.27 6.27l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04Z"/></svg>
+              <span class="foot-text"><a href="tel:0590988048" style="color:inherit;text-decoration:none;">05 90 98 80 48</a></span>
+            </div>
+            <div class="foot-row">
+              <svg class="foot-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span class="foot-text">Lun&ndash;Jeu 19h&ndash;22h &nbsp;&middot;&nbsp; Ven&ndash;Sam 19h&ndash;23h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 L'Ardoise &mdash; Burger &amp; Fish Bar. Tous droits réservés.</p>
+        <p class="footer-copy footer-credit">Site réalisé par Kudja Studio</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- RESERVATION OVERLAY -->
+  <div class="reserv-overlay" id="reservOverlay" onclick="closeReservSidebar()"></div>
+
+  <!-- RESERVATION SIDEBAR -->
+  <aside class="reserv-sidebar" id="reservSidebar">
+    <div class="reserv-header">
+      <div>
+        <p class="reserv-label">Réservation en ligne</p>
+        <h3 class="reserv-title">RÉSERVER MA TABLE</h3>
+      </div>
+      <button class="cart-close" onclick="closeReservSidebar()" aria-label="Fermer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="reserv-body">
+      <form id="reservSidebarForm" novalidate>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="rs-prenom">Prénom *</label>
+            <input class="form-input" type="text" id="rs-prenom" placeholder="Votre prénom" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="rs-nom">Nom *</label>
+            <input class="form-input" type="text" id="rs-nom" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="rs-tel">Téléphone *</label>
+            <input class="form-input" type="tel" id="rs-tel" placeholder="0690 00 00 00" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="rs-date">Date *</label>
+            <input class="form-input" type="date" id="rs-date" required>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="rs-service">Service *</label>
+            <select class="form-select" id="rs-service" required>
+              <option value="" disabled selected>Choisissez un service</option>
+              <optgroup label="Déjeuner (12h – 15h)">
+                <option>Midi — 12h00</option><option>Midi — 12h30</option>
+                <option>Midi — 13h00</option><option>Midi — 13h30</option>
+                <option>Midi — 14h00</option><option>Midi — 14h30</option>
+              </optgroup>
+              <optgroup label="Dîner Lun–Jeu (19h – 22h)">
+                <option>Soir — 19h00</option><option>Soir — 19h30</option>
+                <option>Soir — 20h00</option><option>Soir — 20h30</option>
+                <option>Soir — 21h00</option><option>Soir — 21h30</option>
+              </optgroup>
+              <optgroup label="Dîner Ven–Sam (19h – 22h30)">
+                <option>Soir — 19h00</option><option>Soir — 19h30</option>
+                <option>Soir — 20h00</option><option>Soir — 20h30</option>
+                <option>Soir — 21h00</option><option>Soir — 21h30</option>
+                <option>Soir — 22h00</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="rs-couverts">Nombre de couverts *</label>
+            <select class="form-select" id="rs-couverts" required>
+              <option value="" disabled selected>Combien de personnes ?</option>
+              <option>1 personne</option><option>2 personnes</option>
+              <option>3 personnes</option><option>4 personnes</option>
+              <option>5 personnes</option><option>6 personnes</option>
+              <option>7 personnes</option><option>8 personnes</option>
+              <option>9 personnes</option><option>10 personnes</option>
+              <option>Plus de 10 personnes (groupe)</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label" for="rs-message">Demandes particulières</label>
+            <textarea class="form-textarea" id="rs-message" placeholder="Anniversaire, allergie, chaise haute, table en terrasse..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-gold reserv-submit-btn">Confirmer ma réservation</button>
+        <p class="reserv-note">Confirmation sous 24h par téléphone &nbsp;&middot;&nbsp; Dimanche fermé</p>
+      </form>
+      <div class="reserv-success" id="reservSidebarSuccess">
+        <div class="reserv-success-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Demande envoy&eacute;e !</h3>
+        <p>Merci <strong id="reservConfirmName"></strong>, votre demande a bien &eacute;t&eacute; prise en compte.<br>Nous vous confirmons votre table dans les 24h.</p>
+      </div>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+  <script>
+    function openReservSidebar() {
+      document.getElementById('reservSidebar').classList.add('open');
+      document.getElementById('reservOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('reservSidebarForm').style.display = 'block';
+      document.getElementById('reservSidebarSuccess').style.display = 'none';
+    }
+    function closeReservSidebar() {
+      document.getElementById('reservSidebar').classList.remove('open');
+      document.getElementById('reservOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('reservSidebarForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('reservConfirmName').textContent = document.getElementById('rs-prenom').value;
+      this.style.display = 'none';
+      document.getElementById('reservSidebarSuccess').style.display = 'block';
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeReservSidebar(); });
+  </script>
+</body>
+</html>
