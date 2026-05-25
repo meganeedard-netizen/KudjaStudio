@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Mie Bravo — Artisan Boulanger-Pâtissier | Jarry, Guadeloupe</title>
+  <meta name="description" content="La Mie Bravo, boulangerie artisanale à Jarry, Guadeloupe. Spécialiste du pain au levain fait maison, viennoiseries, pâtisseries et snacks salés." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav class="nav" id="navbar">
+    <div class="nav__container">
+      <a href="#accueil" class="nav__logo">
+        <img src="imgs/logo.webp" alt="La Mie Bravo" class="nav__logo-img" />
+      </a>
+      <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#accueil" class="nav__link">Accueil</a></li>
+        <li><a href="#specialite" class="nav__link">Nos Pains</a></li>
+        <li><a href="#creations" class="nav__link">Nos Créations</a></li>
+        <li><a href="#apropos" class="nav__link">À Propos</a></li>
+        <li><a href="#contact" class="nav__link nav__link--cta">Commander</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="accueil">
+    <div class="hero__bg">
+      <img src="imgs/hero.webp" alt="Pain au levain La Mie Bravo" class="hero__img" />
+      <div class="hero__overlay"></div>
+    </div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Artisan Boulanger-Pâtissier · Jarry, Guadeloupe</p>
+      <h1 class="hero__title">
+        La Mie Bravo
+      </h1>
+      <p class="hero__subtitle">
+        L'art du pain au levain
+      </p>
+      <div class="hero__actions">
+        <a href="#specialite" class="btn btn--primary">Découvrir nos pains</a>
+        <a href="#contact" class="btn btn--outline">Commander</a>
+      </div>
+    </div>
+    <a href="#specialite" class="hero__scroll" aria-label="Défiler vers le bas">
+      <span class="hero__scroll-icon"></span>
+    </a>
+  </section>
+
+  <!-- ====== BANDEAUX VALEURS ====== -->
+  <section class="values-strip">
+    <div class="values-strip__container">
+      <div class="values-strip__item">
+        <span class="values-strip__icon">&#9679;</span>
+        <span>Pain au levain</span>
+      </div>
+      <div class="values-strip__item">
+        <span class="values-strip__icon">&#9679;</span>
+        <span>100% Fait maison</span>
+      </div>
+      <div class="values-strip__item">
+        <span class="values-strip__icon">&#9679;</span>
+        <span>Artisan passionné</span>
+      </div>
+      <div class="values-strip__item">
+        <span class="values-strip__icon">&#9679;</span>
+        <span>Jarry, Guadeloupe</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SPÉCIALITÉ — PAIN AU LEVAIN ====== -->
+  <section class="specialite" id="specialite">
+    <div class="specialite__container">
+      <div class="specialite__images">
+        <div class="specialite__img-main">
+          <img src="imgs/pains.webp" alt="Pains au levain La Mie Bravo" loading="lazy" />
+        </div>
+        <div class="specialite__img-accent">
+          <img src="imgs/petrir.webp" alt="Mains pétrissant la pâte" loading="lazy" />
+        </div>
+      </div>
+      <div class="specialite__content">
+        <p class="section-eyebrow">Notre spécialité</p>
+        <h2 class="section-title">Le Pain<br /><em>au Levain</em></h2>
+        <p class="specialite__text">
+          Ici, chaque pain raconte une histoire. Façonné à la main avec un levain naturel cultivé avec soin,
+          notre pain au levain se distingue par sa croûte croustillante, sa mie alvéolée et ses arômes
+          profonds qui révèlent tout le savoir-faire de l'artisan.
+        </p>
+        <p class="specialite__text">
+          Du pain bâtard au pain bio semi-complet, chaque création est unique, fermentée lentement
+          pour une meilleure digestibilité et une saveur incomparable.
+        </p>
+        <ul class="specialite__list">
+          <li>Pain bâtard au levain</li>
+          <li>Pain bio semi-complet</li>
+          <li>Pain NORDIK aux graines</li>
+          <li>Pains spéciaux de saison</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== NOS CRÉATIONS ====== -->
+  <section class="creations" id="creations">
+    <div class="creations__container">
+      <div class="creations__header">
+        <p class="section-eyebrow">Fait maison chaque jour</p>
+        <h2 class="section-title">Nos Créations</h2>
+        <p class="creations__intro">
+          De la viennoiserie dorée aux pâtisseries de saison, en passant par nos snacks salés généreux,
+          La Mie Bravo vous propose une sélection gourmande préparée avec passion.
+        </p>
+      </div>
+
+      <div class="creations__carousel-wrap">
+        <button class="carousel-btn carousel-btn--prev" aria-label="Précédent">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="creations__carousel" id="creations-carousel">
+
+          <article class="creation-slide">
+            <img src="imgs/pain.webp" alt="Pains et Baguettes" class="creation-slide__img" loading="lazy" />
+            <div class="creation-slide__overlay">
+              <span class="creation-slide__tag">Boulangerie</span>
+              <h3 class="creation-slide__title">Pains &amp; Baguettes</h3>
+              <p class="creation-slide__desc">Pain au levain, pain bâtard, pains bio... façonnés à la main chaque matin avec notre levain naturel.</p>
+            </div>
+          </article>
+
+          <article class="creation-slide">
+            <img src="imgs/viennoiserie.webp" alt="Viennoiseries La Mie Bravo" class="creation-slide__img" loading="lazy" />
+            <div class="creation-slide__overlay">
+              <span class="creation-slide__tag">Viennoiseries</span>
+              <h3 class="creation-slide__title">Croissants &amp; Brioches</h3>
+              <p class="creation-slide__desc">Croissants feuilletés, pains au chocolat, brioches moelleuses... parfaits pour commencer la journée dans la douceur.</p>
+            </div>
+          </article>
+
+          <article class="creation-slide">
+            <img src="imgs/patisserie.webp" alt="Pâtisseries La Mie Bravo" class="creation-slide__img" loading="lazy" />
+            <div class="creation-slide__overlay">
+              <span class="creation-slide__tag">Pâtisseries</span>
+              <h3 class="creation-slide__title">Tartelettes &amp; Choux</h3>
+              <p class="creation-slide__desc">Tartelette Mangue Passion, Forêt Noire, choux crème... des créations saisonnières qui éveillent les papilles.</p>
+            </div>
+          </article>
+
+          <article class="creation-slide">
+            <img src="imgs/cake-choco.webp" alt="Cakes et Cookies" class="creation-slide__img" loading="lazy" />
+            <div class="creation-slide__overlay">
+              <span class="creation-slide__tag">Cakes &amp; Cookies</span>
+              <h3 class="creation-slide__title">Cakes &amp; Cookies</h3>
+              <p class="creation-slide__desc">Mini cakes chocolat-caramel-noix de pécan, cookies fondants... pour une pause gourmande intense.</p>
+            </div>
+          </article>
+
+          <article class="creation-slide">
+            <img src="imgs/quiche.webp" alt="Snacks Salés La Mie Bravo" class="creation-slide__img" loading="lazy" />
+            <div class="creation-slide__overlay">
+              <span class="creation-slide__tag">Snacks Salés</span>
+              <h3 class="creation-slide__title">Pizzas, Quiches &amp; Sandwichs</h3>
+              <p class="creation-slide__desc">Une offre salée généreuse pour le déjeuner : pizzas maison, quiches du jour, sandwichs sur pain artisanal.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <button class="carousel-btn carousel-btn--next" aria-label="Suivant">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Navigation carousel"></div>
+    </div>
+  </section>
+
+  <!-- ====== GALERIE ====== -->
+  <section class="galerie">
+    <div class="galerie__container">
+      <img src="imgs/tarte-foret.webp" alt="Tartelette Forêt Noire" loading="lazy" class="galerie__img" />
+      <img src="imgs/chou-pistache.webp" alt="Chou pistache framboise" loading="lazy" class="galerie__img" />
+      <img src="imgs/tarte-mangue.webp" alt="Tartelette Mangue Passion" loading="lazy" class="galerie__img" />
+      <img src="imgs/chou-creme.webp" alt="Chou crème" loading="lazy" class="galerie__img" />
+    </div>
+  </section>
+
+  <!-- ====== À PROPOS ====== -->
+  <section class="apropos" id="apropos">
+    <div class="apropos__container">
+      <div class="apropos__content">
+        <p class="section-eyebrow">Notre histoire</p>
+        <h2 class="section-title">Fait avec Passion,<br /><em>pour vous</em></h2>
+        <p class="apropos__quote">Des artisans amoureux du bon et du fait-maison.</p>
+        <p class="apropos__text">
+          Née à Jarry, en Guadeloupe, La Mie Bravo est une boulangerie artisanale qui place la
+          qualité et l'authenticité au coeur de chaque création. Ici, rien n'est laissé au hasard :
+          chaque recette, chaque geste, chaque fournée est le fruit d'un savoir-faire minutieux
+          et d'un amour sincère pour le beau pain.
+        </p>
+        <p class="apropos__text">
+          Notre levain naturel, cultivé avec patience, est le secret d'un pain vivant aux arômes
+          complexes. Les viennoiseries, pâtisseries et snacks salés complètent une offre pensée
+          pour ravir les gourmands de la Guadeloupe, qu'ils passent pour un café du matin ou
+          commandent pour un événement spécial.
+        </p>
+        <div class="apropos__values">
+          <div class="apropos__value">
+            <span class="apropos__value-num">100%</span>
+            <span class="apropos__value-label">Fait maison</span>
+          </div>
+          <div class="apropos__value">
+            <span class="apropos__value-num">Levain</span>
+            <span class="apropos__value-label">Naturel</span>
+          </div>
+          <div class="apropos__value">
+            <span class="apropos__value-num">Jarry</span>
+            <span class="apropos__value-label">Guadeloupe</span>
+          </div>
+        </div>
+      </div>
+      <div class="apropos__img-wrap">
+        <img src="imgs/ambiance-cafe.webp" alt="La Mie Bravo" loading="lazy" class="apropos__img" />
+        <div class="apropos__badge">
+          <img src="imgs/logo.webp" alt="Logo La Mie Bravo" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT / COMMANDE ====== -->
+  <section class="contact" id="contact">
+    <div class="contact__container">
+      <div class="contact__intro">
+        <p class="section-eyebrow">Nous contacter</p>
+        <h2 class="section-title">Une commande spéciale<br /><em>ou une question ?</em></h2>
+        <p class="contact__text">
+          Événement professionnel, mariage, anniversaire ou commande en volume :
+          nous réalisons des créations sur mesure adaptées à vos besoins.
+          Remplissez le formulaire ci-contre et nous vous recontacterons rapidement.
+        </p>
+        <div class="contact__infos">
+          <div class="contact__info">
+            <svg class="contact__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <div>
+              <strong>Adresse</strong>
+              <a href="https://maps.app.goo.gl/r6QLRRZJ95iNYTQVA" target="_blank" rel="noopener noreferrer" class="contact__insta-link">Immeuble BRAVO, D32<br />Baie-Mahault 97122, Guadeloupe</a>
+            </div>
+          </div>
+          <div class="contact__info">
+            <svg class="contact__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <div>
+              <strong>Téléphone</strong>
+              <a href="tel:+590590464027" class="contact__insta-link">0590 46 40 27</a>
+            </div>
+          </div>
+          <div class="contact__info">
+            <svg class="contact__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M2 7l10 7 10-7"/>
+            </svg>
+            <div>
+              <strong>Email</strong>
+              <span>lamiebravo@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact__info">
+            <svg class="contact__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            <div>
+              <strong>Instagram</strong>
+              <a href="https://www.instagram.com/lamiebravo/" target="_blank" rel="noopener noreferrer" class="contact__insta-link">@lamiebravo</a>
+            </div>
+          </div>
+          <div class="contact__info">
+            <svg class="contact__info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <div>
+              <strong>Horaires d'ouverture</strong>
+              <span>Lun–Ven : 6h–17h</span>
+              <span>Samedi : 6h–13h</span>
+              <span>Dimanche : Fermé</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact__form" id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="nom">Nom complet <span aria-hidden="true">*</span></label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse email <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" placeholder="votre@email.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" placeholder="+690 XXX XXX" autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="type">Type de demande <span aria-hidden="true">*</span></label>
+          <select id="type" name="type" required>
+            <option value="" disabled selected>Choisissez une option</option>
+            <option value="commande-particulier">Commande particulier</option>
+            <option value="commande-evenement">Événement (mariage, anniversaire...)</option>
+            <option value="commande-professionnel">Commande professionnelle</option>
+            <option value="information">Demande d'information</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date-souhaitee">Date souhaitée</label>
+          <input type="date" id="date-souhaitee" name="date-souhaitee" />
+        </div>
+        <div class="form-group form-group--full">
+          <label for="message">Votre message <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="5" placeholder="Décrivez votre commande ou votre demande..." required></textarea>
+        </div>
+        <div class="form-group form-group--full">
+          <button type="submit" class="btn btn--primary btn--full">
+            Envoyer ma demande
+          </button>
+        </div>
+        <p class="form-notice">* Champs obligatoires. Nous vous répondrons dans les 48h.</p>
+        <div class="form-success" id="form-success" aria-live="polite" hidden>
+          Merci pour votre message ! Nous vous recontacterons très vite.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====== CARTE ====== -->
+  <section class="map-section">
+    <div class="map-section__header">
+      <p class="section-eyebrow">Nous trouver</p>
+      <h2 class="section-title">Immeuble BRAVO, D32<br /><em>Baie-Mahault, Guadeloupe</em></h2>
+      <a href="https://maps.app.goo.gl/r6QLRRZJ95iNYTQVA" target="_blank" rel="noopener noreferrer" class="btn btn--primary map-section__btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        Ouvrir dans Google Maps
+      </a>
+    </div>
+    <div class="map-section__embed">
+      <iframe
+        src="https://maps.google.com/maps?q=Immeuble+BRAVO+D32+Baie-Mahault+97122+Guadeloupe&output=embed&hl=fr&z=16"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="La Mie Bravo sur Google Maps">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <img src="imgs/logo.webp" alt="La Mie Bravo" class="footer__logo" />
+        <p class="footer__tagline">Artisan Boulanger-Pâtissier<br />Immeuble BRAVO, D32 · Baie-Mahault, Guadeloupe</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="#accueil">Accueil</a>
+        <a href="#specialite">Nos Pains</a>
+        <a href="#creations">Nos Créations</a>
+        <a href="#apropos">À Propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/lamiebravo/" target="_blank" rel="noopener noreferrer" aria-label="Instagram La Mie Bravo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+    <p class="footer__copy">&copy; 2026 La Mie Bravo. Tous droits réservés. &nbsp;|&nbsp; Site réalisé par <a href="https://kudjastudio.com" target="_blank" rel="noopener noreferrer" class="footer__kudja">Kudja Studio</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
