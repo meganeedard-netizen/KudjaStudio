@@ -280,7 +280,7 @@ p:last-child { margin-bottom: 0; }
 /* Dropdown */
 .dropdown {
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--white);
@@ -288,18 +288,29 @@ p:last-child { margin-bottom: 0; }
   box-shadow: var(--shadow-lg);
   min-width: 280px;
   padding: 10px;
+  margin-top: 8px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all var(--transition);
+  transition: opacity var(--transition), visibility var(--transition);
   border: 1px solid var(--border);
+}
+
+/* Invisible bridge so the pointer never leaves the hoverable area
+   while moving from the nav link down into the dropdown. */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
 }
 
 .nav-item.has-dropdown:hover .dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  top: calc(100% + 4px);
 }
 
 .dropdown a {
@@ -1079,6 +1090,46 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
 .footer-bottom-links a { color: rgba(255,255,255,0.6); transition: color var(--transition); }
 .footer-bottom-links a:hover { color: var(--white); }
 
+.footer-copy { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.footer-credit { color: rgba(255,255,255,0.5); }
+
+/* 22b. PHOTO CREDIT WATERMARK
+   ============================================================ */
+.gallery-item::after,
+.about-img-wrap::after,
+.before-after::after,
+.ba-carousel-img::after,
+.article-photo::after {
+  content: "©JOFAGIST";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.article-photo { position: relative; border-radius: var(--radius); overflow: hidden; display: inline-block; width: 100%; }
+.article-photo img { display: block; width: 100%; border-radius: var(--radius); }
+
+.hero-photo-credit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
 /* 23. PAGE SPECIFIC — Salle de bains avant/après
    ============================================================ */
 .before-after {
@@ -1091,6 +1142,8 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   width: 100%;
   height: 450px;
   object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
 }
 
 .before-after-labels {
@@ -1112,6 +1165,82 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 20px;
+}
+
+/* 23b. BEFORE/AFTER CAROUSEL
+   ============================================================ */
+.ba-carousel { display: flex; align-items: center; gap: 16px; }
+
+.ba-carousel-track { flex: 1; overflow: hidden; }
+
+.ba-carousel-slide { display: none; }
+.ba-carousel-slide.active { display: block; }
+
+.ba-carousel-pair {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ba-carousel-img { position: relative; border-radius: var(--radius); overflow: hidden; }
+
+.ba-carousel-img img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.ba-carousel-img .ba-label { position: absolute; top: 16px; left: 16px; }
+
+.ba-carousel-caption {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.ba-carousel-arrow {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.ba-carousel-arrow:hover { background: var(--blue); color: var(--white); }
+
+.ba-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.ba-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+}
+
+.ba-dot.active { background: var(--blue); }
+
+@media (max-width: 640px) {
+  .ba-carousel { gap: 8px; }
+  .ba-carousel-pair { gap: 8px; }
+  .ba-carousel-img img { height: 220px; }
+  .ba-carousel-arrow { width: 38px; height: 38px; }
 }
 
 /* 24. PILL LIST
@@ -1253,6 +1382,8 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
     visibility: visible;
     pointer-events: auto;
   }
+
+  .dropdown::before { display: none; }
 
   .nav-item.has-dropdown.open .dropdown { display: block; }
   .nav-item.has-dropdown.open .nav-arrow { transform: rotate(180deg); }

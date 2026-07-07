@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contactez JOFAGIST pour votre projet de tuyauterie industrielle, salle de bains ou conseil travaux. Devis gratuit, réponse sous 48h. Centre-Val-de-Loire et toute la France.">
+  <meta name="description" content="Contactez JOFAGIST pour votre projet de tuyauterie industrielle ou de salle de bains. Devis gratuit, réponse sous 48h. Centre-Val-de-Loire et toute la France.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Contact | JOFAGIST — Devis Gratuit">
-  <title>Contact &amp; Devis Gratuit | JOFAGIST — Expert en tuyauterie industrielle, plomberie &amp; conseils</title>
+  <meta property="og:title" content="Contact & Devis Gratuit | JOFAGIST">
+  <title>Contact &amp; Devis Gratuit | JOFAGIST : Expert en tuyauterie industrielle &amp; salles de bains</title>
   <link rel="icon" type="image/webp" href="assets/images/logo-jofagist.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 
   <header class="site-header" id="site-header">
     <nav class="nav-container">
-      <a href="index.html" class="nav-logo" aria-label="JOFAGIST — Accueil">
+      <a href="index.html" class="nav-logo" aria-label="Accueil JOFAGIST">
         <img src="assets/images/logo-jofagist.webp" alt="Logo JOFAGIST" width="150" height="48" loading="eager">
       </a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -27,13 +27,12 @@
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
           <li class="nav-item has-dropdown">
-            <a href="#" class="nav-link">Nos Métiers
+            <a href="#" class="nav-link">Votre Projet
               <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
             </a>
             <div class="dropdown">
-              <a href="tuyauterie-industrielle.html"><span class="dd-icon"><i class="fas fa-industry" aria-hidden="true"></i></span><span>Pré-fabrication Tuyauterie<small>Tuyauterie industrielle en atelier</small></span></a>
-              <a href="salle-de-bain.html"><span class="dd-icon"><i class="fas fa-bath" aria-hidden="true"></i></span><span>Création Salles de Bains<small>Clés en main, du projet à la pose</small></span></a>
-              <a href="conseil-accompagnement.html"><span class="dd-icon"><i class="fas fa-clipboard-list" aria-hidden="true"></i></span><span>Conseil &amp; Accompagnement<small>Études et suivi de travaux</small></span></a>
+              <a href="tuyauterie-industrielle.html"><span class="dd-icon"><i class="fas fa-industry" aria-hidden="true"></i></span><span>Je suis un professionnel<small>Tuyauterie industrielle en atelier</small></span></a>
+              <a href="salle-de-bain.html"><span class="dd-icon"><i class="fas fa-bath" aria-hidden="true"></i></span><span>Je suis un particulier<small>Salles de bains clés en main</small></span></a>
             </div>
           </li>
           <li class="nav-item"><a href="qui-sommes-nous.html" class="nav-link">Qui sommes-nous</a></li>
@@ -48,7 +47,8 @@
 
     <!-- HERO -->
     <section class="hero hero-small">
-      <div class="hero-bg" style="background-image: url('assets/images/tuyauterie-industrielle-jordan.webp');" role="img" aria-label="Technicien JOFAGIST — contactez-nous"></div>
+      <div class="hero-bg" style="background-image: url('assets/images/tuyauterie-industrielle-jordan.webp');" role="img" aria-label="Technicien JOFAGIST, contactez-nous"></div>
+      <span class="hero-photo-credit">©JOFAGIST</span>
       <div class="container">
         <div class="hero-content">
           <nav class="breadcrumb" aria-label="Fil d'Ariane">
@@ -90,17 +90,16 @@
                   <input class="form-control" type="email" id="email" name="email" placeholder="votre@email.fr" required autocomplete="email">
                 </div>
                 <div class="form-group">
-                  <label class="form-label" for="telephone">Téléphone</label>
-                  <input class="form-control" type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX" autocomplete="tel">
+                  <label class="form-label" for="telephone">Téléphone <span style="color:red;">*</span></label>
+                  <input class="form-control" type="tel" id="telephone" name="telephone" placeholder="06 XX XX XX XX" required autocomplete="tel">
                 </div>
               </div>
               <div class="form-group">
                 <label class="form-label" for="sujet">Votre projet <span style="color:red;">*</span></label>
                 <select class="form-control" id="sujet" name="sujet" required>
                   <option value="" disabled selected>Sélectionnez votre besoin</option>
-                  <option value="tuyauterie">Pré-fabrication Tuyauterie Industrielle</option>
+                  <option value="tuyauterie">Préfabrication Tuyauterie Industrielle</option>
                   <option value="salle-de-bain">Création Salle de Bains Clés en Main</option>
-                  <option value="conseil">Conseil &amp; Accompagnement Travaux</option>
                   <option value="autre">Autre demande</option>
                 </select>
               </div>
@@ -114,7 +113,7 @@
               </div>
               <div class="form-group" style="display:flex;align-items:flex-start;gap:10px;">
                 <input type="checkbox" id="rgpd" name="rgpd" required style="margin-top:4px;flex-shrink:0;width:16px;height:16px;cursor:pointer;">
-                <label for="rgpd" style="font-size:0.85rem;color:var(--body);cursor:pointer;">J'accepte que JOFAGIST traite mes données personnelles dans le cadre de ma demande de devis. Voir notre <a href="#" style="color:var(--blue);text-decoration:underline;">politique de confidentialité</a>.</label>
+                <label for="rgpd" style="font-size:0.85rem;color:var(--body);cursor:pointer;">J'accepte que JOFAGIST traite mes données personnelles dans le cadre de ma demande de devis. Voir notre <a href="politique-confidentialite.html" style="color:var(--blue);text-decoration:underline;">politique de confidentialité</a>.</label>
               </div>
               <div class="form-submit">
                 <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
@@ -137,7 +136,7 @@
                 <div class="info-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
                 <div class="info-text">
                   <strong>Téléphone</strong>
-                  <span>07 61 45 40 19<br>02 38 07 72 1<br>Lun–Ven : 8h–18h</span>
+                  <span>07 61 45 40 19<br>02 38 07 77 21<br>Lun–Ven : 8h–18h</span>
                 </div>
               </div>
               <div class="info-card">
@@ -163,19 +162,6 @@
               </div>
             </div>
 
-            <!-- CARTE APPROXIMATIVE -->
-            <div style="margin-top:28px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);">
-              <iframe
-                title="Localisation JOFAGIST — Centre-Val-de-Loire"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=0.5,46.8,3.0,48.5&layer=mapnik"
-                width="100%"
-                height="280"
-                style="border:0;display:block;"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-            <p style="font-size:0.82rem;color:var(--muted);margin-top:8px;">© OpenStreetMap contributors — Centre-Val-de-Loire</p>
           </div>
 
         </div>
@@ -209,7 +195,7 @@
               Intervenez-vous partout en France ?
               <i class="fas fa-chevron-down" style="color:var(--blue);font-size:0.85rem;" aria-hidden="true"></i>
             </summary>
-            <p style="margin-top:14px;margin-bottom:0;font-size:0.95rem;">Pour la pré-fabrication de tuyauterie industrielle : oui, nous livrons partout en France métropolitaine. Pour les salles de bains et les travaux sur site : nos équipes interviennent principalement en Centre-Val-de-Loire et dans les régions limitrophes. Pour le conseil et l'accompagnement, nous proposons des missions à distance (téléconsultation, analyse de documents).</p>
+            <p style="margin-top:14px;margin-bottom:0;font-size:0.95rem;">Pour la préfabrication de tuyauterie industrielle : oui, nous livrons partout en France métropolitaine. Pour les salles de bains et les travaux sur site : nos équipes interviennent principalement en Centre-Val-de-Loire et dans les régions limitrophes.</p>
           </details>
           <details style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px 26px;cursor:pointer;">
             <summary style="font-family:'Poppins',sans-serif;font-weight:600;font-size:1rem;color:var(--text);list-style:none;display:flex;justify-content:space-between;align-items:center;">
@@ -229,7 +215,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <img src="assets/images/logo-jofagist.webp" alt="JOFAGIST" class="footer-logo" width="150" height="48" loading="lazy">
-          <p>Expert en pré-fabrication de tuyauterie industrielle, création de salles de bains clés en main et accompagnement en études de travaux. Basé en Centre-Val-de-Loire.</p>
+          <p>Expert en préfabrication de tuyauterie industrielle et création de salles de bains clés en main. Basé en Centre-Val-de-Loire.</p>
         </div>
         <div class="footer-col">
           <h4>Navigation</h4>
@@ -243,23 +229,25 @@
         <div class="footer-col">
           <h4>Nos Métiers</h4>
           <ul class="footer-links">
-            <li><a href="tuyauterie-industrielle.html">Pré-fabrication Tuyauterie</a></li>
+            <li><a href="tuyauterie-industrielle.html">Préfabrication Tuyauterie</a></li>
             <li><a href="salle-de-bain.html">Création Salles de Bains</a></li>
-            <li><a href="conseil-accompagnement.html">Conseil &amp; Accompagnement</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact</h4>
           <div class="footer-contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span>2 La Renaissance Lieu-Dit<br>45220 Saint-Firmin-des-Bois</span></div>
-          <div class="footer-contact-item"><i class="fas fa-phone" aria-hidden="true"></i><span>07 61 45 40 19 / 02 38 07 72 1</span></div>
+          <div class="footer-contact-item"><i class="fas fa-phone" aria-hidden="true"></i><span>07 61 45 40 19 / 02 38 07 77 21</span></div>
           <div class="footer-contact-item"><i class="fas fa-envelope" aria-hidden="true"></i><span>fanny@jofagist.fr</span></div>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2024 JOFAGIST. Tous droits réservés.</span>
+        <div class="footer-copy">
+          <span>© 2026 JOFAGIST. Tous droits réservés.</span>
+          <span class="footer-credit">Site créé par Kudja Studio</span>
+        </div>
         <div class="footer-bottom-links">
-          <a href="#">Mentions légales</a>
-          <a href="#">Politique de confidentialité</a>
+          <a href="mentions-legales.html">Mentions légales</a>
+          <a href="politique-confidentialite.html">Politique de confidentialité</a>
         </div>
       </div>
     </div>

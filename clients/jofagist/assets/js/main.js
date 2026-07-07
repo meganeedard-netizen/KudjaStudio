@@ -128,6 +128,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── Before/after carousels ── */
+  document.querySelectorAll('.ba-carousel-wrap').forEach((wrap) => {
+    const slides = wrap.querySelectorAll('.ba-carousel-slide');
+    const dots   = wrap.querySelectorAll('.ba-dot');
+    const prev   = wrap.querySelector('.ba-carousel-prev');
+    const next   = wrap.querySelector('.ba-carousel-next');
+    let current  = 0;
+
+    const goTo = (index) => {
+      slides[current]?.classList.remove('active');
+      dots[current]?.classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current]?.classList.add('active');
+      dots[current]?.classList.add('active');
+    };
+
+    prev?.addEventListener('click', () => goTo(current - 1));
+    next?.addEventListener('click', () => goTo(current + 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  });
+
   /* ── Smooth anchor scroll ── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
