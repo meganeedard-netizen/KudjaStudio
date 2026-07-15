@@ -669,6 +669,31 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.9rem;
 }
 
+.gallery-carousel { display: flex; align-items: center; gap: 16px; }
+
+.gallery-carousel-track {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+}
+
+.gallery-carousel-track .gallery-item {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+}
+
+.gallery-carousel-track::-webkit-scrollbar { height: 6px; }
+.gallery-carousel-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+@media (max-width: 640px) {
+  .gallery-carousel { gap: 8px; }
+  .gallery-carousel-track .gallery-item { flex-basis: 220px; }
+}
+
 /* 13. FEATURES / AVANTAGES
    ============================================================ */
 .feature-list { display: flex; flex-direction: column; gap: 18px; }
@@ -1199,6 +1224,26 @@ select.form-control { appearance: none; background-image: url("data:image/svg+xm
   font-size: 0.9rem;
   color: var(--muted);
 }
+
+.ba-carousel-meta {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.ba-carousel-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.ba-carousel-meta i { color: var(--blue); }
 
 .ba-carousel-arrow {
   flex-shrink: 0;

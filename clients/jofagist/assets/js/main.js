@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);
+    const prefix = el.dataset.prefix || '';
     const suffix = el.dataset.suffix || '';
     const duration = 1800;
     const start = performance.now();
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased) + suffix;
+      el.textContent = prefix + Math.round(target * eased) + suffix;
       if (progress < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -147,6 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
     prev?.addEventListener('click', () => goTo(current - 1));
     next?.addEventListener('click', () => goTo(current + 1));
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  });
+
+  /* ── Gallery carousels ── */
+  document.querySelectorAll('.gallery-carousel').forEach((car) => {
+    const track = car.querySelector('.gallery-carousel-track');
+    const prev  = car.querySelector('.gallery-carousel-prev');
+    const next  = car.querySelector('.gallery-carousel-next');
+    const scrollStep = () => (track.querySelector('.gallery-item')?.offsetWidth || 280) + 16;
+
+    prev?.addEventListener('click', () => track.scrollBy({ left: -scrollStep(), behavior: 'smooth' }));
+    next?.addEventListener('click', () => track.scrollBy({ left: scrollStep(), behavior: 'smooth' }));
   });
 
   /* ── Smooth anchor scroll ── */

@@ -30,7 +30,7 @@
     "email": "fanny@jofagist.fr",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "2 La Renaissance Lieu-Dit", "addressLocality": "Saint-Firmin-des-Bois", "postalCode": "45220", "addressRegion": "Centre-Val-de-Loire",
+      "streetAddress": "2 Lieu-Dit La Renaissance", "addressLocality": "Saint-Firmin-des-Bois", "postalCode": "45220", "addressRegion": "Centre-Val-de-Loire",
       "addressCountry": "FR"
     },
     "areaServed": ["Centre-Val-de-Loire", "France"],
@@ -53,7 +53,15 @@
       </button>
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
-          <li class="nav-item"><a href="#metiers" class="nav-link">Nos Métiers</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="#" class="nav-link">Votre Projet
+              <svg class="nav-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+            <div class="dropdown">
+              <a href="tuyauterie-industrielle.html"><span class="dd-icon"><i class="fas fa-industry" aria-hidden="true"></i></span><span>Je suis un professionnel<small>Tuyauterie industrielle en atelier</small></span></a>
+              <a href="salle-de-bain.html"><span class="dd-icon"><i class="fas fa-bath" aria-hidden="true"></i></span><span>Je suis un particulier<small>Salles de bains clés en main</small></span></a>
+            </div>
+          </li>
           <li class="nav-item"><a href="qui-sommes-nous.html" class="nav-link">Qui sommes-nous</a></li>
           <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
           <li class="nav-item"><a href="contact.html" class="nav-link nav-cta">Nous contacter</a></li>
@@ -65,66 +73,20 @@
   <main>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="metiers">
       <div class="hero-bg" style="background-image: url('assets/images/photo-couverture.webp');" role="img" aria-label="Atelier de préfabrication JOFAGIST"></div>
       <span class="hero-photo-credit">©JOFAGIST</span>
       <div class="container">
         <div class="hero-content" style="text-align:center;align-items:center;display:flex;flex-direction:column;">
-          <span class="hero-tag">Centre-Val-de-Loire &amp; au-delà</span>
           <h1 style="max-width:780px;">Bienvenue chez <span>JOFAGIST</span></h1>
           <p class="hero-subtitle" style="max-width:640px;">Tuyauterie industrielle pour les professionnels, salles de bains clés en main pour les particuliers : dites-nous qui vous êtes pour découvrir l'offre qui vous concerne.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHOIX PROFIL -->
-    <section class="section" id="metiers">
-      <div class="container">
-        <div class="section-header text-center" data-reveal>
-          <span class="section-tag">Vous êtes...</span>
-          <h2>Choisissez votre profil</h2>
-          <p>Un accès direct à l'offre qui correspond à votre projet.</p>
-        </div>
-        <div class="grid grid-2">
-          <article class="service-card" data-reveal data-reveal-delay="1">
-            <div class="service-icon"><i class="fas fa-hard-hat" aria-hidden="true"></i></div>
-            <h3>Je suis un professionnel</h3>
-            <p>Entreprise, collectivité, bureau d'études : découvrez notre préfabrication de tuyauterie industrielle en atelier, sur-mesure et livrée partout en France.</p>
-            <a href="tuyauterie-industrielle.html" class="card-link">
-              Voir la tuyauterie industrielle <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          <div class="hero-actions" style="justify-content:center;align-items:center;">
+            <a href="tuyauterie-industrielle.html" class="btn btn-primary btn-lg">
+              <i class="fas fa-hard-hat" aria-hidden="true"></i> Je suis un professionnel
             </a>
-          </article>
-          <article class="service-card" data-reveal data-reveal-delay="2">
-            <div class="service-icon"><i class="fas fa-house" aria-hidden="true"></i></div>
-            <h3>Je suis un particulier</h3>
-            <p>Envie de rénover ou créer votre salle de bains ? Découvrez notre offre clés en main, du projet à la pose, en Centre-Val-de-Loire.</p>
-            <a href="salle-de-bain.html" class="card-link">
-              Voir les salles de bains <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            <a href="salle-de-bain.html" class="btn btn-outline btn-lg">
+              <i class="fas fa-house" aria-hidden="true"></i> Je suis un particulier
             </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS -->
-    <section class="section section--dark" aria-label="Chiffres clés">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item" data-reveal>
-            <span class="stat-number" data-target="15" data-suffix="+">15+</span>
-            <span class="stat-label">Années d'expérience</span>
-          </div>
-          <div class="stat-item" data-reveal data-reveal-delay="1">
-            <span class="stat-number" data-target="40" data-suffix="+">40+</span>
-            <span class="stat-label">Projets réalisés</span>
-          </div>
-          <div class="stat-item" data-reveal data-reveal-delay="2">
-            <span class="stat-number" data-target="98" data-suffix="%">98%</span>
-            <span class="stat-label">Clients satisfaits</span>
-          </div>
-          <div class="stat-item" data-reveal data-reveal-delay="3">
-            <span class="stat-number" data-target="10" data-suffix="+">10+</span>
-            <span class="stat-label">Régions couvertes</span>
           </div>
         </div>
       </div>
@@ -157,6 +119,62 @@
             <div class="value-icon"><i class="fas fa-tools" aria-hidden="true"></i></div>
             <h3>Artisans &amp; BTP</h3>
             <p>Partenaire des professionnels du bâtiment pour la sous-traitance de tuyauterie industrielle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section section--dark" aria-label="Chiffres clés">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item" data-reveal>
+            <span class="stat-number" data-target="15" data-prefix="+">+15</span>
+            <span class="stat-label">Années d'expérience</span>
+          </div>
+          <div class="stat-item" data-reveal data-reveal-delay="1">
+            <span class="stat-number" data-target="40" data-prefix="+">+40</span>
+            <span class="stat-label">Projets réalisés</span>
+          </div>
+          <div class="stat-item" data-reveal data-reveal-delay="2">
+            <span class="stat-number" data-target="98" data-suffix="%">98%</span>
+            <span class="stat-label">Clients satisfaits</span>
+          </div>
+          <div class="stat-item" data-reveal data-reveal-delay="3">
+            <span class="stat-number" data-target="10" data-prefix="+">+10</span>
+            <span class="stat-label">Régions couvertes</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALEURS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header text-center" data-reveal>
+          <span class="section-tag">Ce qui nous anime</span>
+          <h2>Nos valeurs fondamentales</h2>
+        </div>
+        <div class="grid grid-4" data-reveal>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-medal" aria-hidden="true"></i></div>
+            <h3>Excellence technique</h3>
+            <p>La qualité d'exécution est non négociable. Chaque soudure, chaque joint, chaque carrelage est réalisé avec soin et précision.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
+            <h3>Engagement client</h3>
+            <p>Votre satisfaction est notre priorité absolue. Nous tenons nos engagements de délai, de qualité et de prix, sans exception.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
+            <h3>Transparence</h3>
+            <p>Devis détaillés, communication honnête, pas de mauvaises surprises. Vous savez toujours où en est votre projet et ce qu'il coûte.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+            <h3>Innovation</h3>
+            <p>Nous adoptons les meilleures pratiques et techniques disponibles pour vous offrir des solutions performantes et durables.</p>
           </div>
         </div>
       </div>
@@ -208,7 +226,7 @@
           <h4>Contact</h4>
           <div class="footer-contact-item">
             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            <span>2 La Renaissance Lieu-Dit<br>45220 Saint-Firmin-des-Bois</span>
+            <span>2 Lieu-Dit La Renaissance<br>45220 Saint-Firmin-des-Bois</span>
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-phone" aria-hidden="true"></i>
