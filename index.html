@@ -1494,7 +1494,7 @@
       </a>
     </div>
 
-    <form class="contact-form fade-up" onsubmit="handleSubmit(event)">
+    <form class="contact-form fade-up" action="https://formspree.io/f/mzepzqdy" method="POST" onsubmit="handleSubmit(event)">
       <div class="form-row">
         <div class="form-group">
           <label>Prénom</label>
@@ -1566,16 +1566,38 @@
 
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Message envoyé !';
-    btn.style.background = '#5A9E6A';
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    const originalText = btn.textContent;
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = 'Envoyer ma demande';
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3500);
+    btn.textContent = 'Envoi en cours...';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        btn.textContent = 'Message envoyé !';
+        btn.style.background = '#5A9E6A';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.style.background = '';
+          btn.disabled = false;
+          form.reset();
+        }, 3500);
+      } else {
+        throw new Error('Erreur envoi formulaire');
+      }
+    }).catch(() => {
+      btn.textContent = 'Erreur, réessayez';
+      btn.style.background = '#c0392b';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3500);
+    });
   }
 </script>
 
