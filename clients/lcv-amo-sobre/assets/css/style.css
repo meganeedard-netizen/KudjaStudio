@@ -202,9 +202,9 @@ body.nav-locked { overflow: hidden; }
   box-shadow: var(--shadow-card); padding: 14px 18px;
   display: flex; align-items: center; gap: 10px;
   font-weight: 700; font-size: .82rem; color: var(--navy);
-  max-width: 240px;
+  max-width: none; white-space: nowrap;
 }
-.hero-figure .badge strong { color: var(--navy); display: block; font-size: 1.1rem; }
+.hero-figure .badge strong { color: var(--navy); display: block; font-size: 1.1rem; white-space: nowrap; }
 
 @media (min-width: 900px) {
   .hero .container { grid-template-columns: 1.1fr .9fr; }
