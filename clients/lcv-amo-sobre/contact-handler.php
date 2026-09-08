@@ -58,6 +58,22 @@ $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 $envoye = mail($destinataire, '=?UTF-8?B?' . base64_encode($sujet) . '?=', $corps, implode("\r\n", $headers));
 
 if ($envoye) {
+    // Email de confirmation envoyé au visiteur
+    $sujetConfirmation = 'Votre demande a bien été reçue, La Clef de Voûte';
+
+    $corpsConfirmation = "Bonjour {$nom},\n\n";
+    $corpsConfirmation .= "Votre demande a bien été reçue. Fanny Prieto vous recontactera dans les plus brefs délais pour échanger sur votre projet.\n\n";
+    $corpsConfirmation .= "Récapitulatif de votre message :\n{$message}\n\n";
+    $corpsConfirmation .= "À très bientôt,\n";
+    $corpsConfirmation .= "La Clef de Voûte, Assistance à Maîtrise d'Ouvrage\n";
+
+    $headersConfirmation   = [];
+    $headersConfirmation[] = 'From: La Clef de Voûte <no-reply@lcv-amo.fr>';
+    $headersConfirmation[] = 'Reply-To: contact@lcv-amo.fr';
+    $headersConfirmation[] = 'Content-Type: text/plain; charset=UTF-8';
+
+    mail($email, '=?UTF-8?B?' . base64_encode($sujetConfirmation) . '?=', $corpsConfirmation, implode("\r\n", $headersConfirmation));
+
     repondre(true, 'Message envoyé.');
 } else {
     http_response_code(500);
