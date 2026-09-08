@@ -33,6 +33,11 @@
         return;
       }
 
+      if (!form.checkValidity()) {
+        showStatus(false, "Merci d'indiquer toutes vos coordonnées nécessaires à l'envoi de votre demande.");
+        return;
+      }
+
       var submitBtn = form.querySelector('[type="submit"]');
       submitBtn.disabled = true;
       submitBtn.dataset.originalText = submitBtn.dataset.originalText || submitBtn.textContent;
