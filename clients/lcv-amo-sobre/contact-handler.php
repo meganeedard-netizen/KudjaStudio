@@ -1,6 +1,6 @@
 <?php
 /**
- * Traitement du formulaire de contact — La Clef de Voûte
+ * Traitement du formulaire de contact, La Clef de Voûte
  * Envoie un email à contact@lcv-amo.fr via la fonction mail() de l'hébergeur (Hostinger).
  */
 
@@ -40,7 +40,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     repondre(false, 'Adresse email invalide.');
 }
 
-$sujet = 'Nouveau message depuis lcv-amo.fr — ' . $nom;
+$sujet = 'Nouveau message depuis lcv-amo.fr : ' . $nom;
 
 $corps = "Nouvelle demande de contact reçue sur lcv-amo.fr\n\n";
 $corps .= "Nom : {$nom}\n";
