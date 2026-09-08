@@ -51,7 +51,7 @@ $corps .= "Type de projet : {$typeProjet}\n\n";
 $corps .= "Message :\n{$message}\n";
 
 $headers   = [];
-$headers[] = 'From: Site La Clef de Voûte <no-reply@lcv-amo.fr>';
+$headers[] = 'From: Site La Clef de Voûte <contact@lcv-amo.fr>';
 $headers[] = 'Reply-To: ' . $nom . ' <' . $email . '>';
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 
@@ -68,7 +68,7 @@ if ($envoye) {
     $corpsConfirmation .= "La Clef de Voûte, Assistance à Maîtrise d'Ouvrage\n";
 
     $headersConfirmation   = [];
-    $headersConfirmation[] = 'From: La Clef de Voûte <no-reply@lcv-amo.fr>';
+    $headersConfirmation[] = 'From: La Clef de Voûte <contact@lcv-amo.fr>';
     $headersConfirmation[] = 'Reply-To: contact@lcv-amo.fr';
     $headersConfirmation[] = 'Content-Type: text/plain; charset=UTF-8';
 
