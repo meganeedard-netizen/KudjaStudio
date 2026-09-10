@@ -79,4 +79,14 @@
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
   });
+
+  /* Masquer le bouton WhatsApp flottant quand le pied de page est visible, pour ne pas cacher les liens légaux */
+  var whatsappFloat = document.querySelector(".whatsapp-float");
+  var siteFooter = document.querySelector(".site-footer");
+  if (whatsappFloat && siteFooter && "IntersectionObserver" in window) {
+    var footerObserver = new IntersectionObserver(function (entries) {
+      whatsappFloat.classList.toggle("is-hidden", entries[0].isIntersecting);
+    });
+    footerObserver.observe(siteFooter);
+  }
 })();
