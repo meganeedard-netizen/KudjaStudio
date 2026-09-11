@@ -194,6 +194,10 @@ body.nav-locked { overflow: hidden; }
 .hero h1 { font-size: clamp(2.1rem, 5vw, 3.2rem); }
 .hero-tag { display: block; width: clamp(220px, 34vw, 420px); aspect-ratio: 1405 / 320; overflow: hidden; margin-bottom: 6px; }
 .hero-tag video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 47%; mix-blend-mode: multiply; }
+.hero-tag-fallback { display: none; font-family: var(--font-script); font-size: clamp(2.4rem, 6vw, 3.6rem); color: var(--pink); font-weight: 400; line-height: 1; }
+.hero-tag.video-failed { width: auto; aspect-ratio: auto; overflow: visible; }
+.hero-tag.video-failed video { display: none; }
+.hero-tag.video-failed .hero-tag-fallback { display: block; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
 .hero-figure { position: relative; }
 .hero-figure img { border-radius: var(--radius); box-shadow: var(--shadow-soft); width: 100%; height: auto; object-fit: cover; }
@@ -392,12 +396,14 @@ body.nav-locked { overflow: hidden; }
   background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.2); color: var(--white);
   margin-top: 16px; transition: background .2s ease, border-color .2s ease;
 }
-.footer-social:hover { background: var(--pink); border-color: var(--pink); color: var(--white); }
 .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
 .site-footer h5 { font-family: var(--font-display); color: var(--white); font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
 .site-footer ul { display: flex; flex-direction: column; gap: 10px; }
 .site-footer a { color: rgba(255,255,255,.78); font-size: .94rem; }
-.site-footer a:hover { color: var(--pink); }
+@media (hover: hover) {
+  .site-footer a:hover { color: var(--pink); }
+  .site-footer .footer-social:hover { background: var(--pink); border-color: var(--pink); color: var(--white); }
+}
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.15); padding-top: 22px;
   display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;

@@ -89,4 +89,23 @@
     });
     footerObserver.observe(siteFooter);
   }
+
+  /* Titre héros : bascule sur le texte statique si la vidéo ne se lance pas toute seule (certains mobiles/navigateurs) */
+  var heroTag = document.querySelector(".hero-tag");
+  var heroVideo = heroTag && heroTag.querySelector("video");
+  if (heroTag && heroVideo) {
+    var heroVideoStarted = false;
+    var showHeroFallback = function () { heroTag.classList.add("video-failed"); };
+    heroVideo.addEventListener("playing", function () { heroVideoStarted = true; });
+    heroVideo.muted = true;
+    var playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch(showHeroFallback);
+    }
+    heroVideo.addEventListener("stalled", showHeroFallback);
+    heroVideo.addEventListener("error", showHeroFallback);
+    setTimeout(function () {
+      if (!heroVideoStarted) showHeroFallback();
+    }, 1500);
+  }
 })();
