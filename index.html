@@ -165,6 +165,13 @@
 
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { width: 24px; height: 2px; background: var(--noir); border-radius: 2px; }
+    .nav-links a { white-space: nowrap; }
+
+    @media (max-width: 1200px) {
+      .nav-links { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg); padding: 1.5rem 6%; border-bottom: 1px solid rgba(0,0,0,.08); gap: 1.2rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+    }
 
     /* ---- HERO ---- */
     #accueil {
@@ -1050,6 +1057,78 @@
       footer { flex-direction: column; text-align: center; }
     }
 
+    /* ---- REALISATIONS ---- */
+    #realisations { background: var(--noir); }
+    #realisations h2 { color: #fff; }
+    #realisations .s-tag { color: var(--peach); }
+    #realisations .s-sub { color: rgba(255,255,255,.6); }
+    #realisations .real-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,.45); }
+
+    .real-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.6rem;
+      margin-top: 3.5rem;
+    }
+
+    .real-card {
+      background: #fff;
+      border-radius: var(--rayon);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .real-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+
+    .real-card-img {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-bottom: 1px solid #F0EEEB;
+    }
+    .real-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top; display: block;
+      transition: transform .4s ease;
+    }
+    .real-card:hover .real-card-img img { transform: scale(1.03); }
+
+    .real-card-body { padding: 1.4rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; align-items: flex-start; }
+
+    .real-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--noir);
+      margin-bottom: .45rem;
+    }
+
+    .real-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .real-card-footer {
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.1rem;
+      padding-top: .9rem;
+      border-top: 1px solid #F0EEEB;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .real-card-footer .lire { color: var(--coral); font-weight: 600; font-size: .8rem; }
+
+    @media (max-width: 860px) {
+      .real-grid { grid-template-columns: minmax(0, 1fr); max-width: 520px; }
+    }
+
     /* ---- BLOG ---- */
     #blog { background: var(--bg2); }
 
@@ -1152,6 +1231,7 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#objectif">Notre approche</a></li>
     <li><a href="#prestations">Prestations</a></li>
+    <li><a href="#realisations">Réalisations</a></li>
     <li><a href="#tarifs">Tarifs</a></li>
     <li><a href="#apropos">À propos</a></li>
     <li><a href="#blog">Blog</a></li>
@@ -1252,6 +1332,77 @@
         <li>1 tournage = 1 mois de contenu</li>
       </ul>
     </div>
+
+  </div>
+</section>
+
+<!-- REALISATIONS -->
+<section id="realisations">
+  <div class="s-tag fade-up">Portfolio</div>
+  <h2 class="fade-up">Nos<br>réalisations</h2>
+  <p class="s-sub fade-up">Quelques sites créés par Kudja Studio, à découvrir en ligne.</p>
+
+  <div class="real-grid">
+
+    <a class="real-card fade-up" href="https://jofagist.fr/" target="_blank" rel="noopener">
+      <div class="real-card-img">
+        <img src="images/realisation-jofagist.webp" alt="Page d'accueil du site Jofagist, tuyauterie industrielle et salles de bains" width="960" height="600" loading="lazy" />
+      </div>
+      <div class="real-card-body">
+        <span class="blog-cat">Industrie &amp; BTP</span>
+        <h3>Jofagist</h3>
+        <p>Tuyauterie industrielle pour les professionnels et salles de bains clés en main pour les particuliers : un site qui oriente chaque visiteur vers la bonne offre.</p>
+        <div class="real-card-footer">
+          <span>jofagist.fr</span>
+          <span class="lire">Voir le site →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="real-card fade-up" href="https://lcv-amo.fr/" target="_blank" rel="noopener">
+      <div class="real-card-img">
+        <img src="images/realisation-lcv-amo.webp" alt="Page d'accueil du site La Clef de Voûte, assistance à maîtrise d'ouvrage" width="960" height="600" loading="lazy" />
+      </div>
+      <div class="real-card-body">
+        <span class="blog-cat">Conseil &amp; AMO</span>
+        <h3>La Clef de Voûte</h3>
+        <p>Assistance à maîtrise d'ouvrage pour collectivités, entreprises et particuliers : un site sobre et rassurant qui met en avant l'expertise.</p>
+        <div class="real-card-footer">
+          <span>lcv-amo.fr</span>
+          <span class="lire">Voir le site →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="real-card fade-up" href="https://bligo.fr/" target="_blank" rel="noopener">
+      <div class="real-card-img">
+        <img src="images/realisation-bligo.webp" alt="Page d'accueil du site BliGO, logiciel et application pour médiathèques" width="960" height="600" loading="lazy" />
+      </div>
+      <div class="real-card-body">
+        <span class="blog-cat">Logiciel &amp; appli</span>
+        <h3>BliGO</h3>
+        <p>Le site vitrine d'un logiciel de gestion de médiathèque et de son application gratuite pour les habitants, pensé pour convaincre les mairies.</p>
+        <div class="real-card-footer">
+          <span>bligo.fr</span>
+          <span class="lire">Voir le site →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="real-card fade-up" href="https://kudjatravel.com/" target="_blank" rel="noopener">
+      <div class="real-card-img">
+        <img src="images/realisation-kudja-travel.webp" alt="Page d'accueil du site Kudja Travel, voyages sur-mesure aux Antilles" width="960" height="600" loading="lazy" />
+      </div>
+      <div class="real-card-body">
+        <span class="blog-cat">Tourisme</span>
+        <h3>Kudja Travel</h3>
+        <p>Travel planner aux Antilles : un site bilingue français et anglais, avec destinations, séjours à thème et demande de devis.</p>
+        <div class="real-card-footer">
+          <span>kudjatravel.com</span>
+          <span class="lire">Voir le site →</span>
+        </div>
+      </div>
+    </a>
 
   </div>
 </section>
@@ -1545,6 +1696,7 @@
   <p class="footer-copy">© 2026 Kudja Studio &middot; kudjastudio.fr</p>
   <div class="footer-links">
     <a href="#prestations">Prestations</a>
+    <a href="#realisations">Réalisations</a>
     <a href="#tarifs">Tarifs</a>
     <a href="#blog">Blog</a>
     <a href="#contact">Contact</a>
