@@ -27,20 +27,28 @@
 
       <nav>
         <button class="nav-btn active" id="nav-accueil" onclick="showSection('accueil')">Accueil</button>
-        <button class="nav-btn" id="nav-menu" onclick="showSection('menu')">Menu &amp; Commander</button>
-        <button class="nav-btn nav-cta" onclick="showSection('reservation')">Réserver une table</button>
+        <button class="nav-btn" id="nav-menu" onclick="showSection('menu')">La carte</button>
+        <button class="nav-btn" id="nav-reservation" onclick="showSection('reservation')">Réserver une table</button>
+        <button class="nav-btn nav-cta" id="nav-commander" onclick="showSection('commander')">Commander</button>
       </nav>
 
-      <button class="burger" id="burger" onclick="toggleMobileNav()" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="header-actions">
+        <button class="cart-btn" onclick="toggleCart()" aria-label="Mon panier" title="Mon panier">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+        <button class="burger" id="burger" onclick="toggleMobileNav()" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
     <div class="mobile-nav" id="mobile-nav">
       <button class="nav-btn" onclick="showSection('accueil'); toggleMobileNav()">Accueil</button>
-      <button class="nav-btn" onclick="showSection('menu'); toggleMobileNav()">Menu &amp; Commander</button>
+      <button class="nav-btn" onclick="showSection('menu'); toggleMobileNav()">La carte</button>
       <button class="nav-btn" onclick="showSection('reservation'); toggleMobileNav()">Réserver une table</button>
+      <button class="nav-btn mobile-nav-cta" onclick="showSection('commander'); toggleMobileNav()">Commander à emporter</button>
     </div>
   </header>
 
@@ -65,11 +73,11 @@
           au coeur de Sainte-Anne
         </p>
         <div class="hero-buttons">
-          <button class="btn btn-primary" onclick="showSection('menu')">
-            🍽 Voir le menu
+          <button class="btn btn-primary" onclick="showSection('commander')">
+            Commander
           </button>
           <button class="btn btn-secondary" onclick="showSection('reservation')">
-            📅 Réserver une table
+            Réserver une table
           </button>
         </div>
       </div>
@@ -101,20 +109,32 @@
             </p>
             <div class="about-highlights">
               <div class="highlight-item">
-                <strong>Produits locaux</strong>
-                <span>Épices et légumes du pays</span>
+                <span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+                <div>
+                  <strong>Produits locaux</strong>
+                  <span>Épices et légumes du pays</span>
+                </div>
               </div>
               <div class="highlight-item">
-                <strong>Cuisine maison</strong>
-                <span>Recettes créoles traditionnelles</span>
+                <span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-3Z"/><path d="M2 11h20"/><path d="M9 7c0-1.5 1-1.5 1-3M14 7c0-1.5 1-1.5 1-3"/></svg></span>
+                <div>
+                  <strong>Cuisine maison</strong>
+                  <span>Recettes créoles traditionnelles</span>
+                </div>
               </div>
               <div class="highlight-item">
-                <strong>À emporter</strong>
-                <span>Commande rapide &amp; pratique</span>
+                <span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+                <div>
+                  <strong>À emporter</strong>
+                  <span>Commande rapide &amp; pratique</span>
+                </div>
               </div>
               <div class="highlight-item">
-                <strong>Ambiance chaleureuse</strong>
-                <span>Salle conviviale &amp; colorée</span>
+                <span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+                <div>
+                  <strong>Ambiance chaleureuse</strong>
+                  <span>Salle conviviale &amp; colorée</span>
+                </div>
               </div>
             </div>
           </div>
@@ -266,10 +286,10 @@
         <p>Réservez votre table ou commandez à emporter, c'est simple et rapide.</p>
         <div class="cta-buttons">
           <button class="btn btn-white" onclick="showSection('reservation')">
-            📅 Réserver maintenant
+            Réserver une table
           </button>
-          <button class="btn btn-dark" onclick="showSection('menu')">
-            🍽 Commander à emporter
+          <button class="btn btn-dark" onclick="showSection('commander')">
+            Commander à emporter
           </button>
         </div>
       </div>
@@ -304,7 +324,7 @@
       <!-- Entrées -->
       <div class="menu-category" data-category="entrees">
         <div class="menu-category-title">
-          <span class="menu-icon">🥟</span>
+          <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.38 12a2.4 2.4 0 0 1-.4-4.77 2.4 2.4 0 0 1 3.2-2.77 2.4 2.4 0 0 1 3.47-.63 2.4 2.4 0 0 1 3.37 3.37 2.4 2.4 0 0 1-1.1 3.7 2.51 2.51 0 0 1 .03 1.1"/><path d="m13 12 4-4"/><path d="M10.9 7.25A3.99 3.99 0 0 0 4 10c0 .73.2 1.41.54 2"/></svg></span>
           <h2>Entrée Tapas</h2>
         </div>
         <div class="menu-items">
@@ -362,7 +382,7 @@
               <h4>Sarcives</h4>
               <p>Porc ou poulet grillé, marinade créole</p>
             </div>
-            <span class="menu-item-price">Porc 8 € / Poulet 9 €</span>
+            <span class="menu-item-price multi"><span>Porc 8 €</span> <span class="price-or">/</span> <span>Poulet 9 €</span></span>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
@@ -377,7 +397,7 @@
       <!-- Plats -->
       <div class="menu-category" data-category="plats">
         <div class="menu-category-title">
-          <span class="menu-icon">🍛</span>
+          <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/><path d="m8.86 6.78-.45-1.81a2 2 0 0 1 1.45-2.43l1.94-.48a2 2 0 0 1 2.43 1.46l.45 1.8"/></svg></span>
           <h2>Plats</h2>
         </div>
         <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:1.5rem; font-style:italic;">
@@ -389,7 +409,7 @@
               <h4>Sauté mine</h4>
               <p>Nouilles sautées aux légumes, végétarien ou aux crevettes</p>
             </div>
-            <span class="menu-item-price">Végé 16 € / Crevettes 21 €</span>
+            <span class="menu-item-price multi"><span>Végé 16 €</span> <span class="price-or">/</span> <span>Crevettes 21 €</span></span>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
@@ -453,7 +473,7 @@
       <!-- Desserts -->
       <div class="menu-category" data-category="desserts">
         <div class="menu-category-title">
-          <span class="menu-icon">🍮</span>
+          <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m7 11 4.08 10.35a1 1 0 0 0 1.84 0L17 11"/><path d="M17 7A5 5 0 0 0 7 7"/><path d="M17 7a2 2 0 0 1 0 4H7a2 2 0 0 1 0-4"/></svg></span>
           <h2>Desserts</h2>
         </div>
         <div class="menu-items">
@@ -491,7 +511,7 @@
       <!-- Boissons -->
       <div class="menu-category" data-category="boissons">
         <div class="menu-category-title">
-          <span class="menu-icon">🥤</span>
+          <span class="menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 8 1.75 12.28a2 2 0 0 0 2 1.72h4.54a2 2 0 0 0 2-1.72L18 8"/><path d="M5 8h14"/><path d="M7 15a6.47 6.47 0 0 1 5 0 6.47 6.47 0 0 0 5 0"/><path d="m12 8 1-6h2"/></svg></span>
           <h2>Boissons</h2>
         </div>
         <div class="menu-items">
@@ -548,11 +568,19 @@
       <div class="container">
         <div class="section-label">Rapide &amp; pratique</div>
         <h2>Commander à emporter</h2>
-        <p>Votre commande prête en 20 à 30 minutes. Appelez-nous ou contactez-nous par WhatsApp !</p>
+        <p>Votre commande prête en 20 à 30 minutes. Commandez en ligne, par téléphone ou par WhatsApp !</p>
 
         <div class="commander-options">
           <div class="commander-card">
-            <div class="commander-icon">📞</div>
+            <div class="commander-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>En ligne</h3>
+            <p>Composez votre panier et choisissez votre heure de retrait.</p>
+            <button class="btn btn-primary" onclick="showSection('commander')">
+              Commander en ligne
+            </button>
+          </div>
+          <div class="commander-card">
+            <div class="commander-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
             <h3>Par téléphone</h3>
             <p>Appelez-nous directement pour passer votre commande.</p>
             <a href="tel:+590691251262" class="btn btn-primary">
@@ -560,7 +588,7 @@
             </a>
           </div>
           <div class="commander-card">
-            <div class="commander-icon">💬</div>
+            <div class="commander-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></div>
             <h3>Via WhatsApp</h3>
             <p>Envoyez votre commande par message, c'est simple.</p>
             <a href="https://wa.me/590691251262?text=Bonjour%2C%20je%20souhaite%20commander%20%C3%A0%20emporter%20chez%20NSK%20!"
@@ -578,6 +606,93 @@
 
   </div>
   <!-- /section-menu -->
+
+
+  <!-- ══════════════════════════════════
+       PAGE COMMANDER À EMPORTER
+  ══════════════════════════════════ -->
+  <div id="section-commander" class="page-section">
+
+    <div class="menu-hero">
+      <div class="section-label">NSK · Nèf Sèt Kat</div>
+      <h1>Commander à emporter</h1>
+      <p>Votre commande prête en 20 à 30 minutes</p>
+    </div>
+
+    <div class="cmd-steps">
+      <div class="cmd-steps-inner">
+        <div>
+          <div class="cmd-step-num">01</div>
+          <div class="cmd-step-title">Choisissez vos plats</div>
+          <p class="cmd-step-desc">Parcourez la carte et ajoutez vos plats au panier.</p>
+        </div>
+        <div>
+          <div class="cmd-step-num">02</div>
+          <div class="cmd-step-title">Validez votre commande</div>
+          <p class="cmd-step-desc">Renseignez vos coordonnées et choisissez votre créneau de retrait.</p>
+        </div>
+        <div>
+          <div class="cmd-step-num">03</div>
+          <div class="cmd-step-title">Récupérez sur place</div>
+          <p class="cmd-step-desc">Nous vous confirmons par téléphone. Venez récupérer à l'heure choisie.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cmd-nav">
+      <button class="filter-btn" onclick="scrollToCat('entrees')">Entrées</button>
+      <button class="filter-btn" onclick="scrollToCat('plats')">Plats</button>
+      <button class="filter-btn" onclick="scrollToCat('desserts')">Desserts</button>
+      <button class="filter-btn" onclick="scrollToCat('boissons')">Boissons</button>
+    </div>
+
+    <section class="cmd-section" id="cmd-entrees">
+      <div class="cmd-inner">
+        <div class="cmd-head">
+          <span class="section-label">Pour commencer</span>
+          <h2>Entrées <em>&amp; Tapas</em></h2>
+          <div class="cmd-sep"></div>
+        </div>
+        <div class="cmd-grid" data-cat="entrees"></div>
+      </div>
+    </section>
+
+    <section class="cmd-section" id="cmd-plats">
+      <div class="cmd-inner">
+        <div class="cmd-head">
+          <span class="section-label">L'essentiel</span>
+          <h2>Nos <em>Plats</em></h2>
+          <div class="cmd-sep"></div>
+          <p class="cmd-note">Tous les plats sont servis avec riz blanc, grains et rougail du jour.</p>
+        </div>
+        <div class="cmd-grid" data-cat="plats"></div>
+      </div>
+    </section>
+
+    <section class="cmd-section" id="cmd-desserts">
+      <div class="cmd-inner">
+        <div class="cmd-head">
+          <span class="section-label">Pour finir</span>
+          <h2>Nos <em>Desserts</em></h2>
+          <div class="cmd-sep"></div>
+        </div>
+        <div class="cmd-grid" data-cat="desserts"></div>
+      </div>
+    </section>
+
+    <section class="cmd-section" id="cmd-boissons">
+      <div class="cmd-inner">
+        <div class="cmd-head">
+          <span class="section-label">Pour accompagner</span>
+          <h2>Nos <em>Boissons</em></h2>
+          <div class="cmd-sep"></div>
+        </div>
+        <div class="cmd-grid" data-cat="boissons"></div>
+      </div>
+    </section>
+
+  </div>
+  <!-- /section-commander -->
 
 
   <!-- ══════════════════════════════════
@@ -718,7 +833,7 @@
       <div class="resa-info">
 
         <div class="info-card">
-          <h3>🕐 Horaires d'ouverture</h3>
+          <h3><span class="info-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Horaires d'ouverture</h3>
           <ul>
             <li><strong>Lundi</strong><span>Fermé</span></li>
             <li><strong>Mar – Jeu</strong><span>11h30–14h / 19h–21h30</span></li>
@@ -728,23 +843,23 @@
         </div>
 
         <div class="info-card">
-          <h3>📍 Nous trouver</h3>
+          <h3><span class="info-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>Nous trouver</h3>
           <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <span>Route de la plage, Sainte-Anne 97180, Guadeloupe</span>
+            <div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <a href="https://maps.app.goo.gl/yfQLDpFvu4nR6UnV9" target="_blank" rel="noopener">Route de la plage, Sainte-Anne 97180, Guadeloupe</a>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <span>+590 691 25 12 62</span>
+            <div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+            <a href="tel:+590691251262">+590 691 25 12 62</a>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <span>nsk.gwad@gmail.com</span>
+            <div class="contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+            <a href="mailto:nsk.gwad@gmail.com">nsk.gwad@gmail.com</a>
           </div>
         </div>
 
         <div class="info-card">
-          <h3>ℹ️ Infos utiles</h3>
+          <h3><span class="info-card-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></span>Infos utiles</h3>
           <ul>
             <li><strong>Capacité</strong><span>Jusqu'à 40 couverts</span></li>
             <li><strong>Groupes</strong><span>Nous contacter</span></li>
@@ -762,6 +877,28 @@
 
 
   <!-- ══════════════════════════════════
+       CARTE GOOGLE MAPS
+  ══════════════════════════════════ -->
+  <section class="map-section">
+    <div class="map-head">
+      <div class="section-label">Nous trouver</div>
+      <h2>Route de la plage, Sainte-Anne</h2>
+      <a class="map-link" href="https://maps.app.goo.gl/yfQLDpFvu4nR6UnV9" target="_blank" rel="noopener">
+        Ouvrir dans Google Maps →
+      </a>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://maps.google.com/maps?q=16.2228047,-61.3822011&amp;z=16&amp;hl=fr&amp;output=embed"
+        title="Restaurant NSK sur Google Maps"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════
        FOOTER
   ══════════════════════════════════ -->
   <footer>
@@ -769,13 +906,13 @@
       <div class="footer-brand">
         <img src="images/Design sans titre (15).webp" alt="Logo NSK">
         <p>
-          Restaurant Nèf Sèt Kat, le goût authentique de La Réunion à Sainte-Anne. Cuisinés avec passion, nos plats créoles vous transportent au coeur de l'île intense.
+          Restaurant Nèf Sèt Kat, le goût authentique de La Réunion à Sainte-Anne.
         </p>
         <div class="social-links" style="margin-top:1.25rem;">
-          <a class="social-link" href="#" target="_blank" aria-label="Facebook">
+          <a class="social-link" href="https://www.facebook.com/profile.php?id=61586667449407" target="_blank" rel="noopener" aria-label="Facebook NSK">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
-          <a class="social-link" href="#" target="_blank" aria-label="Instagram">
+          <a class="social-link" href="https://www.instagram.com/nsk_9.7.4/" target="_blank" rel="noopener" aria-label="Instagram NSK">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
           </a>
         </div>
@@ -786,7 +923,7 @@
         <ul>
           <li onclick="showSection('accueil')">Accueil</li>
           <li onclick="showSection('menu')">Notre carte</li>
-          <li onclick="showSection('menu')">Commander à emporter</li>
+          <li onclick="showSection('commander')">Commander à emporter</li>
           <li onclick="showSection('reservation')">Réserver une table</li>
         </ul>
       </div>
@@ -815,6 +952,63 @@
     <span id="toast-msg"></span>
   </div>
 
+  <!-- ══════════════════════════════════
+       PANIER
+  ══════════════════════════════════ -->
+  <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+  <aside class="cart-panel" id="cart-panel" aria-label="Mon panier">
+    <div class="cart-panel-header">
+      <span class="cart-panel-title">Mon panier</span>
+      <button class="cart-close" onclick="closeCart()" aria-label="Fermer">✕</button>
+    </div>
+    <div class="cart-items-list" id="cart-items-list"></div>
+    <div class="panier-success" id="panier-success">
+      <span>🎉</span>
+      <strong>Commande reçue !</strong>
+      <p id="panier-success-msg">Nous vous recontactons très bientôt pour confirmer votre retrait.</p>
+    </div>
+    <div class="cart-panel-footer" id="cart-footer" style="display:none">
+      <div class="cart-total-line">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-amount" id="cart-total">0 €</span>
+      </div>
+      <button class="btn-valider" onclick="showPanierForm()">Valider la commande</button>
+      <button class="cart-clear" onclick="clearCart()">Vider le panier</button>
+      <p class="panier-note">Retrait sur place · Confirmation par téléphone</p>
+
+      <div class="panier-form" id="panier-form">
+        <label class="panier-form-label" for="pf-nom">Prénom &amp; Nom</label>
+        <input type="text" id="pf-nom" placeholder="Jean Dupont" autocomplete="name">
+        <label class="panier-form-label" for="pf-tel">Téléphone</label>
+        <input type="tel" id="pf-tel" placeholder="+590 690 00 00 00" autocomplete="tel">
+        <label class="panier-form-label" for="pf-date">Date de retrait</label>
+        <input type="date" id="pf-date">
+        <span class="slots-label">Créneau de retrait</span>
+        <span class="slots-group-title">Déjeuner</span>
+        <div class="slots-grid" id="slots-cmd-midi"></div>
+        <span class="slots-group-title">Dîner</span>
+        <div class="slots-grid" id="slots-cmd-soir"></div>
+        <label class="panier-form-label" for="pf-note" style="margin-top:0.5rem">Note (allergies, demandes…)</label>
+        <textarea id="pf-note" placeholder="Allergies, piment à part, demandes spéciales…"></textarea>
+        <button class="btn-send" onclick="sendOrder()">Envoyer ma commande</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Barre panier mobile -->
+  <button class="panier-fab" id="panier-fab" onclick="openCart()">
+    <span class="panier-fab-left">
+      <span class="panier-fab-badge" id="fab-count">0</span>
+      <span>Voir mon panier</span>
+    </span>
+    <span id="fab-total">0 €</span>
+  </button>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/590691251262?text=Bonjour%20NSK%2C%20je%20souhaite%20avoir%20plus%20d%27informations%20!" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contacter NSK sur WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
 
   <!-- ══════════════════════════════════
        JAVASCRIPT
@@ -831,6 +1025,7 @@
       const navBtn = document.getElementById('nav-' + name);
       if (navBtn) navBtn.classList.add('active');
 
+      if (typeof updateFab === 'function') updateFab();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -912,6 +1107,247 @@
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
+
+    // ══════════════════════════════════
+    // COMMANDE À EMPORTER + PANIER
+    // ══════════════════════════════════
+    const CARTE = [
+      { cat: 'entrees', id: 'achards', name: 'Achards de légumes', desc: 'Légumes marinés aux épices créoles', price: 7, img: 'images/carte/achards-legumes.webp' },
+      { cat: 'entrees', id: 'beignets-songe', name: 'Beignets songe (10 pièces)', desc: 'Beignets de taro croustillants, spécialité réunionnaise', price: 8, img: 'images/carte/beignets-songe-10-pieces.webp' },
+      { cat: 'entrees', id: 'bouchons', name: 'Bouchons de porc (4 pièces)', desc: 'Bouchons vapeur au porc, sauce citron piment', price: 6, img: 'images/carte/bouchons-porc-4-pieces.webp' },
+      { cat: 'entrees', id: 'nems-crevettes', name: 'Nems de crevettes (4 pièces)', desc: 'Rouleaux croustillants aux crevettes', price: 9, img: 'images/carte/nems-crevettes-4-pieces.webp' },
+      { cat: 'entrees', id: 'nems-poulet', name: 'Nems de poulet (4 pièces)', desc: 'Rouleaux croustillants au poulet épicé', price: 8, img: 'images/carte/nems-poulet-4-pieces.webp' },
+      { cat: 'entrees', id: 'samoussas-saumon', name: 'Samoussas saumon (8 pièces)', desc: 'Feuilletés croustillants au saumon', price: 10, img: 'images/carte/samoussas-saumon-8-pieces.webp' },
+      { cat: 'entrees', id: 'samoussas-poisson', name: 'Samoussas poisson (8 pièces)', desc: 'Feuilletés croustillants au poisson', price: 8, img: 'images/carte/samoussas-poisson-8-pieces.webp' },
+      { cat: 'entrees', id: 'sarcives', name: 'Sarcives', desc: 'Porc ou poulet grillé, marinade créole', img: 'images/carte/sarcives.webp',
+        variants: [{ id: 'porc', label: 'Porc', price: 8 }, { id: 'poulet', label: 'Poulet', price: 9 }] },
+      { cat: 'entrees', id: 'bonbons-piment', name: 'Bonbons piment (6 pièces)', desc: 'Croquettes de lentilles épicées, incontournables créoles', price: 7, img: 'images/carte/bonbons-piment-6-pieces.webp' },
+
+      { cat: 'plats', id: 'saute-mine', name: 'Sauté mine', desc: 'Nouilles sautées aux légumes ou aux crevettes', img: 'images/carte/saute-mine.webp',
+        variants: [{ id: 'vege', label: 'Aux légumes', price: 16 }, { id: 'crevettes', label: 'Crevettes', price: 21 }] },
+      { cat: 'plats', id: 'cari-crabe', name: 'Cari de crabe', desc: "Crabe en cari, curcuma et épices de l'île", price: 22, img: 'images/carte/cari-crabe.webp' },
+      { cat: 'plats', id: 'poisson-tahitienne', name: 'Poisson tahitienne', desc: 'Poisson frais mariné au citron et lait de coco', price: 21, img: 'images/carte/poisson-tahitienne.webp' },
+      { cat: 'plats', id: 'rougail-morue', name: 'Rougail morue', desc: 'Morue dessalée en rougail tomates, piment et oignons', price: 17, img: 'images/carte/rougail-morue.webp' },
+      { cat: 'plats', id: 'rougail-saucisses', name: 'Rougail saucisses', desc: 'Saucisses fumées mijotées au rougail tomates créole', price: 19, img: 'images/carte/rougail-saucisses.webp' },
+      { cat: 'plats', id: 'boeuf-oignons', name: 'Bœuf aux oignons', desc: 'Bœuf fondant sauté aux oignons et épices', price: 18, img: 'images/carte/boeuf-oignons.webp' },
+      { cat: 'plats', id: 'cabri-massale', name: 'Cabri massalé', desc: "Cabri mijoté aux épices massalé, cuit à l'étouffée", price: 21, img: 'images/carte/cabri-massale.webp' },
+      { cat: 'plats', id: 'assiette-mixte', name: 'Assiette mixte', desc: 'Assortiment généreux de nos tapas maison', price: 31, img: 'images/carte/tapas-mixtes-maison.webp' },
+
+      { cat: 'desserts', id: 'gateau-patate', name: 'Gâteau patate douce', desc: 'Moelleux à la patate douce, vanille de La Réunion', price: 5, img: 'images/carte/gateau-patate-douce.webp' },
+      { cat: 'desserts', id: 'bonbons-cannelle', name: 'Bonbons la cannelle', desc: 'Douceurs créoles à la cannelle et coco râpée', price: 4, img: 'images/carte/bonbons-cannelle.webp' },
+      { cat: 'desserts', id: 'creme-caramel', name: 'Crème caramel coco', desc: 'Flan maison au lait de coco, caramel doré', price: 6, img: 'images/carte/creme-caramel-coco.webp' },
+      { cat: 'desserts', id: 'fruits', name: 'Fruits de saison', desc: 'Sélection de fruits frais locaux du marché', price: 5, img: 'images/carte/salade-fruits-exotiques.webp' },
+
+      { cat: 'boissons', id: 'jus-corossol', name: 'Jus corossol', desc: 'Jus de corossol frais, fruité et exotique', price: 4, img: 'images/carte/jus-corossol.webp' },
+      { cat: 'boissons', id: 'jus-letchi', name: 'Jus letchi', desc: 'Jus de letchi frais de La Réunion', price: 4, img: 'images/carte/jus-letchi.webp' },
+      { cat: 'boissons', id: 'jus-goyave', name: 'Jus goyave', desc: 'Jus de goyave, doux et parfumé', price: 4, img: 'images/carte/jus-goyave.webp' },
+      { cat: 'boissons', id: 'biere', name: 'Bière locale', desc: 'Bière fraîche et désaltérante', price: 6, img: 'images/carte/biere-labye.webp' },
+      { cat: 'boissons', id: 'eau-plate', name: 'Eau plate (50cl)', desc: 'Eau minérale plate', price: 2, img: 'images/carte/capes-eau-plate.webp' },
+      { cat: 'boissons', id: 'eau-gazeuse', name: 'Eau gazeuse (50cl)', desc: 'Eau minérale pétillante', price: 2, img: 'images/carte/capes-eau-petillante.webp' }
+    ];
+
+    const CRENEAUX = {
+      midi: ['11h30', '12h00', '12h30', '13h00', '13h30', '14h00'],
+      soir: ['19h00', '19h30', '20h00', '20h30', '21h00']
+    };
+
+    const PLUS = '<svg viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    const BAG = '<svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>';
+    const fmt = v => (v % 1 === 0 ? v.toFixed(0) : v.toFixed(2).replace('.', ',')) + ' €';
+
+    // Index des articles commandables (une entrée par variante)
+    const ARTICLES = {};
+    CARTE.forEach(p => {
+      if (p.variants) {
+        p.variants.forEach(v => {
+          ARTICLES[p.id + '-' + v.id] = { name: p.name + ' · ' + v.label, price: v.price, img: v.img || p.img, icon: p.icon };
+        });
+      } else {
+        ARTICLES[p.id] = { name: p.name, price: p.price, img: p.img, icon: p.icon };
+      }
+    });
+
+    function renderCarteCommande() {
+      document.querySelectorAll('.cmd-grid').forEach(grid => {
+        grid.innerHTML = CARTE.filter(p => p.cat === grid.dataset.cat).map(p => {
+          const thumb = p.img
+            ? `<div class="cmd-thumb"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>`
+            : `<div class="cmd-thumb" aria-hidden="true">${p.icon}</div>`;
+          const actions = p.variants
+            ? `<div class="cmd-variants">${p.variants.map(v =>
+                `<button class="btn-add" onclick="addToCart('${p.id}-${v.id}', this)">${PLUS}${v.label} · ${fmt(v.price)}</button>`).join('')}</div>`
+            : `<span class="cmd-price">${fmt(p.price)}</span>
+               <button class="btn-add" onclick="addToCart('${p.id}', this)">${PLUS}Ajouter</button>`;
+          return `<div class="cmd-card">${thumb}<div class="cmd-body">
+              <div class="cmd-name">${p.name}</div>
+              <p class="cmd-desc">${p.desc}</p>
+              <div class="cmd-actions">${actions}</div>
+            </div></div>`;
+        }).join('');
+      });
+
+      ['midi', 'soir'].forEach(service => {
+        document.getElementById('slots-cmd-' + service).innerHTML = CRENEAUX[service].map(h =>
+          `<div class="cart-slot"><input type="radio" name="creneau-retrait" id="r-${h}" value="${h}"><label for="r-${h}">${h}</label></div>`
+        ).join('');
+      });
+    }
+
+    function scrollToCat(cat) {
+      document.getElementById('cmd-' + cat).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    let cart = {};
+    function saveCart() { try { localStorage.setItem('nsk_cart', JSON.stringify(cart)); } catch (e) {} }
+    function loadCart() {
+      try { cart = JSON.parse(localStorage.getItem('nsk_cart') || '{}'); } catch (e) { cart = {}; }
+      Object.keys(cart).forEach(k => { if (!ARTICLES[k]) delete cart[k]; });
+    }
+
+    function openCart() {
+      document.getElementById('cart-panel').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('mobile-nav').classList.remove('open');
+    }
+    function closeCart() {
+      document.getElementById('cart-panel').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.contains('open') ? closeCart() : openCart();
+    }
+
+    function addToCart(id, btn) {
+      if (!ARTICLES[id]) return;
+      cart[id] = (cart[id] || 0) + 1;
+      document.getElementById('panier-success').classList.remove('visible');
+      saveCart();
+      renderCart();
+
+      const badge = document.getElementById('cart-badge');
+      badge.classList.remove('bump'); void badge.offsetWidth; badge.classList.add('bump');
+
+      if (btn) {
+        const original = btn.innerHTML;
+        btn.classList.add('added');
+        btn.innerHTML = '✓ Ajouté';
+        setTimeout(() => { btn.classList.remove('added'); btn.innerHTML = original; }, 1100);
+      }
+      // Sur ordinateur on ouvre le panier comme chez Giorgio ;
+      // sur mobile la barre "Voir mon panier" suffit, on laisse le client continuer.
+      if (window.innerWidth > 1024) openCart();
+    }
+
+    function updateQty(id, delta) {
+      if (!cart[id]) return;
+      cart[id] += delta;
+      if (cart[id] <= 0) delete cart[id];
+      saveCart();
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = {};
+      saveCart();
+      document.getElementById('panier-form').classList.remove('visible');
+      renderCart();
+    }
+
+    function cartTotals() {
+      const ids = Object.keys(cart);
+      return {
+        ids,
+        count: ids.reduce((s, k) => s + cart[k], 0),
+        total: ids.reduce((s, k) => s + ARTICLES[k].price * cart[k], 0)
+      };
+    }
+
+    function renderCart() {
+      const { ids, count, total } = cartTotals();
+
+      const badge = document.getElementById('cart-badge');
+      badge.textContent = count;
+      badge.classList.toggle('visible', count > 0);
+
+      document.getElementById('fab-count').textContent = count;
+      document.getElementById('fab-total').textContent = fmt(total);
+      updateFab();
+
+      const list = document.getElementById('cart-items-list');
+      const footer = document.getElementById('cart-footer');
+      const success = document.getElementById('panier-success').classList.contains('visible');
+
+      if (ids.length === 0) {
+        list.innerHTML = success ? '' : `<div class="cart-empty">${BAG}<p>Votre panier est vide</p>
+          <button class="btn-add" onclick="closeCart(); showSection('commander')">Voir la carte</button></div>`;
+        footer.style.display = 'none';
+        return;
+      }
+
+      list.innerHTML = ids.map(k => {
+        const it = ARTICLES[k];
+        const img = it.img ? `<img src="${it.img}" alt="">` : it.icon;
+        return `<div class="cart-item">
+          <div class="cart-item-img">${img}</div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${it.name}</div>
+            <div class="cart-item-price">${fmt(it.price * cart[k])}</div>
+          </div>
+          <div class="cart-qty">
+            <button class="cart-qty-btn" onclick="updateQty('${k}', -1)" aria-label="Retirer un">−</button>
+            <span class="cart-qty-num">${cart[k]}</span>
+            <button class="cart-qty-btn" onclick="updateQty('${k}', 1)" aria-label="Ajouter un">+</button>
+          </div>
+        </div>`;
+      }).join('');
+      footer.style.display = 'block';
+      document.getElementById('cart-total').textContent = fmt(total);
+    }
+
+    // La barre "Voir mon panier" n'apparaît que sur la page Commander, panier non vide
+    function updateFab() {
+      const onCommander = document.getElementById('section-commander').classList.contains('active');
+      document.body.classList.toggle('fab-visible', onCommander && cartTotals().count > 0);
+    }
+
+    function showPanierForm() {
+      const pf = document.getElementById('panier-form');
+      pf.classList.add('visible');
+      setTimeout(() => pf.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+
+    function sendOrder() {
+      const nom = document.getElementById('pf-nom').value.trim();
+      const tel = document.getElementById('pf-tel').value.trim();
+      const date = document.getElementById('pf-date').value;
+      const creneau = document.querySelector('input[name="creneau-retrait"]:checked');
+      if (!nom || !tel) { showToast('Coordonnées manquantes', 'Merci de renseigner votre nom et votre téléphone.'); return; }
+      if (!date) { showToast('Date manquante', 'Merci de choisir une date de retrait.'); return; }
+      if (!creneau) { showToast('Créneau manquant', 'Merci de choisir un créneau de retrait.'); return; }
+
+      const jour = new Date(date + 'T12:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+      document.getElementById('panier-success-msg').textContent =
+        `Merci ${nom} ! Retrait prévu le ${jour} à ${creneau.value}. Nous vous appelons très bientôt pour confirmer.`;
+      document.getElementById('panier-success').classList.add('visible');
+      document.getElementById('panier-form').classList.remove('visible');
+      ['pf-nom', 'pf-tel', 'pf-date', 'pf-note'].forEach(id => document.getElementById(id).value = '');
+      creneau.checked = false;
+      cart = {};
+      saveCart();
+      renderCart();
+      document.getElementById('cart-panel').scrollTop = 0;
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart(); });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCarteCommande();
+      loadCart();
+      renderCart();
+      document.getElementById('pf-date').min = new Date().toISOString().split('T')[0];
+    });
 
     // ── Date minimum = aujourd'hui
     document.addEventListener('DOMContentLoaded', () => {
