@@ -5,8 +5,9 @@
   var MAX_AGE = 1000 * 60 * 60 * 24 * 182; // choix redemandé au bout de 6 mois
   var T = {
     text: 'Nous utilisons des cookies (Google Analytics) uniquement pour mesurer la fréquentation du site. Aucune publicité, aucune revente. Vous acceptez ?',
-    ok: 'Accepter', no: 'Refuser', link: 'Cookies'
+    ok: 'Accepter', no: 'Refuser', link: 'Cookies', more: 'En savoir plus'
   };
+  var privacy = (location.pathname.indexOf('/blog/') !== -1 ? '../' : '') + 'politique-de-confidentialite.html';
 
   function read() {
     try {
@@ -52,6 +53,7 @@
       'background:#181818;color:#F4F4F4;border-radius:20px;' +
       'padding:1.2rem 1.4rem;box-shadow:0 10px 30px rgba(0,0,0,.3);font-family:"Montserrat",sans-serif;font-size:.85rem;line-height:1.6}' +
       '#kt-cookie p{margin:0 0 .9rem}' +
+      '#kt-cookie a{color:#FACEA5}' +
             '#kt-cookie .kt-btns{display:flex;gap:.6rem}' +
       '#kt-cookie button{flex:1;cursor:pointer;font:inherit;font-weight:500;padding:.7rem 1rem;border-radius:999px}' +
       '#kt-cookie .kt-ok{background:#E28588;color:#fff;border:1px solid #E28588}' +
@@ -67,7 +69,7 @@
     d.id = 'kt-cookie';
     d.setAttribute('role', 'dialog');
     d.setAttribute('aria-label', 'Cookies');
-    d.innerHTML = '<p>' + T.text + '</p>' +
+    d.innerHTML = '<p>' + T.text + ' <a href="' + privacy + '">' + T.more + '</a></p>' +
       '<div class="kt-btns"><button type="button" class="kt-no">' + T.no + '</button>' +
       '<button type="button" class="kt-ok">' + T.ok + '</button></div>';
     d.querySelector('.kt-ok').onclick = function () { save('granted'); d.remove(); loadGA(); };

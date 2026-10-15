@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politique de confidentialité | Kudja Studio</title>
+  <meta name="description" content="Comment Kudja Studio protège vos données personnelles : formulaire de contact, cookies et mesure d'audience." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://kudjastudio.fr/politique-de-confidentialite.html" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F4F4F4; --noir: #181818; --coral: #E28588;
+      --coral-vif: #E45339; --peach: #FACEA5; --blush: #E7C3D2;
+      --muted: #7A7A7A; --rayon: 20px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--noir); line-height: 1.65; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 6%;
+      background: rgba(244,244,244,.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+    .nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--noir); text-decoration: none; letter-spacing: -.02em; }
+    .nav-logo span { color: var(--coral); }
+    .nav-back { display: flex; align-items: center; gap: .5rem; font-size: .88rem; color: var(--muted); text-decoration: none; font-weight: 500; transition: color .2s; }
+    .nav-back:hover { color: var(--coral); }
+
+    .article-hero {
+      padding: 8rem 6% 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero .blob {
+      position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #FACEA5, #E45339 60%, transparent);
+      opacity: .3; top: -60px; right: 10%;
+    }
+    .article-hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+    .article-hero-img { width: 100%; max-width: 760px; margin: 2rem auto 0; border-radius: 16px; overflow: hidden; box-shadow: 0 16px 48px rgba(0,0,0,.12); display: block; }
+    .article-hero-img img { width: 100%; height: 280px; object-fit: cover; display: block; }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .78rem; color: var(--muted); margin-bottom: 1.4rem;
+    }
+    .breadcrumb a { color: var(--coral); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    .article-cat {
+      display: inline-block;
+      background: var(--blush); color: var(--coral);
+      font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em;
+      padding: .3rem .9rem; border-radius: 50px; margin-bottom: 1rem;
+    }
+
+    .article-hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -.03em; line-height: 1.15;
+      color: var(--noir); margin-bottom: 1.2rem;
+    }
+
+    .article-meta {
+      display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+      font-size: .82rem; color: var(--muted);
+    }
+    .article-meta span { display: flex; align-items: center; gap: .4rem; }
+
+    .article-body {
+      max-width: 760px; margin: 0 auto;
+      padding: 3rem 6% 5rem;
+    }
+
+    .article-body .intro {
+      font-size: 1.08rem; color: var(--noir); font-weight: 400;
+      line-height: 1.8; margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem; border-bottom: 2px solid var(--coral);
+    }
+
+    .article-body h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -.03em;
+      color: var(--noir); margin: 2.5rem 0 1rem;
+    }
+
+    .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.1rem; font-weight: 700; letter-spacing: -.02em;
+      color: var(--noir); margin: 1.8rem 0 .7rem;
+    }
+
+    .article-body p { font-size: .96rem; color: #3A3A3A; margin-bottom: 1.2rem; font-weight: 300; line-height: 1.85; }
+
+    .article-body ul, .article-body ol {
+      margin: 1rem 0 1.5rem 1.2rem;
+    }
+    .article-body li { font-size: .95rem; color: #3A3A3A; margin-bottom: .6rem; font-weight: 300; line-height: 1.7; }
+
+    .stat-box {
+      background: var(--coral); color: #fff;
+      border-radius: var(--rayon); padding: 1.8rem 2rem;
+      margin: 2rem 0; display: flex; align-items: center; gap: 1.5rem;
+    }
+    .stat-box .stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 3rem; font-weight: 800; letter-spacing: -.05em; line-height: 1;
+      flex-shrink: 0;
+    }
+    .stat-box .stat-txt { font-size: .95rem; line-height: 1.6; font-weight: 300; }
+
+    .callout {
+      background: var(--blush);
+      border-left: 4px solid var(--coral);
+      border-radius: 0 var(--rayon) var(--rayon) 0;
+      padding: 1.4rem 1.8rem; margin: 2rem 0;
+      font-style: italic; font-size: .95rem; color: var(--noir); line-height: 1.7;
+    }
+
+    .article-cta {
+      background: var(--noir); border-radius: 24px;
+      padding: 2.5rem; text-align: center; margin-top: 3rem;
+    }
+    .article-cta h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.4rem; font-weight: 800; color: #fff;
+      letter-spacing: -.02em; margin-bottom: .7rem;
+    }
+    .article-cta p { color: rgba(255,255,255,.6); font-size: .9rem; margin-bottom: 1.5rem; }
+    .article-cta a {
+      display: inline-block; background: var(--coral); color: #fff;
+      padding: .85rem 2.2rem; border-radius: 50px;
+      font-weight: 600; font-size: .95rem; text-decoration: none;
+      transition: background .2s;
+    }
+    .article-cta a:hover { background: var(--peach); }
+
+    .blog-nav {
+      max-width: 760px; margin: 0 auto;
+      padding: 0 6% 4rem;
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .blog-nav a {
+      flex: 1; min-width: 220px;
+      background: #fff; border-radius: var(--rayon);
+      padding: 1.4rem; text-decoration: none; color: var(--noir);
+      border: 1px solid #E8E8E8;
+      transition: border-color .2s, transform .2s;
+      font-size: .85rem;
+    }
+    .blog-nav a:hover { border-color: var(--coral); transform: translateY(-3px); }
+    .blog-nav .nav-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--coral); margin-bottom: .4rem; }
+    .blog-nav strong { font-family: 'Plus Jakarta Sans', sans-serif; font-size: .92rem; font-weight: 700; display: block; }
+
+    footer {
+      background: #0E0E0E; border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2rem 6%; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo { font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; font-size: 1.1rem; font-weight: 800; text-decoration: none; }
+    .footer-logo span { color: var(--coral); }
+    .footer-copy { font-size: .8rem; color: rgba(255,255,255,.3); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: .8rem; color: rgba(255,255,255,.35); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--coral); }
+
+    .legal-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: .9rem; }
+    .legal-table th, .legal-table td { text-align: left; padding: .7rem .8rem; border-bottom: 1px solid #E2E2E2; vertical-align: top; color: #3A3A3A; font-weight: 300; }
+    .legal-table th { font-weight: 600; color: var(--noir); width: 36%; }
+    .article-body a { color: var(--coral-vif); }
+    .updated { font-size: .82rem; color: var(--muted); margin-top: 2.5rem; }
+    @media (max-width: 640px) {
+      .legal-table th, .legal-table td { display: block; width: 100%; padding: .3rem 0; border: 0; }
+      .legal-table tr { display: block; padding: .6rem 0; border-bottom: 1px solid #E2E2E2; }
+      .article-body { padding: 2rem 5% 4rem; }
+      .stat-box { flex-direction: column; text-align: center; gap: .8rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+  <script src="consent.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Kudja<span>.</span>Studio</a>
+  <a class="nav-back" href="index.html">← Retour à l'accueil</a>
+</nav>
+
+<header class="article-hero">
+  <div class="blob"></div>
+  <div class="article-hero-inner">
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a>
+      <span>›</span>
+      <span>Confidentialité</span>
+    </nav>
+    <div class="article-cat">Informations légales</div>
+    <h1>Politique de confidentialité</h1>
+  </div>
+</header>
+
+<main>
+<article class="article-body">
+  <p class="intro">Kudja Studio collecte le minimum de données nécessaire pour vous répondre et améliorer son site. Vos données ne sont jamais vendues ni utilisées à des fins publicitaires.</p>
+
+  <h2>Qui est responsable de vos données ?</h2>
+  <p>Mégane PRIETO-BLANCO EI, entrepreneur individuel exerçant sous le nom Kudja Studio, Rue Owel Solvet Saint Protais, 97180 Sainte-Anne, Guadeloupe. Contact : <a href="mailto:megane@kudjastudio.fr">megane@kudjastudio.fr</a>.</p>
+
+  <h2>Formulaire de contact</h2>
+  <table class="legal-table">
+    <tr><th>Données collectées</th><td>Prénom, nom, email, type d'activité, pack souhaité, message</td></tr>
+    <tr><th>Pourquoi</th><td>Répondre à votre demande et, si vous le souhaitez, vous envoyer un devis</td></tr>
+    <tr><th>Base légale</th><td>Mesures précontractuelles prises à votre demande</td></tr>
+    <tr><th>Durée de conservation</th><td>3 ans après notre dernier échange, si aucun contrat n'est signé</td></tr>
+    <tr><th>Prestataire</th><td>Formspree (États-Unis), qui transmet les messages du formulaire par email. Les transferts hors Union européenne sont encadrés par les clauses contractuelles types de la Commission européenne.</td></tr>
+  </table>
+
+  <h2>Mesure d'audience (Google Analytics)</h2>
+  <p>Avec votre accord uniquement, nous utilisons Google Analytics pour savoir combien de personnes visitent le site, quelles pages sont lues et d'où viennent les visiteurs (Google, réseaux sociaux, assistants IA…). Ces statistiques nous servent seulement à améliorer le site.</p>
+  <table class="legal-table">
+    <tr><th>Base légale</th><td>Votre consentement, donné via le bandeau cookies</td></tr>
+    <tr><th>Cookies déposés</th><td>_ga et _ga_*, durée maximale de 13 mois</td></tr>
+    <tr><th>Prestataire</th><td>Google Ireland Ltd. Des données peuvent être transférées aux États-Unis, dans le cadre du Data Privacy Framework UE-États-Unis.</td></tr>
+    <tr><th>Votre choix</th><td>Conservé 6 mois. Vous pouvez le modifier à tout moment via le lien « Cookies » en bas de page. Si vous refusez, aucun cookie de mesure n'est déposé et le site fonctionne normalement.</td></tr>
+  </table>
+
+  <h2>Polices d'écriture et hébergement</h2>
+  <p>Le site charge ses polices d'écriture depuis Google Fonts : votre adresse IP est alors transmise à Google pour afficher le texte correctement. L'hébergeur du site (Hostinger) conserve des journaux techniques (adresse IP, date de connexion) pour assurer la sécurité et le bon fonctionnement du serveur.</p>
+
+  <h2>Vos droits</h2>
+  <p>Conformément au RGPD et à la loi Informatique et Libertés, vous pouvez accéder à vos données, les faire rectifier ou supprimer, vous opposer à leur traitement, en limiter l'usage ou demander leur portabilité. Écrivez simplement à <a href="mailto:megane@kudjastudio.fr">megane@kudjastudio.fr</a>, nous vous répondons sous un mois.</p>
+  <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL (<a href="https://www.cnil.fr" rel="noopener">www.cnil.fr</a>).</p>
+  <p class="updated">Dernière mise à jour : 15 octobre 2026</p>
+</article>
+</main>
+
+<footer>
+  <a class="footer-logo" href="index.html">Kudja<span>.</span>Studio</a>
+  <p class="footer-copy">© 2026 Kudja Studio &middot; kudjastudio.fr</p>
+  <div class="footer-links">
+    <a href="index.html#contact">Contact</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="politique-de-confidentialite.html">Confidentialité</a>
+  </div>
+</footer>
+
+</body>
+</html>
