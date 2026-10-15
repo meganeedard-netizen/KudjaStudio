@@ -1341,6 +1341,36 @@
       .blog-grid { grid-template-columns: 1fr; max-width: 420px; }
     }
 
+
+    /* ---- CARROUSELS (réalisations 2 par 2, blog 3 par 3) ---- */
+    .carousel { margin-top: 3.5rem; }
+    .carousel .carousel-track {
+      display: flex; gap: 1.6rem; margin-top: 0; max-width: none;
+      overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+      scrollbar-width: none; -webkit-overflow-scrolling: touch; padding: 4px 2px 14px;
+    }
+    .carousel .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel .carousel-track > a { scroll-snap-align: start; flex: 0 0 calc((100% - 1.6rem) / 2); min-width: 0; }
+    .carousel .blog-grid > a { flex-basis: calc((100% - 2 * 1.6rem) / 3); }
+    .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-top: 1.6rem; }
+    .carousel-btn {
+      width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--noir); background: transparent;
+      color: var(--noir); font-size: 1.15rem; cursor: pointer; transition: background .2s, color .2s, opacity .2s;
+    }
+    .carousel-btn:hover:not(:disabled) { background: var(--noir); color: #fff; }
+    .carousel-btn:disabled { opacity: .3; cursor: default; }
+    .carousel-dots { display: flex; gap: .5rem; }
+    .carousel-dots button { width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; background: rgba(0,0,0,.2); cursor: pointer; transition: background .2s, width .2s; }
+    .carousel-dots button.active { background: var(--coral); width: 24px; border-radius: 5px; }
+    #realisations .carousel-btn { border-color: rgba(255,255,255,.6); color: #fff; }
+    #realisations .carousel-btn:hover:not(:disabled) { background: #fff; color: var(--noir); }
+    #realisations .carousel-dots button { background: rgba(255,255,255,.25); }
+    #realisations .carousel-dots button.active { background: var(--coral); }
+    @media (max-width: 860px) {
+      .carousel .carousel-track { gap: 1rem; }
+      .carousel .carousel-track > a, .carousel .blog-grid > a { flex-basis: 85%; }
+    }
+
     /* ---- ANIMATIONS ---- */
     .fade-up {
       opacity: 0;
@@ -1482,9 +1512,10 @@
   <h2 class="fade-up">Nos<br>réalisations</h2>
   <p class="s-sub fade-up">Quelques sites créés par Kudja Studio, à découvrir en ligne.</p>
 
-  <div class="real-grid">
+  <div class="carousel fade-up" aria-label="Nos réalisations">
+    <div class="real-grid carousel-track">
 
-    <a class="real-card fade-up" href="https://www.jofagist.fr/" target="_blank" rel="noopener">
+    <a class="real-card" href="https://www.jofagist.fr/" target="_blank" rel="noopener">
       <div class="real-card-img">
         <img src="images/realisation-jofagist.webp" alt="Page d'accueil du site Jofagist, tuyauterie industrielle et salles de bains" width="960" height="600" loading="lazy" />
       </div>
@@ -1499,7 +1530,7 @@
       </div>
     </a>
 
-    <a class="real-card fade-up" href="https://lcv-amo.fr/" target="_blank" rel="noopener">
+    <a class="real-card" href="https://lcv-amo.fr/" target="_blank" rel="noopener">
       <div class="real-card-img">
         <img src="images/realisation-lcv-amo.webp" alt="Page d'accueil du site La Clef de Voûte, assistance à maîtrise d'ouvrage" width="960" height="600" loading="lazy" />
       </div>
@@ -1514,7 +1545,7 @@
       </div>
     </a>
 
-    <a class="real-card fade-up" href="https://bligo.fr/" target="_blank" rel="noopener">
+    <a class="real-card" href="https://bligo.fr/" target="_blank" rel="noopener">
       <div class="real-card-img">
         <img src="images/realisation-bligo.webp" alt="Page d'accueil du site BliGO, logiciel et application pour médiathèques" width="960" height="600" loading="lazy" />
       </div>
@@ -1529,7 +1560,7 @@
       </div>
     </a>
 
-    <a class="real-card fade-up" href="https://kudjatravel.com/" target="_blank" rel="noopener">
+    <a class="real-card" href="https://kudjatravel.com/" target="_blank" rel="noopener">
       <div class="real-card-img">
         <img src="images/realisation-kudja-travel.webp" alt="Page d'accueil du site Kudja Travel, voyages sur-mesure aux Antilles" width="960" height="600" loading="lazy" />
       </div>
@@ -1544,6 +1575,12 @@
       </div>
     </a>
 
+  </div>
+    <div class="carousel-nav">
+      <button type="button" class="carousel-btn prev" aria-label="Précédent">&#8592;</button>
+      <div class="carousel-dots"></div>
+      <button type="button" class="carousel-btn next" aria-label="Suivant">&#8594;</button>
+    </div>
   </div>
 </section>
 
@@ -1669,9 +1706,10 @@
   <h2 class="fade-up">Le blog<br>Kudja Studio</h2>
   <p class="s-sub fade-up">Nos conseils pour attirer plus de clients grâce au digital.</p>
 
-  <div class="blog-grid">
+  <div class="carousel fade-up" aria-label="Articles du blog">
+    <div class="blog-grid carousel-track">
 
-    <a class="blog-card fade-up" href="blog/tarif-community-manager-freelance-guadeloupe.html">
+    <a class="blog-card" href="blog/tarif-community-manager-freelance-guadeloupe.html">
       <div class="blog-card-img">
         <img src="images/blog-tarif-community-manager-guadeloupe.webp" alt="Smartphone photographiant un petit-déjeuner pour un contenu réseaux sociaux" loading="lazy" />
       </div>
@@ -1686,67 +1724,7 @@
       </div>
     </a>
 
-    <a class="blog-card fade-up" href="blog/site-internet-restaurant.html">
-      <div class="blog-card-img">
-        <img src="images/blog-site-internet-restaurant.webp" alt="Chef cuisinier dressant un plat dans un restaurant" loading="lazy" />
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-cat">Site internet</span>
-        <h3>Pourquoi votre restaurant a besoin d'un site internet en 2026</h3>
-        <p>91% des clients cherchent un restaurant en ligne avant de s'y rendre. Voici pourquoi un site professionnel est devenu indispensable.</p>
-        <div class="blog-card-footer">
-          <span>5 min de lecture</span>
-          <span class="lire">Lire l'article →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="blog-card fade-up" href="blog/videos-reels-restaurant-instagram-tiktok.html">
-      <div class="blog-card-img">
-        <img src="images/blog-reseaux-sociaux-restaurant.webp" alt="Smartphone filmant un burger pour les réseaux sociaux" loading="lazy" />
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-cat">Réseaux sociaux</span>
-        <h3>Comment les Reels Instagram et TikTok font venir des clients dans votre restaurant</h3>
-        <p>Une vidéo de 30 secondes peut générer des dizaines de nouveaux clients. Découvrez comment exploiter ce levier puissant.</p>
-        <div class="blog-card-footer">
-          <span>6 min de lecture</span>
-          <span class="lire">Lire l'article →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="blog-card fade-up" href="blog/visibilite-en-ligne-boulangerie-epicerie.html">
-      <div class="blog-card-img">
-        <img src="images/blog-marketing-digital-boulangerie.webp" alt="Boulanger artisan travaillant la pâte dans sa boulangerie" loading="lazy" />
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-cat">Marketing digital</span>
-        <h3>5 conseils pour améliorer la visibilité en ligne de votre boulangerie ou épicerie fine</h3>
-        <p>Référencement local, Google Maps, réseaux sociaux : les 5 actions concrètes pour être trouvé par vos futurs clients.</p>
-        <div class="blog-card-footer">
-          <span>7 min de lecture</span>
-          <span class="lire">Lire l'article →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="blog-card fade-up" href="blog/site-internet-hotel-guadeloupe.html">
-      <div class="blog-card-img">
-        <img src="images/blog-site-internet-hotel-guadeloupe.webp" alt="Piscine d'un hôtel en Guadeloupe face à la mer des Caraïbes" loading="lazy" />
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-cat">Hôtellerie</span>
-        <h3>Hôtel en Guadeloupe : pourquoi votre site internet est votre meilleur commercial</h3>
-        <p>Réservations directes, référencement Google, vidéos réseaux sociaux : comment booster la visibilité et les revenus de votre hôtel en Guadeloupe.</p>
-        <div class="blog-card-footer">
-          <span>6 min de lecture</span>
-          <span class="lire">Lire l'article →</span>
-        </div>
-      </div>
-    </a>
-
-    <a class="blog-card fade-up" href="blog/site-internet-excursions-guadeloupe.html">
+    <a class="blog-card" href="blog/site-internet-excursions-guadeloupe.html">
       <div class="blog-card-img">
         <img src="images/blog-site-internet-excursions-guadeloupe.webp" alt="Groupe en excursion en mer avec vue sur les îles de la Guadeloupe" loading="lazy" />
       </div>
@@ -1761,6 +1739,72 @@
       </div>
     </a>
 
+    <a class="blog-card" href="blog/site-internet-hotel-guadeloupe.html">
+      <div class="blog-card-img">
+        <img src="images/blog-site-internet-hotel-guadeloupe.webp" alt="Piscine d'un hôtel en Guadeloupe face à la mer des Caraïbes" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Hôtellerie</span>
+        <h3>Hôtel en Guadeloupe : pourquoi votre site internet est votre meilleur commercial</h3>
+        <p>Réservations directes, référencement Google, vidéos réseaux sociaux : comment booster la visibilité et les revenus de votre hôtel en Guadeloupe.</p>
+        <div class="blog-card-footer">
+          <span>6 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="blog-card" href="blog/visibilite-en-ligne-boulangerie-epicerie.html">
+      <div class="blog-card-img">
+        <img src="images/blog-marketing-digital-boulangerie.webp" alt="Boulanger artisan travaillant la pâte dans sa boulangerie" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Marketing digital</span>
+        <h3>5 conseils pour améliorer la visibilité en ligne de votre boulangerie ou épicerie fine</h3>
+        <p>Référencement local, Google Maps, réseaux sociaux : les 5 actions concrètes pour être trouvé par vos futurs clients.</p>
+        <div class="blog-card-footer">
+          <span>7 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="blog-card" href="blog/videos-reels-restaurant-instagram-tiktok.html">
+      <div class="blog-card-img">
+        <img src="images/blog-reseaux-sociaux-restaurant.webp" alt="Smartphone filmant un burger pour les réseaux sociaux" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Réseaux sociaux</span>
+        <h3>Comment les Reels Instagram et TikTok font venir des clients dans votre restaurant</h3>
+        <p>Une vidéo de 30 secondes peut générer des dizaines de nouveaux clients. Découvrez comment exploiter ce levier puissant.</p>
+        <div class="blog-card-footer">
+          <span>6 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="blog-card" href="blog/site-internet-restaurant.html">
+      <div class="blog-card-img">
+        <img src="images/blog-site-internet-restaurant.webp" alt="Chef cuisinier dressant un plat dans un restaurant" loading="lazy" />
+      </div>
+      <div class="blog-card-body">
+        <span class="blog-cat">Site internet</span>
+        <h3>Pourquoi votre restaurant a besoin d'un site internet en 2026</h3>
+        <p>91% des clients cherchent un restaurant en ligne avant de s'y rendre. Voici pourquoi un site professionnel est devenu indispensable.</p>
+        <div class="blog-card-footer">
+          <span>5 min de lecture</span>
+          <span class="lire">Lire l'article →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+    <div class="carousel-nav">
+      <button type="button" class="carousel-btn prev" aria-label="Précédent">&#8592;</button>
+      <div class="carousel-dots"></div>
+      <button type="button" class="carousel-btn next" aria-label="Suivant">&#8594;</button>
+    </div>
   </div>
 </section>
 
@@ -1927,6 +1971,41 @@
   }
 </script>
 
+
+<script>
+/* Carrousels : flèches + points, une "page" = ce qui est visible à l'écran */
+document.querySelectorAll('.carousel').forEach(function (c) {
+  var track = c.querySelector('.carousel-track');
+  var prev = c.querySelector('.prev'), next = c.querySelector('.next');
+  var dotsBox = c.querySelector('.carousel-dots');
+  function pages() { return Math.max(1, Math.round(track.scrollWidth / track.clientWidth)); }
+  function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+  function go(i) { track.scrollTo({ left: i * track.clientWidth, behavior: 'smooth' }); }
+  function build() {
+    dotsBox.innerHTML = '';
+    for (var i = 0; i < pages(); i++) {
+      var d = document.createElement('button');
+      d.type = 'button'; d.setAttribute('aria-label', 'Page ' + (i + 1));
+      d.onclick = (function (k) { return function () { go(k); }; })(i);
+      dotsBox.appendChild(d);
+    }
+    update();
+  }
+  function update() {
+    var max = track.scrollWidth - track.clientWidth - 2;
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max;
+    var cur = track.scrollLeft >= max ? pages() - 1 : current();
+    [].forEach.call(dotsBox.children, function (d, i) { d.classList.toggle('active', i === cur); });
+    c.querySelector('.carousel-nav').style.display = pages() > 1 ? '' : 'none';
+  }
+  prev.onclick = function () { go(Math.max(0, current() - 1)); };
+  next.onclick = function () { go(Math.min(pages() - 1, current() + 1)); };
+  track.addEventListener('scroll', function () { window.requestAnimationFrame(update); });
+  window.addEventListener('resize', build);
+  build();
+});
+</script>
 
 <!-- WhatsApp -->
 <style>
